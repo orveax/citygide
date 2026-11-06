@@ -75,7 +75,7 @@ function placeCard(place) {
   const address = element('p', 'place-card__address', '⌖  ' + place.address);
   const meta = element('div', 'place-card__meta');
   meta.append(element('span', '', labelZone(place.zone)));
-  meta.append(link('تفاصيل الجهة ↗', 'place.html?slug=' + encodeURIComponent(place.slug)));
+  meta.append(link('تفاصيل الجهة ←', 'place.html?slug=' + encodeURIComponent(place.slug)));
   body.append(title, address, meta);
   if (place.public_access === 'Unknown') body.append(element('p', 'place-card__note', 'شروط دخول الزوار غير مؤكدة — تواصل قبل الزيارة.'));
   card.append(imageWrap, body);
