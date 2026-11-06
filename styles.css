@@ -187,7 +187,7 @@ img { display: block; max-width: 100%; }
 .sidebar-card { padding: 25px; }
 .contact-actions { display: grid; gap: 9px; }
 .contact-actions a { border: 1px solid #e5e8ea; color: var(--ink); padding: 11px 15px; border-radius: 10px; font-weight: 600; font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
-.contact-actions a::after { content: '↗'; color: var(--accent); font: 17px Arial, sans-serif; }
+.contact-actions a::after { content: '←'; color: var(--accent); font: 17px Arial, sans-serif; }
 .contact-actions a.primary { background: var(--accent); border-color: var(--accent); color: white; }.contact-actions a.primary::after { color: white; }
 .contact-actions a:hover { border-color: var(--accent); }
 .checked-date, .source-note { color: var(--muted); font-size: 11px; line-height: 2; }.checked-date strong { color: var(--ink); }
