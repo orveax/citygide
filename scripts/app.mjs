@@ -149,12 +149,16 @@ function setupDetail(places) {
   setText('address', place.address); setText('precision', PRECISIONS[place.address_precision] || 'غير محدد');
   setText('role', labelKind(place.kind) + ' — ' + labelRole(place.role));
   setText('service', place.service_type, 'لا توجد خدمة حضورية محددة مثبتة');
-  setText('visitorHours', place.visitor_hours, 'غير مؤكدة — لا تعتمد على مواعيد العمل الإداري');
+  setText('visitorHours', place.visitor_hours, place.public_access === 'By Appointment'
+    ? 'الزيارة بموعد مسبق — لا توجد ساعات استقبال مفتوحة معلنة'
+    : 'غير مؤكدة — لا تعتمد على مواعيد العمل الإداري');
   setText('officeHours', place.office_hours, 'غير منشورة بمصدر واضح');
   setText('checked', place.last_checked);
   setText('accessNotice', place.public_access === 'Unknown'
     ? 'تنبيه قبل الزيارة: دخول الجمهور ومدخل الزوار لم يتم تأكيدهما. اتصل بالجهة قبل التحرك.'
-    : 'راجع شروط الزيارة وطريقة الوصول مع الجهة قبل التحرك.');
+    : place.public_access === 'By Appointment'
+      ? 'الزيارة بموعد مسبق فقط. تواصل مع الشركة لتأكيد موعدك ومدخل الزوار قبل التحرك.'
+      : 'راجع شروط الزيارة وطريقة الوصول مع الجهة قبل التحرك.');
   document.querySelector('.detail-hero-art img').src = IMAGES[place.kind] || IMAGES.Company;
   const contact = $('contact');
   if (place.phone) contact.append(link('اتصل بالجهة', 'tel:' + place.phone.replace(/[^\d+]/g, ''), 'primary'));

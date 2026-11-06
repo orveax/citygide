@@ -33,6 +33,33 @@
       "verification": "Published",
       "directions_url": "",
       "verified_entrance": false
+    },
+    {
+      "id": "NC-64",
+      "slug": "orveax-new-capital-office",
+      "name_ar": "أورفيكس — ORVEAX",
+      "name_en": "ORVEAX — Business Structuring & Digital Foundation",
+      "aliases": ["ORVEAX", "Orvex", "Orbiz", "أورفيكس", "أورڤيكس"],
+      "kind": "Company",
+      "role": "Administrative HQ",
+      "zone": "Financial District",
+      "address": "برج إنيزيو (Inizio Tower)، الدور الخامس، مكتب 503، الحي المالي، مقابل البنك المركزي المصري، العاصمة الإدارية الجديدة، مصر",
+      "building_code": "",
+      "address_precision": "Floor Confirmed",
+      "service_type": "تنظيم الأعمال وبناء الأساس الرقمي؛ Venture Foundation وDigital Business Foundation",
+      "service_availability": "Unknown",
+      "public_access": "By Appointment",
+      "visitor_hours": "",
+      "office_hours": "",
+      "phone": "",
+      "email": "hello@orveax.com",
+      "website": "https://orveax.com/ar/",
+      "source_url": "https://orveax.com/ar/contact/",
+      "source_category": "Official Business",
+      "last_checked": "2026-11-06",
+      "verification": "Published",
+      "directions_url": "",
+      "verified_entrance": false
     }
   ]
 }

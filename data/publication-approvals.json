@@ -8,6 +8,14 @@
       "approved_at": "2026-11-06",
       "content_sha256": "03ca6b176e7da2de973c1e66b2e170f1200805f52330d9403ce86aa08d3e466f",
       "approval_scope": "Administrative headquarters information only. Public access, visitor hours, services and directions remain unverified."
+    },
+    {
+      "page_id": "410a7a23-3ee1-819d-86db-dfa706fc1ef6",
+      "place_id": "NC-64",
+      "approved_by": "Mohamed Adel",
+      "approved_at": "2026-11-06",
+      "content_sha256": "a59ae85bac7629eff88b71be71673df1522582881177fc90d4d57a0618a8a3e6",
+      "approval_scope": "Founder-approved ORVEAX company listing with full official site, email, financial district office 503 and appointment-only access. Entrance and navigation pin remain unverified; Google Maps search only."
     }
   ]
 }
