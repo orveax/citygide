@@ -30,7 +30,7 @@ The demo's live site displayed a browser security challenge during initial revie
 | D08-02 | Category chips, listing cards, grid/list, 2 district discovery panels | Combined filters, URL deep-link, empty states; no fake ratings | Implemented in branch |
 | D08-03 | Place profiles | Address precision, visitor access, contact, source and verified-only directions | Implemented in branch |
 | D08-04 | Editorial-safe review | Separate local preview build; public output uses approved records only | Implemented in branch |
-| D08-05 | Real editorial imagery and logos | Licensed or permissioned images; attachment provenance and evidence; fallback graphics | Pending |
+| D08-05 | Real editorial imagery and logos | Licensed or permissioned images; attachment provenance and evidence; fallback graphics | Illustrative imagery implemented; actual place photos and logos pending approval |
 | D08-06 | Real map & geolocation | Map only for records with verified pin/entrance, no simulated markers | Pending verification pipeline |
 | D08-07 | Browser QA + release readiness | Desktop/mobile, keyboard, contrast, LTR strings, browser QA; human design acceptance | Pending review |
 
@@ -43,4 +43,6 @@ The demo's live site displayed a browser security challenge during initial revie
 
 ## Visual reference limits
 
-The current SVG architecture images are intentionally illustrations, not photographs of verified locations. They keep visual shape and hierarchy reviewable while source-specific image permissions are unresolved. Replace them with provenance-tracked editorial assets in D08-05, not arbitrary scraped photos.
+The original SVG architecture images remain as fallback artwork for listing cards and place detail views. D08-05 introduces three original, photorealistic **AI-generated conceptual architecture** images (WebP) in the homepage's hero and district discovery sections. They do **not** document an actual place or serve as directions. The hero visibly discloses that they are illustrative. Image assets are named `city-skyline.webp`, `civic-illustration.webp`, and `financial-illustration.webp` and compressed to ~160–220 KB each.
+
+Real place-specific photographs, government logos, and bank logos are **still blocked** pending provenance, permissions and association with verified records; don't auto-scrape them. Creative Commons photographs showing Egyptian modern buildings may also raise copyright/freedom-of-panorama questions beyond the photographer's license. Editorial photo records will need `rights_holder`, `license_or_permission`, `source_url`, `photo_subject`, and `reviewed_at` before publishing.
