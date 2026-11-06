@@ -52,14 +52,24 @@ test('D14 exploratory catalogue is explicitly labeled and cannot alter approved 
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 73);
+  assert.equal(exploratory.places.length, 78);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 23);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 48);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 25);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 51);
   const companies = exploratory.places.filter(p => p.kind === 'Company');
-  assert.equal(companies.length, 11);
-  assert.equal(companies.filter(p => p.verification === 'Research').length, 6);
+  assert.equal(companies.length, 16);
+  assert.equal(companies.filter(p => p.verification === 'Research').length, 8);
   assert.equal(companies.filter(p => p.role === 'Public Service Point' && p.verification === 'Source Confirmed').length, 3);
+  assert.equal(companies.filter(p => p.role === 'Administrative HQ' && p.verification === 'Source Confirmed').length, 4);
+  for (const id of ['NC-74', 'NC-75', 'NC-76']) {
+    assert.equal(companies.find(p => p.id === id)?.verification, 'Source Confirmed', `${id}: official company claim`);
+  }
+  for (const id of ['NC-77', 'NC-78']) {
+    const candidate = companies.find(p => p.id === id);
+    assert.equal(candidate?.verification, 'Research', `${id}: unresolved office status`);
+    assert.equal(candidate?.address_precision, 'District Only');
+    assert.equal(candidate?.directions_url, '');
+  }
   assert.ok(companies.filter(p => p.verification === 'Research').every(p => p.address_precision === 'District Only'));
   assert.ok(exploratory.places.every(p => !p.directions_url && !p.verified_entrance));
   assert.ok(exploratory.places.every(p => !['Notes', 'Change Reason', 'Evidence Scope', 'Coordinates'].some(key => key in p)));
