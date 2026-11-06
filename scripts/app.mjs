@@ -3,10 +3,12 @@ import { mapsDirectionsUrl, mapsSearchUrl } from './maps.mjs';
 
 const $ = id => document.getElementById(id);
 const preview = document.body.dataset.preview === 'true';
+const exploration = document.body.dataset.catalog === 'exploration';
+const detailHref = exploration ? 'explore-place.html?slug=' : 'place.html?slug=';
 
-const ZONES = { 'Government District': 'الحي الحكومي', 'Financial District': 'حي المال والأعمال' };
-const KINDS = { Government: 'وزارة', Authority: 'هيئة أو جهة', Bank: 'بنك', Company: 'شركة' };
-const ROLES = { 'Administrative HQ': 'مقر إداري', 'Public Service Point': 'نقطة خدمة للجمهور', Facility: 'مبنى أو منشأة', District: 'حي' };
+const ZONES = { 'Government District': 'الحي الحكومي', 'Financial District': 'حي المال والأعمال', Other: 'المنطقة قيد التحقق' };
+const KINDS = { Government: 'وزارة', Authority: 'هيئة أو جهة', Bank: 'بنك', Company: 'شركة', Building: 'مبنى', District: 'حي' };
+const ROLES = { 'Administrative HQ': 'مقر إداري', 'Public Service Point': 'نقطة خدمة للجمهور', Facility: 'مبنى أو منشأة', District: 'حي', Unknown: 'صفة الموقع قيد التحقق' };
 const PRECISIONS = {
   'District Only': 'المنطقة فقط — لا يوجد مدخل دقيق مؤكد',
   'Building Confirmed': 'المبنى مؤكد، لكن المدخل غير مثبت',
@@ -38,12 +40,12 @@ const link = (label, href, className = '') => {
 };
 
 async function loadPlaces() {
-  const response = await fetch('data/places.json', { cache: 'no-store' });
+  const response = await fetch(exploration ? 'data/exploration.json' : 'data/places.json', { cache: 'no-store' });
   if (!response.ok) throw new Error('Could not load the catalog');
   const payload = await response.json();
-  const requiredMode = preview ? 'preview' : 'production';
+  const requiredMode = exploration ? 'exploration' : preview ? 'preview' : 'production';
   if (payload.mode !== requiredMode || !Array.isArray(payload.places)) throw new Error('Unexpected dataset mode');
-  const allowed = preview ? new Set(['Source Confirmed', 'Contact Verified', 'Published']) : new Set(['Published']);
+  const allowed = exploration ? new Set(['Research', 'Source Confirmed', 'Contact Verified', 'Published']) : preview ? new Set(['Source Confirmed', 'Contact Verified', 'Published']) : new Set(['Published']);
   if (!payload.places.every(place => allowed.has(place.verification))) throw new Error('Record passed the publishing gate without approval');
   return payload.places;
 }
@@ -70,15 +72,20 @@ function placeCard(place) {
   image.alt = ''; image.loading = 'lazy'; imageWrap.append(image);
   imageWrap.append(element('span', 'image-badge', labelKind(place.kind)));
   imageWrap.append(element('span', 'image-disclosure', 'مشهد معماري توضيحي'));
+  if (exploration) {
+    const stateLabel = place.verification === 'Published' ? 'منشور ومعتمد' : place.verification === 'Research' ? 'بحث مبدئي' : 'المصدر قيد المراجعة';
+    imageWrap.append(element('span', 'verification-tag verification-tag--' + (place.verification === 'Published' ? 'approved' : place.verification === 'Research' ? 'research' : 'source'), stateLabel));
+  }
   const body = element('div', 'place-card__body');
   body.append(element('span', 'place-card__eyebrow', labelZone(place.zone) + ' / ' + labelRole(place.role)));
-  const title = element('h3'); title.append(link(place.name_ar, 'place.html?slug=' + encodeURIComponent(place.slug)));
+  const title = element('h3'); title.append(link(place.name_ar, detailHref + encodeURIComponent(place.slug)));
   const address = element('p', 'place-card__address', '⌖  ' + place.address);
   const meta = element('div', 'place-card__meta');
   meta.append(element('span', '', labelZone(place.zone)));
-  meta.append(link('تفاصيل الجهة ←', 'place.html?slug=' + encodeURIComponent(place.slug)));
+  meta.append(link('تفاصيل الجهة ←', detailHref + encodeURIComponent(place.slug)));
   body.append(title, address, meta);
   if (place.public_access === 'Unknown') body.append(element('p', 'place-card__note', 'شروط دخول الزوار غير مؤكدة — تواصل قبل الزيارة.'));
+  if (exploration && place.verification !== 'Published') body.append(element('p', 'place-card__verification-note', place.verification === 'Research' ? 'سجل بحثي غير معتمد؛ لا تعتمد على العنوان للزيارة.' : 'المصدر متاح، لكن هذه الصفحة لم تحصل على اعتماد النشر.'));
   card.append(imageWrap, body);
   return card;
 }
@@ -105,7 +112,7 @@ function renderDirectory(places) {
   const filters = { q: $('q').value, kind: $('kind').value, zone: $('zone').value, sort: $('sort').value };
   const results = filterPlaces(places, filters);
   setText('count', String(results.length), '0');
-  setText('resultsDescription', preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
+  setText('resultsDescription', exploration ? 'نتيجة استكشافية — حالات التحقق موضحة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
   const target = $('cards'); target.replaceChildren();
   target.classList.toggle('is-sparse', results.length === 1);
   if (!results.length) target.append(emptyState(places, filters));
@@ -143,7 +150,7 @@ function setupDetail(places) {
     document.querySelector('.detail-layout').hidden = true;
     return;
   }
-  document.title = place.name_ar + ' | دليل العاصمة' + (preview ? ' — معاينة داخلية' : '');
+  document.title = place.name_ar + ' | دليل العاصمة' + (exploration ? ' — نسخة استكشافية' : preview ? ' — معاينة داخلية' : '');
   setText('title', place.name_ar); setText('crumbName', place.name_ar); setText('crumbZone', labelZone(place.zone));
   setText('subtitle', labelZone(place.zone) + ' · ' + labelRole(place.role));
   setText('address', place.address); setText('precision', PRECISIONS[place.address_precision] || 'غير محدد');
@@ -154,7 +161,9 @@ function setupDetail(places) {
     : 'غير مؤكدة — لا تعتمد على مواعيد العمل الإداري');
   setText('officeHours', place.office_hours, 'غير منشورة بمصدر واضح');
   setText('checked', place.last_checked);
-  setText('accessNotice', place.public_access === 'Unknown'
+  setText('accessNotice', exploration && place.verification === 'Research'
+    ? 'هذا سجل بحثي أولي، ولم يتم اعتماد الموقع أو إمكانية الزيارة. لا تستخدم العنوان للتنقل.'
+    : place.public_access === 'Unknown'
     ? 'تنبيه قبل الزيارة: دخول الجمهور ومدخل الزوار لم يتم تأكيدهما. اتصل بالجهة قبل التحرك.'
     : place.public_access === 'By Appointment'
       ? 'الزيارة بموعد مسبق فقط. تواصل مع الشركة لتأكيد موعدك ومدخل الزوار قبل التحرك.'
@@ -165,8 +174,8 @@ function setupDetail(places) {
   if (place.email) contact.append(link('البريد الإلكتروني', 'mailto:' + encodeURIComponent(place.email)));
   if (place.website) contact.append(link('الموقع الرسمي', place.website));
   if (!contact.children.length) contact.append(element('p', 'source-note', 'لا توجد وسيلة اتصال مؤكدة في السجل.'));
-  const directions = mapsDirectionsUrl(place);
-  const mapSearch = mapsSearchUrl(place);
+  const directions = exploration && place.verification !== 'Published' ? '' : mapsDirectionsUrl(place);
+  const mapSearch = exploration && place.verification === 'Research' ? '' : mapsSearchUrl(place);
   const mapActions = $('mapActions');
   if (directions) {
     mapActions.append(link('ابدأ الملاحة على Google Maps', directions, 'primary'));
@@ -178,13 +187,28 @@ function setupDetail(places) {
     mapActions.append(element('p', 'source-note', 'لا توجد نقطة وصول دقيقة أو عنوان مبنى موثق لعرضه على الخريطة.'));
     setText('mapNotice', 'هنضيف رابط الخرائط لما تتأكد دقة موقع الجهة.');
   }
-  $('source').append(link('افتح المصدر الرسمي', place.source_url));
+  $('source').append(link(exploration && place.verification !== 'Published' ? 'راجع المصدر الأولي' : 'افتح المصدر الرسمي', place.source_url));
   if (preview) document.querySelector('.verified-badge').textContent = 'معاينة داخلية · ' + place.verification;
+  if (exploration) {
+    const badge = document.querySelector('.verified-badge');
+    badge.textContent = place.verification === 'Published' ? '✓ منشور ومعتمد' : place.verification === 'Research' ? '⚠ بحث مبدئي — غير معتمد للزيارة' : '⚠ مصدر أولي — لم تعتمد بيانات الزيارة';
+    badge.classList.toggle('verified-badge--unapproved', place.verification !== 'Published');
+  }
 }
 
 try {
   const places = await loadPlaces();
   if (preview) document.querySelectorAll('.announcement__inner > span:first-child').forEach(el => el.textContent = 'معاينة داخلية — السجلات لم تُعتمد للنشر العام');
+  if (exploration) {
+    document.querySelectorAll('.announcement__inner > span:first-child').forEach(el => el.textContent = 'نسخة استكشافية — بعض الجهات لم تُعتمد بيانات زيارتها');
+    const note = element('aside', 'exploration-banner');
+    note.setAttribute('role', 'note');
+    const box = element('div', 'container exploration-banner__inner');
+    box.append(element('strong', '', 'تجربة الدليل الموسّع'), element('p', '', 'النتائج تشمل سجلات منشورة وسجلات بحثية غير معتمدة. تحقّق من حالة كل جهة ومصدرها، ولا تتحرك إلى مقر غير مؤكد.'));
+    box.append(link('عرض الجهات المعتمدة فقط ←', 'directory.html'));
+    note.append(box);
+    document.querySelector('main')?.prepend(note);
+  }
   if ($('cards')) setupDirectory(places);
   if ($('title')) setupDetail(places);
 } catch (error) {
