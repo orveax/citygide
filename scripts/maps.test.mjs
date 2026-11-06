@@ -1,0 +1,44 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mapsDirectionsUrl, mapsSearchUrl } from './maps.mjs';
+
+const base = {
+  name_ar: 'وزارة الاتصالات',
+  address: 'مبنى 10B-L2M، العاصمة الإدارية الجديدة',
+  address_precision: 'Building Confirmed',
+  verified_entrance: false,
+  directions_url: ''
+};
+
+test('a confirmed building opens Maps search without claiming navigation to an entrance', () => {
+  const query = new URL(mapsSearchUrl(base));
+  assert.equal(query.hostname, 'www.google.com');
+  assert.equal(query.pathname, '/maps/search/');
+  assert.equal(query.searchParams.get('api'), '1');
+  assert.match(query.searchParams.get('query'), /10B-L2M/);
+  assert.equal(mapsDirectionsUrl(base), '');
+});
+
+test('district-only location has no misleading maps button', () => {
+  assert.equal(mapsSearchUrl({ ...base, address_precision: 'District Only' }), '');
+});
+
+test('a verified entrance allows Google Maps navigation from visitor location', () => {
+  const url = mapsDirectionsUrl({
+    ...base, address_precision: 'Pin Verified', verified_entrance: true,
+    directions_url: 'https://www.google.com/maps/dir/?api=1&origin=Old+Location&destination=30.001%2C31.001'
+  });
+  const parsed = new URL(url);
+  assert.equal(parsed.searchParams.get('origin'), null);
+  assert.equal(parsed.searchParams.get('dir_action'), 'navigate');
+  assert.equal(parsed.searchParams.get('destination'), '30.001,31.001');
+});
+
+test('rejects unverified or non-Google navigation URLs', () => {
+  const bad = { ...base, address_precision: 'Pin Verified', verified_entrance: true };
+  assert.equal(mapsDirectionsUrl({ ...bad, directions_url: 'https://other.example/maps/dir/?api=1&destination=Office' }), '');
+  assert.equal(mapsDirectionsUrl({ ...bad, directions_url: 'https://www.google.com/maps/search/?api=1&query=Office' }), '');
+  assert.equal(mapsDirectionsUrl({ ...bad, directions_url: 'https://www.google.com/maps/dir/?api=1' }), '');
+  assert.equal(mapsDirectionsUrl({ ...bad, directions_url: 'https://www.google.com/maps/dir/?api=1&destination=' }), '');
+  assert.equal(mapsDirectionsUrl({ ...bad, directions_url: 'https://www.google.com/maps/directions/?api=1&destination=Office' }), '');
+});

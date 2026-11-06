@@ -23,6 +23,7 @@ for (const name of ['place.html', 'directory.html', 'about.html', 'contact.html'
 cpSync(join(root, 'index.html'), join(dist, 'index.html'));
 cpSync(join(root, 'scripts/app.mjs'), join(dist, 'scripts/app.mjs'));
 cpSync(join(root, 'scripts/catalog.mjs'), join(dist, 'scripts/catalog.mjs'));
+cpSync(join(root, 'scripts/maps.mjs'), join(dist, 'scripts/maps.mjs'));
 for (const name of ['city-skyline.svg', 'financial-architecture.svg', 'civic-architecture.svg', 'city-skyline.webp', 'financial-illustration.webp', 'civic-illustration.webp']) {
   cpSync(join(root, 'assets', name), join(dist, 'assets', name));
 }

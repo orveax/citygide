@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { mapsDirectionsUrl } from './maps.mjs';
 
 export const PUBLIC_KEYS = new Set(['id','slug','name_ar','name_en','aliases','kind','role','zone','address','building_code','address_precision','service_type','service_availability','public_access','visitor_hours','office_hours','phone','email','website','source_url','source_category','last_checked','verification','directions_url','verified_entrance']);
 const ROLES = new Set(['Administrative HQ','Public Service Point','Facility','District']);
@@ -28,6 +29,7 @@ export function validateDataset(dataset, mode = 'production') {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(p.last_checked || '')) errors.push(`${tag}: invalid checked date`);
     for (const key of HTTPS_KEYS) if (p[key] && !/^https:\/\/[^\s]+$/i.test(p[key])) errors.push(`${tag}: invalid ${key}`);
     if (p.directions_url && !(p.verified_entrance && ['Entrance Confirmed','Pin Verified'].includes(p.address_precision))) errors.push(`${tag}: directions require verified entrance/pin`);
+    if (p.directions_url && p.verified_entrance && !mapsDirectionsUrl(p)) errors.push(`${tag}: directions must use a valid Google Maps URL with a destination`);
     if (p.visitor_hours && p.public_access === 'Unknown') errors.push(`${tag}: visitor hours conflict with unknown public access`);
     if (p.aliases !== undefined && (!Array.isArray(p.aliases) || !p.aliases.every(a => typeof a === 'string'))) errors.push(`${tag}: aliases must be strings`);
   });

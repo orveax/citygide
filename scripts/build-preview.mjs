@@ -20,7 +20,7 @@ for (const file of ['index.html', 'place.html']) {
   const html = readFileSync(join(root, file), 'utf8').replace('<body data-page=', '<body data-preview="true" data-page=');
   writeFileSync(join(output, file), html);
 }
-for (const file of ['app.mjs', 'catalog.mjs']) cpSync(join(root, 'scripts', file), join(output, 'scripts', file));
+for (const file of ['app.mjs', 'catalog.mjs', 'maps.mjs']) cpSync(join(root, 'scripts', file), join(output, 'scripts', file));
 for (const file of ['city-skyline.svg', 'financial-architecture.svg', 'civic-architecture.svg', 'city-skyline.webp', 'financial-illustration.webp', 'civic-illustration.webp']) cpSync(join(root, 'assets', file), join(output, 'assets', file));
 writeFileSync(join(output, 'data/places.json'), JSON.stringify(dataset));
 writeFileSync(join(output, '_headers'), '/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n');
