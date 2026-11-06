@@ -1,0 +1,4 @@
+dist/
+review-dist/
+review-*.png
+.DS_Store

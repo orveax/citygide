@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 660" role="img" aria-label="Illustrated financial buildings">
+<defs>
+ <linearGradient id="sky" x2=".1" y2="1"><stop stop-color="#cadde4"/><stop offset="1" stop-color="#eedccf"/></linearGradient>
+ <linearGradient id="glass" x2="1" y2=".25"><stop stop-color="#315565"/><stop offset=".45" stop-color="#91acb6"/><stop offset="1" stop-color="#365a69"/></linearGradient>
+ <pattern id="grid" width="46" height="40" patternUnits="userSpaceOnUse"><rect x="4" y="3" width="37" height="32" fill="#c8ddd9" opacity=".48"/><path d="M0 0h46v40H0z" fill="none" stroke="#234d5c" stroke-width="3" opacity=".4"/></pattern>
+</defs>
+<path fill="url(#sky)" d="M0 0h900v660H0z"/><path d="M0 467h900v193H0z" fill="#c2c6c0"/>
+<path d="M30 455V224l145-56 105 56v231z" fill="#6d8188"/><path d="M53 445V237l124-44 81 45v208z" fill="url(#grid)"/>
+<path d="M220 450V84l170-46 170 52v360z" fill="url(#glass)"/><path d="M239 438V103l152-44 149 47v333z" fill="url(#grid)"/>
+<path d="M540 455V195l148-58 168 62v256z" fill="#58727c"/><path d="M560 448V210l129-47 148 48v237z" fill="url(#grid)"/>
+<path d="M390 39v411M688 137v318" stroke="#e6e7dc" stroke-width="8" opacity=".8"/><path d="M220 84l170-46 170 52M540 195l148-58 168 62" fill="none" stroke="#d5dfde" stroke-width="9"/>
+<path d="M0 480l900-25v205H0z" fill="#c8c5b9"/><path d="M0 533h900" stroke="#f6eee2" stroke-width="25"/><path d="M0 584h900" stroke="#a0a7a2" stroke-width="10"/>
+<g fill="#506d57"><circle cx="95" cy="472" r="48"/><circle cx="157" cy="473" r="32"/><circle cx="791" cy="466" r="38"/><circle cx="855" cy="470" r="31"/></g><g stroke="#4a6859" stroke-width="13"><path d="M97 476v55M789 475v59"/></g>
+</svg>

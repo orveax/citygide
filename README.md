@@ -1,30 +1,37 @@
-# City Guide — D05 governed publishing
+# City Guide — governed capital directory
 
-## Public release gate
+Arabic-first City Guide for Egypt's New Administrative Capital. The public site covers only **editorially Published** places, with explicit source attribution and visitor-access cautions.
 
-Cloudflare Pages: build command `node scripts/build.mjs`, output directory `dist`.
-The build reads only `data/published.json`, validates every entry as `Published`,
-and copies only allowlisted public assets. Preview data, the full research wireframe,
-source code, and editorial files remain outside the deployed output.
-The current approved dataset is empty, so the public site shows launch preparation.
+## D08 Finder-inspired UX
 
-Run `node --test scripts/validate.test.mjs` and `node scripts/build.mjs` before deploying.
-Human approval, source verification, and accurate visitor guidance are required for every future entry.
+The current branch implements a new responsive discovery layout, inspired by MadrasThemes' Finder / City Guide demo. It uses original CSS and illustrations and preserves our independent data model.
 
-## Historical D04 preview
+See [the D08 implementation plan](docs/D08-finder-city-guide-plan.md) for the visual-to-data mapping, completed components, and remaining review steps.
 
-Arabic-first, static HTML/CSS/JavaScript preview. This is an **internal preview**, not a public directory release.
+## Running it
 
-- `data/preview.json` is a manually transcribed, limited set of source-backed records from the Notion editorial database. Its entries are not approved for public production.
-- `index.html` shows searchable cards with verification cautions.
-- `place.html?slug=...` shows a place profile with office hours separated from visitor hours.
-- `scripts/validate.mjs` validates public export policy; in production mode it rejects anything other than `Published` records.
-- `scripts/validate.test.mjs` checks filtering, duplicates, unverified directions, and disallowed private fields.
+```bash
+node --test scripts/*.test.mjs
 
-Run `node --test scripts/validate.test.mjs` and `node scripts/validate.mjs data/preview.json preview`.
+# Production-safe output; only Published records (currently zero)
+node scripts/build.mjs
+# Serve the output directory using any static server
+python3 -m http.server 8080 --directory dist
 
-Serve the directory root with a static server (for example `python3 -m http.server 8080`) to browse it. No Notion API credentials or client-side Notion requests are used.
+# LOCAL DESIGN REVIEW ONLY, with unapproved sample records
+node scripts/build-preview.mjs
+python3 -m http.server 8081 --directory review-dist
+```
+
+For Cloudflare Pages, keep the build command `node scripts/build.mjs` and output directory `dist`. Never deploy the internal `review-dist` directory.
 
 ## Publishing boundary
 
-The preview intentionally carries status `Source Confirmed` only. **Do not upload its JSON as the production dataset.** The actual Notion-to-JSON export, moderation, and rollback integration are later D04 tasks.
+- `data/published.json` is the sole public content source. The current approved dataset is empty.
+- `data/preview.json` is a small manually transcribed set of source-backed editorial samples. They are **not** approved for public release.
+- `scripts/validate.mjs` enforces known public fields, unique slugs/IDs, allowed verification states, approved direction links, and separation of visitor hours from office hours.
+- `scripts/build.mjs` copies only explicitly approved static assets and `Published` records; it does not package preview data, the wireframe, or internal project files.
+- Neither build exposes Notion credentials or runs client-side Notion requests.
+- The live site remains `noindex,nofollow` until release approval and sufficient verified, published coverage.
+
+The authoritative editorial process, full D06/D07 collection/verification, human approval, and a future Notion-to-JSON export are separate workstreams. UI completion does not imply publication of any record.
