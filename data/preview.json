@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "mode": "preview",
+  "checked_at": "2026-11-06",
+  "places": [
+    {
+      "id": "NC-32", "slug": "ministry-of-communications-new-capital", "name_ar": "وزارة الاتصالات وتكنولوجيا المعلومات", "name_en": "Ministry of Communications and Information Technology", "aliases": ["MCIT", "وزارة الاتصالات"], "kind": "Government", "role": "Administrative HQ", "zone": "Government District", "address": "مبنى 10B-L2M، الحي الحكومي، العاصمة الإدارية الجديدة", "building_code": "10B-L2M", "address_precision": "Building Confirmed", "service_type": "", "service_availability": "Unknown", "public_access": "Unknown", "visitor_hours": "", "office_hours": "", "phone": "+20235341300", "email": "", "website": "https://mcit.gov.eg/", "source_url": "https://mcit.gov.eg/ar/contact_us", "source_category": "Official Authority", "last_checked": "2026-11-06", "verification": "Source Confirmed", "directions_url": "", "verified_entrance": false
+    },
+    {
+      "id": "NC-15", "slug": "mfa-attestation-office-new-capital", "name_ar": "مكتب تصديقات وزارة الخارجية بالعاصمة", "name_en": "Ministry of Foreign Affairs — New Capital Attestation Office", "aliases": ["تصديقات الخارجية", "مكتب تصديقات العاصمة"], "kind": "Authority", "role": "Public Service Point", "zone": "Government District", "address": "أمام مبنى C التابع لوزارة الخارجية بالعاصمة الإدارية", "building_code": "C (أمام المبنى)", "address_precision": "Building Confirmed", "service_type": "تصديقات المعاملات القنصلية", "service_availability": "On-site Confirmed", "public_access": "Unknown", "visitor_hours": "", "office_hours": "الأحد–الخميس: خلال المواعيد الرسمية؛ الساعات الدقيقة غير مثبتة", "phone": "", "email": "", "website": "https://www.mfa.gov.eg/", "source_url": "https://www.mfa.gov.eg/ar/Ministers/Details/MinistryNews/5659", "source_category": "Official Authority", "last_checked": "2026-11-06", "verification": "Source Confirmed", "directions_url": "", "verified_entrance": false
+    },
+    {
+      "id": "NC-36", "slug": "qnb-egypt-new-capital-branch-2", "name_ar": "QNB مصر — الفرع الثاني بحي المال والأعمال", "name_en": "QNB Egypt — Second New Capital Branch", "aliases": ["QNB", "بنك قطر الوطني"], "kind": "Bank", "role": "Public Service Point", "zone": "Financial District", "address": "حي المال والأعمال، العاصمة الإدارية الجديدة — رقم المبنى غير مثبت", "building_code": "", "address_precision": "District Only", "service_type": "خدمات مصرفية للأفراد والشركات وحلول رقمية", "service_availability": "On-site Confirmed", "public_access": "Unknown", "visitor_hours": "", "office_hours": "", "phone": "19700", "email": "", "website": "https://qnb.com.eg/", "source_url": "https://qnb.com.eg/sites/qnb/qnbegypt/ar/arcapital.html", "source_category": "Official Business", "last_checked": "2026-11-06", "verification": "Source Confirmed", "directions_url": "", "verified_entrance": false
+    },
+    {
+      "id": "NC-38", "slug": "acud-government-district-office", "name_ar": "شركة العاصمة الإدارية للتنمية العمرانية — مكتب الحي الحكومي", "name_en": "Administrative Capital for Urban Development", "aliases": ["ACUD", "شركة العاصمة"], "kind": "Company", "role": "Administrative HQ", "zone": "Government District", "address": "مبنى 3A-L2، الحي الحكومي، العاصمة الإدارية الجديدة", "building_code": "3A-L2", "address_precision": "Building Confirmed", "service_type": "", "service_availability": "Unknown", "public_access": "Unknown", "visitor_hours": "", "office_hours": "الأحد–الخميس 09:30–15:30؛ ساعات المكتب لا تعني استقبال الزوار", "phone": "20293894", "email": "info@acud.eg", "website": "https://acud.eg/", "source_url": "https://acud.eg/contact", "source_category": "Official Business", "last_checked": "2026-11-06", "verification": "Source Confirmed", "directions_url": "", "verified_entrance": false
+    }
+  ]
+}
