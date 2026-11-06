@@ -16,7 +16,7 @@ const dist = join(root, 'dist');
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(join(dist, 'data'), { recursive: true });
 mkdirSync(join(dist, 'scripts'), { recursive: true });
-for (const name of ['place.html', 'styles.css']) cpSync(join(root, name), join(dist, name));
+for (const name of ['place.html', 'styles.css', '404.html']) cpSync(join(root, name), join(dist, name));
 const landing = readFileSync(join(root, 'index.html'), 'utf8')
   .replace('نتيجة في عينة الاختبار', 'مكان معتمد للنشر')
   .replace('جارٍ تحميل عينة الاختبار…', 'جارٍ تحميل الأماكن المعتمدة…');
