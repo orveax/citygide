@@ -2,9 +2,9 @@
 
 Arabic-first City Guide for Egypt's New Administrative Capital. The public site covers only **editorially Published** places, with explicit source attribution and visitor-access cautions.
 
-## D08 Finder-inspired UX
+## D11 Finder-inspired visitor experience
 
-The current branch implements a new responsive discovery layout, inspired by MadrasThemes' Finder / City Guide demo. It uses original CSS and illustrations and preserves our independent data model.
+The visitor experience adapts discovery patterns from MadrasThemes' Finder City Guide homepage v1/v2, catalogue and place pages with original CSS and illustrative assets. Public routes include the homepage, a dedicated filtered directory, verified place details, About, Contact, Terms and Privacy. No unverified ratings, prices, user accounts or directions are added.
 
 See [the D08 implementation plan](docs/D08-finder-city-guide-plan.md) for the visual-to-data mapping, completed components, and remaining review steps.
 
@@ -27,7 +27,7 @@ For Cloudflare Pages, keep the build command `node scripts/build.mjs` and output
 
 ## Publishing boundary
 
-- `data/published.json` is the sole public content source. The current approved dataset is empty.
+- `data/published.json` is the sole public content source. The first approved administrative-only NC-32 profile is published; all other candidates remain withheld.
 - `data/publication-approvals.json` is a second gate: even a `Published` record is rejected by the build if its exact public-facing content does not match a dated founder sign-off.
 - `scripts/sync-published.mjs` fetches `Published` pages from Notion's data source on the **server** via `NOTION_API_TOKEN`, validates each exact approval, and only writes after explicit `--write`. The token is never sent to the website.
 - A write creates an immutable-by-name public-only snapshot under `data/releases/`. Keep those files in version control for rollback review. `--allow-removal` and `--allow-empty` are explicit safety overrides.

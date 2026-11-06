@@ -17,8 +17,9 @@
   <header class="site-header">
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="دليل العاصمة — الرئيسية"><span class="brand-mark" aria-hidden="true"><span></span></span><span class="brand-copy"><strong>دليل العاصمة</strong><small>CAPITAL CITY GUIDE</small></span></a>
-      <nav class="desktop-nav" aria-label="التنقل الرئيسي"><a class="active" href="index.html">الرئيسية</a><a href="#places">دليل الجهات</a><a href="#districts">استكشف الأحياء</a><a href="#trust">عن الدليل</a></nav>
-      <a class="header-action" href="#places">استكشف الدليل <span aria-hidden="true">↗</span></a>
+      <nav class="desktop-nav" aria-label="التنقل الرئيسي"><a class="active" href="index.html" aria-current="page">الرئيسية</a><a href="directory.html">دليل الجهات</a><a href="#districts">الأحياء</a><a href="about.html">عن الدليل</a><a href="contact.html">تواصل معنا</a></nav>
+      <a class="header-action" href="directory.html">استكشف الدليل <span aria-hidden="true">↗</span></a>
+      <details class="mobile-nav"><summary aria-label="فتح قائمة التنقل"><span></span><span></span><span></span></summary><nav aria-label="التنقل للموبايل"><a href="index.html" aria-current="page">الرئيسية</a><a href="directory.html">دليل الجهات</a><a href="index.html#districts">الأحياء</a><a href="about.html">عن الدليل</a><a href="contact.html">تواصل معنا</a></nav></details>
     </div>
   </header>
 
@@ -26,10 +27,11 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <span class="eyebrow"><span class="eyebrow-line"></span> دليل العاصمة الإدارية الجديدة</span>
+          <span class="eyebrow"><span class="eyebrow-line"></span> اكتشف العاصمة بشكل أوضح</span>
           <h1 id="hero-title">اعرف وجهتك.<br><span>قبل ما تتحرك.</span></h1>
           <p>بتدور على وزارة، بنك، أو جهة في العاصمة؟ خلّي أول خطوة هي المعلومة الصح. ابحث عن المكان واعرف عنوانه، نوع خدماته، وإيه اللي لسه محتاج تأكيد قبل الزيارة.</p>
           <div class="hero__quiet"><span class="quiet-icon" aria-hidden="true">✓</span> معلومات موثّقة بمصادر، من غير افتراضات عن مداخل أو مواعيد الزيارة.</div>
+          <a class="hero__secondary-link" href="about.html">إزاي بنتحقق من المعلومات؟ <span aria-hidden="true">←</span></a>
         </div>
         <div class="hero__visual" aria-label="مشاهد معمارية مولّدة توضيحيًا، لا تعرض مباني بعينها في العاصمة الإدارية">
           <div class="hero-tile hero-tile--back"><img src="assets/city-skyline.webp" alt="تصور معماري توضيحي لأفق مدينة حديثة" fetchpriority="high" width="1440" height="811"></div>
@@ -64,7 +66,7 @@
 
     <section class="section listings-section" id="places" aria-labelledby="places-heading">
       <div class="container">
-        <div class="section-head"><div><span class="section-kicker">DISCOVER PLACES</span><h2 id="places-heading">استكشف الجهات والأماكن</h2><p>كل نتيجة منشورة تمر بمراجعة قبل ظهورها في الدليل.</p></div><a class="text-link" href="#districts">تعرّف على المناطق <span aria-hidden="true">↗</span></a></div>
+        <div class="section-head"><div><span class="section-kicker">EXPLORE THE DIRECTORY</span><h2 id="places-heading">وجهتك تبدأ من هنا</h2><p>جهات وعناوين معتمدة، مع توضيح ما نعرفه وما يحتاج لتأكيد.</p></div><a class="text-link" href="directory.html">كل نتائج الدليل <span aria-hidden="true">↗</span></a></div>
         <div class="results-toolbar"><div class="results-summary"><strong id="count" aria-live="polite">—</strong> <span id="resultsDescription">مكان معتمد للنشر</span></div><div class="toolbar-actions"><label for="sort">الترتيب</label><select id="sort" aria-label="ترتيب النتائج"><option value="name">الاسم</option><option value="recent">الأحدث تحققًا</option></select><div class="view-toggle" role="group" aria-label="طريقة عرض النتائج"><button type="button" class="view-button is-active" data-view="grid" aria-label="عرض شبكي" aria-pressed="true">▦</button><button type="button" class="view-button" data-view="list" aria-label="عرض قائمة" aria-pressed="false">☰</button></div></div></div>
         <div id="cards" class="place-grid" aria-live="polite"><div class="empty-state"><div class="empty-state__icon" aria-hidden="true">⌕</div><h3>جاري تحميل الدليل…</h3></div></div>
       </div>
@@ -79,9 +81,10 @@
       </div>
     </section>
 
-    <section class="section trust-section" id="trust" aria-labelledby="trust-heading"><div class="container trust-grid"><div><span class="section-kicker">KNOW BEFORE YOU GO</span><h2 id="trust-heading">المعلومة الدقيقة أهم من كثرة النتائج.</h2><p>الدليل بيفصل بين عنوان الجهة المعروف وبين مدخل الزوار، وبين مواعيد العمل الإدارية ومواعيد استقبال الجمهور. لو معلومة مش مؤكدة، هنقولك بوضوح.</p></div><div class="trust-points"><div><span>01</span><div><strong>مصدر قابل للمراجعة</strong><p>رابط رسمي وتاريخ آخر مراجعة للبيانات المنشورة.</p></div></div><div><span>02</span><div><strong>وضوح درجة التحقق</strong><p>مش بنحوّل عنوان منطقة إلى نقطة وصول مؤكدة.</p></div></div><div><span>03</span><div><strong>قرار زيارة أفضل</strong><p>شروط الدخول والمواعيد غير المؤكدة تظهر بتحذير واضح.</p></div></div></div></div></section>
+    <section class="section trust-section" id="trust" aria-labelledby="trust-heading"><div class="container trust-grid"><div><span class="section-kicker">KNOW BEFORE YOU GO</span><h2 id="trust-heading">المعلومة الدقيقة أهم من كثرة النتائج.</h2><p>الدليل بيفصل بين عنوان الجهة المعروف وبين مدخل الزوار، وبين مواعيد العمل الإدارية ومواعيد استقبال الجمهور. لو معلومة مش مؤكدة، هنقولك بوضوح.</p><a class="inline-arrow" href="about.html">اعرف أكثر عن منهج الدليل <span aria-hidden="true">↗</span></a></div><div class="trust-points"><div><span>01</span><div><strong>مصدر قابل للمراجعة</strong><p>رابط رسمي وتاريخ آخر مراجعة للبيانات المنشورة.</p></div></div><div><span>02</span><div><strong>وضوح درجة التحقق</strong><p>مش بنحوّل عنوان منطقة إلى نقطة وصول مؤكدة.</p></div></div><div><span>03</span><div><strong>قرار زيارة أفضل</strong><p>شروط الدخول والمواعيد غير المؤكدة تظهر بتحذير واضح.</p></div></div></div></div></section>
+    <section class="closing-section"><div class="container closing-panel"><div><span class="section-kicker">YOUR NEXT STOP</span><h2>لقيت معلومة محتاجة تحديث؟</h2><p>ساعدنا نحافظ على دليل دقيق: ابعت لنا رابط الجهة والمعلومة اللي محتاجة مراجعة، وفريق الدليل يراجعها قبل أي تعديل.</p></div><a class="header-action" href="contact.html">تواصل مع فريق الدليل <span aria-hidden="true">↗</span></a></div></section>
   </main>
-  <footer class="footer"><div class="container footer__inner"><div><a class="brand brand--footer" href="index.html"><span class="brand-mark" aria-hidden="true"><span></span></span><span class="brand-copy"><strong>دليل العاصمة</strong><small>CAPITAL CITY GUIDE</small></span></a><p>دليل معلومات مستقل للعاصمة الإدارية الجديدة، وليس تابعًا لأي جهة حكومية.</p></div><div class="footer__links"><a href="#places">دليل الجهات</a><a href="#districts">المناطق</a><a href="#trust">منهج التحقق</a><a href="https://orveax.com" target="_blank" rel="noopener noreferrer">Developed by ORVEAX</a></div></div><div class="container footer__bottom">المعلومات المنشورة لا تُغني عن التواصل مع الجهة قبل الزيارة.</div></footer>
+  <footer class="footer"><div class="container footer__inner"><div><a class="brand brand--footer" href="index.html"><span class="brand-mark" aria-hidden="true"><span></span></span><span class="brand-copy"><strong>دليل العاصمة</strong><small>CAPITAL CITY GUIDE</small></span></a><p>دليل معلومات مستقل للعاصمة الإدارية الجديدة. بنساعدك تميّز بين المعلومات المؤكدة واللي لسه محتاجة مراجعة.</p></div><div class="footer__links"><a href="directory.html">دليل الجهات</a><a href="index.html#districts">استكشف الأحياء</a><a href="about.html">عن الدليل</a><a href="contact.html">تواصل معنا</a><a href="terms.html">شروط الاستخدام</a><a href="privacy.html">الخصوصية</a></div></div><div class="container footer__bottom"><span>المعلومات المنشورة لا تُغني عن التواصل مع الجهة قبل الزيارة.</span><a href="https://orveax.com/ar/" target="_blank" rel="noopener noreferrer">Developed by ORVEAX ↗</a></div></footer>
   <script type="module" src="scripts/app.mjs"></script>
 </body>
 </html>
