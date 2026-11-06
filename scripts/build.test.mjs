@@ -45,22 +45,22 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D14 exploratory catalogue is explicitly labeled and cannot alter approved public records', () => {
+test('D18 company expansion is labeled and cannot alter approved public records', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 78);
+  assert.equal(exploratory.places.length, 93);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 25);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 51);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 38);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 53);
   const companies = exploratory.places.filter(p => p.kind === 'Company');
-  assert.equal(companies.length, 16);
-  assert.equal(companies.filter(p => p.verification === 'Research').length, 8);
+  assert.equal(companies.length, 31);
+  assert.equal(companies.filter(p => p.verification === 'Research').length, 21);
   assert.equal(companies.filter(p => p.role === 'Public Service Point' && p.verification === 'Source Confirmed').length, 3);
-  assert.equal(companies.filter(p => p.role === 'Administrative HQ' && p.verification === 'Source Confirmed').length, 4);
+  assert.equal(companies.filter(p => p.role === 'Administrative HQ' && p.verification === 'Source Confirmed').length, 5);
   for (const id of ['NC-74', 'NC-75', 'NC-76']) {
     assert.equal(companies.find(p => p.id === id)?.verification, 'Source Confirmed', `${id}: official company claim`);
   }
@@ -70,7 +70,14 @@ test('D14 exploratory catalogue is explicitly labeled and cannot alter approved 
     assert.equal(candidate?.address_precision, 'District Only');
     assert.equal(candidate?.directions_url, '');
   }
-  assert.ok(companies.filter(p => p.verification === 'Research').every(p => p.address_precision === 'District Only'));
+  for (let i = 79; i <= 93; i++) {
+    const candidate = companies.find(p => p.id === `NC-${i}`);
+    assert.ok(candidate, `NC-${i}: persisted D18 record`);
+    assert.equal(candidate.directions_url, '', `NC-${i}: no unverified routing`);
+    assert.equal(candidate.verified_entrance, false, `NC-${i}: no assumed entrance`);
+    assert.equal(candidate.visitor_hours, '', `NC-${i}: no invented opening hours`);
+  }
+  assert.ok(companies.filter(p => p.verification === 'Research').every(p => !['Entrance Confirmed', 'Pin Verified'].includes(p.address_precision)));
   assert.ok(exploratory.places.every(p => !p.directions_url && !p.verified_entrance));
   assert.ok(exploratory.places.every(p => !['Notes', 'Change Reason', 'Evidence Scope', 'Coordinates'].some(key => key in p)));
   for (const name of ['directory.html', 'explore.html', 'explore-place.html']) {
