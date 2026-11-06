@@ -83,7 +83,7 @@ function placeCard(place) {
   const address = element('p', 'place-card__address', '⌖  ' + place.address);
   const meta = element('div', 'place-card__meta');
   meta.append(element('span', '', labelZone(place.zone)));
-  meta.append(link('تفاصيل الجهة ←', detailHref + encodeURIComponent(place.slug)));
+  meta.append(link(place.kind === 'Building' ? 'تفاصيل المبنى ←' : 'تفاصيل الجهة ←', detailHref + encodeURIComponent(place.slug)));
   body.append(title, address, meta);
   if (place.public_access === 'Unknown') body.append(element('p', 'place-card__note', 'شروط دخول الزوار غير مؤكدة — تواصل قبل الزيارة.'));
   if (exploration && place.verification !== 'Published') body.append(element('p', 'place-card__verification-note', place.verification === 'Research' ? 'سجل بحثي غير معتمد؛ لا تعتمد على العنوان للزيارة.' : 'المصدر متاح، لكن هذه الصفحة لم تحصل على اعتماد النشر.'));
@@ -178,7 +178,7 @@ function setupDetail(places) {
   const contact = $('contact');
   if (place.phone) contact.append(link('اتصل بالجهة', 'tel:' + place.phone.replace(/[^\d+]/g, ''), 'primary'));
   if (place.email) contact.append(link('البريد الإلكتروني', 'mailto:' + encodeURIComponent(place.email)));
-  if (place.website) contact.append(link('الموقع الرسمي', place.website));
+  if (place.website) contact.append(link(place.kind === 'Building' ? 'صفحة المشروع لدى المصدر' : 'الموقع الرسمي', place.website));
   if (!contact.children.length) contact.append(element('p', 'source-note', 'لا توجد وسيلة اتصال مؤكدة في السجل.'));
   const directions = exploration && place.verification !== 'Published' ? '' : mapsDirectionsUrl(place);
   const mapSearch = exploration && place.verification === 'Research' ? '' : mapsSearchUrl(place);

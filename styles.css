@@ -513,3 +513,5 @@ body { font-size: 14px; line-height: 1.9; }
   .verification-tag { bottom: 36px; }
   .explore-entry__inner { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
+
+.category-icon--building { color: #687b9a; background: #eef1f8; }
