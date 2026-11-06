@@ -1,6 +1,6 @@
 # City Guide — governed capital directory
 
-Arabic-first City Guide for Egypt's New Administrative Capital. The primary public directory covers only **editorially Published** places, with explicit source attribution and visitor-access cautions. The separate, prominently labeled `/explore.html` experience includes unapproved Notion research records by explicit founder request; its records must not be represented as approved for visits. See [D14 exploration policy](docs/D14-exploratory-catalog.md).
+Arabic-first City Guide for Egypt's New Administrative Capital. After the founder's D15 navigation correction, the **primary visitor journey** (homepage sample and `/directory.html`) uses the explicitly labeled exploratory catalogue of 64 Notion records, including unapproved research records. The `/explore.html` URL remains as an alias. The separate `/approved.html` view and `data/places.json` contain only editorially **Published** records. Unapproved records must never be represented as approved for visits. See [D14 exploration policy](docs/D14-exploratory-catalog.md) and [D15 default-directory decision](docs/D15-default-expanded-directory.md).
 
 ## D11 Finder-inspired visitor experience
 

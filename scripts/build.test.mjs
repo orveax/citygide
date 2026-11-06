@@ -37,6 +37,8 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   }
   const catalogue = readFileSync(join(root, 'dist/directory.html'), 'utf8');
   for (const id of ['searchForm', 'q', 'kind', 'zone', 'sort', 'cards', 'count']) assert.match(catalogue, new RegExp(`id="${id}"`));
+  assert.match(catalogue, /data-catalog="exploration"/, 'primary directory must show the full exploratory dataset');
+  assert.match(readFileSync(join(root, 'dist/index.html'), 'utf8'), /data-home="true"/, 'homepage must expose expanded data too');
   assert.match(readFileSync(join(root, 'dist/contact.html'), 'utf8'), /mailto:hello@orveax.com/);
   assert.match(readFileSync(join(root, 'dist/terms.html'), 'utf8'), /زيارة/);
   assert.match(readFileSync(join(root, 'dist/privacy.html'), 'utf8'), /Google Fonts/);
@@ -56,12 +58,15 @@ test('D14 exploratory catalogue is explicitly labeled and cannot alter approved 
   assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 45);
   assert.ok(exploratory.places.every(p => !p.directions_url && !p.verified_entrance));
   assert.ok(exploratory.places.every(p => !['Notes', 'Change Reason', 'Evidence Scope', 'Coordinates'].some(key => key in p)));
-  for (const name of ['explore.html', 'explore-place.html']) {
+  for (const name of ['directory.html', 'explore.html', 'explore-place.html']) {
     const html = readFileSync(join(root, 'dist', name), 'utf8');
     assert.match(html, /data-catalog="exploration"/);
     assert.match(html, /noindex,nofollow/);
     assert.doesNotMatch(html, /بيانات معتمدة مع تنبيهات واضحة قبل الزيارة/);
   }
-  assert.match(readFileSync(join(root, 'dist/index.html'), 'utf8'), /href="explore.html"/);
+  const approvedHtml = readFileSync(join(root, 'dist/approved.html'), 'utf8');
+  assert.doesNotMatch(approvedHtml, /data-catalog="exploration"/);
+  assert.match(approvedHtml, /عرض جميع سجلات الدليل/);
+  assert.match(readFileSync(join(root, 'dist/index.html'), 'utf8'), /href="directory.html"/);
   assert.ok(!readdirSync(join(root, 'dist')).includes('prototype'));
 });

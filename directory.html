@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#ffffff">
-  <meta name="description" content="ابحث بين الجهات والبنوك والوزارات المعتمدة في الحي الحكومي وحي المال والأعمال بالعاصمة الإدارية الجديدة.">
+  <meta name="description" content="استكشف الجهات والبنوك والوزارات والشركات في العاصمة الإدارية الجديدة، مع بيان حالة التحقق لكل سجل.">
   <title>دليل الجهات والأماكن | دليل العاصمة</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body data-page="directory">
+<body data-page="directory" data-catalog="exploration">
   <a class="skip-link" href="#places">تخطَّ إلى النتائج</a>
-  <div class="announcement"><div class="container announcement__inner"><span><span class="status-dot"></span> بيانات معتمدة مع تنبيهات واضحة قبل الزيارة</span><span>دليل مستقل للعاصمة الإدارية الجديدة</span></div></div>
+  <div class="announcement"><div class="container announcement__inner"><span><span class="status-dot"></span> دليل استكشافي — حالة التحقق موضحة لكل جهة</span><span>دليل مستقل للعاصمة الإدارية الجديدة</span></div></div>
   <header class="site-header"><div class="container header__inner">
     <a class="brand" href="index.html" aria-label="دليل العاصمة — الرئيسية"><span class="brand-mark" aria-hidden="true"><span></span></span><span class="brand-copy"><strong>دليل العاصمة</strong><small>CAPITAL CITY GUIDE</small></span></a>
     <nav class="desktop-nav" aria-label="التنقل الرئيسي"><a href="index.html">الرئيسية</a><a class="active" aria-current="page" href="directory.html">دليل الجهات</a><a href="index.html#districts">الأحياء</a><a href="about.html">عن الدليل</a><a href="contact.html">تواصل معنا</a></nav>
@@ -20,16 +20,16 @@
     <section class="page-intro page-intro--catalog"><div class="container">
       <nav class="breadcrumbs" aria-label="مسار التصفح"><a href="index.html">الرئيسية</a><span aria-hidden="true">›</span><span>دليل الجهات</span></nav>
       <span class="section-kicker">THE DIRECTORY</span><h1>كل جهة، بمعلومات أوضح.</h1>
-      <p>ابحث بالاسم أو المنطقة أو النوع. كل نتيجة هنا معتمدة للنشر، لكن توافر الخدمات ودخول الجمهور قد يحتاجان تأكيدًا مباشرًا.</p>
-      <a class="explore-intro-link" href="explore.html">عايز تشوف كل السجلات الـ64، حتى اللي قيد البحث؟ جرّب الدليل الموسّع ←</a>
+      <p>كل سجلات الدليل متاحة للبحث، بما فيها الجهات قيد البحث. كل بطاقة بتوضح درجة التحقق، ومفيش عنوان غير مؤكد بنقدمه كوجهة زيارة.</p>
+      <a class="explore-intro-link" href="approved.html">عرض السجلات المعتمدة فقط ←</a>
     </div></section>
     <section class="catalog-section"><div class="container catalog-layout">
       <aside class="filter-sidebar" aria-label="فلاتر الدليل">
         <div class="filter-sidebar__head"><div><span class="section-kicker">REFINE RESULTS</span><h2>حدّد بحثك</h2></div><span class="filter-sidebar__spark" aria-hidden="true">⌕</span></div>
         <form id="searchForm" class="catalog-search" role="search">
           <label for="q">اسم الجهة أو كلمة من العنوان</label><input id="q" type="search" placeholder="مثلاً وزارة الاتصالات" autocomplete="off">
-          <label for="zone">المنطقة</label><select id="zone"><option value="">كل المناطق</option><option value="Government District">الحي الحكومي</option><option value="Financial District">حي المال والأعمال</option></select>
-          <label for="kind">نوع الجهة</label><select id="kind"><option value="">كل الجهات</option><option value="Government">وزارات</option><option value="Authority">هيئات وجهات</option><option value="Bank">بنوك</option><option value="Company">شركات</option></select>
+          <label for="zone">المنطقة</label><select id="zone"><option value="">كل المناطق</option><option value="Government District">الحي الحكومي</option><option value="Financial District">حي المال والأعمال</option><option value="Other">الموقع قيد التحقق</option></select>
+          <label for="kind">نوع الجهة</label><select id="kind"><option value="">كل الجهات</option><option value="Government">وزارات</option><option value="Authority">هيئات وجهات</option><option value="Bank">بنوك</option><option value="Company">شركات</option><option value="Building">مبانٍ</option><option value="District">أحياء</option></select>
           <button class="search-button" type="submit">عرض النتائج <span aria-hidden="true">⌕</span></button>
         </form>
         <div class="filter-divider"></div><p class="filter-group-label">تصنيفات سريعة</p>
@@ -43,8 +43,8 @@
         <div class="filter-help"><span aria-hidden="true">✓</span><p>المصدر وتاريخ المراجعة موجودين في صفحة كل جهة. بنوضح المعلومات غير المؤكدة بدل ما نفترضها.</p></div>
       </aside>
       <div class="catalog-results">
-        <div class="catalog-results__head"><div><span class="section-kicker">VERIFIED LISTINGS</span><h2>الجهات والأماكن</h2></div><a class="text-link" href="about.html">كيف نتحقق؟ <span aria-hidden="true">←</span></a></div>
-        <div class="results-toolbar"><div class="results-summary"><strong id="count" aria-live="polite">—</strong><span id="resultsDescription">مكان معتمد للنشر</span></div><div class="toolbar-actions"><label for="sort">ترتيب حسب</label><select id="sort"><option value="name">الاسم</option><option value="recent">آخر مراجعة</option></select><div class="view-toggle" role="group" aria-label="طريقة عرض النتائج"><button type="button" class="view-button is-active" data-view="grid" aria-label="عرض شبكي" aria-pressed="true">▦</button><button type="button" class="view-button" data-view="list" aria-label="عرض قائمة" aria-pressed="false">☰</button></div></div></div>
+        <div class="catalog-results__head"><div><span class="section-kicker">EXPLORE ALL LISTINGS</span><h2>الجهات والأماكن</h2></div><a class="text-link" href="about.html">كيف نتحقق؟ <span aria-hidden="true">←</span></a></div>
+        <div class="results-toolbar"><div class="results-summary"><strong id="count" aria-live="polite">—</strong><span id="resultsDescription">نتيجة مع حالة التحقق</span></div><div class="toolbar-actions"><label for="sort">ترتيب حسب</label><select id="sort"><option value="name">الاسم</option><option value="recent">آخر مراجعة</option></select><div class="view-toggle" role="group" aria-label="طريقة عرض النتائج"><button type="button" class="view-button is-active" data-view="grid" aria-label="عرض شبكي" aria-pressed="true">▦</button><button type="button" class="view-button" data-view="list" aria-label="عرض قائمة" aria-pressed="false">☰</button></div></div></div>
         <div id="cards" class="place-grid catalog-grid" aria-live="polite"><div class="empty-state"><h3>جاري تحميل الدليل…</h3></div></div>
         <div class="catalog-bottom-note"><span aria-hidden="true">ⓘ</span> لا تعتمد على عنوان المقر الإداري باعتباره مدخلًا لاستقبال الجمهور. راجع حالة الدخول في صفحة الجهة.</div>
       </div>
