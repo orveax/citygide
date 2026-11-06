@@ -5,11 +5,12 @@ const precisionLabel = p => ({'District Only':'المنطقة فقط — لا ي
 const text = (id, value) => { if ($(id)) $(id).textContent = value || 'غير مؤكد'; };
 
 async function load() {
-  const response = await fetch('data/preview.json', {cache:'no-store'});
+  const response = await fetch('data/places.json', {cache:'no-store'});
   if (!response.ok) throw Error('تعذر تحميل البيانات');
   const payload = await response.json();
-  if (payload.mode !== 'preview') throw Error('المعاينة الداخلية تتطلب بيانات Preview');
-  return payload.places.filter(p => p.verification !== 'Research');
+  if (payload.mode !== 'production') throw Error('مصدر بيانات غير معتمد');
+  if (!payload.places.every(p => p.verification === 'Published')) throw Error('سجلات غير معتمدة');
+  return payload.places;
 }
 
 function renderCards(places) {
@@ -18,7 +19,7 @@ function renderCards(places) {
   const filtered = places.filter(p => (!zone || p.zone === zone) && [p.name_ar,p.name_en,p.address,...(p.aliases||[])].join(' ').toLocaleLowerCase('ar').includes(q));
   text('count', String(filtered.length));
   const cards = $('cards'); cards.replaceChildren();
-  if (!filtered.length) { const p=document.createElement('p');p.className='empty';p.textContent='ملقيناش مكان مطابق في العينة. جرّب اسم تاني أو غيّر المنطقة.';cards.append(p);return; }
+  if (!filtered.length) { const p=document.createElement('p');p.className='empty';p.textContent=places.length?'ملقيناش مكان مطابق. جرّب اسم تاني أو غيّر المنطقة.':'الدليل قيد الإعداد. هنبدأ عرض الأماكن بعد اكتمال مراجعة واعتماد بياناتها.';cards.append(p);return; }
   for (const place of filtered) {
     const item=document.createElement('article');item.className='card-place';
     const tags=document.createElement('div');tags.className='row-meta';
