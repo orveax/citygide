@@ -23,3 +23,22 @@ test('production build cannot publish D04 preview records or preview mode', () =
   const publicHome = readFileSync(join(root, 'dist/index.html'), 'utf8');
   assert.match(publicHome, /صور معمارية توضيحية وليست صورًا موثقة/);
 });
+
+test('D11 visitor pages ship with coherent navigation and noindex while launch is closed', () => {
+  execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
+  for (const page of ['index', 'directory', 'place', 'about', 'contact', 'terms', 'privacy']) {
+    const html = readFileSync(join(root, 'dist', `${page}.html`), 'utf8');
+    assert.match(html, /<html lang="ar" dir="rtl">/, `${page}: Arabic RTL`);
+    assert.match(html, /noindex,nofollow/, `${page}: not indexed without launch sign-off`);
+    assert.match(html, /href="about.html"/, `${page}: about navigation`);
+    assert.match(html, /href="contact.html"/, `${page}: contact navigation`);
+    assert.match(html, /href="directory.html"/, `${page}: directory navigation`);
+    assert.match(html, /class="mobile-nav"/, `${page}: responsive navigation`);
+  }
+  const catalogue = readFileSync(join(root, 'dist/directory.html'), 'utf8');
+  for (const id of ['searchForm', 'q', 'kind', 'zone', 'sort', 'cards', 'count']) assert.match(catalogue, new RegExp(`id="${id}"`));
+  assert.match(readFileSync(join(root, 'dist/contact.html'), 'utf8'), /mailto:hello@orveax.com/);
+  assert.match(readFileSync(join(root, 'dist/terms.html'), 'utf8'), /زيارة/);
+  assert.match(readFileSync(join(root, 'dist/privacy.html'), 'utf8'), /Google Fonts/);
+  assert.deepEqual(readdirSync(join(root, 'dist/data')), ['places.json']);
+});

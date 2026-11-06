@@ -19,7 +19,7 @@ rmSync(dist, { recursive: true, force: true });
 mkdirSync(join(dist, 'data'), { recursive: true });
 mkdirSync(join(dist, 'scripts'), { recursive: true });
 mkdirSync(join(dist, 'assets'), { recursive: true });
-for (const name of ['place.html', 'styles.css', '404.html']) cpSync(join(root, name), join(dist, name));
+for (const name of ['place.html', 'directory.html', 'about.html', 'contact.html', 'terms.html', 'privacy.html', 'styles.css', '404.html']) cpSync(join(root, name), join(dist, name));
 cpSync(join(root, 'index.html'), join(dist, 'index.html'));
 cpSync(join(root, 'scripts/app.mjs'), join(dist, 'scripts/app.mjs'));
 cpSync(join(root, 'scripts/catalog.mjs'), join(dist, 'scripts/catalog.mjs'));

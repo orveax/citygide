@@ -14,10 +14,10 @@ const PRECISIONS = {
   'Pin Verified': 'نقطة الوصول مؤكدة'
 };
 const IMAGES = {
-  Government: 'assets/civic-architecture.svg',
-  Authority: 'assets/civic-architecture.svg',
-  Bank: 'assets/financial-architecture.svg',
-  Company: 'assets/city-skyline.svg'
+  Government: 'assets/civic-illustration.webp',
+  Authority: 'assets/civic-illustration.webp',
+  Bank: 'assets/financial-illustration.webp',
+  Company: 'assets/city-skyline.webp'
 };
 const labelZone = zone => ZONES[zone] || 'منطقة أخرى';
 const labelKind = kind => KINDS[kind] || 'جهة';
@@ -68,12 +68,14 @@ function placeCard(place) {
   const image = element('img'); image.src = IMAGES[place.kind] || IMAGES.Company;
   image.alt = ''; image.loading = 'lazy'; imageWrap.append(image);
   imageWrap.append(element('span', 'image-badge', labelKind(place.kind)));
+  imageWrap.append(element('span', 'image-disclosure', 'مشهد معماري توضيحي'));
   const body = element('div', 'place-card__body');
+  body.append(element('span', 'place-card__eyebrow', labelZone(place.zone) + ' / ' + labelRole(place.role)));
   const title = element('h3'); title.append(link(place.name_ar, 'place.html?slug=' + encodeURIComponent(place.slug)));
   const address = element('p', 'place-card__address', '⌖  ' + place.address);
   const meta = element('div', 'place-card__meta');
   meta.append(element('span', '', labelZone(place.zone)));
-  meta.append(link('تفاصيل الجهة ↗', 'place.html?slug=' + encodeURIComponent(place.slug)));
+  meta.append(link('تفاصيل الجهة ←', 'place.html?slug=' + encodeURIComponent(place.slug)));
   body.append(title, address, meta);
   if (place.public_access === 'Unknown') body.append(element('p', 'place-card__note', 'شروط دخول الزوار غير مؤكدة — تواصل قبل الزيارة.'));
   card.append(imageWrap, body);
@@ -104,6 +106,7 @@ function renderDirectory(places) {
   setText('count', String(results.length), '0');
   setText('resultsDescription', preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
   const target = $('cards'); target.replaceChildren();
+  target.classList.toggle('is-sparse', results.length === 1);
   if (!results.length) target.append(emptyState(places, filters));
   else results.forEach(place => target.append(placeCard(place)));
   syncChips(); syncViews();
