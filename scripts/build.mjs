@@ -28,17 +28,18 @@ mkdirSync(join(dist, 'scripts'), { recursive: true });
 mkdirSync(join(dist, 'assets'), { recursive: true });
 for (const name of ['place.html', 'directory.html', 'about.html', 'contact.html', 'terms.html', 'privacy.html', 'styles.css', '404.html']) cpSync(join(root, name), join(dist, name));
 cpSync(join(root, 'index.html'), join(dist, 'index.html'));
-// Deliberately separate, founder-authorized exploratory pages. These never replace
-// the approval-gated public dataset and always show a visible data-quality warning.
-let exploreHtml = readFileSync(join(root, 'directory.html'), 'utf8');
-exploreHtml = exploreHtml.replace('<body data-page="directory">', '<body data-catalog="exploration" data-page="directory">')
-  .replace('بيانات معتمدة مع تنبيهات واضحة قبل الزيارة', 'نسخة استكشافية — تشمل سجلات غير معتمدة')
-  .replace('كل نتيجة هنا معتمدة للنشر، لكن توافر الخدمات ودخول الجمهور قد يحتاجان تأكيدًا مباشرًا.', 'هذه نسخة استكشافية من قاعدة البيانات: بعضها معتمد وبعضها بحث مبدئي. لا تعتمد على عنوان أو موعد قبل التحقق من الجهة.')
-  .replace('VERIFIED LISTINGS', 'EXPLORATORY LISTINGS')
-  .replace('مكان معتمد للنشر', 'نتائج استكشافية')
-  .replace('<option value="Financial District">حي المال والأعمال</option>', '<option value="Financial District">حي المال والأعمال</option><option value="Other">الموقع قيد التحقق</option>')
-  .replace('<option value="Company">شركات</option>', '<option value="Company">شركات</option><option value="Building">مبانٍ</option><option value="District">أحياء</option>');
-writeFileSync(join(dist, 'explore.html'), exploreHtml);
+// Founder-authorized exploration is now the default visitor journey on both
+// home and directory. Formal publication approval remains a distinct dataset.
+const directoryHtml = readFileSync(join(root, 'directory.html'), 'utf8');
+writeFileSync(join(dist, 'explore.html'), directoryHtml);
+const approvedHtml = directoryHtml
+  .replace(' data-catalog="exploration"', '')
+  .replace('دليل استكشافي — حالة التحقق موضحة لكل جهة', 'سجلات تم اعتماد نشرها بعد المراجعة')
+  .replace('كل سجلات الدليل متاحة للبحث، بما فيها الجهات قيد البحث. كل بطاقة بتوضح درجة التحقق، ومفيش عنوان غير مؤكد بنقدمه كوجهة زيارة.', 'تعرض هذه الصفحة السجلات المعتمدة للنشر فقط. لعرض جميع الجهات قيد البحث، افتح الدليل الموسع.')
+  .replace('href="approved.html">عرض السجلات المعتمدة فقط', 'href="directory.html">عرض جميع سجلات الدليل')
+  .replace('EXPLORE ALL LISTINGS', 'APPROVED LISTINGS')
+  .replace('نتيجة مع حالة التحقق', 'سجل معتمد للنشر');
+writeFileSync(join(dist, 'approved.html'), approvedHtml);
 let exploreDetail = readFileSync(join(root, 'place.html'), 'utf8');
 exploreDetail = exploreDetail.replace('<body data-page="detail">', '<body data-catalog="exploration" data-page="detail">')
   .replace('المعلومات المعروضة من سجلات معتمدة فقط', 'نسخة استكشافية — تحقق من حالة كل سجل قبل الزيارة')
@@ -53,4 +54,4 @@ for (const name of ['city-skyline.svg', 'financial-architecture.svg', 'civic-arc
 writeFileSync(join(dist, 'data/places.json'), JSON.stringify(dataset));
 writeFileSync(join(dist, 'data/exploration.json'), JSON.stringify(exploration));
 writeFileSync(join(dist, '_headers'), '/*\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
-console.log(`Built public allowlist: ${dataset.places.length} founder-approved records. Separate labeled exploratory catalogue: ${exploration.places.length} source records; internal preview and editorial notes excluded.`);
+console.log(`Built default public exploratory directory: ${exploration.places.length} source records; approved-only view: ${dataset.places.length} founder-approved records; internal notes excluded.`);

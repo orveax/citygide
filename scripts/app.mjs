@@ -4,6 +4,7 @@ import { mapsDirectionsUrl, mapsSearchUrl } from './maps.mjs';
 const $ = id => document.getElementById(id);
 const preview = document.body.dataset.preview === 'true';
 const exploration = document.body.dataset.catalog === 'exploration';
+const home = document.body.dataset.home === 'true';
 const detailHref = exploration ? 'explore-place.html?slug=' : 'place.html?slug=';
 
 const ZONES = { 'Government District': 'الحي الحكومي', 'Financial District': 'حي المال والأعمال', Other: 'المنطقة قيد التحقق' };
@@ -112,11 +113,11 @@ function renderDirectory(places) {
   const filters = { q: $('q').value, kind: $('kind').value, zone: $('zone').value, sort: $('sort').value };
   const results = filterPlaces(places, filters);
   setText('count', String(results.length), '0');
-  setText('resultsDescription', exploration ? 'نتيجة استكشافية — حالات التحقق موضحة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
+  setText('resultsDescription', home ? 'سجلًا في الدليل — نعرض 6 نماذج منها' : exploration ? 'نتيجة استكشافية — حالات التحقق موضحة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
   const target = $('cards'); target.replaceChildren();
   target.classList.toggle('is-sparse', results.length === 1);
   if (!results.length) target.append(emptyState(places, filters));
-  else results.forEach(place => target.append(placeCard(place)));
+  else (home ? results.slice(0, 6) : results).forEach(place => target.append(placeCard(place)));
   syncChips(); syncViews();
   const url = new URL(location.href);
   for (const field of ['q', 'kind', 'zone']) {
@@ -127,15 +128,20 @@ function renderDirectory(places) {
 }
 
 function setupDirectory(places) {
+  const fullDirectoryUrl = () => {
+    const params = new URLSearchParams();
+    for (const field of ['q', 'kind', 'zone']) if ($(field).value) params.set(field, $(field).value);
+    return 'directory.html' + (params.size ? '?' + params.toString() : '');
+  };
   const params = new URLSearchParams(location.search);
   for (const field of ['q', 'kind', 'zone']) {
     const value = params.get(field);
     if (value && ($(field).tagName === 'INPUT' || [...$(field).options].some(o => o.value === value))) $(field).value = value;
   }
-  $('searchForm').addEventListener('submit', event => { event.preventDefault(); renderDirectory(places); $('places').scrollIntoView({ behavior: 'smooth' }); });
+  $('searchForm').addEventListener('submit', event => { event.preventDefault(); if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places); $('places').scrollIntoView({ behavior: 'smooth' }); });
   for (const field of ['q', 'kind', 'zone', 'sort']) $(field).addEventListener(field === 'q' ? 'input' : 'change', () => renderDirectory(places));
-  document.querySelectorAll('[data-kind]').forEach(button => button.addEventListener('click', () => { $('kind').value = button.dataset.kind; renderDirectory(places); $('places').scrollIntoView({ behavior: 'smooth' }); }));
-  document.querySelectorAll('[data-zone-link]').forEach(a => a.addEventListener('click', () => { $('zone').value = a.dataset.zoneLink; $('kind').value = ''; $('q').value = ''; renderDirectory(places); }));
+  document.querySelectorAll('[data-kind]').forEach(button => button.addEventListener('click', () => { $('kind').value = button.dataset.kind; if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places); $('places').scrollIntoView({ behavior: 'smooth' }); }));
+  document.querySelectorAll('[data-zone-link]').forEach(a => a.addEventListener('click', event => { $('zone').value = a.dataset.zoneLink; $('kind').value = ''; $('q').value = ''; if (home) { event.preventDefault(); location.assign(fullDirectoryUrl()); return; } renderDirectory(places); }));
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { document.body.dataset.view = button.dataset.view; syncViews(); }));
   renderDirectory(places);
 }
@@ -189,7 +195,7 @@ function setupDetail(places) {
   }
   $('source').append(link(exploration && place.verification !== 'Published' ? 'راجع المصدر الأولي' : 'افتح المصدر الرسمي', place.source_url));
   if (preview) document.querySelector('.verified-badge').textContent = 'معاينة داخلية · ' + place.verification;
-  if (exploration) {
+  if (exploration && !home) {
     const badge = document.querySelector('.verified-badge');
     badge.textContent = place.verification === 'Published' ? '✓ منشور ومعتمد' : place.verification === 'Research' ? '⚠ بحث مبدئي — غير معتمد للزيارة' : '⚠ مصدر أولي — لم تعتمد بيانات الزيارة';
     badge.classList.toggle('verified-badge--unapproved', place.verification !== 'Published');
@@ -205,7 +211,7 @@ try {
     note.setAttribute('role', 'note');
     const box = element('div', 'container exploration-banner__inner');
     box.append(element('strong', '', 'تجربة الدليل الموسّع'), element('p', '', 'النتائج تشمل سجلات منشورة وسجلات بحثية غير معتمدة. تحقّق من حالة كل جهة ومصدرها، ولا تتحرك إلى مقر غير مؤكد.'));
-    box.append(link('عرض الجهات المعتمدة فقط ←', 'directory.html'));
+    box.append(link('عرض الجهات المعتمدة فقط ←', 'approved.html'));
     note.append(box);
     document.querySelector('main')?.prepend(note);
   }
