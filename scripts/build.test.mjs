@@ -45,22 +45,39 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D18 company expansion is labeled and cannot alter approved public records', () => {
+test('D20 building catalog distinguishes verified buildings from visitor entrances and preserves approved records', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 93);
+  assert.equal(exploratory.places.length, 107);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
   assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 38);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 53);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 67);
   const companies = exploratory.places.filter(p => p.kind === 'Company');
   assert.equal(companies.length, 31);
   assert.equal(companies.filter(p => p.verification === 'Research').length, 21);
   assert.equal(companies.filter(p => p.role === 'Public Service Point' && p.verification === 'Source Confirmed').length, 3);
   assert.equal(companies.filter(p => p.role === 'Administrative HQ' && p.verification === 'Source Confirmed').length, 5);
+  const buildings = exploratory.places.filter(p => p.kind === 'Building');
+  assert.equal(buildings.length, 15);
+  for (let i = 94; i <= 107; i++) {
+    const building = buildings.find(p => p.id === `NC-${i}`);
+    assert.ok(building, `NC-${i} persisted`);
+    assert.equal(building.role, 'Facility');
+    assert.equal(building.verification, 'Source Confirmed');
+    assert.equal(building.public_access, 'Unknown');
+    assert.equal(building.directions_url, '');
+    assert.equal(building.verified_entrance, false);
+    assert.ok(!['Entrance Confirmed', 'Pin Verified'].includes(building.address_precision));
+  }
+  const edge = companies.find(p => p.id === 'NC-80');
+  assert.equal(edge.building_code, 'C5');
+  assert.equal(edge.address_precision, 'Building Confirmed');
+  assert.equal(edge.service_availability, 'On-site Confirmed');
+  assert.equal(edge.verified_entrance, false);
   for (const id of ['NC-74', 'NC-75', 'NC-76']) {
     assert.equal(companies.find(p => p.id === id)?.verification, 'Source Confirmed', `${id}: official company claim`);
   }
@@ -90,5 +107,7 @@ test('D18 company expansion is labeled and cannot alter approved public records'
   assert.doesNotMatch(approvedHtml, /data-catalog="exploration"/);
   assert.match(approvedHtml, /عرض جميع سجلات الدليل/);
   assert.match(readFileSync(join(root, 'dist/index.html'), 'utf8'), /href="directory.html"/);
+  assert.match(readFileSync(join(root, 'dist/directory.html'), 'utf8'), /data-kind="Building"/);
+  assert.match(readFileSync(join(root, 'dist/index.html'), 'utf8'), /data-kind="Building"/);
   assert.ok(!readdirSync(join(root, 'dist')).includes('prototype'));
 });
