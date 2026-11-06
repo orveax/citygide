@@ -1,5 +1,38 @@
 {
   "schema_version": "0.1",
   "mode": "production",
-  "places": []
+  "checked_at": "2026-11-06",
+  "places": [
+    {
+      "id": "NC-32",
+      "slug": "ministry-of-communications-new-capital",
+      "name_ar": "وزارة الاتصالات وتكنولوجيا المعلومات",
+      "name_en": "Ministry of Communications and Information Technology",
+      "aliases": [
+        "وزارة الاتصالات",
+        "MCIT",
+        "Ministry of ICT Egypt"
+      ],
+      "kind": "Government",
+      "role": "Administrative HQ",
+      "zone": "Government District",
+      "address": "مبنى 10B-L2M، الحي الحكومي، العاصمة الإدارية الجديدة",
+      "building_code": "10B-L2M",
+      "address_precision": "Building Confirmed",
+      "service_type": "",
+      "service_availability": "Unknown",
+      "public_access": "Unknown",
+      "visitor_hours": "",
+      "office_hours": "",
+      "phone": "+20235341300",
+      "email": "",
+      "website": "https://mcit.gov.eg/",
+      "source_url": "https://mcit.gov.eg/ar/contact_us",
+      "source_category": "Official Authority",
+      "last_checked": "2026-11-06",
+      "verification": "Published",
+      "directions_url": "",
+      "verified_entrance": false
+    }
+  ]
 }
