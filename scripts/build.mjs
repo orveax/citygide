@@ -16,12 +16,14 @@ const dist = join(root, 'dist');
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(join(dist, 'data'), { recursive: true });
 mkdirSync(join(dist, 'scripts'), { recursive: true });
+mkdirSync(join(dist, 'assets'), { recursive: true });
 for (const name of ['place.html', 'styles.css', '404.html']) cpSync(join(root, name), join(dist, name));
-const landing = readFileSync(join(root, 'index.html'), 'utf8')
-  .replace('نتيجة في عينة الاختبار', 'مكان معتمد للنشر')
-  .replace('جارٍ تحميل عينة الاختبار…', 'جارٍ تحميل الأماكن المعتمدة…');
-writeFileSync(join(dist, 'index.html'), landing);
+cpSync(join(root, 'index.html'), join(dist, 'index.html'));
 cpSync(join(root, 'scripts/app.mjs'), join(dist, 'scripts/app.mjs'));
+cpSync(join(root, 'scripts/catalog.mjs'), join(dist, 'scripts/catalog.mjs'));
+for (const name of ['city-skyline.svg', 'financial-architecture.svg', 'civic-architecture.svg']) {
+  cpSync(join(root, 'assets', name), join(dist, 'assets', name));
+}
 writeFileSync(join(dist, 'data/places.json'), JSON.stringify(dataset));
 writeFileSync(join(dist, '_headers'), '/*\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
 console.log(`Built production allowlist: ${dataset.places.length} approved places; prototype and editorial data excluded.`);

@@ -1,6 +1,86 @@
 <!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>دليل العاصمة — قريبًا</title><link rel="stylesheet" href="styles.css"></head><body>
-<div class="top"><div class="wrap"><span>قيد الإعداد — لا توجد سجلات معتمدة للنشر العام بعد</span><span>دليل مجتمعي مستقل · من ORVEAX</span></div></div>
-<header class="site-head"><div class="wrap"><a class="brand" href="index.html">CITY<span>GUIDE</span></a><nav aria-label="التنقل"><a href="#places">الأماكن</a><a href="#about">عن الدليل</a></nav></div></header>
-<main><section class="hero"><div class="wrap"><div class="eyebrow">DISCOVER THE NEW CAPITAL</div><h1>قبل ما تتحرك،<br>اعرف رايح فين.</h1><p>دليل مجاني للجهات والمباني والخدمات في العاصمة الإدارية. بنوضح المعلومة اللي مصدرها معروف، وبنقول بصراحة لما شروط الزيارة لسه محتاجة تأكيد.</p><form class="searchbar" id="searchForm"><label class="visually-hidden" for="q">ابحث عن مكان</label><input id="q" type="search" placeholder="وزارة، بنك، شركة أو مبنى..." autocomplete="off"><label class="visually-hidden" for="zone">المنطقة</label><select id="zone"><option value="">كل المناطق</option><option value="Government District">الحي الحكومي</option><option value="Financial District">حي المال والأعمال</option></select><button type="submit">ابحث</button></form></div></section><section class="section" id="places"><div class="wrap"><h2>استكشف الأماكن</h2><p class="muted"><span id="count">—</span> نتيجة في عينة الاختبار. ظهور نتيجة هنا لا يعني السماح بالزيارة دون موعد.</p><div id="cards" class="cards" aria-live="polite"><p class="empty">جارٍ تحميل عينة الاختبار…</p></div></div></section><section class="section" id="about"><div class="wrap panel"><h2>إيه معنى «مصدر رسمي»؟</h2><p class="muted">يعني إن اسم الجهة أو عنوانها مدعوم بمصدر محدد. مش بالضرورة إن ساعات استقبال الجمهور أو المدخل اتأكدوا. المعلومات اللي مش مؤكدة بنعرضها بوضوح وبنرشح التواصل مع الجهة قبل الزيارة.</p></div></section></main>
-<footer class="footer"><div class="wrap">هذا الدليل مستقل، وليس تابعًا لأي جهة حكومية. <a href="https://orveax.com" target="_blank" rel="noopener noreferrer">Developed by ORVEAX</a></div></footer><script type="module" src="scripts/app.mjs"></script></body></html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="دليل مستقل للجهات والبنوك والخدمات في العاصمة الإدارية الجديدة، يوضح ما تم التحقق منه وما يحتاج إلى تأكيد قبل الزيارة.">
+  <title>دليل العاصمة | اكتشف المكان قبل ما تروح</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="directory">
+  <a class="skip-link" href="#places">تخطَّ إلى نتائج الدليل</a>
+  <div class="announcement"><div class="container announcement__inner"><span><span class="status-dot"></span> الدليل قيد الإعداد — لا تُنشر أي جهة قبل اعتماد بياناتها</span><span>دليل مستقل للعاصمة الإدارية الجديدة</span></div></div>
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="دليل العاصمة — الرئيسية"><span class="brand-mark" aria-hidden="true"><span></span></span><span class="brand-copy"><strong>دليل العاصمة</strong><small>CAPITAL CITY GUIDE</small></span></a>
+      <nav class="desktop-nav" aria-label="التنقل الرئيسي"><a class="active" href="index.html">الرئيسية</a><a href="#places">دليل الجهات</a><a href="#districts">استكشف الأحياء</a><a href="#trust">عن الدليل</a></nav>
+      <a class="header-action" href="#places">استكشف الدليل <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow"><span class="eyebrow-line"></span> دليل العاصمة الإدارية الجديدة</span>
+          <h1 id="hero-title">اعرف وجهتك.<br><span>قبل ما تتحرك.</span></h1>
+          <p>بتدور على وزارة، بنك، أو جهة في العاصمة؟ خلّي أول خطوة هي المعلومة الصح. ابحث عن المكان واعرف عنوانه، نوع خدماته، وإيه اللي لسه محتاج تأكيد قبل الزيارة.</p>
+          <div class="hero__quiet"><span class="quiet-icon" aria-hidden="true">✓</span> معلومات موثّقة بمصادر، من غير افتراضات عن مداخل أو مواعيد الزيارة.</div>
+        </div>
+        <div class="hero__visual" aria-label="رسومات معمارية توضيحية مستوحاة من العاصمة الإدارية، وليست صورًا لمبانٍ محددة">
+          <div class="hero-tile hero-tile--back"><img src="assets/city-skyline.svg" alt="رسم توضيحي لأفق عمراني حديث"></div>
+          <div class="hero-tile hero-tile--middle"><img src="assets/financial-architecture.svg" alt="رسم توضيحي لمبانٍ مالية حديثة"></div>
+          <div class="hero-tile hero-tile--front"><img src="assets/civic-architecture.svg" alt="رسم توضيحي لمبانٍ إدارية"></div>
+          <span class="hero__visual-label">العاصمة الإدارية <span>NEW CAPITAL</span></span>
+        </div>
+      </div>
+      <div class="container hero-search-wrap">
+        <form class="search-panel" id="searchForm" role="search">
+          <label class="search-field search-field--query" for="q"><span class="field-symbol" aria-hidden="true">⌕</span><span class="field-content"><span class="field-label">بتدور على إيه؟</span><input id="q" type="search" placeholder="اسم وزارة، بنك، جهة أو مبنى" autocomplete="off"></span></label>
+          <label class="search-field" for="zone"><span class="field-symbol" aria-hidden="true">⌖</span><span class="field-content"><span class="field-label">المنطقة</span><select id="zone"><option value="">كل المناطق</option><option value="Government District">الحي الحكومي</option><option value="Financial District">حي المال والأعمال</option></select></span></label>
+          <label class="search-field" for="kind"><span class="field-symbol" aria-hidden="true">▦</span><span class="field-content"><span class="field-label">نوع الجهة</span><select id="kind"><option value="">كل الجهات</option><option value="Government">وزارات</option><option value="Authority">هيئات وجهات</option><option value="Bank">بنوك</option><option value="Company">شركات</option></select></span></label>
+          <button type="submit" class="search-button"><span aria-hidden="true">⌕</span> ابحث الآن</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="categories-section" aria-labelledby="categories-heading">
+      <div class="container">
+        <div class="section-kicker" id="categories-heading">ابدأ من نوع الجهة</div>
+        <div class="category-list" id="categoryChips" aria-label="تصفية حسب نوع الجهة">
+          <button type="button" class="category-chip is-active" data-kind="" aria-pressed="true"><span class="category-icon category-icon--all" aria-hidden="true">✦</span> كل الجهات</button>
+          <button type="button" class="category-chip" data-kind="Government" aria-pressed="false"><span class="category-icon category-icon--gov" aria-hidden="true">▥</span> الوزارات</button>
+          <button type="button" class="category-chip" data-kind="Authority" aria-pressed="false"><span class="category-icon category-icon--authority" aria-hidden="true">◈</span> الهيئات والجهات</button>
+          <button type="button" class="category-chip" data-kind="Bank" aria-pressed="false"><span class="category-icon category-icon--bank" aria-hidden="true">▤</span> البنوك</button>
+          <button type="button" class="category-chip" data-kind="Company" aria-pressed="false"><span class="category-icon category-icon--company" aria-hidden="true">▣</span> الشركات</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section listings-section" id="places" aria-labelledby="places-heading">
+      <div class="container">
+        <div class="section-head"><div><span class="section-kicker">DISCOVER PLACES</span><h2 id="places-heading">استكشف الجهات والأماكن</h2><p>كل نتيجة منشورة تمر بمراجعة قبل ظهورها في الدليل.</p></div><a class="text-link" href="#districts">تعرّف على المناطق <span aria-hidden="true">↗</span></a></div>
+        <div class="results-toolbar"><div class="results-summary"><strong id="count" aria-live="polite">—</strong> <span id="resultsDescription">مكان معتمد للنشر</span></div><div class="toolbar-actions"><label for="sort">الترتيب</label><select id="sort" aria-label="ترتيب النتائج"><option value="name">الاسم</option><option value="recent">الأحدث تحققًا</option></select><div class="view-toggle" role="group" aria-label="طريقة عرض النتائج"><button type="button" class="view-button is-active" data-view="grid" aria-label="عرض شبكي" aria-pressed="true">▦</button><button type="button" class="view-button" data-view="list" aria-label="عرض قائمة" aria-pressed="false">☰</button></div></div></div>
+        <div id="cards" class="place-grid" aria-live="polite"><div class="empty-state"><div class="empty-state__icon" aria-hidden="true">⌕</div><h3>جاري تحميل الدليل…</h3></div></div>
+      </div>
+    </section>
+
+    <section class="section districts-section" id="districts" aria-labelledby="districts-heading">
+      <div class="container"><div class="section-head"><div><span class="section-kicker">EXPLORE THE DISTRICTS</span><h2 id="districts-heading">منطقة واحدة، وجهات كتير</h2><p>نبدأ بالأحياء اللي بتضم المؤسسات الحكومية والمالية الرئيسية.</p></div></div>
+        <div class="district-grid">
+          <a class="district-card district-card--government" href="#places" data-zone-link="Government District"><img src="assets/civic-architecture.svg" alt="" loading="lazy"><span class="district-card__body"><small>01 / GOVERNMENT DISTRICT</small><strong>الحي الحكومي</strong><span>الوزارات والهيئات والمقار الحكومية <b aria-hidden="true">↗</b></span></span></a>
+          <a class="district-card district-card--financial" href="#places" data-zone-link="Financial District"><img src="assets/financial-architecture.svg" alt="" loading="lazy"><span class="district-card__body"><small>02 / FINANCIAL DISTRICT</small><strong>حي المال والأعمال</strong><span>البنوك والمؤسسات والخدمات المالية <b aria-hidden="true">↗</b></span></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trust-section" id="trust" aria-labelledby="trust-heading"><div class="container trust-grid"><div><span class="section-kicker">KNOW BEFORE YOU GO</span><h2 id="trust-heading">المعلومة الدقيقة أهم من كثرة النتائج.</h2><p>الدليل بيفصل بين عنوان الجهة المعروف وبين مدخل الزوار، وبين مواعيد العمل الإدارية ومواعيد استقبال الجمهور. لو معلومة مش مؤكدة، هنقولك بوضوح.</p></div><div class="trust-points"><div><span>01</span><div><strong>مصدر قابل للمراجعة</strong><p>رابط رسمي وتاريخ آخر مراجعة للبيانات المنشورة.</p></div></div><div><span>02</span><div><strong>وضوح درجة التحقق</strong><p>مش بنحوّل عنوان منطقة إلى نقطة وصول مؤكدة.</p></div></div><div><span>03</span><div><strong>قرار زيارة أفضل</strong><p>شروط الدخول والمواعيد غير المؤكدة تظهر بتحذير واضح.</p></div></div></div></div></section>
+  </main>
+  <footer class="footer"><div class="container footer__inner"><div><a class="brand brand--footer" href="index.html"><span class="brand-mark" aria-hidden="true"><span></span></span><span class="brand-copy"><strong>دليل العاصمة</strong><small>CAPITAL CITY GUIDE</small></span></a><p>دليل معلومات مستقل للعاصمة الإدارية الجديدة، وليس تابعًا لأي جهة حكومية.</p></div><div class="footer__links"><a href="#places">دليل الجهات</a><a href="#districts">المناطق</a><a href="#trust">منهج التحقق</a><a href="https://orveax.com" target="_blank" rel="noopener noreferrer">Developed by ORVEAX</a></div></div><div class="container footer__bottom">المعلومات المنشورة لا تُغني عن التواصل مع الجهة قبل الزيارة.</div></footer>
+  <script type="module" src="scripts/app.mjs"></script>
+</body>
+</html>

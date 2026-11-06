@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 660" role="img" aria-label="Illustrated civic architecture">
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#b7cdd8"/><stop offset="1" stop-color="#f0d6bc"/></linearGradient><linearGradient id="stone" x2=".8" y2="1"><stop stop-color="#f4e7d4"/><stop offset="1" stop-color="#b7a997"/></linearGradient></defs>
+<path fill="url(#sky)" d="M0 0h900v660H0z"/><path fill="#d9c5a9" d="M0 467h900v193H0z"/>
+<path d="M90 260h720v260H90z" fill="#bba994"/><path d="M135 248h630v264H135z" fill="url(#stone)"/>
+<path d="M95 246L451 90l357 156v30H95z" fill="#e7dbca"/><path d="M142 245L451 115l309 130z" fill="#c1ac91"/>
+<path d="M172 276h556v28H172zM170 473h562v34H170z" fill="#9e988b"/>
+<g fill="#f4e7d3" stroke="#a79b8a" stroke-width="7"><path d="M193 303h54v170h-54zM292 303h54v170h-54zM391 303h54v170h-54zM490 303h54v170h-54zM589 303h54v170h-54zM688 303h24v170h-24z"/></g>
+<g fill="#d3c1a6"><path d="M182 292h76v16h-76zM281 292h76v16h-76zM380 292h76v16h-76zM479 292h76v16h-76zM578 292h76v16h-76z"/></g>
+<path d="M342 476V365q0-103 108-103t108 103v111" fill="#59757a"/><path d="M378 473V361q0-71 72-71t72 71v112" fill="#86a19d"/><path d="M450 290v181" stroke="#4c6e74" stroke-width="11"/>
+<path d="M56 518h788v35H56z" fill="#c7b59c"/><path d="M0 558h900v102H0z" fill="#b9ac9a"/><path d="M0 600h900" stroke="#dcd2c1" stroke-width="8"/>
+<g fill="#68816b"><circle cx="95" cy="476" r="48"/><circle cx="821" cy="478" r="44"/></g>
+</svg>
