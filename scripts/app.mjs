@@ -1,4 +1,5 @@
 import { filterPlaces } from './catalog.mjs';
+import { mapsDirectionsUrl, mapsSearchUrl } from './maps.mjs';
 
 const $ = id => document.getElementById(id);
 const preview = document.body.dataset.preview === 'true';
@@ -159,10 +160,20 @@ function setupDetail(places) {
   if (place.phone) contact.append(link('اتصل بالجهة', 'tel:' + place.phone.replace(/[^\d+]/g, ''), 'primary'));
   if (place.email) contact.append(link('البريد الإلكتروني', 'mailto:' + encodeURIComponent(place.email)));
   if (place.website) contact.append(link('الموقع الرسمي', place.website));
-  if (place.directions_url && place.verified_entrance && ['Entrance Confirmed', 'Pin Verified'].includes(place.address_precision)) {
-    contact.append(link('الاتجاهات المؤكدة', place.directions_url));
-  }
   if (!contact.children.length) contact.append(element('p', 'source-note', 'لا توجد وسيلة اتصال مؤكدة في السجل.'));
+  const directions = mapsDirectionsUrl(place);
+  const mapSearch = mapsSearchUrl(place);
+  const mapActions = $('mapActions');
+  if (directions) {
+    mapActions.append(link('ابدأ الملاحة على Google Maps', directions, 'primary'));
+    setText('mapNotice', 'وجهة الوصول ومدخل الزوار موثقان في السجل. هتفتح Google Maps وتختار موقع البداية المناسب لك.');
+  } else if (mapSearch) {
+    mapActions.append(link('ابحث عن المقر على Google Maps', mapSearch));
+    setText('mapNotice', 'الرابط يفتح نتيجة بحث عن عنوان المقر، مش اتجاهات إلى مدخل مؤكد. راجع مكان الدخول مع الجهة قبل التحرك.');
+  } else {
+    mapActions.append(element('p', 'source-note', 'لا توجد نقطة وصول دقيقة أو عنوان مبنى موثق لعرضه على الخريطة.'));
+    setText('mapNotice', 'هنضيف رابط الخرائط لما تتأكد دقة موقع الجهة.');
+  }
   $('source').append(link('افتح المصدر الرسمي', place.source_url));
   if (preview) document.querySelector('.verified-badge').textContent = 'معاينة داخلية · ' + place.verification;
 }
