@@ -2,10 +2,12 @@ import { readFileSync, mkdirSync, cpSync, writeFileSync, rmSync } from 'node:fs'
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateDataset } from './validate.mjs';
+import { validatePublishedAgainstApprovals } from './notion-publisher.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dataset = JSON.parse(readFileSync(join(root, 'data/published.json'), 'utf8'));
-const failures = validateDataset(dataset, 'production');
+const approvalManifest = JSON.parse(readFileSync(join(root, 'data/publication-approvals.json'), 'utf8'));
+const failures = [...validateDataset(dataset, 'production'), ...validatePublishedAgainstApprovals(dataset, approvalManifest)];
 if (dataset.mode !== 'production') failures.push('mode must be production');
 if (failures.length) {
   console.error(failures.join('\n'));

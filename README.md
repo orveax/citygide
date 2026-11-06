@@ -13,7 +13,7 @@ See [the D08 implementation plan](docs/D08-finder-city-guide-plan.md) for the vi
 ```bash
 node --test scripts/*.test.mjs
 
-# Production-safe output; only Published records (currently zero)
+# Production-safe output; only individually approved Published records
 node scripts/build.mjs
 # Serve the output directory using any static server
 python3 -m http.server 8080 --directory dist
@@ -28,10 +28,15 @@ For Cloudflare Pages, keep the build command `node scripts/build.mjs` and output
 ## Publishing boundary
 
 - `data/published.json` is the sole public content source. The current approved dataset is empty.
+- `data/publication-approvals.json` is a second gate: even a `Published` record is rejected by the build if its exact public-facing content does not match a dated founder sign-off.
+- `scripts/sync-published.mjs` fetches `Published` pages from Notion's data source on the **server** via `NOTION_API_TOKEN`, validates each exact approval, and only writes after explicit `--write`. The token is never sent to the website.
+- A write creates an immutable-by-name public-only snapshot under `data/releases/`. Keep those files in version control for rollback review. `--allow-removal` and `--allow-empty` are explicit safety overrides.
 - `data/preview.json` is a small manually transcribed set of source-backed editorial samples. They are **not** approved for public release.
 - `scripts/validate.mjs` enforces known public fields, unique slugs/IDs, allowed verification states, approved direction links, and separation of visitor hours from office hours.
 - `scripts/build.mjs` copies only explicitly approved static assets and `Published` records; it does not package preview data, the wireframe, or internal project files.
 - Neither build exposes Notion credentials or runs client-side Notion requests.
 - The live site remains `noindex,nofollow` until release approval and sufficient verified, published coverage.
 
-The authoritative editorial process, full D06/D07 collection/verification, human approval, and a future Notion-to-JSON export are separate workstreams. UI completion does not imply publication of any record.
+The authoritative editorial process, full D06/D07 direct verification, and per-record human approval remain separate prerequisites. The Notion-to-JSON export is now implemented, but **not activated** without a scoped Notion API credential and signed records. UI completion does not imply publication.
+
+See [D09 — Controlled Notion publishing](docs/D09-controlled-publishing.md) for the approval manifest, dry run, promotion checklist, operational safeguards and rollback.

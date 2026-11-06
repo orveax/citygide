@@ -2,3 +2,5 @@ dist/
 review-dist/
 review-*.png
 .DS_Store
+data/.published.pending.json
+private-review/
