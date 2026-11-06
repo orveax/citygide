@@ -1,6 +1,6 @@
 # City Guide — governed capital directory
 
-Arabic-first City Guide for Egypt's New Administrative Capital. The public site covers only **editorially Published** places, with explicit source attribution and visitor-access cautions.
+Arabic-first City Guide for Egypt's New Administrative Capital. The primary public directory covers only **editorially Published** places, with explicit source attribution and visitor-access cautions. The separate, prominently labeled `/explore.html` experience includes unapproved Notion research records by explicit founder request; its records must not be represented as approved for visits. See [D14 exploration policy](docs/D14-exploratory-catalog.md).
 
 ## D11 Finder-inspired visitor experience
 

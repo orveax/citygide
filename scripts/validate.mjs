@@ -21,7 +21,7 @@ export function validateDataset(dataset, mode = 'production') {
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug || '')) errors.push(`${tag}: invalid slug`);
     if (slugs.has(p.slug)) errors.push(`${tag}: duplicate slug`); slugs.add(p.slug);
     if (ids.has(p.id)) errors.push(`${tag}: duplicate id`); ids.add(p.id);
-    if (!ROLES.has(p.role)) errors.push(`${tag}: invalid role`);
+    if (!ROLES.has(p.role) && !(mode === 'exploration' && p.role === 'Unknown')) errors.push(`${tag}: invalid role`);
     if (!PRECISIONS.has(p.address_precision)) errors.push(`${tag}: invalid precision`);
     if (!VERIFICATIONS.has(p.verification)) errors.push(`${tag}: invalid verification`);
     if (mode === 'production' && p.verification !== 'Published') errors.push(`${tag}: not editorially Published`);
