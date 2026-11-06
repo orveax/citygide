@@ -21,7 +21,7 @@ for (const name of ['place.html', 'styles.css', '404.html']) cpSync(join(root, n
 cpSync(join(root, 'index.html'), join(dist, 'index.html'));
 cpSync(join(root, 'scripts/app.mjs'), join(dist, 'scripts/app.mjs'));
 cpSync(join(root, 'scripts/catalog.mjs'), join(dist, 'scripts/catalog.mjs'));
-for (const name of ['city-skyline.svg', 'financial-architecture.svg', 'civic-architecture.svg']) {
+for (const name of ['city-skyline.svg', 'financial-architecture.svg', 'civic-architecture.svg', 'city-skyline.webp', 'financial-illustration.webp', 'civic-illustration.webp']) {
   cpSync(join(root, 'assets', name), join(dist, 'assets', name));
 }
 writeFileSync(join(dist, 'data/places.json'), JSON.stringify(dataset));
