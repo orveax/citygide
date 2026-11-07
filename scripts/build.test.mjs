@@ -45,24 +45,24 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D20 building catalog distinguishes verified buildings from visitor entrances and preserves approved records', () => {
+test('D21 source-backed service expansion distinguishes published places from visitor-ready locations', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 107);
+  assert.equal(exploratory.places.length, 114);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 38);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 67);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 39);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 73);
   const companies = exploratory.places.filter(p => p.kind === 'Company');
-  assert.equal(companies.length, 31);
-  assert.equal(companies.filter(p => p.verification === 'Research').length, 21);
+  assert.equal(companies.length, 32);
+  assert.equal(companies.filter(p => p.verification === 'Research').length, 22);
   assert.equal(companies.filter(p => p.role === 'Public Service Point' && p.verification === 'Source Confirmed').length, 3);
   assert.equal(companies.filter(p => p.role === 'Administrative HQ' && p.verification === 'Source Confirmed').length, 5);
   const buildings = exploratory.places.filter(p => p.kind === 'Building');
-  assert.equal(buildings.length, 15);
+  assert.equal(buildings.length, 16);
   for (let i = 94; i <= 107; i++) {
     const building = buildings.find(p => p.id === `NC-${i}`);
     assert.ok(building, `NC-${i} persisted`);
@@ -78,6 +78,15 @@ test('D20 building catalog distinguishes verified buildings from visitor entranc
   assert.equal(edge.address_precision, 'Building Confirmed');
   assert.equal(edge.service_availability, 'On-site Confirmed');
   assert.equal(edge.verified_entrance, false);
+  const added = exploratory.places.filter(p => Number(p.id.slice(3)) >= 108);
+  assert.deepEqual(added.map(p => p.id), ['NC-108', 'NC-109', 'NC-110', 'NC-111', 'NC-112', 'NC-113', 'NC-114']);
+  assert.equal(added.filter(p => p.verification === 'Source Confirmed').length, 6);
+  assert.equal(added.filter(p => p.verification === 'Research').length, 1);
+  assert.ok(added.every(p => p.public_access === 'Unknown' && !p.verified_entrance && !p.directions_url));
+  assert.ok(added.every(p => p.source_url.startsWith('https://') && p.last_checked === '2026-11-07'));
+  assert.ok(added.every(p => !p.visitor_hours), 'an official address does not imply current walk-in hours');
+  assert.equal(added.find(p => p.id === 'NC-108')?.building_code, 'NI-1');
+  assert.equal(added.find(p => p.id === 'NC-114')?.service_availability, 'Unknown');
   for (const id of ['NC-74', 'NC-75', 'NC-76']) {
     assert.equal(companies.find(p => p.id === id)?.verification, 'Source Confirmed', `${id}: official company claim`);
   }
