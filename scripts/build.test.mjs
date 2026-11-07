@@ -45,24 +45,24 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D23 source-backed expansion distinguishes published places from exploratory visitor locations', () => {
+test('D24 source-backed expansion distinguishes published places from exploratory visitor locations', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 159);
+  assert.equal(exploratory.places.length, 179);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 56);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 101);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 58);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 119);
   const companies = exploratory.places.filter(p => p.kind === 'Company');
-  assert.equal(companies.length, 40);
-  assert.equal(companies.filter(p => p.verification === 'Research').length, 27);
+  assert.equal(companies.length, 41);
+  assert.equal(companies.filter(p => p.verification === 'Research').length, 28);
   assert.equal(companies.filter(p => p.role === 'Public Service Point' && p.verification === 'Source Confirmed').length, 6);
   assert.equal(companies.filter(p => p.role === 'Administrative HQ' && p.verification === 'Source Confirmed').length, 5);
   const buildings = exploratory.places.filter(p => p.kind === 'Building');
-  assert.equal(buildings.length, 35);
+  assert.equal(buildings.length, 50);
   for (let i = 94; i <= 107; i++) {
     const building = buildings.find(p => p.id === `NC-${i}`);
     assert.ok(building, `NC-${i} persisted`);
@@ -101,7 +101,7 @@ test('D23 source-backed expansion distinguishes published places from explorator
   assert.ok(batch22.filter(p => p.verification === 'Research').every(p => p.source_category === 'Secondary News' || p.id === 'NC-117'));
   assert.equal(batch22.find(p => p.id === 'NC-121')?.source_category, 'Official Business');
   assert.equal(batch22.find(p => p.id === 'NC-123')?.verification, 'Research', 'planned agricultural branch is not visitor-ready');
-  const batch23 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 136);
+  const batch23 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 136 && Number(p.id.slice(3)) <= 159);
   assert.deepEqual(batch23.map(p => p.id), Array.from({length: 24}, (_, i) => `NC-${i + 136}`));
   assert.deepEqual(Object.fromEntries(['Authority', 'Bank', 'Building', 'Company'].map(kind => [kind, batch23.filter(p => p.kind === kind).length])), {Authority: 4, Bank: 3, Building: 11, Company: 6});
   assert.equal(batch23.filter(p => p.verification === 'Source Confirmed').length, 13);
@@ -114,6 +114,18 @@ test('D23 source-backed expansion distinguishes published places from explorator
   assert.equal(batch23.find(p => p.id === 'NC-146')?.verification, 'Research', 'new EGX site is still a construction record');
   assert.equal(batch23.find(p => p.id === 'NC-151')?.building_code, '10B-L2M');
   assert.equal(batch23.find(p => p.id === 'NC-159')?.address_precision, 'Floor Confirmed');
+  const batch24 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 160);
+  assert.deepEqual(batch24.map(p => p.id), Array.from({length: 20}, (_, i) => `NC-${i + 160}`));
+  assert.deepEqual(Object.fromEntries(['Authority', 'Bank', 'Building', 'Company'].map(kind => [kind, batch24.filter(p => p.kind === kind).length])), {Authority: 3, Bank: 1, Building: 15, Company: 1});
+  assert.equal(batch24.filter(p => p.verification === 'Source Confirmed').length, 18);
+  assert.equal(batch24.filter(p => p.verification === 'Research').length, 2);
+  assert.ok(batch24.every(p => p.last_checked === '2026-11-08' && p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
+  assert.ok(batch24.every(p => !p.visitor_hours && !p.verified_entrance && !p.directions_url));
+  assert.equal(batch24.find(p => p.id === 'NC-160')?.address_precision, 'Floor Confirmed');
+  assert.equal(batch24.find(p => p.id === 'NC-162')?.role, 'Public Service Point');
+  assert.equal(batch24.find(p => p.id === 'NC-169')?.building_code, 'CS18');
+  assert.equal(batch24.find(p => p.id === 'NC-170')?.building_code, '25B.3');
+  assert.equal(batch24.find(p => p.id === 'NC-173')?.building_code, 'L1 C3A');
   for (const id of ['NC-74', 'NC-75', 'NC-76']) {
     assert.equal(companies.find(p => p.id === id)?.verification, 'Source Confirmed', `${id}: official company claim`);
   }
