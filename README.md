@@ -1,6 +1,6 @@
 # City Guide — governed capital directory
 
-Arabic-first City Guide for Egypt's New Administrative Capital. After the founder's D15 navigation correction, the **primary visitor journey** (homepage sample and `/directory.html`) uses the explicitly labeled exploratory catalogue of 64 Notion records, including unapproved research records. The `/explore.html` URL remains as an alias. The separate `/approved.html` view and `data/places.json` contain only editorially **Published** records. Unapproved records must never be represented as approved for visits. See [D14 exploration policy](docs/D14-exploratory-catalog.md) and [D15 default-directory decision](docs/D15-default-expanded-directory.md).
+Arabic-first City Guide for Egypt's New Administrative Capital. After the founder's D15 navigation correction, the **primary visitor journey** (homepage sample and `/directory.html`) uses the explicitly labeled exploratory catalogue of **114 Notion-source records** (D21 Batch 01, 7 Nov 2026), including unapproved research records. The `/explore.html` URL remains as an alias. The separate `/approved.html` view and `data/places.json` contain only **2 editorially Published** records. Unapproved records must never be represented as approved for visits. See [D14 exploration policy](docs/D14-exploratory-catalog.md), [D15 default-directory decision](docs/D15-default-expanded-directory.md), and [D21 source expansion](docs/D21-service-source-expansion.md).
 
 ## D11 Finder-inspired visitor experience
 
@@ -27,7 +27,7 @@ For Cloudflare Pages, keep the build command `node scripts/build.mjs` and output
 
 ## Publishing boundary
 
-- `data/published.json` is the sole public content source. The first approved administrative-only NC-32 profile is published; all other candidates remain withheld.
+- `data/published.json` is the sole formal publication-approved source: NC-32 (MCIT) and NC-64 (ORVEAX). The independently labeled exploratory directory is accessible publicly by founder decision but is **not** a publication approval.
 - `data/publication-approvals.json` is a second gate: even a `Published` record is rejected by the build if its exact public-facing content does not match a dated founder sign-off.
 - `scripts/sync-published.mjs` fetches `Published` pages from Notion's data source on the **server** via `NOTION_API_TOKEN`, validates each exact approval, and only writes after explicit `--write`. The token is never sent to the website.
 - A write creates an immutable-by-name public-only snapshot under `data/releases/`. Keep those files in version control for rollback review. `--allow-removal` and `--allow-empty` are explicit safety overrides.
@@ -38,5 +38,7 @@ For Cloudflare Pages, keep the build command `node scripts/build.mjs` and output
 - The live site remains `noindex,nofollow` until release approval and sufficient verified, published coverage.
 
 The authoritative editorial process, full D06/D07 direct verification, and per-record human approval remain separate prerequisites. The Notion-to-JSON export is now implemented, but **not activated** without a scoped Notion API credential and signed records. UI completion does not imply publication.
+
+The D19 direct verification queue is **open**: no visitor gates, hours or Map directions were inferred from addresses in D20–D21. See [D19 priority checks](docs/D19-visitor-verification-queue.md). The public exploratory catalogue is a manually reconciled snapshot, not a live Notion client-side connection.
 
 See [D09 — Controlled Notion publishing](docs/D09-controlled-publishing.md) for the approval manifest, dry run, promotion checklist, operational safeguards and rollback.
