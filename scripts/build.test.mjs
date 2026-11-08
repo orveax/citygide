@@ -45,17 +45,17 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D28 tenant and service discovery preserves approvals and all earlier source-backed cohorts', () => {
+test('D31 directory expansion preserves approvals and all earlier source-backed cohorts', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 245);
+  assert.equal(exploratory.places.length, 249);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
   assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 85);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 158);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 162);
   const historical = exploratory.places.filter(p => Number(p.id.slice(3)) <= 179);
   assert.equal(historical.length, 179);
   const companies = historical.filter(p => p.kind === 'Company');
@@ -167,7 +167,7 @@ test('D28 tenant and service discovery preserves approvals and all earlier sourc
   assert.equal(batch27.find(p => p.id === 'NC-224')?.building_code, '25-B3');
   assert.equal(batch27.find(p => p.id === 'NC-232')?.verification, 'Research', 'Laval district conflict remains unresolved');
   assert.equal(batch27.find(p => p.id === 'NC-238')?.verification, 'Research', 'Paragon 3 district conflict remains unresolved');
-  const batch28 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 239);
+  const batch28 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 239 && Number(p.id.slice(3)) <= 245);
   assert.deepEqual(batch28.map(p => p.id), Array.from({length: 7}, (_, i) => `NC-${239 + i}`));
   assert.equal(batch28.filter(p => p.verification === 'Source Confirmed').length, 6);
   assert.equal(batch28.filter(p => p.verification === 'Research').length, 1);
@@ -183,8 +183,8 @@ test('D28 tenant and service discovery preserves approvals and all earlier sourc
   assert.equal(batch28.find(p => p.id === 'NC-240')?.building_code, 'B3-11 / B4-01 / B4-23');
   assert.equal(batch28.find(p => p.id === 'NC-243')?.phone, '0220542140');
   assert.equal(batch28.find(p => p.id === 'NC-245')?.verification, 'Research');
-  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 245);
-  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 245);
+  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 249);
+  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 249);
   for (const id of ['NC-188', 'NC-189']) {
     assert.match(batch25.find(p => p.id === id)?.service_type ?? '', /تاريخي/);
   }
@@ -244,7 +244,7 @@ test('D29 evidence-based visitor enrichment remains service-specific and does no
   assert.equal(ltra.public_access, 'Unknown');
   assert.equal(ltra.service_availability, 'Unknown');
 
-  assert.equal(byId('NC-52').phone, '0220541840');
+  assert.equal(byId('NC-52').phone, '0220541838');
   assert.equal(byId('NC-52').public_access, 'Unknown');
   assert.match(byId('NC-112').office_hours, /ليست ساعات استقبال/);
   assert.equal(byId('NC-112').visitor_hours, '');
@@ -267,4 +267,26 @@ test('D30 direct-confirmation queue never masquerades as completed outreach or a
   assert.equal(byId('NC-60').verification, 'Research', 'the official hotline does not prove the branch address');
   assert.equal(byId('NC-245').verification, 'Research');
   assert.ok(places.every(p => !p.directions_url && !p.verified_entrance));
+});
+
+test('D31 official expansion adds four non-duplicate entities without fabricated outreach or directions', () => {
+  const {places} = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
+  const batch = places.filter(p => Number(p.id.slice(3)) >= 246);
+  assert.deepEqual(batch.map(p => p.id), ['NC-246', 'NC-247', 'NC-248', 'NC-249']);
+  assert.equal(batch.filter(p => p.kind === 'Company').length, 3);
+  assert.equal(batch.filter(p => p.kind === 'Authority').length, 1);
+  assert.ok(batch.every(p => p.verification === 'Source Confirmed' && p.source_category === 'Official Authority'));
+  assert.ok(batch.every(p => p.service_availability === 'Unknown' && p.public_access === 'Unknown'));
+  assert.ok(batch.every(p => p.visitor_hours === '' && p.office_hours === '' && p.directions_url === '' && !p.verified_entrance));
+  assert.ok(batch.every(p => p.last_checked === '2026-11-08' && p.source_url.startsWith('https://')));
+  assert.equal(batch.find(p => p.id === 'NC-246').zone, 'Government District');
+  assert.match(batch.find(p => p.id === 'NC-247').address, /A2-18/);
+  assert.match(batch.find(p => p.id === 'NC-248').address, /GR-03/);
+  assert.match(batch.find(p => p.id === 'NC-249').service_type, /0220532546/);
+  const byId = id => places.find(p => p.id === id);
+  assert.equal(byId('NC-52').email, 'info@ldp.gov.eg');
+  assert.equal(byId('NC-61').email, 'info@customs.gov.eg');
+  assert.match(byId('NC-61').service_type, /15460/);
+  const queue = JSON.parse(readFileSync(join(root, 'data/direct-verification.json'), 'utf8'));
+  assert.ok(queue.items.every(item => item.outreach_status === 'Not Contacted' && item.attempts.length === 0));
 });
