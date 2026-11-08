@@ -172,7 +172,7 @@ function setupDetail(places) {
     : place.public_access === 'Unknown'
     ? 'تنبيه قبل الزيارة: دخول الجمهور ومدخل الزوار لم يتم تأكيدهما. اتصل بالجهة قبل التحرك.'
     : place.public_access === 'By Appointment'
-      ? 'الزيارة بموعد مسبق فقط. تواصل مع الشركة لتأكيد موعدك ومدخل الزوار قبل التحرك.'
+      ? 'الزيارة بموعد مسبق للخدمة المحددة. تواصل مع الجهة لتأكيد موعدك ومدخل الزوار قبل التحرك.'
       : 'راجع شروط الزيارة وطريقة الوصول مع الجهة قبل التحرك.');
   document.querySelector('.detail-hero-art img').src = IMAGES[place.kind] || IMAGES.Company;
   const contact = $('contact');
