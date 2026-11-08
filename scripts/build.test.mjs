@@ -53,10 +53,10 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 265);
+  assert.equal(exploratory.places.length, 267);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 53);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 210);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 54);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 211);
   const historical = exploratory.places.filter(p => Number(p.id.slice(3)) <= 179);
   assert.equal(historical.length, 179);
   const companies = historical.filter(p => p.kind === 'Company');
@@ -184,8 +184,8 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(batch28.find(p => p.id === 'NC-240')?.building_code, 'B3-11 / B4-01 / B4-23');
   assert.equal(batch28.find(p => p.id === 'NC-243')?.phone, '0220542140');
   assert.equal(batch28.find(p => p.id === 'NC-245')?.verification, 'Research');
-  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 265);
-  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 265);
+  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, exploratory.places.length);
+  assert.equal(new Set(exploratory.places.map(p => p.id)).size, exploratory.places.length);
   for (const id of ['NC-188', 'NC-189']) {
     assert.match(batch25.find(p => p.id === id)?.service_type ?? '', /تاريخي/);
   }
@@ -425,10 +425,11 @@ test('D35 distinguishes operating bank HQ, opened branch and planned branch with
 test('D36 adds four distinct occupants with narrowly bounded source claims and corrects NBE branch history', () => {
   const {places} = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
   const byId = id => places.find(p => p.id === id);
-  const added = places.filter(p => Number(p.id.slice(3)) >= 262);
+  const added = places.filter(p => Number(p.id.slice(3)) >= 262 && Number(p.id.slice(3)) <= 265);
   assert.deepEqual(added.map(p => p.id), ['NC-262', 'NC-263', 'NC-264', 'NC-265']);
-  assert.deepEqual(added.map(p => p.verification), ['Source Confirmed', 'Source Confirmed', 'Research', 'Research']);
-  assert.ok(added.every(p => p.kind === 'Company' && p.zone === 'Financial District'));
+  assert.deepEqual(added.map(p => p.verification), ['Source Confirmed', 'Research', 'Research', 'Research']);
+  assert.ok(added.every(p => p.kind === 'Company'));
+  assert.ok(added.filter(p => p.id !== 'NC-263').every(p => p.zone === 'Financial District'));
   assert.ok(added.every(p => p.role === 'Administrative HQ' && p.address_precision === 'Building Confirmed'));
   assert.ok(added.every(p => p.service_availability === 'Unknown' && p.public_access === 'Unknown'));
   assert.ok(added.every(p => !p.visitor_hours && !p.office_hours && !p.directions_url && !p.verified_entrance));
@@ -451,11 +452,12 @@ test('D36 adds four distinct occupants with narrowly bounded source claims and c
 test('D37 reconciles the duplicate Nasser mobile point and documents bank branch occupancy without inventing access', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const {places} = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
-  assert.equal(places.length, 265, 'the source registry retains immutable historic entity codes');
+  assert.ok(places.length >= 265, 'the source registry retains D37 historic entity codes');
   const visible = canonicalizePlaces(places);
-  assert.equal(visible.length, 264, 'visitors see one actual Nasser service location');
+  assert.equal(visible.length, places.length - 2, 'visitors see one Nasser point and no quarantined Pioneer Plaza tenant');
   assert.ok(visible.some(p => p.id === 'NC-202'));
   assert.ok(!visible.some(p => p.id === 'NC-35'));
+  assert.ok(!visible.some(p => p.id === 'NC-263'));
   assert.equal(resolveCanonicalPlace(places, 'nc-35-explore')?.id, 'NC-202', 'old bookmarks resolve to canonical detail');
   assert.equal(resolveCanonicalPlace(places, 'nasser-social-bank-mobile-unit-social-solidarity')?.id, 'NC-202');
   const nasser = visible.find(p => p.id === 'NC-202');
@@ -471,4 +473,36 @@ test('D37 reconciles the duplicate Nasser mobile point and documents bank branch
   assert.equal(visible.find(p => p.id === 'NC-264').verification, 'Research', 'third-party law office listing remains unverified');
   assert.equal(visible.find(p => p.id === 'NC-265').phone, '', 'contradictory Apex CPA phones remain blocked');
   assert.deepEqual(JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8')).places.map(p => p.verification), ['Published', 'Published']);
+});
+
+test('D28 tenant follow-up adds official historic addresses but quarantines MU23 scope conflict', () => {
+  execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
+  const {places} = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
+  assert.equal(places.length, 267);
+  const unique = canonicalizePlaces(places);
+  assert.equal(unique.length, 265);
+  for (const id of ['NC-266', 'NC-267']) {
+    const p = unique.find(p => p.id === id);
+    assert.ok(p, `${id} is a distinct financial district historical office`);
+    assert.equal(p.kind, 'Company');
+    assert.equal(p.verification, 'Source Confirmed');
+    assert.equal(p.source_category, 'Official Authority');
+    assert.equal(p.address_precision, 'Floor Confirmed');
+    assert.equal(p.public_access, 'Unknown');
+    assert.equal(p.service_availability, 'Unknown');
+    assert.equal(p.visitor_hours, '');
+    assert.equal(p.directions_url, '');
+    assert.equal(p.verified_entrance, false);
+  }
+  const pioneer = places.find(p => p.id === 'NC-263');
+  assert.equal(pioneer.zone, 'Other');
+  assert.equal(pioneer.verification, 'Research');
+  assert.match(pioneer.address, /MU23 A10/);
+  assert.equal(resolveCanonicalPlace(places, pioneer.slug)?.id, 'NC-263', 'old reference remains auditable with uncertainty label');
+  assert.ok(!unique.some(p => p.id === 'NC-263'), 'out-of-scope candidate does not enter public directory list');
+  const counts = places.reduce((a,p)=>(a[p.verification]=(a[p.verification]||0)+1,a),{});
+  assert.equal(counts['Source Confirmed'], 211);
+  assert.equal(counts.Research, 54);
+  assert.equal(counts.Published, 2);
+  assert.equal(JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8')).places.length, 2);
 });
