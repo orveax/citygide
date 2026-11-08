@@ -45,17 +45,17 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D25 source-backed expansion preserves approval and the D24 historical cohort', () => {
+test('D26 deep discovery preserves approval and earlier source-backed cohorts', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 201);
+  assert.equal(exploratory.places.length, 223);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 68);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 131);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 77);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 144);
   const historical = exploratory.places.filter(p => Number(p.id.slice(3)) <= 179);
   assert.equal(historical.length, 179);
   const companies = historical.filter(p => p.kind === 'Company');
@@ -128,7 +128,7 @@ test('D25 source-backed expansion preserves approval and the D24 historical coho
   assert.equal(batch24.find(p => p.id === 'NC-169')?.building_code, 'CS18');
   assert.equal(batch24.find(p => p.id === 'NC-170')?.building_code, '25B.3');
   assert.equal(batch24.find(p => p.id === 'NC-173')?.building_code, 'L1 C3A');
-  const batch25 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 180);
+  const batch25 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 180 && Number(p.id.slice(3)) <= 201);
   assert.deepEqual(batch25.map(p => p.id), Array.from({length: 22}, (_, i) => `NC-${i + 180}`));
   assert.equal(batch25.filter(p => p.verification === 'Source Confirmed').length, 10);
   assert.equal(batch25.filter(p => p.verification === 'Research').length, 12);
@@ -139,6 +139,22 @@ test('D25 source-backed expansion preserves approval and the D24 historical coho
   assert.equal(batch25.find(p => p.id === 'NC-181')?.address_precision, 'District Only');
   assert.equal(batch25.find(p => p.id === 'NC-184')?.kind, 'Bank');
   assert.equal(batch25.find(p => p.id === 'NC-187')?.address_precision, 'Floor Confirmed');
+  const batch26 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 202);
+  assert.deepEqual(batch26.map(p => p.id), Array.from({length: 22}, (_, i) => `NC-${202 + i}`));
+  assert.equal(batch26.filter(p => p.verification === 'Source Confirmed').length, 13);
+  assert.equal(batch26.filter(p => p.verification === 'Research').length, 9);
+  assert.deepEqual(Object.fromEntries(['Authority', 'Bank', 'Building', 'Company'].map(kind => [kind, batch26.filter(p => p.kind === kind).length])), {Authority: 2, Bank: 9, Building: 6, Company: 5});
+  assert.ok(batch26.every(p => p.last_checked === '2026-11-08'));
+  assert.ok(batch26.every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
+  assert.ok(batch26.every(p => !p.visitor_hours && !p.directions_url && !p.verified_entrance));
+  assert.ok(batch26.every(p => p.source_url.startsWith('https://')));
+  assert.ok(batch26.filter(p => Number(p.id.slice(3)) >= 215).every(p => p.verification === 'Research'));
+  assert.equal(batch26.find(p => p.id === 'NC-203')?.address_precision, 'Floor Confirmed');
+  assert.equal(batch26.find(p => p.id === 'NC-207')?.building_code, 'CS06');
+  assert.equal(batch26.find(p => p.id === 'NC-208')?.building_code, 'CS-26');
+  assert.equal(batch26.find(p => p.id === 'NC-220')?.address_precision, 'Building Confirmed');
+  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 223);
+  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 223);
   for (const id of ['NC-188', 'NC-189']) {
     assert.match(batch25.find(p => p.id === id)?.service_type ?? '', /تاريخي/);
   }
