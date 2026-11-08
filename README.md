@@ -24,7 +24,9 @@ The visitor experience adapts discovery patterns from MadrasThemes' Finder City 
 
 **UX-02 (released):** an information-first card treatment represents category visually instead of repeating architectural illustration for each exploratory record; source and visitor-access badges sit in the content area, with removable active-filter chips in the dedicated directory. See [Sprint 2 scope and verification](docs/UX-02-sprint2.md). No record, map, editorial approval or launch gate changes were made.
 
-**UX-03 (preview):** live, contextual counts beside area shortcuts and category selectors help visitors choose between the Government District and Financial District without confusing a catalogue count with an approved visitor address. Counts are derived from the active query and other filters, ignoring only the facet being offered. See [Sprint 3 scope and acceptance](docs/UX-03-sprint3.md).
+**UX-03 (released):** live, contextual counts beside area shortcuts and category selectors help visitors choose between the Government District and Financial District without confusing a catalogue count with an approved visitor address. Counts are derived from the active query and other filters, ignoring only the facet being offered. See [Sprint 3 scope and acceptance](docs/UX-03-sprint3.md).
+
+**UX-04 (preview):** individual place pages now put visitor-entry status, Maps readiness, and safe first actions in the opening section. Category-specific abstract artwork replaces the repeated illustrative building photography; one shared navigation decision governs both the top action and Maps card, preventing research records from receiving directions or search links before the applicable checks. See [Sprint 4 scope and acceptance](docs/UX-04-sprint4.md).
 
 See [the D08 implementation plan](docs/D08-finder-city-guide-plan.md) for the visual-to-data mapping, completed components, and remaining review steps.
 

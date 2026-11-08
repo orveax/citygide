@@ -1,5 +1,5 @@
 import { canonicalizePlaces, facetCounts, filterPlaces, paginatePlaces, resolveCanonicalPlace, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
-import { mapsDirectionsUrl, mapsSearchUrl } from './maps.mjs';
+import { navigationDecision } from './maps.mjs';
 
 const $ = id => document.getElementById(id);
 const preview = document.body.dataset.preview === 'true';
@@ -19,12 +19,6 @@ const PRECISIONS = {
   'Floor Confirmed': 'الطابق مؤكد، والمدخل لم يتأكد بعد',
   'Entrance Confirmed': 'المدخل مؤكد',
   'Pin Verified': 'نقطة الوصول مؤكدة'
-};
-const IMAGES = {
-  Government: 'assets/civic-illustration.webp',
-  Authority: 'assets/civic-illustration.webp',
-  Bank: 'assets/financial-illustration.webp',
-  Company: 'assets/city-skyline.webp'
 };
 const labelZone = zone => ZONES[zone] || 'منطقة أخرى';
 const labelKind = kind => KINDS[kind] || 'جهة';
@@ -294,6 +288,17 @@ function setupDetail(places) {
     visitBadge.className = 'visit-status visit-status--' + (place.public_access === 'By Appointment' ? 'appointment' : place.public_access === 'Walk-in Confirmed' ? 'walkin' : 'unknown');
   }
   setText('subtitle', labelZone(place.zone) + ' · ' + labelRole(place.role));
+  const heroArt = $('detailHeroArt');
+  if (heroArt) heroArt.dataset.kind = KINDS[place.kind] ? place.kind.toLowerCase() : 'other';
+  setText('detailHeroGlyph', KIND_GLYPHS[place.kind] || '⌖');
+  setText('detailHeroKind', labelKind(place.kind));
+  setText('visitorReadiness', visitStatusLabel(place));
+  if ($('visitorReadiness')) $('visitorReadiness').dataset.mode = place.public_access === 'Walk-in Confirmed' ? 'walkin' : place.public_access === 'By Appointment' ? 'appointment' : 'unknown';
+  const navigation = navigationDecision(place, { exploration });
+  setText('navigationReadiness', navigation.status);
+  if ($('navigationReadiness')) $('navigationReadiness').dataset.mode = navigation.mode;
+  setText('mapStatus', navigation.status);
+  if ($('mapStatus')) $('mapStatus').dataset.mode = navigation.mode;
   setText('address', place.address); setText('precision', PRECISIONS[place.address_precision] || 'غير محدد');
   setText('role', labelKind(place.kind) + ' — ' + labelRole(place.role));
   setText('service', place.service_type, 'لا توجد خدمة حضورية محددة مثبتة');
@@ -309,25 +314,25 @@ function setupDetail(places) {
     : place.public_access === 'By Appointment'
       ? 'الزيارة بموعد مسبق للخدمة المحددة. تواصل مع الجهة لتأكيد موعدك ومدخل الزوار قبل التحرك.'
       : 'راجع شروط الزيارة وطريقة الوصول مع الجهة قبل التحرك.');
-  document.querySelector('.detail-hero-art img').src = IMAGES[place.kind] || IMAGES.Company;
+  const quickActions = $('quickActions');
+  if (quickActions) {
+    if (place.phone) quickActions.append(link('اتصل بالجهة قبل الزيارة', 'tel:' + place.phone.replace(/[^\d+]/g, ''), 'detail-quick-actions__primary'));
+    else if (place.website) quickActions.append(link('راجع الموقع الرسمي للجهة', place.website, 'detail-quick-actions__primary'));
+    if (navigation.href) quickActions.append(link(navigation.label, navigation.href, 'detail-quick-actions__secondary'));
+    else quickActions.append(link('راجع تفاصيل العنوان', '#overview', 'detail-quick-actions__secondary'));
+  }
   const contact = $('contact');
   if (place.phone) contact.append(link('اتصل بالجهة', 'tel:' + place.phone.replace(/[^\d+]/g, ''), 'primary'));
   if (place.email) contact.append(link('البريد الإلكتروني', 'mailto:' + encodeURIComponent(place.email)));
   if (place.website) contact.append(link(place.kind === 'Building' ? 'صفحة المشروع لدى المصدر' : 'الموقع الرسمي', place.website));
   if (!contact.children.length) contact.append(element('p', 'source-note', 'لا توجد وسيلة اتصال مؤكدة في السجل.'));
-  const directions = exploration && place.verification !== 'Published' ? '' : mapsDirectionsUrl(place);
-  const mapSearch = exploration && place.verification === 'Research' ? '' : mapsSearchUrl(place);
   const mapActions = $('mapActions');
-  if (directions) {
-    mapActions.append(link('ابدأ الملاحة على Google Maps', directions, 'primary'));
-    setText('mapNotice', 'وجهة الوصول ومدخل الزوار موثقان في السجل. هتفتح Google Maps وتختار موقع البداية المناسب لك.');
-  } else if (mapSearch) {
-    mapActions.append(link('ابحث عن المقر على Google Maps', mapSearch));
-    setText('mapNotice', 'الرابط يفتح نتيجة بحث عن عنوان المقر، مش اتجاهات إلى مدخل مؤكد. راجع مكان الدخول مع الجهة قبل التحرك.');
+  if (navigation.href) {
+    mapActions.append(link(navigation.label, navigation.href, navigation.mode === 'directions' ? 'primary' : ''));
   } else {
     mapActions.append(element('p', 'source-note', 'لا توجد نقطة وصول دقيقة أو عنوان مبنى موثق لعرضه على الخريطة.'));
-    setText('mapNotice', 'هنضيف رابط الخرائط لما تتأكد دقة موقع الجهة.');
   }
+  setText('mapNotice', navigation.notice);
   $('source').append(link(exploration && place.verification !== 'Published' ? 'راجع مصدر البيانات' : 'افتح المصدر الرسمي', place.source_url));
   if (preview) sourceBadge.textContent = 'معاينة داخلية · ' + sourceStatusLabel(place);
 }

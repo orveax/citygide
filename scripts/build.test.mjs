@@ -45,6 +45,10 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.match(home, /id="sampleDirectoryCount"/, 'the sample introduction must be data-driven');
   assert.doesNotMatch(home, /64 جهة|الـ64 سجل/, 'historical counts must not be hard-coded');
   assert.match(readFileSync(join(root, 'dist/place.html'), 'utf8'), /id="visitBadge"/, 'visitor readiness must be separate from publication approval');
+  const placeHtml = readFileSync(join(root, 'dist/place.html'), 'utf8');
+  for (const id of ['quickActions', 'visitorReadiness', 'navigationReadiness', 'mapStatus', 'detailHeroArt']) assert.match(placeHtml, new RegExp(`id="${id}"`), `detail page needs ${id}`);
+  assert.doesNotMatch(placeHtml, /<div class="detail-hero-art"><img/, 'concept photos must not imply they depict each office');
+  assert.match(readFileSync(join(root, 'dist/scripts/app.mjs'), 'utf8'), /navigationDecision\(place, \{ exploration \}\)/, 'hero and map sidebar must share one navigation policy');
   const cardRenderer = readFileSync(join(root, 'dist/scripts/app.mjs'), 'utf8').split('function placeCard(place) {')[1]?.split('function renderActiveFilters')[0];
   assert.ok(cardRenderer, 'visitor card renderer must be included');
   assert.match(cardRenderer, /source-status/, 'source trust state must be inside each card body');
