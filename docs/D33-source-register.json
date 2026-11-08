@@ -1,0 +1,214 @@
+{
+  "batch": "D33",
+  "checked_at": "2026-11-08",
+  "governance_note": "20 pre-existing Research records reconciled using official institutional, developer, contractor and commercial-register evidence; one distinct environmental protection fund contact record added. Preexisting General Authority for Land and Dry Ports is NC-52 and must not be duplicated. This register is an evidence index, not visitor access validation. Company project locations do not prove current company tenancy, bank HQ projects do not prove live banking branches, and historical registrations do not prove occupancy. Outreach deferred.",
+  "records": [
+    {
+      "id": "NC-258",
+      "slug": "environment-protection-fund-eeaa-government-district",
+      "name_ar": "صندوق حماية البيئة — مقر جهاز شؤون البيئة",
+      "name_en": "Environment Protection Fund — EEAA Government District Office",
+      "aliases": [
+        "صندوق حماية البيئة",
+        "Environment Protection Fund",
+        "EPF"
+      ],
+      "kind": "Authority",
+      "role": "Administrative HQ",
+      "zone": "Government District",
+      "address": "مبنى جهاز شؤون البيئة، وزارة التنمية المحلية والبيئة، الحي الحكومي، العاصمة الإدارية الجديدة؛ الدور والمدخل غير مثبتين",
+      "building_code": "EEAA / Ministry of Local Development and Environment",
+      "address_precision": "Building Confirmed",
+      "service_type": "عنوان تواصل رسمي لصندوق حماية البيئة، ضمن مبنى جهاز شؤون البيئة؛ استقبال الجمهور ومواعيد الزيارة غير مثبتين",
+      "phone": "",
+      "website": "https://www.eeaa.gov.eg/",
+      "source_url": "https://www.eeaa.gov.eg/ContactUs/3/index",
+      "source_category": "Official Authority",
+      "verification": "Source Confirmed",
+      "evidence_scope": "Official Egyptian Environmental Affairs Agency Environment Protection Fund contact tab gives Government District Ministry of Local Development and Environment/EEAA address and epf@moenv.gov.eg. This is a distinct fund operating within the agency organization, not a separate verified public reception desk.",
+      "email": "epf@moenv.gov.eg"
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "NC-19",
+      "name_ar": "وزارة الأوقاف",
+      "source_url": "https://torath.gov.eg/providers/alawqaf",
+      "source_category": "Official Authority",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Government District ministry headquarters association; no walk-in/entrance evidence."
+    },
+    {
+      "id": "NC-23",
+      "name_ar": "وزارة الشباب والرياضة",
+      "source_url": "https://www.emys.gov.eg/ministry/43/اتصل-بنا",
+      "source_category": "Official Authority",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Government District ministry headquarters association; no walk-in/entrance evidence."
+    },
+    {
+      "id": "NC-24",
+      "name_ar": "وزارة العدل",
+      "source_url": "https://lawyers.moj.gov.eg/",
+      "source_category": "Official Authority",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Government District ministry headquarters association; no walk-in/entrance evidence."
+    },
+    {
+      "id": "NC-30",
+      "name_ar": "وزارة الطيران المدني",
+      "source_url": "https://web.civilaviation.gov.eg/Media/NewsDetails?NewsID=140",
+      "source_category": "Official Authority",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Government District ministry headquarters association; no walk-in/entrance evidence."
+    },
+    {
+      "id": "NC-33",
+      "name_ar": "وزارة الصحة والسكان",
+      "source_url": "https://www.mohp.gov.eg/newsdetails.aspx/NewsDetails.aspx?subject_id=5800",
+      "source_category": "Official Authority",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Government District ministry headquarters association; no walk-in/entrance evidence."
+    },
+    {
+      "id": "NC-58",
+      "name_ar": "البنك التجاري الدولي CIB — مشروع المقر الجديد بالحي المالي",
+      "source_url": "https://www.cibeg.com/en/newsroom/esg/green-buildings-green-future",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-63",
+      "name_ar": "البنك العربي الأفريقي الدولي — مبنى مقر العاصمة الإدارية",
+      "source_url": "https://www.aaib.com/pdfs/principles-for-responsible-banking.pdf",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-68",
+      "name_ar": "آي سي جروب — مشروع ذا أوفيس",
+      "source_url": "https://icgroupeg.com/projects/theoffice/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-69",
+      "name_ar": "البروج مصر — مشروع سيكستي ووك",
+      "source_url": "https://alborouj-eg.com/sixty-walk-one/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-70",
+      "name_ar": "موداد للتطوير العقاري — مشروع سيكتور",
+      "source_url": "https://modaddevelopment.com/sector-new-capital/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-71",
+      "name_ar": "الصفوة للتطوير العمراني — فاينانشال هب",
+      "source_url": "https://sud.com.eg/ar/sud-signs-agreement-with-afm-to-manage-and-operate-financial-hub-at-new-capital/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-72",
+      "name_ar": "إيه إف إم — إدارة مشروع فاينانشال هب",
+      "source_url": "https://sud.com.eg/ar/sud-signs-agreement-with-afm-to-manage-and-operate-financial-hub-at-new-capital/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-73",
+      "name_ar": "ڤاو للتطوير العقاري — مشروع سولاس",
+      "source_url": "https://vowdevelopments.com/wp-content/uploads/2022/03/Solas-Brochure.pdf",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-84",
+      "name_ar": "نيو بلان للتطوير — مشروع إليفن",
+      "source_url": "https://newplandevelopments.com/projects/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-85",
+      "name_ar": "دومينار للتطوير — مشروع بيزنس جيت",
+      "source_url": "https://dominardevelopment.com/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-86",
+      "name_ar": "إيه إم إيه للتطوير — مشروع كوانتم",
+      "source_url": "https://www.amadevelopments.net/about-us/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-87",
+      "name_ar": "جدير جروب — مشروع أوبيكس",
+      "source_url": "https://jadeergroup.com/project/show/16/Obex",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    },
+    {
+      "id": "NC-114",
+      "name_ar": "أبو عوف — فرع سيكستي ووك 1 بالعاصمة",
+      "source_url": "https://www.itda.gov.eg/CRM/881/CRA53.pdf",
+      "source_category": "Official Authority",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Historical official registration or relocation evidence only; 2026 physical presence and visitor access unverified."
+    },
+    {
+      "id": "NC-117",
+      "name_ar": "صندوق دعم السياحة والآثار — تمثيل بمقر الوزارة",
+      "source_url": "https://mota.gov.eg/media/rhgccmhy/mota-newslatter-ar_july-2023.pdf",
+      "source_category": "Official Authority",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Historical official registration or relocation evidence only; 2026 physical presence and visitor access unverified."
+    },
+    {
+      "id": "NC-145",
+      "name_ar": "بنك الكويت الوطني مصر — مشروع المقر الجديد",
+      "source_url": "https://gama.com.eg/national-bank-of-kuwait-new-headquarters/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named Financial District project/building association only; no present-day live service, tenancy or entrance claim."
+    }
+  ]
+}
