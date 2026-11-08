@@ -37,9 +37,14 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
     assert.match(html, /class="mobile-nav"/, `${page}: responsive navigation`);
   }
   const catalogue = readFileSync(join(root, 'dist/directory.html'), 'utf8');
-  for (const id of ['searchForm', 'q', 'kind', 'zone', 'sort', 'cards', 'count']) assert.match(catalogue, new RegExp(`id="${id}"`));
+  for (const id of ['searchForm', 'q', 'kind', 'zone', 'sort', 'cards', 'count', 'pagination']) assert.match(catalogue, new RegExp(`id="${id}"`));
   assert.match(catalogue, /data-catalog="exploration"/, 'primary directory must show the full exploratory dataset');
-  assert.match(readFileSync(join(root, 'dist/index.html'), 'utf8'), /data-home="true"/, 'homepage must expose expanded data too');
+  const home = readFileSync(join(root, 'dist/index.html'), 'utf8');
+  assert.match(home, /data-home="true"/, 'homepage must expose expanded data too');
+  assert.match(home, /id="exploreEntryCount"/, 'the homepage inventory count must be data-driven');
+  assert.match(home, /id="sampleDirectoryCount"/, 'the sample introduction must be data-driven');
+  assert.doesNotMatch(home, /64 جهة|الـ64 سجل/, 'historical counts must not be hard-coded');
+  assert.match(readFileSync(join(root, 'dist/place.html'), 'utf8'), /id="visitBadge"/, 'visitor readiness must be separate from publication approval');
   assert.match(readFileSync(join(root, 'dist/contact.html'), 'utf8'), /mailto:hello@orveax.com/);
   assert.match(readFileSync(join(root, 'dist/terms.html'), 'utf8'), /زيارة/);
   assert.match(readFileSync(join(root, 'dist/privacy.html'), 'utf8'), /Google Fonts/);

@@ -33,6 +33,61 @@ export function normalize(value = '') {
     .trim();
 }
 
+const SOURCE_LABELS = {
+  Published: 'معتمد للنشر',
+  'Contact Verified': 'تم التحقق بالتواصل',
+  'Source Confirmed': 'المصدر موثّق',
+  Research: 'قيد البحث'
+};
+
+const VISIT_LABELS = {
+  'Walk-in Confirmed': 'استقبال الجمهور موثّق',
+  'By Appointment': 'الزيارة بموعد مسبق',
+  Unknown: 'دخول الزوار غير مؤكد'
+};
+
+// Editorial status and visitor access are independent. Neither a primary
+// source nor an approved profile proves that a visitor can enter a building.
+export const sourceStatusLabel = place => SOURCE_LABELS[place?.verification] || 'حالة المصدر غير محددة';
+export const visitStatusLabel = place => VISIT_LABELS[place?.public_access] || VISIT_LABELS.Unknown;
+
+const sourceWeight = { Published: 4, 'Contact Verified': 3, 'Source Confirmed': 2, Research: 0 };
+const kindWeight = { Government: 5, Bank: 4, Authority: 3, Company: 2, Building: 1, District: 0 };
+
+function relevanceScore(place, query) {
+  const source = (sourceWeight[place.verification] || 0) * 30;
+  const category = (kindWeight[place.kind] || 0) * 3;
+  const access = place.public_access === 'Walk-in Confirmed' ? 3 : place.public_access === 'By Appointment' ? 1 : 0;
+  if (!query) return source + category + access;
+
+  const nameAr = normalize(place.name_ar);
+  const nameEn = normalize(place.name_en);
+  const aliases = (place.aliases || []).map(normalize);
+  let match = 0;
+  if ([nameAr, nameEn, ...aliases].includes(query)) match = 1000;
+  else if ([nameAr, nameEn, ...aliases].some(value => value.startsWith(query))) match = 750;
+  else if ([nameAr, nameEn, ...aliases].some(value => value.includes(query))) match = 500;
+  else if (normalize(place.service_type).includes(query)) match = 200;
+  else if (normalize(place.address).includes(query)) match = 100;
+  // A strong name match outranks a weak address match even when the latter
+  // happens to have a more mature source. These are relevance rules, not ratings.
+  return match + source + category + access;
+}
+
+export function paginatePlaces(places, requestedPage = 1, pageSize = 12) {
+  const size = Number.isSafeInteger(pageSize) && pageSize > 0 ? pageSize : 12;
+  const pages = Math.max(1, Math.ceil(places.length / size));
+  const requested = Number(requestedPage);
+  const page = Number.isSafeInteger(requested) && requested > 0 ? Math.min(requested, pages) : 1;
+  const start = (page - 1) * size;
+  return {
+    items: places.slice(start, start + size),
+    page, pages, total: places.length,
+    from: places.length ? start + 1 : 0,
+    to: Math.min(start + size, places.length)
+  };
+}
+
 export function filterPlaces(places, filters = {}) {
   const query = normalize(filters.q || '');
   const tokens = query.split(' ').filter(Boolean);
@@ -46,6 +101,10 @@ export function filterPlaces(places, filters = {}) {
     return tokens.every(token => searchText.includes(token));
   });
   return filtered.sort((a, b) => {
+    if (filters.sort === 'relevance') {
+      const score = relevanceScore(b, query) - relevanceScore(a, query);
+      if (score) return score;
+    }
     if (filters.sort === 'recent') {
       const newest = b.last_checked.localeCompare(a.last_checked);
       if (newest) return newest;
