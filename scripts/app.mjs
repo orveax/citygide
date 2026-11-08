@@ -1,4 +1,4 @@
-import { filterPlaces } from './catalog.mjs';
+import { canonicalizePlaces, filterPlaces, resolveCanonicalPlace } from './catalog.mjs';
 import { mapsDirectionsUrl, mapsSearchUrl } from './maps.mjs';
 
 const $ = id => document.getElementById(id);
@@ -148,13 +148,18 @@ function setupDirectory(places) {
 
 function setupDetail(places) {
   const slug = new URLSearchParams(location.search).get('slug');
-  const place = places.find(p => p.slug === slug);
+  const place = resolveCanonicalPlace(places, slug);
   if (!place) {
     setText('title', 'الجهة غير موجودة في الدليل');
     setText('subtitle', 'ارجع للدليل وابحث عن اسم الجهة من جديد.');
     document.querySelector('.detail-badges').replaceChildren();
     document.querySelector('.detail-layout').hidden = true;
     return;
+  }
+  if (place.slug !== slug) {
+    const url = new URL(location.href);
+    url.searchParams.set('slug', place.slug);
+    history.replaceState(null, '', url);
   }
   document.title = place.name_ar + ' | دليل العاصمة' + (exploration ? ' — نسخة استكشافية' : preview ? ' — معاينة داخلية' : '');
   setText('title', place.name_ar); setText('crumbName', place.name_ar); setText('crumbZone', labelZone(place.zone));
@@ -215,7 +220,7 @@ try {
     note.append(box);
     document.querySelector('main')?.prepend(note);
   }
-  if ($('cards')) setupDirectory(places);
+  if ($('cards')) setupDirectory(exploration ? canonicalizePlaces(places) : places);
   if ($('title')) setupDetail(places);
 } catch (error) {
   console.error('Catalog unavailable:', error.message);

@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { canonicalizePlaces, resolveCanonicalPlace } from './catalog.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 
@@ -145,7 +146,7 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(batch26.filter(p => p.verification === 'Research').length, 9);
   assert.deepEqual(Object.fromEntries(['Authority', 'Bank', 'Building', 'Company'].map(kind => [kind, batch26.filter(p => p.kind === kind).length])), {Authority: 2, Bank: 9, Building: 6, Company: 5});
   assert.ok(batch26.every(p => p.last_checked === '2026-11-08'));
-  assert.ok(batch26.every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
+  assert.ok(batch26.every(p => p.public_access === 'Unknown' && (p.id === 'NC-202' ? p.service_availability === 'On-site Confirmed' : p.service_availability === 'Unknown')));
   assert.ok(batch26.every(p => !p.visitor_hours && !p.directions_url && !p.verified_entrance));
   assert.ok(batch26.every(p => p.source_url.startsWith('https://')));
   assert.ok(batch26.filter(p => Number(p.id.slice(3)) >= 215).every(p => p.verification === 'Research'));
@@ -445,4 +446,29 @@ test('D36 adds four distinct occupants with narrowly bounded source claims and c
   assert.ok(places.every(p => !p.directions_url && !p.verified_entrance));
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   assert.equal(approved.places.length, 2);
+});
+
+test('D37 reconciles the duplicate Nasser mobile point and documents bank branch occupancy without inventing access', () => {
+  execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
+  const {places} = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
+  assert.equal(places.length, 265, 'the source registry retains immutable historic entity codes');
+  const visible = canonicalizePlaces(places);
+  assert.equal(visible.length, 264, 'visitors see one actual Nasser service location');
+  assert.ok(visible.some(p => p.id === 'NC-202'));
+  assert.ok(!visible.some(p => p.id === 'NC-35'));
+  assert.equal(resolveCanonicalPlace(places, 'nc-35-explore')?.id, 'NC-202', 'old bookmarks resolve to canonical detail');
+  assert.equal(resolveCanonicalPlace(places, 'nasser-social-bank-mobile-unit-social-solidarity')?.id, 'NC-202');
+  const nasser = visible.find(p => p.id === 'NC-202');
+  const parliament = visible.find(p => p.id === 'NC-55');
+  for (const bank of [nasser, parliament]) {
+    assert.equal(bank.service_availability, 'On-site Confirmed', 'first-party evidence confirms an on-site banking service');
+    assert.equal(bank.public_access, 'Unknown', 'public walk-in permission is not established');
+    assert.equal(bank.visitor_hours, '', 'bank branch existence is not current visitor hours');
+    assert.equal(bank.directions_url, '', 'no navigable pin without a verified entrance');
+    assert.equal(bank.verified_entrance, false);
+  }
+  assert.equal(visible.find(p => p.id === 'NC-36').address_precision, 'District Only', 'QNB cross-language district conflict remains unresolved');
+  assert.equal(visible.find(p => p.id === 'NC-264').verification, 'Research', 'third-party law office listing remains unverified');
+  assert.equal(visible.find(p => p.id === 'NC-265').phone, '', 'contradictory Apex CPA phones remain blocked');
+  assert.deepEqual(JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8')).places.map(p => p.verification), ['Published', 'Published']);
 });

@@ -1,0 +1,38 @@
+{
+  "phase": "D37",
+  "checked_on": "2026-11-08",
+  "scope": ["Government District", "Financial District"],
+  "notion_source": "collection://8903b5e7-eca2-448b-9004-7b565eda97d5",
+  "record_inventory": {"previous": 265, "current": 265, "visitor_unique": 264, "published": 2, "source_confirmed": 210, "research": 53},
+  "changes": [
+    {
+      "canonical": "NC-202",
+      "legacy_alias": "NC-35",
+      "type": "canonical_duplicate_location",
+      "location": "Nasser Social Bank fixed mobile service unit opposite Ministry of Social Solidarity",
+      "source": "https://nsb.gov.eg/ar/المركز-الإعلامي/الأخبار/مصروفات-دراسية/",
+      "evidence": "Bank announcement 2026-09-01 states stationed mobile unit with bank employee and ATM; one site rather than two branches",
+      "change": "NC-202 service_availability On-site Confirmed; NC-35 archived logically via user-facing canonical mapping",
+      "not_verified": ["presence today", "public walk-in permission", "hours", "entrance", "exact coordinates"]
+    },
+    {
+      "record": "NC-55",
+      "type": "bank_branch_service_evidence",
+      "location": "Banque Misr House of Representatives branch",
+      "source": "https://www.banquemisr.com/ar-EG/SMEs/Retail-Banking/Accounts-And-Deposits/Savings-Accounts/Details/The-branches-equipped-to-receive-distinguished-capabilities",
+      "evidence": "Official bank-maintained branch listing inside parliament",
+      "change": "service_availability On-site Confirmed; no public access claim",
+      "not_verified": ["entry authorization", "hours", "entrance", "exact coordinates"]
+    },
+    {
+      "record": "NC-36",
+      "type": "cross_language_location_conflict_no_change",
+      "sources": ["https://qnb.com.eg/sites/qnb/qnbegypt/ar/arcapital.html", "https://www.qnb.com.eg/sites/qnb/qnbegypt/en/encapital.html"],
+      "conflict": "Arabic Financial District vs English Central Business District",
+      "result": "No new branch or precise plot inferred; Notion conflict memo updated"
+    }
+  ],
+  "reviewed_without_promotion": ["NC-262", "NC-263", "NC-264", "NC-265"],
+  "outreach": "Deferred by founder until source sweep completion",
+  "map_policy": "No directions URL without a verified entrance or destination"
+}
