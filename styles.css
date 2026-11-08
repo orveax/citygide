@@ -551,3 +551,108 @@ body { font-size: 14px; line-height: 1.9; }
   .pagination__controls { justify-content: center; }
   .pagination__button { min-width: 40px; min-height: 44px; padding: 7px 10px; }
 }
+
+/* UX-02 — Data-first directory cards. Editorial illustrations remain on hero and profiles,
+   but are deliberately not repeated as if they depict 265 individual premises. */
+.place-card {
+  --card-mark: #65768b;
+  --card-surface: #eef2f7;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: 19px;
+  border-color: #e5e9ee;
+  box-shadow: 0 5px 18px rgb(32 44 61 / 3%);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.place-card--government { --card-mark: #b86451; --card-surface: #fff0e8; }
+.place-card--authority { --card-mark: #397784; --card-surface: #eaf5f5; }
+.place-card--bank { --card-mark: #366d78; --card-surface: #e8f2f5; }
+.place-card--company { --card-mark: #936e4c; --card-surface: #f7f0e6; }
+.place-card--building { --card-mark: #667a9a; --card-surface: #ecf0f8; }
+.place-card--district { --card-mark: #7974a6; --card-surface: #f0eef8; }
+.place-card:hover { transform: none; border-color: #d5dce5; box-shadow: 0 14px 36px rgb(30 44 63 / 9%); }
+.place-card:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+.place-card__image {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 112px;
+  height: 112px;
+  padding: 19px 23px;
+  background: linear-gradient(120deg, var(--card-surface), #fafbfc);
+}
+.place-card__image::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 215px;
+  height: 215px;
+  inset-inline-end: -40px;
+  top: -145px;
+  border: 1px solid color-mix(in srgb, var(--card-mark) 22%, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 32px color-mix(in srgb, var(--card-mark) 5%, transparent);
+  pointer-events: none;
+}
+.place-card__image::after { content: ''; position: absolute; inset: auto 0 0; height: 1px; background: rgb(29 46 63 / 6%); }
+.place-card__glyph { color: var(--card-mark); font: 700 56px/1 Manrope, Arial, sans-serif; opacity: .78; }
+.place-card .image-badge {
+  position: static;
+  z-index: 1;
+  background: rgb(255 255 255 / 82%);
+  color: var(--card-mark);
+  padding: 9px 14px;
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 3px 12px rgb(35 50 65 / 4%);
+}
+.place-card__body { display: flex; flex: 1; flex-direction: column; min-width: 0; padding: 21px 23px 22px; }
+.place-card__eyebrow { margin-bottom: 8px; color: #738090; font-size: 11px; }
+.place-card h3 { margin: 0; font-size: 17px; line-height: 1.7; font-weight: 700; }
+.place-card h3 a { text-decoration: none; text-underline-offset: 4px; }
+.place-card h3 a:focus-visible { border-radius: 3px; outline: 2px solid var(--accent); outline-offset: 3px; }
+.place-card__status { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin: 15px 0; }
+.source-status, .place-card .visit-status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.source-status--approved { background: #e6f4eb; color: #286244; }
+.source-status--source { background: #eaf1f7; color: #355d78; }
+.source-status--research { background: #fff0e9; color: #a64a32; }
+.place-card__address { margin: 0 0 16px; color: #65727e; font-size: 11px; line-height: 2; overflow-wrap: anywhere; }
+.place-card__meta { margin-top: auto; padding-top: 15px; font-size: 10px; }
+.place-card__meta > a { color: var(--accent-deep); font-weight: 700; font-size: 12px; }
+.place-card__meta > a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.place-card__verification-note { border-inline-start: 3px solid #d5ae77; padding-inline-start: 10px; }
+.place-grid.is-list .place-card, .place-grid.is-sparse .place-card { display: grid; grid-template-columns: minmax(155px, 29%) minmax(0, 1fr); }
+.place-grid.is-list .place-card__image, .place-grid.is-sparse .place-card__image { height: 100%; min-height: 190px; }
+.place-grid.is-list .place-card__body, .place-grid.is-sparse .place-card__body { padding: 23px 27px; }
+
+/* Removable query chips make it clear why the directory shows a subset. */
+.active-filters { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.active-filters[hidden] { display: none; }
+.active-filters__label { color: #697685; font-size: 11px; margin-inline-end: 3px; }
+.active-filters__chip { display: inline-flex; align-items: center; gap: 11px; border: 1px solid #f0c9b9; background: #fff7f2; color: #8d4f3b; padding: 8px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; cursor: pointer; }
+.active-filters__chip:hover { background: #ffede4; border-color: #e5a58b; }
+.active-filters__remove { font: 700 16px/1 Arial, sans-serif; }
+.active-filters__clear { border: 0; background: transparent; color: var(--accent-deep); text-decoration: underline; text-underline-offset: 4px; font-size: 11px; padding: 8px; cursor: pointer; }
+.active-filters button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+@media (max-width: 760px) {
+  .place-grid.is-list .place-card, .place-grid.is-sparse .place-card { display: flex; flex-direction: column; }
+  .place-card__image, .place-grid.is-list .place-card__image, .place-grid.is-sparse .place-card__image { min-height: 90px; height: 90px; }
+  .place-card__glyph { font-size: 45px; }
+  .place-card__body, .place-grid.is-list .place-card__body, .place-grid.is-sparse .place-card__body { padding: 19px; }
+  .place-card__status { gap: 6px; }
+  .active-filters { gap: 6px; }
+}

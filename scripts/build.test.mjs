@@ -37,7 +37,7 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
     assert.match(html, /class="mobile-nav"/, `${page}: responsive navigation`);
   }
   const catalogue = readFileSync(join(root, 'dist/directory.html'), 'utf8');
-  for (const id of ['searchForm', 'q', 'kind', 'zone', 'sort', 'cards', 'count', 'pagination']) assert.match(catalogue, new RegExp(`id="${id}"`));
+  for (const id of ['searchForm', 'q', 'kind', 'zone', 'sort', 'cards', 'count', 'pagination', 'activeFilters']) assert.match(catalogue, new RegExp(`id="${id}"`));
   assert.match(catalogue, /data-catalog="exploration"/, 'primary directory must show the full exploratory dataset');
   const home = readFileSync(join(root, 'dist/index.html'), 'utf8');
   assert.match(home, /data-home="true"/, 'homepage must expose expanded data too');
@@ -45,6 +45,11 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.match(home, /id="sampleDirectoryCount"/, 'the sample introduction must be data-driven');
   assert.doesNotMatch(home, /64 جهة|الـ64 سجل/, 'historical counts must not be hard-coded');
   assert.match(readFileSync(join(root, 'dist/place.html'), 'utf8'), /id="visitBadge"/, 'visitor readiness must be separate from publication approval');
+  const cardRenderer = readFileSync(join(root, 'dist/scripts/app.mjs'), 'utf8').split('function placeCard(place) {')[1]?.split('function renderActiveFilters')[0];
+  assert.ok(cardRenderer, 'visitor card renderer must be included');
+  assert.match(cardRenderer, /source-status/, 'source trust state must be inside each card body');
+  assert.match(cardRenderer, /visit-status/, 'visitor access state must remain independent');
+  assert.doesNotMatch(cardRenderer, /image\.src|مشهد معماري توضيحي/, 'a generic conceptual image must not masquerade as each unique place');
   assert.match(readFileSync(join(root, 'dist/contact.html'), 'utf8'), /mailto:hello@orveax.com/);
   assert.match(readFileSync(join(root, 'dist/terms.html'), 'utf8'), /زيارة/);
   assert.match(readFileSync(join(root, 'dist/privacy.html'), 'utf8'), /Google Fonts/);
