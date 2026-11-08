@@ -175,7 +175,7 @@ test('D28 tenant and service discovery preserves approvals and all earlier sourc
   assert.equal(batch28.filter(p => p.kind === 'Authority').length, 5);
   assert.equal(batch28.filter(p => p.role === 'Public Service Point').length, 4);
   assert.ok(batch28.every(p => p.last_checked === '2026-11-08'));
-  assert.ok(batch28.every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
+  assert.ok(batch28.filter(p => p.id !== 'NC-241').every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
   assert.ok(batch28.every(p => !p.visitor_hours && !p.directions_url && !p.verified_entrance));
   assert.ok(batch28.every(p => p.source_url.startsWith('https://')));
   assert.ok(batch28.every(p => ['Building Confirmed', 'Floor Confirmed'].includes(p.address_precision)));
@@ -222,4 +222,34 @@ test('D28 tenant and service discovery preserves approvals and all earlier sourc
   assert.match(readFileSync(join(root, 'dist/directory.html'), 'utf8'), /data-kind="Building"/);
   assert.match(readFileSync(join(root, 'dist/index.html'), 'utf8'), /data-kind="Building"/);
   assert.ok(!readdirSync(join(root, 'dist')).includes('prototype'));
+});
+
+test('D29 evidence-based visitor enrichment remains service-specific and does not enable unverified navigation', () => {
+  const {places} = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
+  const byId = id => places.find(p => p.id === id);
+  const qiz = byId('NC-241');
+  assert.equal(qiz.address_precision, 'Floor Confirmed');
+  assert.match(qiz.address, /5140/);
+  assert.match(qiz.address, /مدخل الزائرين/);
+  assert.equal(qiz.public_access, 'By Appointment');
+  assert.equal(qiz.service_availability, 'On-site Confirmed');
+  assert.match(qiz.service_type, /info@qizegypt\.gov\.eg/);
+  assert.equal(qiz.visitor_hours, '', 'certificate-renewal instructions have no general public hours');
+  assert.equal(qiz.verified_entrance, false, 'a named visitors gate is not a geocoded entrance');
+  assert.equal(qiz.directions_url, '', 'never create directions without a verified arrival pin');
+
+  const ltra = byId('NC-243');
+  assert.match(ltra.office_hours, /09:00–14:30/);
+  assert.equal(ltra.visitor_hours, '', 'a unit working schedule is not public reception hours');
+  assert.equal(ltra.public_access, 'Unknown');
+  assert.equal(ltra.service_availability, 'Unknown');
+
+  assert.equal(byId('NC-52').phone, '0220541840');
+  assert.equal(byId('NC-52').public_access, 'Unknown');
+  assert.match(byId('NC-112').office_hours, /ليست ساعات استقبال/);
+  assert.equal(byId('NC-112').visitor_hours, '');
+  assert.equal(byId('NC-245').verification, 'Research', 'UDF official current reception still uncorroborated');
+  assert.equal(byId('NC-60').address_precision, 'District Only', 'EBank branch parcel remains unknown');
+  assert.ok(places.every(p => !p.directions_url && !p.verified_entrance));
+  assert.match(readFileSync(join(root, 'scripts/app.mjs'), 'utf8'), /تواصل مع الجهة لتأكيد موعدك/);
 });
