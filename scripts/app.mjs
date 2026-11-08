@@ -120,11 +120,11 @@ function renderPagination(pageData, places) {
 
   holder.append(element('span', 'pagination__summary', `عرض ${pageData.from}–${pageData.to} من ${pageData.total} نتيجة`));
   const controls = element('div', 'pagination__controls');
-  const addPageButton = (label, target, className = '') => {
+  const addPageButton = (label, target, className = '', { edge = false } = {}) => {
     const button = element('button', 'pagination__button ' + className, label);
     button.type = 'button';
-    button.setAttribute('aria-label', target === pageData.page ? `الصفحة ${target} الحالية` : `انتقل إلى الصفحة ${target}`);
-    if (target === pageData.page) button.setAttribute('aria-current', 'page');
+    button.setAttribute('aria-label', edge ? label : target === pageData.page ? `الصفحة ${target} الحالية` : `انتقل إلى الصفحة ${target}`);
+    if (!edge && target === pageData.page) button.setAttribute('aria-current', 'page');
     button.addEventListener('click', () => {
       currentPage = target;
       renderDirectory(places);
@@ -133,7 +133,7 @@ function renderPagination(pageData, places) {
     controls.append(button);
     return button;
   };
-  const prev = addPageButton('السابق', Math.max(1, pageData.page - 1), 'pagination__button--edge');
+  const prev = addPageButton('السابق', Math.max(1, pageData.page - 1), 'pagination__button--edge', { edge: true });
   prev.disabled = pageData.page === 1;
   const pages = [...new Set([1, pageData.pages, pageData.page - 1, pageData.page, pageData.page + 1]
     .filter(page => page >= 1 && page <= pageData.pages))].sort((a, b) => a - b);
@@ -141,7 +141,7 @@ function renderPagination(pageData, places) {
     if (i && page > pages[i - 1] + 1) controls.append(element('span', 'pagination__ellipsis', '…'));
     addPageButton(String(page), page, page === pageData.page ? 'is-active' : '');
   });
-  const next = addPageButton('التالي', Math.min(pageData.pages, pageData.page + 1), 'pagination__button--edge');
+  const next = addPageButton('التالي', Math.min(pageData.pages, pageData.page + 1), 'pagination__button--edge', { edge: true });
   next.disabled = pageData.page === pageData.pages;
   holder.append(controls);
 }

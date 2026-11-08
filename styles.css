@@ -537,7 +537,12 @@ body { font-size: 14px; line-height: 1.9; }
 .pagination__button:disabled { opacity: .4; cursor: not-allowed; }
 .pagination__ellipsis { color: var(--muted); padding: 0 3px; }
 
+/* A scrolling category rail must not impose its intrinsic width on the mobile grid. */
+.catalog-layout > * { min-width: 0; }
+.sidebar-categories { max-width: 100%; }
+
 @media (max-width: 760px) {
+  .catalog-results__head { flex-wrap: wrap; }
   .pagination { flex-direction: column; align-items: stretch; }
   .pagination__summary { text-align: center; }
   .pagination__controls { justify-content: center; }
