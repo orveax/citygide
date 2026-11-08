@@ -45,17 +45,17 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D35 directory verification preserves approvals and all earlier source-backed cohorts', () => {
+test('D36 directory verification preserves approvals and all earlier source-backed cohorts', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 261);
+  assert.equal(exploratory.places.length, 265);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 51);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 208);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 53);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 210);
   const historical = exploratory.places.filter(p => Number(p.id.slice(3)) <= 179);
   assert.equal(historical.length, 179);
   const companies = historical.filter(p => p.kind === 'Company');
@@ -183,8 +183,8 @@ test('D35 directory verification preserves approvals and all earlier source-back
   assert.equal(batch28.find(p => p.id === 'NC-240')?.building_code, 'B3-11 / B4-01 / B4-23');
   assert.equal(batch28.find(p => p.id === 'NC-243')?.phone, '0220542140');
   assert.equal(batch28.find(p => p.id === 'NC-245')?.verification, 'Research');
-  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 261);
-  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 261);
+  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 265);
+  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 265);
   for (const id of ['NC-188', 'NC-189']) {
     assert.match(batch25.find(p => p.id === id)?.service_type ?? '', /تاريخي/);
   }
@@ -396,7 +396,7 @@ test('D34 primary-source reconciliation corrects boundaries and ministerial name
 test('D35 distinguishes operating bank HQ, opened branch and planned branch without fabricating visitor routes', () => {
   const {places} = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
   const byId = id => places.find(p => p.id === id);
-  assert.deepEqual(places.filter(p => Number(p.id.slice(3)) >= 260).map(p => p.id), ['NC-260', 'NC-261']);
+  assert.deepEqual(places.filter(p => Number(p.id.slice(3)) >= 260 && Number(p.id.slice(3)) <= 261).map(p => p.id), ['NC-260', 'NC-261']);
   const reconstruction = byId('NC-260');
   assert.equal(reconstruction.zone, 'Government District');
   assert.equal(reconstruction.role, 'Administrative HQ');
@@ -417,6 +417,32 @@ test('D35 distinguishes operating bank HQ, opened branch and planned branch with
   assert.equal(byId('NC-81').verification, 'Research', 'Raya facilities-management assignment is not a Raya public office');
   assert.equal(byId('NC-245').verification, 'Research', 'customer centre primary confirmation remains outstanding');
   assert.ok(places.every(p => !p.verified_entrance && !p.directions_url));
+  const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
+  assert.equal(approved.places.length, 2);
+});
+
+test('D36 adds four distinct occupants with narrowly bounded source claims and corrects NBE branch history', () => {
+  const {places} = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
+  const byId = id => places.find(p => p.id === id);
+  const added = places.filter(p => Number(p.id.slice(3)) >= 262);
+  assert.deepEqual(added.map(p => p.id), ['NC-262', 'NC-263', 'NC-264', 'NC-265']);
+  assert.deepEqual(added.map(p => p.verification), ['Source Confirmed', 'Source Confirmed', 'Research', 'Research']);
+  assert.ok(added.every(p => p.kind === 'Company' && p.zone === 'Financial District'));
+  assert.ok(added.every(p => p.role === 'Administrative HQ' && p.address_precision === 'Building Confirmed'));
+  assert.ok(added.every(p => p.service_availability === 'Unknown' && p.public_access === 'Unknown'));
+  assert.ok(added.every(p => !p.visitor_hours && !p.office_hours && !p.directions_url && !p.verified_entrance));
+  assert.ok(added.every(p => p.last_checked === '2026-11-08' && p.source_url.startsWith('https://')));
+  assert.equal(byId('NC-262').building_code, 'Audaz Mall');
+  assert.equal(byId('NC-263').building_code, 'Pioneer Plaza Business Complex');
+  assert.equal(byId('NC-265').phone, '', 'conflicting directory numbers never become a public dialing action');
+  const nbe = byId('NC-49');
+  assert.equal(nbe.service_availability, 'On-site Confirmed', 'own bank opening statement proves branch existence');
+  assert.equal(nbe.building_code, 'A1-26', 'financial district plot unchanged');
+  assert.equal(nbe.public_access, 'Unknown', 'historical opening does not guarantee current walk-in hours');
+  for (const id of ['NC-74', 'NC-75', 'NC-79', 'NC-224']) {
+    assert.equal(places.filter(p => p.id === id).length, 1, `${id}: prior occupant remains unique`);
+  }
+  assert.ok(places.every(p => !p.directions_url && !p.verified_entrance));
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   assert.equal(approved.places.length, 2);
 });
