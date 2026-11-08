@@ -1,4 +1,4 @@
-import { canonicalizePlaces, filterPlaces, paginatePlaces, resolveCanonicalPlace, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
+import { canonicalizePlaces, facetCounts, filterPlaces, paginatePlaces, resolveCanonicalPlace, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 import { mapsDirectionsUrl, mapsSearchUrl } from './maps.mjs';
 
 const $ = id => document.getElementById(id);
@@ -129,6 +129,44 @@ function renderActiveFilters(places, filters) {
   }
 }
 
+function renderFacets(places, filters) {
+  if (!$('districtShortcuts')) return;
+  const zones = facetCounts(places, filters, 'zone');
+  const kinds = facetCounts(places, filters, 'kind');
+
+  for (const [field, counts] of [['zone', zones], ['kind', kinds]]) {
+    for (const option of $(field).options) {
+      // Preserve the human label when counts change on every search keystroke.
+      if (!option.dataset.label) option.dataset.label = option.textContent;
+      option.textContent = `${option.dataset.label} (${counts[option.value] || 0})`;
+    }
+  }
+  document.querySelectorAll('.sidebar-categories [data-kind]').forEach(button => {
+    let count = button.querySelector('.category-chip__count');
+    if (!count) {
+      count = element('span', 'category-chip__count');
+      button.append(count);
+    }
+    count.textContent = String(kinds[button.dataset.kind] || 0);
+  });
+
+  const shortcuts = $('districtShortcuts');
+  shortcuts.replaceChildren(element('span', 'district-shortcuts__label', 'تصفح حسب المنطقة'));
+  for (const zone of ['', 'Government District', 'Financial District', 'Other']) {
+    const selected = filters.zone === zone;
+    const button = element('button', 'district-shortcuts__button' + (selected ? ' is-active' : ''));
+    button.type = 'button';
+    button.setAttribute('aria-pressed', String(selected));
+    button.append(element('span', '', zone ? labelZone(zone) : 'كل المناطق'));
+    button.append(element('strong', 'district-shortcuts__count', String(zones[zone] || 0)));
+    button.addEventListener('click', () => {
+      $('zone').value = zone;
+      renderDirectory(places, { resetPage: true });
+    });
+    shortcuts.append(button);
+  }
+}
+
 function syncChips() {
   const selected = $('kind').value;
   document.querySelectorAll('[data-kind]').forEach(chip => {
@@ -196,6 +234,7 @@ function renderDirectory(places, { resetPage = false } = {}) {
   else (home ? results.slice(0, 6) : pageData.items).forEach(place => target.append(placeCard(place)));
   if (!home) renderPagination(pageData, places);
   renderActiveFilters(places, filters);
+  renderFacets(places, filters);
   syncChips(); syncViews();
   const url = new URL(location.href);
   for (const field of ['q', 'kind', 'zone', 'sort']) {

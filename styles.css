@@ -656,3 +656,21 @@ body { font-size: 14px; line-height: 1.9; }
   .place-card__status { gap: 6px; }
   .active-filters { gap: 6px; }
 }
+
+/* UX-03: live, contextual directory facets; these are counts, not approvals. */
+.district-shortcuts { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: -9px 0 20px; min-width: 0; }
+.district-shortcuts__label { color: var(--muted); font-size: 11px; font-weight: 600; margin-inline-end: 4px; }
+.district-shortcuts__button { display: inline-flex; align-items: center; gap: 10px; min-width: 0; border: 1px solid #dce4e8; background: #fff; border-radius: 13px; padding: 10px 12px; color: #596775; font-size: 11px; font-weight: 700; cursor: pointer; transition: border-color .18s, background .18s, box-shadow .18s; }
+.district-shortcuts__button:hover { border-color: #e4ac96; background: #fffaf7; }
+.district-shortcuts__button.is-active { border-color: #e7ab93; background: #fff4ec; color: #934b34; box-shadow: 0 2px 8px rgb(154 86 53 / 7%); }
+.district-shortcuts__count { border-radius: 7px; padding: 3px 6px; background: #f0f3f5; color: #475563; font: 700 10px Manrope, sans-serif; }
+.district-shortcuts__button.is-active .district-shortcuts__count { color: #934b34; background: #ffe5d8; }
+.district-shortcuts__button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.sidebar-categories .category-chip__count { margin-inline-start: auto; border-radius: 7px; padding: 3px 7px; background: #f2f4f6; color: #63717d; font: 700 10px Manrope, sans-serif; }
+.sidebar-categories .category-chip.is-active .category-chip__count { background: #ffe9df; color: #934b34; }
+@media (max-width: 760px) {
+  .district-shortcuts { margin: -5px 0 16px; gap: 6px; }
+  .district-shortcuts__label { flex-basis: 100%; margin-bottom: 2px; }
+  .district-shortcuts__button { padding: 9px 10px; gap: 7px; font-size: 10px; }
+  .sidebar-categories .category-chip__count { margin-inline-start: 2px; }
+}

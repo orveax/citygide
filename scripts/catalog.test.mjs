@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { filterPlaces, normalize, paginatePlaces, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
+import { facetCounts, filterPlaces, normalize, paginatePlaces, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 
 const places = [
   { slug: 'a', name_ar: 'وزارة الاتصالات', name_en: 'Communications Ministry', address: 'الحي الحكومي', aliases: ['MCIT'], building_code: '10B', service_type: '', zone: 'Government District', kind: 'Government', last_checked: '2026-11-02' },
@@ -17,6 +17,14 @@ test('Arabic and Latin aliases both find the same approved item', () => {
 test('zone and kind compose without leaking unrelated cards', () => {
   assert.deepEqual(filterPlaces(places, { kind: 'Bank', zone: 'Government District' }), []);
   assert.equal(filterPlaces(places, { kind: 'Bank', zone: 'Financial District' })[0].slug, 'b');
+});
+test('facet counts ignore their own selection but respect query and other filters', () => {
+  assert.deepEqual(facetCounts(places, { kind: 'Bank', zone: 'Government District' }, 'zone'), { '': 1, 'Financial District': 1 });
+  assert.deepEqual(facetCounts(places, { kind: 'Bank', zone: 'Government District' }, 'kind'), { '': 1, Government: 1 });
+  assert.deepEqual(facetCounts(places, { q: 'MCIT', kind: 'Bank' }, 'zone'), { '': 0 });
+  assert.deepEqual(facetCounts(places, { q: 'MCIT', kind: 'Bank' }, 'kind'), { '': 1, Government: 1 });
+  assert.deepEqual(places.map(p => p.slug), ['a', 'b'], 'faceting must not mutate the input catalogue');
+  assert.throws(() => facetCounts(places, {}, 'verification'), /Unsupported directory facet/);
 });
 test('recent sorting uses checked date with stable Arabic fallback', () => {
   assert.deepEqual(filterPlaces(places, { sort: 'recent' }).map(p => p.slug), ['b', 'a']);

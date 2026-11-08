@@ -112,3 +112,14 @@ export function filterPlaces(places, filters = {}) {
     return a.name_ar.localeCompare(b.name_ar, 'ar');
   });
 }
+
+// Facets are calculated from the same catalogue as the results. The target
+// field is intentionally ignored so users can see the available alternatives
+// without losing their active query or other filters.
+export function facetCounts(places, filters = {}, field) {
+  if (!['zone', 'kind'].includes(field)) throw new Error('Unsupported directory facet');
+  const scoped = filterPlaces(places, { ...filters, [field]: '' });
+  const counts = { '': scoped.length };
+  for (const place of scoped) counts[place[field]] = (counts[place[field]] || 0) + 1;
+  return counts;
+}
