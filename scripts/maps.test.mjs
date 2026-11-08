@@ -54,7 +54,9 @@ test('profile navigation decision never promotes a building search into directio
 test('unapproved Research records receive no Maps shortcut even with a building address', () => {
   const decision = navigationDecision({ ...base, verification: 'Research' }, { exploration: true });
   assert.equal(decision.mode, 'unavailable');
+  assert.equal(decision.reason, 'research');
   assert.equal(decision.href, '');
+  assert.match(decision.notice, /عنوان المبنى/);
 });
 
 test('only a verified entrance on a Published profile can be navigated to', () => {

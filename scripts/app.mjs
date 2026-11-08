@@ -330,7 +330,9 @@ function setupDetail(places) {
   if (navigation.href) {
     mapActions.append(link(navigation.label, navigation.href, navigation.mode === 'directions' ? 'primary' : ''));
   } else {
-    mapActions.append(element('p', 'source-note', 'لا توجد نقطة وصول دقيقة أو عنوان مبنى موثق لعرضه على الخريطة.'));
+    mapActions.append(element('p', 'source-note', navigation.reason === 'research'
+      ? 'الخرائط معطّلة لهذا السجل البحثي حتى استكمال التحقق.'
+      : 'لا توجد نقطة وصول أو عنوان مبنى بدقة كافية لعرضه على الخريطة.'));
   }
   setText('mapNotice', navigation.notice);
   $('source').append(link(exploration && place.verification !== 'Published' ? 'راجع مصدر البيانات' : 'افتح المصدر الرسمي', place.source_url));
