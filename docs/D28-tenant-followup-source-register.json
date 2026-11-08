@@ -1,0 +1,41 @@
+{
+  "batch": "D28-followup",
+  "checked_at": "2026-11-08",
+  "governance_note": "D28 follow-up against the D37 baseline, not a replay of historical D28. Official ITDA registry facts establish historical registered office addresses only. No 2026 physical occupancy, live customer counter, visitor hours, entrance, or map pin is inferred. The bulletins prohibit reproduction, so only independently stated factual identity/unit/date metadata and source URLs are retained. Notion records NC-266 and NC-267 were created before the snapshot append.",
+  "records": [
+    {
+      "id": "NC-266",
+      "slug": "tiba-al-aidy-cairo-business-plaza-registered-office",
+      "name_ar": "طيبة العايدي لتصنيع الألومنيوم والمعادن — عنوان كايرو بيزنس بلازا المسجل",
+      "name_en": "Tiba Al-Aidy Aluminum & Metals — Cairo Business Plaza Registered Office",
+      "kind": "Company",
+      "role": "Administrative HQ",
+      "zone": "Financial District",
+      "address": "الوحدة A-411، الطابق الرابع، مبنى كايرو بيزنس بلازا، منطقة البنوك، الحي المالي، العاصمة الإدارية الجديدة — تعديل عنوان سجل تجاري بتاريخ 16 أكتوبر 2024",
+      "building_code": "Cairo Business Plaza / A-411",
+      "address_precision": "Floor Confirmed",
+      "service_type": "عنوان شركة تصنيع ألومنيوم ومعادن مسجل تاريخيًا؛ لم تثبت خدمات للزوار داخل المكتب أو إشغاله في نوفمبر 2026",
+      "source_url": "https://itda.gov.eg/CRM/879/CRA109.pdf",
+      "source_category": "Official Authority",
+      "verification": "Source Confirmed",
+      "evidence_scope": "ITDA commercial bulletin, October 2024, address amendment item 26 dated 2024-10-16; unit A-411 floor four of Cairo Business Plaza in the banks zone. No confirmation of 2026 occupation or visitor access."
+    },
+    {
+      "id": "NC-267",
+      "slug": "santorini-agricultural-development-siac-registered-office",
+      "name_ar": "سانتوريني للتنمية الزراعية — عنوان سياك المسجل",
+      "name_en": "Santorini Agricultural Development — SIAC Building Registered Office",
+      "kind": "Company",
+      "role": "Administrative HQ",
+      "zone": "Financial District",
+      "address": "مكتب 608، الدور السادس، مبنى سياك، الحي المالي، العاصمة الإدارية الجديدة — قيد شركة بتاريخ 4 ديسمبر 2024",
+      "building_code": "SIAC Building / Office 608 / Floor 6",
+      "address_precision": "Floor Confirmed",
+      "service_type": "عنوان قانوني تاريخي لشركة التنمية الزراعية؛ لا دليل على استقبال عملاء أو نشاط مكتب في 2026",
+      "source_url": "https://itda.gov.eg/CRM/881/CRA53.pdf",
+      "source_category": "Official Authority",
+      "verification": "Source Confirmed",
+      "evidence_scope": "ITDA Cairo commercial bulletin December 2024, item 494 Santorini Agricultural Development, registered 2024-12-04. The SIAC floor six office 608 address ends item 494, not adjacent item 495 Mohamed Saad Al-Naggar pharmacy. Historical registered address only."
+    }
+  ]
+}

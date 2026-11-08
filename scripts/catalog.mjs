@@ -6,9 +6,14 @@ const ARABIC_MARKS = /[\u064B-\u065F\u0670\u0640]/g;
 // place should be counted or displayed in the visitor catalogue.
 export const CANONICAL_PLACE_IDS = Object.freeze({ 'NC-35': 'NC-202' });
 
+// D28 follow-up: keep disputed records in the audit snapshot, not in the
+// visitor directory until the actual in-scope district is independently fixed.
+export const SCOPE_QUARANTINE_PLACE_IDS = Object.freeze(['NC-263']);
+
 export function canonicalizePlaces(places) {
   const ids = new Set(places.map(place => place.id));
-  return places.filter(place => !ids.has(CANONICAL_PLACE_IDS[place.id]));
+  const quarantined = new Set(SCOPE_QUARANTINE_PLACE_IDS);
+  return places.filter(place => !ids.has(CANONICAL_PLACE_IDS[place.id]) && !quarantined.has(place.id));
 }
 
 export function resolveCanonicalPlace(places, slug) {
