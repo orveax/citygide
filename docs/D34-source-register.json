@@ -1,0 +1,110 @@
+{
+  "batch": "D34",
+  "checked_at": "2026-11-08",
+  "governance_note": "Six formerly Research entities promoted only for a verified legal branch decision or named development project. One independently named and officially contacted environmental emergency operations room added. Two 2026 ministry names updated. Rock Capital 1 corrected to the Government District using its developer's own portfolio. None of this verifies walk-in services, tenants, visitor gates, hours or map pins. Outreach remains deferred.",
+  "records": [
+    {
+      "id": "NC-259",
+      "slug": "eeaa-central-environmental-emergency-operations-new-capital",
+      "name_ar": "غرفة العمليات المركزية لجهاز شؤون البيئة — بلاغات الطوارئ",
+      "name_en": "EEAA Central Operations Room — Environmental Emergencies",
+      "aliases": ["غرفة العمليات المركزية للبيئة", "Environmental Emergencies Operations Room"],
+      "kind": "Authority",
+      "role": "Facility",
+      "zone": "Government District",
+      "address": "مقر وزارة التنمية المحلية والبيئة — جهاز شؤون البيئة، الحي الحكومي، العاصمة الإدارية الجديدة؛ رقم الطابق والمدخل غير محددين",
+      "building_code": "EEAA / Ministry of Local Development and Environment",
+      "address_precision": "Building Confirmed",
+      "service_type": "استقبال البلاغات البيئية وحوادث التلوث هاتفيًا على مدار 24 ساعة وفق إعلان الجهاز؛ الزيارة الشخصية غير مثبتة",
+      "phone": "0220532502",
+      "email": "emergency@moenv.gov.eg",
+      "website": "https://www.eeaa.gov.eg/",
+      "source_url": "https://www.eeaa.gov.eg/ContactUs/2/index",
+      "source_category": "Official Authority",
+      "verification": "Source Confirmed",
+      "evidence_scope": "The EEAA's own central-operations contact page confirms its government-district location, 0220532502/03/04 telephone numbers, emergency@moenv.gov.eg email, and continuous 24h environmental crisis reporting since March 2024; it does not establish in-person visitor access or an arrival pin. Different operational unit from NC-110 EEAA agency and NC-258 EPF fund."
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "NC-56",
+      "name_ar": "الهيئة العامة للرقابة المالية — فرع منشأ بالحي المالي (الموقع قيد التحقق)",
+      "source_url": "https://fra.gov.eg/fra_news/الأول-من-نوعه-خارج-العاصمة-افتتاح-مكتب/",
+      "source_category": "Official Authority",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "FRA's October 2026 release cites Prime Minister Decision 4049/2025 establishing a branch in the Financial District, but names no premises or operational opening. Reclassified role from Public Service Point to Facility."
+    },
+    {
+      "id": "NC-83",
+      "name_ar": "جيتس للتطوير — مشروع أوداز",
+      "source_url": "https://gatesdevelopments.com/about-us/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Gates developer explicitly says AUDAZ administrative twin building covers 16,800m2 in the Financial District. Confirms the developer's asset, not its current office or tenant occupancy."
+    },
+    {
+      "id": "NC-88",
+      "name_ar": "روابط للتطوير — مشروع سيلا بيزنس هب",
+      "source_url": "https://modpluspartners.com/projects/sela-business-hub/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Named design consultant confirms Rwabet's SELA office development at the Government/Financial district boundary; project explicitly In Progress and not proof of an operating company office."
+    },
+    {
+      "id": "NC-89",
+      "name_ar": "بيراميدز للتطوير — جراند سكوير",
+      "source_url": "https://site.pyramidsdevelopments.com/grand-square/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Developer's Grand Square landing page explicitly places the commercial/administrative mall at the entrance to the ministries in the business district; the developer announced its opening in 2022. No particular tenant or entrance is verified."
+    },
+    {
+      "id": "NC-90",
+      "name_ar": "أليانز مصر — مشروع المقر الجديد",
+      "source_url": "https://archimid.com/portfolio/allianz-2/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Architect and site supervisor identifies Allianz Headquarters project on Plot 11-B2 in the Financial District; confirms construction/design scope only, not Allianz's live operations or reception."
+    },
+    {
+      "id": "NC-91",
+      "name_ar": "البطل للتطوير — مشروع روك كابيتال 1",
+      "source_url": "https://rock-developments.com/portfolio/rock-capital1-new-capital/",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Developer places Rock Capital 1 in Governmental District Block #1 by Presidential Road. Corrected wrong Financial District/26B.1 inference; now agrees with existing building NC-147. Ownership of project does not prove company tenant HQ."
+    },
+    {
+      "id": "NC-17",
+      "name_ar": "وزارة التنمية المحلية والبيئة",
+      "source_url": "https://www.parliament.gov.eg/News_Show.aspx?frm=5686",
+      "source_category": "Official Authority",
+      "old_verification": "Source Confirmed",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Parliament-confirmed February 2026 ministry portfolio merged Environment into Local Development; preserve older ministry aliases and existing official ministry address."
+    },
+    {
+      "id": "NC-39",
+      "name_ar": "وزارة الخارجية والتعاون الدولي والمصريين بالخارج — مقر العاصمة",
+      "source_url": "https://cabinet.gov.eg/News/Details/86414",
+      "source_category": "Official Authority",
+      "old_verification": "Source Confirmed",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "The November 2026 Cabinet announcement uses Ministry of Foreign Affairs, International Cooperation and Egyptian Expatriates. No separately functioning Ministry of International Cooperation created; older Ministry of Foreign Affairs retained as alias."
+    }
+  ],
+  "exclusions": [
+    {"candidate": "General Organization of Teaching Hospitals and Institutes", "reason": "Already NC-53; official GOTHI contact is not a new entity."},
+    {"candidate": "Industrial Development Authority", "reason": "Own 2026 contact page gives head office at 42 El-Salam Axis, Fifth Settlement, not the target capital districts."},
+    {"candidate": "Ministry of International Cooperation as separate ministry", "reason": "The February 2026 Cabinet reshuffle transferred international cooperation to Foreign Affairs; legacy ministry site is stale."},
+    {"candidate": "Concelio Studio Consultants, Proptech AI, MMZ Developments", "reason": "Already NC-208, NC-207 and NC-247 respectively; source-gazette hits are duplicates."},
+    {"candidate": "HDB New Capital public branch", "reason": "Bank's live branch locator proves Government District ATMs (NC-143/144), not an independently open financial-district branch."},
+    {"candidate": "SCAS Spaces / NC-82", "reason": "Own pages conflict between Financial District and Central Business District; no correct visitor address established."}
+  ]
+}
