@@ -45,23 +45,23 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D32 directory expansion preserves approvals and all earlier source-backed cohorts', () => {
+test('D33 directory verification preserves approvals and all earlier source-backed cohorts', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 257);
+  assert.equal(exploratory.places.length, 258);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 80);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 175);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 60);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 196);
   const historical = exploratory.places.filter(p => Number(p.id.slice(3)) <= 179);
   assert.equal(historical.length, 179);
   const companies = historical.filter(p => p.kind === 'Company');
   assert.equal(companies.length, 41);
-  assert.equal(companies.filter(p => p.verification === 'Research').length, 28);
-  assert.equal(companies.filter(p => p.role === 'Public Service Point' && p.verification === 'Source Confirmed').length, 6);
+  assert.equal(companies.filter(p => p.verification === 'Research').length, 17);
+  assert.equal(companies.filter(p => p.role === 'Public Service Point' && p.verification === 'Source Confirmed').length, 7);
   assert.equal(companies.filter(p => p.role === 'Administrative HQ' && p.verification === 'Source Confirmed').length, 5);
   const buildings = historical.filter(p => p.kind === 'Building');
   assert.equal(buildings.length, 50);
@@ -82,37 +82,37 @@ test('D32 directory expansion preserves approvals and all earlier source-backed 
   assert.equal(edge.verified_entrance, false);
   const added = exploratory.places.filter(p => Number(p.id.slice(3)) >= 108 && Number(p.id.slice(3)) <= 114);
   assert.deepEqual(added.map(p => p.id), ['NC-108', 'NC-109', 'NC-110', 'NC-111', 'NC-112', 'NC-113', 'NC-114']);
-  assert.equal(added.filter(p => p.verification === 'Source Confirmed').length, 6);
-  assert.equal(added.filter(p => p.verification === 'Research').length, 1);
+  assert.equal(added.filter(p => p.verification === 'Source Confirmed').length, 7);
+  assert.equal(added.filter(p => p.verification === 'Research').length, 0);
   assert.ok(added.every(p => p.public_access === 'Unknown' && !p.verified_entrance && !p.directions_url));
-  assert.ok(added.every(p => p.source_url.startsWith('https://') && p.last_checked === '2026-11-07'));
+  assert.ok(added.every(p => p.source_url.startsWith('https://') && ['2026-11-07', '2026-11-08'].includes(p.last_checked)));
   assert.ok(added.every(p => !p.visitor_hours), 'an official address does not imply current walk-in hours');
   assert.equal(added.find(p => p.id === 'NC-108')?.building_code, 'NI-1');
   assert.equal(added.find(p => p.id === 'NC-114')?.service_availability, 'Unknown');
   const batch22 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 115 && Number(p.id.slice(3)) <= 135);
   assert.deepEqual(batch22.map(p => p.id), Array.from({length: 21}, (_, i) => `NC-${i + 115}`));
-  assert.equal(batch22.filter(p => p.verification === 'Source Confirmed').length, 15);
-  assert.equal(batch22.filter(p => p.verification === 'Research').length, 6);
+  assert.equal(batch22.filter(p => p.verification === 'Source Confirmed').length, 16);
+  assert.equal(batch22.filter(p => p.verification === 'Research').length, 5);
   assert.equal(batch22.filter(p => p.kind === 'Building').length, 8);
   assert.equal(batch22.filter(p => p.kind === 'Bank').length, 6);
   assert.equal(batch22.filter(p => p.kind === 'Authority').length, 5);
   assert.equal(batch22.filter(p => p.kind === 'Company').length, 2);
   assert.ok(batch22.every(p => p.service_availability === 'Unknown' && p.public_access === 'Unknown'));
   assert.ok(batch22.every(p => !p.verified_entrance && !p.directions_url && !p.visitor_hours));
-  assert.ok(batch22.every(p => p.source_url.startsWith('https://') && p.last_checked === '2026-11-07'));
+  assert.ok(batch22.every(p => p.source_url.startsWith('https://') && ['2026-11-07', '2026-11-08'].includes(p.last_checked)));
   assert.ok(batch22.filter(p => p.verification === 'Research').every(p => p.source_category === 'Secondary News' || p.id === 'NC-117'));
   assert.equal(batch22.find(p => p.id === 'NC-121')?.source_category, 'Official Business');
   assert.equal(batch22.find(p => p.id === 'NC-123')?.verification, 'Research', 'planned agricultural branch is not visitor-ready');
   const batch23 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 136 && Number(p.id.slice(3)) <= 159);
   assert.deepEqual(batch23.map(p => p.id), Array.from({length: 24}, (_, i) => `NC-${i + 136}`));
   assert.deepEqual(Object.fromEntries(['Authority', 'Bank', 'Building', 'Company'].map(kind => [kind, batch23.filter(p => p.kind === kind).length])), {Authority: 4, Bank: 3, Building: 11, Company: 6});
-  assert.equal(batch23.filter(p => p.verification === 'Source Confirmed').length, 14);
-  assert.equal(batch23.filter(p => p.verification === 'Research').length, 10);
+  assert.equal(batch23.filter(p => p.verification === 'Source Confirmed').length, 15);
+  assert.equal(batch23.filter(p => p.verification === 'Research').length, 9);
   assert.ok(batch23.every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
   assert.ok(batch23.every(p => !p.directions_url && !p.verified_entrance && !p.visitor_hours));
   assert.ok(batch23.every(p => p.source_url.startsWith('https://') && ['2026-11-07', '2026-11-08'].includes(p.last_checked)));
   assert.equal(batch23.find(p => p.id === 'NC-137')?.address_precision, 'Floor Confirmed', 'business-issued office and floor');
-  assert.equal(batch23.find(p => p.id === 'NC-145')?.verification, 'Research', 'NBK construction is not a live banking branch');
+  assert.equal(batch23.find(p => p.id === 'NC-145')?.verification, 'Source Confirmed', 'NBK building project is sourced but not a live banking branch');
   assert.equal(batch23.find(p => p.id === 'NC-146')?.verification, 'Research', 'new EGX site is still a construction record');
   assert.equal(batch23.find(p => p.id === 'NC-151')?.building_code, '10B-L2M');
   assert.equal(batch23.find(p => p.id === 'NC-159')?.address_precision, 'Floor Confirmed');
@@ -183,8 +183,8 @@ test('D32 directory expansion preserves approvals and all earlier source-backed 
   assert.equal(batch28.find(p => p.id === 'NC-240')?.building_code, 'B3-11 / B4-01 / B4-23');
   assert.equal(batch28.find(p => p.id === 'NC-243')?.phone, '0220542140');
   assert.equal(batch28.find(p => p.id === 'NC-245')?.verification, 'Research');
-  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 257);
-  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 257);
+  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 258);
+  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 258);
   for (const id of ['NC-188', 'NC-189']) {
     assert.match(batch25.find(p => p.id === id)?.service_type ?? '', /تاريخي/);
   }
@@ -293,7 +293,7 @@ test('D31 official expansion adds four non-duplicate entities without fabricated
 
 test('D32 primary-source expansion and ministerial reconciliations have no invented visitor details', () => {
   const {places} = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
-  const batch = places.filter(p => Number(p.id.slice(3)) >= 250);
+  const batch = places.filter(p => Number(p.id.slice(3)) >= 250 && Number(p.id.slice(3)) <= 257);
   assert.deepEqual(batch.map(p => p.id), Array.from({length: 8}, (_, i) => `NC-${250 + i}`));
   assert.equal(batch.filter(p => p.kind === 'Company').length, 5);
   assert.equal(batch.filter(p => p.kind === 'Authority').length, 2);
@@ -314,4 +314,39 @@ test('D32 primary-source expansion and ministerial reconciliations have no inven
     assert.ok(entity.source_url.startsWith('https://'));
     assert.ok(!entity.visitor_hours && !entity.directions_url && !entity.verified_entrance);
   }
+});
+
+test('D33 confirms 20 narrow source claims and adds exactly one unique authority without enabling visits', () => {
+  const {places} = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
+  const ids = ['NC-19', 'NC-23', 'NC-24', 'NC-30', 'NC-33', 'NC-58', 'NC-63', 'NC-68', 'NC-69', 'NC-70', 'NC-71', 'NC-72', 'NC-73', 'NC-84', 'NC-85', 'NC-86', 'NC-87', 'NC-114', 'NC-117', 'NC-145'];
+  for (const id of ids) {
+    const place = places.find(p => p.id === id);
+    assert.ok(place, `${id}: still present`);
+    assert.equal(place.verification, 'Source Confirmed', `${id}: official-source fact reconciled`);
+    assert.equal(place.last_checked, '2026-11-08');
+    assert.equal(place.public_access, 'Unknown');
+    assert.equal(place.visitor_hours, '');
+    assert.equal(place.directions_url, '');
+    assert.equal(place.verified_entrance, false);
+    assert.ok(place.source_url.startsWith('https://'));
+  }
+  const added = places.filter(p => Number(p.id.slice(3)) >= 258);
+  assert.equal(added.length, 1);
+  assert.equal(added[0].id, 'NC-258');
+  assert.equal(added[0].kind, 'Authority');
+  assert.equal(added[0].zone, 'Government District');
+  assert.equal(added[0].address_precision, 'Building Confirmed');
+  assert.match(added[0].name_ar, /صندوق حماية البيئة/);
+  assert.equal(added[0].email, 'epf@moenv.gov.eg');
+  assert.equal(added[0].verification, 'Source Confirmed');
+  assert.equal(added[0].service_availability, 'Unknown');
+  assert.equal(added[0].public_access, 'Unknown');
+  assert.equal(added[0].visitor_hours, '');
+  assert.equal(added[0].office_hours, '');
+  assert.equal(added[0].directions_url, '');
+  assert.equal(added[0].verified_entrance, false);
+  assert.ok(places.some(p => p.id === 'NC-110' && p.name_ar.includes('جهاز شؤون البيئة')));
+  assert.ok(!added.some(p => p.name_ar === places.find(x => x.id === 'NC-110').name_ar), 'no D33 duplicate of NC-110');
+  assert.ok(places.some(p => p.id === 'NC-52' && p.name_ar.includes('البرية والجافة')));
+  assert.ok(!added.some(p => p.name_ar.includes('البرية والجافة')), 'no D33 duplicate of NC-52');
 });
