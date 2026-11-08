@@ -45,13 +45,13 @@
         <form class="search-panel" id="searchForm" role="search">
           <label class="search-field search-field--query" for="q"><span class="field-symbol" aria-hidden="true">⌕</span><span class="field-content"><span class="field-label">بتدور على إيه؟</span><input id="q" type="search" placeholder="اسم وزارة، بنك، جهة أو مبنى" autocomplete="off"></span></label>
           <label class="search-field" for="zone"><span class="field-symbol" aria-hidden="true">⌖</span><span class="field-content"><span class="field-label">المنطقة</span><select id="zone"><option value="">كل المناطق</option><option value="Government District">الحي الحكومي</option><option value="Financial District">حي المال والأعمال</option></select></span></label>
-          <label class="search-field" for="kind"><span class="field-symbol" aria-hidden="true">▦</span><span class="field-content"><span class="field-label">نوع الجهة</span><select id="kind"><option value="">كل الجهات</option><option value="Government">وزارات</option><option value="Authority">هيئات وجهات</option><option value="Bank">بنوك</option><option value="Company">شركات</option></select></span></label>
+          <label class="search-field" for="kind"><span class="field-symbol" aria-hidden="true">▦</span><span class="field-content"><span class="field-label">نوع الجهة</span><select id="kind"><option value="">كل الجهات</option><option value="Government">وزارات</option><option value="Authority">هيئات وجهات</option><option value="Bank">بنوك</option><option value="Company">شركات</option><option value="Building">مبانٍ</option></select></span></label>
           <button type="submit" class="search-button"><span aria-hidden="true">⌕</span> ابحث الآن</button>
         </form>
       </div>
     </section>
 
-    <section class="explore-entry" aria-label="تجربة الدليل الموسع"><div class="container explore-entry__inner"><div><span class="section-kicker">LIVE DIRECTORY / EXPLORE</span><h2>64 جهة ومكانًا في دليل واحد</h2><p>ابحث بين الوزارات والبنوك والهيئات والشركات. كل بطاقة بتوضح إذا كانت معتمدة أو ما زالت قيد البحث، من غير افتراضات عن العناوين والمداخل.</p></div><a class="header-action" href="directory.html">استكشف جميع السجلات <span aria-hidden="true">←</span></a></div></section>
+    <section class="explore-entry" aria-label="تجربة الدليل الموسع"><div class="container explore-entry__inner"><div><span class="section-kicker">LIVE DIRECTORY / EXPLORE</span><h2><span id="exploreEntryCount">…</span> جهة ومكانًا في دليل واحد</h2><p>ابحث بين الوزارات والبنوك والهيئات والشركات. كل بطاقة بتوضح إذا كانت معتمدة أو ما زالت قيد البحث، من غير افتراضات عن العناوين والمداخل.</p></div><a class="header-action" href="directory.html">استكشف جميع السجلات <span aria-hidden="true">←</span></a></div></section>
 
     <section class="categories-section" aria-labelledby="categories-heading">
       <div class="container">
@@ -69,8 +69,8 @@
 
     <section class="section listings-section" id="places" aria-labelledby="places-heading">
       <div class="container">
-        <div class="section-head"><div><span class="section-kicker">EXPLORE THE DIRECTORY</span><h2 id="places-heading">وجهتك تبدأ من هنا</h2><p>نماذج من الدليل الموسّع؛ افتح جميع النتائج للبحث في الـ64 سجلًا.</p></div><a class="text-link" href="directory.html">كل نتائج الدليل <span aria-hidden="true">←</span></a></div>
-        <div class="results-toolbar"><div class="results-summary"><strong id="count" aria-live="polite">—</strong> <span id="resultsDescription">سجلًا في الدليل — نعرض نماذج منها</span></div><div class="toolbar-actions"><label for="sort">الترتيب</label><select id="sort" aria-label="ترتيب النتائج"><option value="name">الاسم</option><option value="recent">الأحدث تحققًا</option></select><div class="view-toggle" role="group" aria-label="طريقة عرض النتائج"><button type="button" class="view-button is-active" data-view="grid" aria-label="عرض شبكي" aria-pressed="true">▦</button><button type="button" class="view-button" data-view="list" aria-label="عرض قائمة" aria-pressed="false">☰</button></div></div></div>
+        <div class="section-head"><div><span class="section-kicker">EXPLORE THE DIRECTORY</span><h2 id="places-heading">وجهتك تبدأ من هنا</h2><p>نماذج من الدليل الموسّع؛ افتح جميع النتائج للبحث في <span id="sampleDirectoryCount">…</span> سجلًا.</p></div><a class="text-link" href="directory.html">كل نتائج الدليل <span aria-hidden="true">←</span></a></div>
+        <div class="results-toolbar"><div class="results-summary"><strong id="count" aria-live="polite">—</strong> <span id="resultsDescription">سجلًا في الدليل — نعرض نماذج منها</span></div><div class="toolbar-actions"><label for="sort">الترتيب</label><select id="sort" aria-label="ترتيب النتائج"><option value="relevance">الأكثر صلة</option><option value="name">الاسم</option><option value="recent">الأحدث مراجعة</option></select><div class="view-toggle" role="group" aria-label="طريقة عرض النتائج"><button type="button" class="view-button is-active" data-view="grid" aria-label="عرض شبكي" aria-pressed="true">▦</button><button type="button" class="view-button" data-view="list" aria-label="عرض قائمة" aria-pressed="false">☰</button></div></div></div>
         <div id="cards" class="place-grid" aria-live="polite"><div class="empty-state"><div class="empty-state__icon" aria-hidden="true">⌕</div><h3>جاري تحميل الدليل…</h3></div></div>
       </div>
     </section>

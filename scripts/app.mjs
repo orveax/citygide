@@ -1,4 +1,4 @@
-import { canonicalizePlaces, filterPlaces, resolveCanonicalPlace } from './catalog.mjs';
+import { canonicalizePlaces, filterPlaces, paginatePlaces, resolveCanonicalPlace, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 import { mapsDirectionsUrl, mapsSearchUrl } from './maps.mjs';
 
 const $ = id => document.getElementById(id);
@@ -6,6 +6,8 @@ const preview = document.body.dataset.preview === 'true';
 const exploration = document.body.dataset.catalog === 'exploration';
 const home = document.body.dataset.home === 'true';
 const detailHref = exploration ? 'explore-place.html?slug=' : 'place.html?slug=';
+const PAGE_SIZE = 12;
+let currentPage = 1;
 
 const ZONES = { 'Government District': 'الحي الحكومي', 'Financial District': 'حي المال والأعمال', Other: 'المنطقة قيد التحقق' };
 const KINDS = { Government: 'وزارة', Authority: 'هيئة أو جهة', Bank: 'بنك', Company: 'شركة', Building: 'مبنى', District: 'حي' };
@@ -60,7 +62,7 @@ function emptyState(places, filters) {
     : 'جرّب اسم مختلف، أو غيّر المنطقة ونوع الجهة علشان توسّع النتائج.'));
   if (places.length && (filters.q || filters.kind || filters.zone)) {
     const reset = element('button', 'reset-filters', 'مسح كل الفلاتر');
-    reset.type = 'button'; reset.addEventListener('click', () => { $('q').value = ''; $('kind').value = ''; $('zone').value = ''; renderDirectory(places); });
+    reset.type = 'button'; reset.addEventListener('click', () => { $('q').value = ''; $('kind').value = ''; $('zone').value = ''; renderDirectory(places, { resetPage: true }); });
     holder.append(reset);
   }
   return holder;
@@ -73,20 +75,20 @@ function placeCard(place) {
   image.alt = ''; image.loading = 'lazy'; imageWrap.append(image);
   imageWrap.append(element('span', 'image-badge', labelKind(place.kind)));
   imageWrap.append(element('span', 'image-disclosure', 'مشهد معماري توضيحي'));
-  if (exploration) {
-    const stateLabel = place.verification === 'Published' ? 'منشور ومعتمد' : place.verification === 'Research' ? 'بحث مبدئي' : 'المصدر قيد المراجعة';
-    imageWrap.append(element('span', 'verification-tag verification-tag--' + (place.verification === 'Published' ? 'approved' : place.verification === 'Research' ? 'research' : 'source'), stateLabel));
-  }
+  const stateClass = place.verification === 'Published' ? 'approved' : place.verification === 'Research' ? 'research' : 'source';
+  imageWrap.append(element('span', 'verification-tag verification-tag--' + stateClass, sourceStatusLabel(place)));
   const body = element('div', 'place-card__body');
   body.append(element('span', 'place-card__eyebrow', labelZone(place.zone) + ' / ' + labelRole(place.role)));
   const title = element('h3'); title.append(link(place.name_ar, detailHref + encodeURIComponent(place.slug)));
+  const status = element('div', 'place-card__status');
+  const visitClass = place.public_access === 'By Appointment' ? 'appointment' : place.public_access === 'Walk-in Confirmed' ? 'walkin' : 'unknown';
+  status.append(element('span', 'visit-status visit-status--' + visitClass, visitStatusLabel(place)));
   const address = element('p', 'place-card__address', '⌖  ' + place.address);
   const meta = element('div', 'place-card__meta');
   meta.append(element('span', '', labelZone(place.zone)));
   meta.append(link(place.kind === 'Building' ? 'تفاصيل المبنى ←' : 'تفاصيل الجهة ←', detailHref + encodeURIComponent(place.slug)));
-  body.append(title, address, meta);
-  if (place.public_access === 'Unknown') body.append(element('p', 'place-card__note', 'شروط دخول الزوار غير مؤكدة — تواصل قبل الزيارة.'));
-  if (exploration && place.verification !== 'Published') body.append(element('p', 'place-card__verification-note', place.verification === 'Research' ? 'سجل بحثي غير معتمد؛ لا تعتمد على العنوان للزيارة.' : 'المصدر متاح، لكن هذه الصفحة لم تحصل على اعتماد النشر.'));
+  body.append(title, status, address, meta);
+  if (exploration && place.verification === 'Research') body.append(element('p', 'place-card__verification-note', 'سجل بحثي غير معتمد؛ لا تعتمد على العنوان للزيارة.'));
   card.append(imageWrap, body);
   return card;
 }
@@ -109,40 +111,84 @@ function syncViews() {
   $('cards').classList.toggle('is-list', document.body.dataset.view === 'list');
 }
 
-function renderDirectory(places) {
+function renderPagination(pageData, places) {
+  const holder = $('pagination');
+  if (!holder) return;
+  holder.replaceChildren();
+  holder.hidden = pageData.pages <= 1;
+  if (holder.hidden) return;
+
+  holder.append(element('span', 'pagination__summary', `عرض ${pageData.from}–${pageData.to} من ${pageData.total} نتيجة`));
+  const controls = element('div', 'pagination__controls');
+  const addPageButton = (label, target, className = '') => {
+    const button = element('button', 'pagination__button ' + className, label);
+    button.type = 'button';
+    button.setAttribute('aria-label', target === pageData.page ? `الصفحة ${target} الحالية` : `انتقل إلى الصفحة ${target}`);
+    if (target === pageData.page) button.setAttribute('aria-current', 'page');
+    button.addEventListener('click', () => {
+      currentPage = target;
+      renderDirectory(places);
+      document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    controls.append(button);
+    return button;
+  };
+  const prev = addPageButton('السابق', Math.max(1, pageData.page - 1), 'pagination__button--edge');
+  prev.disabled = pageData.page === 1;
+  const pages = [...new Set([1, pageData.pages, pageData.page - 1, pageData.page, pageData.page + 1]
+    .filter(page => page >= 1 && page <= pageData.pages))].sort((a, b) => a - b);
+  pages.forEach((page, i) => {
+    if (i && page > pages[i - 1] + 1) controls.append(element('span', 'pagination__ellipsis', '…'));
+    addPageButton(String(page), page, page === pageData.page ? 'is-active' : '');
+  });
+  const next = addPageButton('التالي', Math.min(pageData.pages, pageData.page + 1), 'pagination__button--edge');
+  next.disabled = pageData.page === pageData.pages;
+  holder.append(controls);
+}
+
+function renderDirectory(places, { resetPage = false } = {}) {
+  if (resetPage) currentPage = 1;
   const filters = { q: $('q').value, kind: $('kind').value, zone: $('zone').value, sort: $('sort').value };
   const results = filterPlaces(places, filters);
+  const pageData = paginatePlaces(results, currentPage, PAGE_SIZE);
+  currentPage = pageData.page;
   setText('count', String(results.length), '0');
-  setText('resultsDescription', home ? 'سجلًا في الدليل — نعرض 6 نماذج منها' : exploration ? 'نتيجة استكشافية — حالات التحقق موضحة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
+  setText('resultsDescription', home ? 'سجلًا في الدليل — نعرض 6 نماذج منها' : exploration ? 'نتيجة استكشافية — حالات المصدر والزيارة منفصلة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
   const target = $('cards'); target.replaceChildren();
-  target.classList.toggle('is-sparse', results.length === 1);
+  target.classList.toggle('is-sparse', pageData.items.length === 1);
   if (!results.length) target.append(emptyState(places, filters));
-  else (home ? results.slice(0, 6) : results).forEach(place => target.append(placeCard(place)));
+  else (home ? results.slice(0, 6) : pageData.items).forEach(place => target.append(placeCard(place)));
+  if (!home) renderPagination(pageData, places);
   syncChips(); syncViews();
   const url = new URL(location.href);
-  for (const field of ['q', 'kind', 'zone']) {
-    if (filters[field]) url.searchParams.set(field, filters[field]);
+  for (const field of ['q', 'kind', 'zone', 'sort']) {
+    if (filters[field] && !(field === 'sort' && filters.sort === 'relevance')) url.searchParams.set(field, filters[field]);
     else url.searchParams.delete(field);
   }
+  if (!home && currentPage > 1) url.searchParams.set('page', String(currentPage));
+  else url.searchParams.delete('page');
   history.replaceState(null, '', url);
 }
 
 function setupDirectory(places) {
   const fullDirectoryUrl = () => {
     const params = new URLSearchParams();
-    for (const field of ['q', 'kind', 'zone']) if ($(field).value) params.set(field, $(field).value);
+    for (const field of ['q', 'kind', 'zone', 'sort']) if ($(field).value && !(field === 'sort' && $(field).value === 'relevance')) params.set(field, $(field).value);
     return 'directory.html' + (params.size ? '?' + params.toString() : '');
   };
   const params = new URLSearchParams(location.search);
-  for (const field of ['q', 'kind', 'zone']) {
+  for (const field of ['q', 'kind', 'zone', 'sort']) {
     const value = params.get(field);
     if (value && ($(field).tagName === 'INPUT' || [...$(field).options].some(o => o.value === value))) $(field).value = value;
   }
-  $('searchForm').addEventListener('submit', event => { event.preventDefault(); if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places); $('places').scrollIntoView({ behavior: 'smooth' }); });
-  for (const field of ['q', 'kind', 'zone', 'sort']) $(field).addEventListener(field === 'q' ? 'input' : 'change', () => renderDirectory(places));
-  document.querySelectorAll('[data-kind]').forEach(button => button.addEventListener('click', () => { $('kind').value = button.dataset.kind; if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places); $('places').scrollIntoView({ behavior: 'smooth' }); }));
-  document.querySelectorAll('[data-zone-link]').forEach(a => a.addEventListener('click', event => { $('zone').value = a.dataset.zoneLink; $('kind').value = ''; $('q').value = ''; if (home) { event.preventDefault(); location.assign(fullDirectoryUrl()); return; } renderDirectory(places); }));
+  if (!home) currentPage = Number(params.get('page')) || 1;
+  $('searchForm').addEventListener('submit', event => { event.preventDefault(); if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth' }); });
+  for (const field of ['q', 'kind', 'zone', 'sort']) $(field).addEventListener(field === 'q' ? 'input' : 'change', () => renderDirectory(places, { resetPage: true }));
+  document.querySelectorAll('[data-kind]').forEach(button => button.addEventListener('click', () => { $('kind').value = button.dataset.kind; if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth' }); }));
+  document.querySelectorAll('[data-zone-link]').forEach(a => a.addEventListener('click', event => { $('zone').value = a.dataset.zoneLink; $('kind').value = ''; $('q').value = ''; if (home) { event.preventDefault(); location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); }));
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { document.body.dataset.view = button.dataset.view; syncViews(); }));
+  setText('exploreEntryCount', String(places.length), '0');
+  setText('sampleDirectoryCount', String(places.length), '0');
   renderDirectory(places);
 }
 
@@ -163,6 +209,14 @@ function setupDetail(places) {
   }
   document.title = place.name_ar + ' | دليل العاصمة' + (exploration ? ' — نسخة استكشافية' : preview ? ' — معاينة داخلية' : '');
   setText('title', place.name_ar); setText('crumbName', place.name_ar); setText('crumbZone', labelZone(place.zone));
+  const sourceBadge = document.querySelector('.verified-badge');
+  sourceBadge.textContent = 'حالة السجل: ' + sourceStatusLabel(place);
+  sourceBadge.classList.toggle('verified-badge--unapproved', place.verification !== 'Published');
+  const visitBadge = $('visitBadge');
+  if (visitBadge) {
+    visitBadge.textContent = 'الزيارة: ' + visitStatusLabel(place);
+    visitBadge.className = 'visit-status visit-status--' + (place.public_access === 'By Appointment' ? 'appointment' : place.public_access === 'Walk-in Confirmed' ? 'walkin' : 'unknown');
+  }
   setText('subtitle', labelZone(place.zone) + ' · ' + labelRole(place.role));
   setText('address', place.address); setText('precision', PRECISIONS[place.address_precision] || 'غير محدد');
   setText('role', labelKind(place.kind) + ' — ' + labelRole(place.role));
@@ -198,13 +252,8 @@ function setupDetail(places) {
     mapActions.append(element('p', 'source-note', 'لا توجد نقطة وصول دقيقة أو عنوان مبنى موثق لعرضه على الخريطة.'));
     setText('mapNotice', 'هنضيف رابط الخرائط لما تتأكد دقة موقع الجهة.');
   }
-  $('source').append(link(exploration && place.verification !== 'Published' ? 'راجع المصدر الأولي' : 'افتح المصدر الرسمي', place.source_url));
-  if (preview) document.querySelector('.verified-badge').textContent = 'معاينة داخلية · ' + place.verification;
-  if (exploration && !home) {
-    const badge = document.querySelector('.verified-badge');
-    badge.textContent = place.verification === 'Published' ? '✓ منشور ومعتمد' : place.verification === 'Research' ? '⚠ بحث مبدئي — غير معتمد للزيارة' : '⚠ مصدر أولي — لم تعتمد بيانات الزيارة';
-    badge.classList.toggle('verified-badge--unapproved', place.verification !== 'Published');
-  }
+  $('source').append(link(exploration && place.verification !== 'Published' ? 'راجع مصدر البيانات' : 'افتح المصدر الرسمي', place.source_url));
+  if (preview) sourceBadge.textContent = 'معاينة داخلية · ' + sourceStatusLabel(place);
 }
 
 try {

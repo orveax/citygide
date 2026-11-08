@@ -515,3 +515,31 @@ body { font-size: 14px; line-height: 1.9; }
 }
 
 .category-icon--building { color: #687b9a; background: #eef1f8; }
+
+/* UX-01 — independently legible source and visitor-access states. */
+.place-card__status { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 14px; }
+.visit-status { display: inline-flex; align-items: center; border-radius: 999px; padding: 6px 11px; font-size: 11px; font-weight: 600; line-height: 1.6; }
+.visit-status--unknown { color: #785c30; background: #fff5e4; }
+.visit-status--appointment { color: #355f83; background: #edf4fb; }
+.visit-status--walkin { color: #286a4b; background: #eaf7ef; }
+.detail-badges .visit-status { padding: 7px 12px; font-size: 10px; border-radius: 8px; }
+.place-card__address { min-height: 0; }
+.catalog-results { scroll-margin-top: 112px; }
+
+/* Native buttons preserve keyboard navigation and deep-linked pages. */
+.pagination { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 30px; padding: 18px 0; border-top: 1px solid var(--line); }
+.pagination[hidden] { display: none; }
+.pagination__summary { color: var(--muted); font-size: 12px; }
+.pagination__controls { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.pagination__button { background: white; border: 1px solid #dfe4ea; color: var(--ink); min-width: 42px; min-height: 42px; border-radius: 12px; padding: 8px 12px; font-size: 12px; font-weight: 600; transition: background .2s, border-color .2s; }
+.pagination__button:hover:not(:disabled) { color: var(--accent-deep); background: var(--accent-soft); border-color: #efb6a2; }
+.pagination__button.is-active { color: white; background: var(--accent); border-color: var(--accent); }
+.pagination__button:disabled { opacity: .4; cursor: not-allowed; }
+.pagination__ellipsis { color: var(--muted); padding: 0 3px; }
+
+@media (max-width: 760px) {
+  .pagination { flex-direction: column; align-items: stretch; }
+  .pagination__summary { text-align: center; }
+  .pagination__controls { justify-content: center; }
+  .pagination__button { min-width: 40px; min-height: 44px; padding: 7px 10px; }
+}

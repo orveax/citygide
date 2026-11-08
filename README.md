@@ -24,6 +24,10 @@ The visitor experience adapts discovery patterns from MadrasThemes' Finder City 
 
 See [the D08 implementation plan](docs/D08-finder-city-guide-plan.md) for the visual-to-data mapping, completed components, and remaining review steps.
 
+## UX-01 — Discovery experience refinements
+
+The [Sprint 1 implementation note](docs/UX-01-sprint1.md) records data-driven homepage totals, 12-result pagination with shareable page URLs, intent/source-aware sorting, and separate source-verification versus visitor-access labels. These are UI changes only; the Notion editorial workflow, two founder-approved profiles, map-entry safeguards, and `noindex` release boundary are unchanged.
+
 ## Running it
 
 ```bash
