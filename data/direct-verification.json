@@ -1,0 +1,80 @@
+{
+  "stage": "D30",
+  "checked_on": "2026-11-08",
+  "purpose": "Visitor-facing direct-confirmation worklist; not evidence of calls, replies, or current walk-in access.",
+  "default_status": "Not Contacted",
+  "items": [
+    {
+      "entity_code": "NC-241",
+      "priority": "P0",
+      "organization": "QIZ Unit — Ministry of Industry",
+      "channel": "Email",
+      "contact": "info@qizegypt.gov.eg",
+      "contact_source": "https://www.qizegypt.gov.eg/Content/Site/Library/14451206104053198Certificates-Renewal%28qizegypt.gov.eg%29.pdf",
+      "contact_status": "Ready To Contact",
+      "outreach_status": "Not Contacted",
+      "questions_ar": [
+        "هل الوصول إلى مكتب 5140 لاستلام الشهادات المجددة يتم دائمًا من مدخل الزائرين؟",
+        "هل يلزم تصريح دخول أو إبراز تأكيد الموعد قبل الوصول إلى البوابة؟",
+        "هل لدى الوحدة رابط خرائط رسمي لنقطة نزول الزوار أمام المدخل، وساعات استقبال المواعيد؟"
+      ],
+      "acceptable_evidence": "Written reply identifying the service, entrance, appointment requirement and dated map link; confirm coordinates independently before map navigation.",
+      "verified_outcome": null,
+      "attempts": []
+    },
+    {
+      "entity_code": "NC-243",
+      "priority": "P0",
+      "organization": "LTRA — Central Administration for Road Freight Services",
+      "channel": "Phone",
+      "contact": "0220542140",
+      "contact_source": "https://egypt.tradeportal.org/Contacts/18?l=ar",
+      "contact_status": "Ready To Contact",
+      "outreach_status": "Not Contacted",
+      "questions_ar": [
+        "هل الإدارة المركزية في الدور الثاني تستقبل مراجعي ترخيص نقل البضائع حاليًا؟",
+        "هل الزيارة مباشرة أم بحجز، وهل ساعات 09:00–14:30 هي ساعات استقبال الجمهور؟",
+        "ما بوابة دخول الزائرين والمستندات المطلوبة قبل الحضور، وهل يوجد رابط ملاحة رسمي؟"
+      ],
+      "acceptable_evidence": "Dated call log with staff name/department, exact service and answers; written corroboration required before enabling an entrance pin.",
+      "verified_outcome": null,
+      "attempts": []
+    },
+    {
+      "entity_code": "NC-245",
+      "priority": "P0",
+      "organization": "Urban Development Fund — L1M customer service",
+      "channel": "Direct Organization Channel Needed",
+      "contact": "",
+      "contact_source": "https://citymoney24.com/news/11891",
+      "contact_status": "Channel Unverified",
+      "outreach_status": "Not Contacted",
+      "questions_ar": [
+        "هل مركز خدمة العملاء في L1M – Zone 11، الدور الأرضي، يستقبل الجمهور الآن؟",
+        "ما مواعيد خدمة العملاء والخدمات التي تتطلب الحضور؟",
+        "هل يمكن تحديد بوابة الدخول ونقطة النزول المعتمدة ورابط ملاحة رسمي؟"
+      ],
+      "acceptable_evidence": "Current first-party UDF statement or identified authorized representative; press coverage of the August 2026 move alone is insufficient.",
+      "verified_outcome": null,
+      "attempts": []
+    },
+    {
+      "entity_code": "NC-60",
+      "priority": "P1",
+      "organization": "EBank — New Administrative Capital Branch",
+      "channel": "Official Call Center",
+      "contact": "16710",
+      "contact_source": "https://ebank.com.eg/ar/contact-us/",
+      "contact_status": "Ready To Contact",
+      "outreach_status": "Not Contacted",
+      "questions_ar": [
+        "ما العنوان المسجل لفرع العاصمة الجديدة: الحي والقطعة ورقم المبنى تحديدًا؟",
+        "هل الفرع يستقبل العملاء حاليًا، وما ساعات خدمة الجمهور؟",
+        "هل يوجد رابط موقع أو مدخل رسمي للفرع مختلف عن المقر الإداري؟"
+      ],
+      "acceptable_evidence": "Bank-owned branch locator/address or documented confirmation by official call center, with branch identity; entrance must be separately validated.",
+      "verified_outcome": null,
+      "attempts": []
+    }
+  ]
+}

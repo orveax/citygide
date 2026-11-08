@@ -253,3 +253,18 @@ test('D29 evidence-based visitor enrichment remains service-specific and does no
   assert.ok(places.every(p => !p.directions_url && !p.verified_entrance));
   assert.match(readFileSync(join(root, 'scripts/app.mjs'), 'utf8'), /تواصل مع الجهة لتأكيد موعدك/);
 });
+
+test('D30 direct-confirmation queue never masquerades as completed outreach or a verified entrance', () => {
+  const {places} = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
+  const byId = id => places.find(p => p.id === id);
+  const {items, stage} = JSON.parse(readFileSync(join(root, 'data/direct-verification.json'), 'utf8'));
+  assert.equal(stage, 'D30');
+  assert.deepEqual(items.map(i => i.entity_code), ['NC-241', 'NC-243', 'NC-245', 'NC-60']);
+  assert.ok(items.every(i => i.outreach_status === 'Not Contacted' && i.verified_outcome === null));
+  assert.ok(items.every(i => i.attempts.length === 0 && i.questions_ar.length >= 3));
+  assert.equal(byId('NC-241').email, 'info@qizegypt.gov.eg', 'certificate collection has a separate contact from quarterly review');
+  assert.equal(byId('NC-60').phone, '16710');
+  assert.equal(byId('NC-60').verification, 'Research', 'the official hotline does not prove the branch address');
+  assert.equal(byId('NC-245').verification, 'Research');
+  assert.ok(places.every(p => !p.directions_url && !p.verified_entrance));
+});

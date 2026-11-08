@@ -4,6 +4,8 @@ Arabic-first City Guide for Egypt's New Administrative Capital. After the founde
 
 **D29 result:** improved four existing records: QIZ's official fifth-floor office 5140 and Visitors Gate with an appointment-only renewed-certificate collection process, LTRA freight-services unit hours, the Land and Dry Ports Authority's third-floor HQ phone, and the distinction between Ministry of Finance-wide hours and a citizen counter's unknown reception hours. No new approved profile or unverified navigation pin was created.
 
+**D30 result:** [direct-confirmation readiness](docs/D30-direct-confirmation.md) and a four-entity [contact worklist](data/direct-verification.json). Corrected QIZ certificate-collection contact to `info@qizegypt.gov.eg` and added EBank's official **16710** helpline and branch locator. No call, outreach email, reply, walk-in confirmation or entrance pin is claimed. All four worklist entries remain **Not Contacted** until verifiable outreach happens.
+
 ## D11 Finder-inspired visitor experience
 
 The visitor experience adapts discovery patterns from MadrasThemes' Finder City Guide homepage v1/v2, catalogue and place pages with original CSS and illustrative assets. Public routes include the homepage, a dedicated filtered directory, verified place details, About, Contact, Terms and Privacy. No unverified ratings, prices, user accounts or directions are added.
