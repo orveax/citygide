@@ -45,17 +45,17 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D34 directory verification preserves approvals and all earlier source-backed cohorts', () => {
+test('D35 directory verification preserves approvals and all earlier source-backed cohorts', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 259);
+  assert.equal(exploratory.places.length, 261);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 54);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 203);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 51);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 208);
   const historical = exploratory.places.filter(p => Number(p.id.slice(3)) <= 179);
   assert.equal(historical.length, 179);
   const companies = historical.filter(p => p.kind === 'Company');
@@ -91,8 +91,8 @@ test('D34 directory verification preserves approvals and all earlier source-back
   assert.equal(added.find(p => p.id === 'NC-114')?.service_availability, 'Unknown');
   const batch22 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 115 && Number(p.id.slice(3)) <= 135);
   assert.deepEqual(batch22.map(p => p.id), Array.from({length: 21}, (_, i) => `NC-${i + 115}`));
-  assert.equal(batch22.filter(p => p.verification === 'Source Confirmed').length, 16);
-  assert.equal(batch22.filter(p => p.verification === 'Research').length, 5);
+  assert.equal(batch22.filter(p => p.verification === 'Source Confirmed').length, 17);
+  assert.equal(batch22.filter(p => p.verification === 'Research').length, 4);
   assert.equal(batch22.filter(p => p.kind === 'Building').length, 8);
   assert.equal(batch22.filter(p => p.kind === 'Bank').length, 6);
   assert.equal(batch22.filter(p => p.kind === 'Authority').length, 5);
@@ -102,7 +102,7 @@ test('D34 directory verification preserves approvals and all earlier source-back
   assert.ok(batch22.every(p => p.source_url.startsWith('https://') && ['2026-11-07', '2026-11-08'].includes(p.last_checked)));
   assert.ok(batch22.filter(p => p.verification === 'Research').every(p => p.source_category === 'Secondary News' || p.id === 'NC-117'));
   assert.equal(batch22.find(p => p.id === 'NC-121')?.source_category, 'Official Business');
-  assert.equal(batch22.find(p => p.id === 'NC-123')?.verification, 'Research', 'planned agricultural branch is not visitor-ready');
+  assert.equal(batch22.find(p => p.id === 'NC-123')?.verification, 'Source Confirmed', 'bank confirmed proposed branch; service is still not visitor-ready');
   const batch23 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 136 && Number(p.id.slice(3)) <= 159);
   assert.deepEqual(batch23.map(p => p.id), Array.from({length: 24}, (_, i) => `NC-${i + 136}`));
   assert.deepEqual(Object.fromEntries(['Authority', 'Bank', 'Building', 'Company'].map(kind => [kind, batch23.filter(p => p.kind === kind).length])), {Authority: 4, Bank: 3, Building: 11, Company: 6});
@@ -183,8 +183,8 @@ test('D34 directory verification preserves approvals and all earlier source-back
   assert.equal(batch28.find(p => p.id === 'NC-240')?.building_code, 'B3-11 / B4-01 / B4-23');
   assert.equal(batch28.find(p => p.id === 'NC-243')?.phone, '0220542140');
   assert.equal(batch28.find(p => p.id === 'NC-245')?.verification, 'Research');
-  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 259);
-  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 259);
+  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 261);
+  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 261);
   for (const id of ['NC-188', 'NC-189']) {
     assert.match(batch25.find(p => p.id === id)?.service_type ?? '', /تاريخي/);
   }
@@ -264,7 +264,7 @@ test('D30 direct-confirmation queue never masquerades as completed outreach or a
   assert.ok(items.every(i => i.attempts.length === 0 && i.questions_ar.length >= 3));
   assert.equal(byId('NC-241').email, 'info@qizegypt.gov.eg', 'certificate collection has a separate contact from quarterly review');
   assert.equal(byId('NC-60').phone, '16710');
-  assert.equal(byId('NC-60').verification, 'Research', 'the official hotline does not prove the branch address');
+  assert.equal(byId('NC-60').verification, 'Source Confirmed', 'the bank directly announced the branch opened; exact address remains unknown');
   assert.equal(byId('NC-245').verification, 'Research');
   assert.ok(places.every(p => !p.directions_url && !p.verified_entrance));
 });
@@ -372,7 +372,7 @@ test('D34 primary-source reconciliation corrects boundaries and ministerial name
   assert.match(byId('NC-17').name_ar, /والبيئة/);
   assert.match(byId('NC-39').name_ar, /التعاون الدولي والمصريين بالخارج/);
   assert.ok(byId('NC-39').aliases.includes('وزارة الخارجية'), 'historical alias stays searchable');
-  const newRecords = places.filter(p => Number(p.id.slice(3)) >= 259);
+  const newRecords = places.filter(p => Number(p.id.slice(3)) === 259);
   assert.deepEqual(newRecords.map(p => p.id), ['NC-259']);
   const operations = newRecords[0];
   assert.equal(operations.kind, 'Authority');
@@ -391,4 +391,32 @@ test('D34 primary-source reconciliation corrects boundaries and ministerial name
   assert.ok(places.every(p => !p.directions_url && !p.verified_entrance));
   const queue = JSON.parse(readFileSync(join(root, 'data/direct-verification.json'), 'utf8'));
   assert.ok(queue.items.every(item => item.outreach_status === 'Not Contacted' && item.attempts.length === 0));
+});
+
+test('D35 distinguishes operating bank HQ, opened branch and planned branch without fabricating visitor routes', () => {
+  const {places} = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
+  const byId = id => places.find(p => p.id === id);
+  assert.deepEqual(places.filter(p => Number(p.id.slice(3)) >= 260).map(p => p.id), ['NC-260', 'NC-261']);
+  const reconstruction = byId('NC-260');
+  assert.equal(reconstruction.zone, 'Government District');
+  assert.equal(reconstruction.role, 'Administrative HQ');
+  assert.equal(reconstruction.address_precision, 'Building Confirmed');
+  assert.equal(reconstruction.public_access, 'Unknown');
+  const qnbHQ = byId('NC-261');
+  assert.equal(qnbHQ.zone, 'Financial District');
+  assert.equal(qnbHQ.role, 'Administrative HQ');
+  assert.equal(qnbHQ.verification, 'Source Confirmed');
+  assert.notEqual(qnbHQ.id, byId('NC-36').id, 'QNB retail branch is a separate service point');
+  assert.notEqual(qnbHQ.id, byId('NC-98').id, 'SIAC building remains its own place record');
+  assert.equal(byId('NC-60').service_availability, 'On-site Confirmed', 'EBank confirms branch opening');
+  assert.equal(byId('NC-60').zone, 'Other', 'a capital-city bank branch is not automatically a Financial District branch');
+  assert.equal(byId('NC-59').zone, 'Other');
+  assert.equal(byId('NC-123').service_availability, 'Unknown', 'planned ABE branch is not confirmed open');
+  assert.equal(byId('NC-123').public_access, 'Unknown');
+  assert.equal(byId('NC-80').public_access, 'By Appointment', 'EDGE directs users to book/contact for private workspaces');
+  assert.equal(byId('NC-81').verification, 'Research', 'Raya facilities-management assignment is not a Raya public office');
+  assert.equal(byId('NC-245').verification, 'Research', 'customer centre primary confirmation remains outstanding');
+  assert.ok(places.every(p => !p.verified_entrance && !p.directions_url));
+  const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
+  assert.equal(approved.places.length, 2);
 });

@@ -1,0 +1,87 @@
+{
+  "batch": "D35",
+  "checked_at": "2026-11-08",
+  "governance_note": "Two distinct operating/administrative headquarters added in scoped Government and Financial districts. Three previously Research bank records source-confirmed for distinct facts (opened branch, documented branch asset, proposed branch). EDGE access is book-first. No customer access, plot, entrance, hours or directions are inferred; no contact outreach sent.",
+  "records": [
+    {
+      "id": "NC-260",
+      "slug": "central-agency-for-reconstruction-new-capital-government-district",
+      "name_ar": "الجهاز المركزي للتعمير — مقر الحي الحكومي",
+      "name_en": "Central Agency for Reconstruction — Government District Headquarters",
+      "aliases": ["الجهاز المركزي للتعمير", "Central Agency for Reconstruction", "Central Reconstruction Authority"],
+      "kind": "Authority",
+      "role": "Administrative HQ",
+      "zone": "Government District",
+      "address": "مبنى وزارة الإسكان والمرافق والمجتمعات العمرانية، الحي الحكومي، العاصمة الإدارية الجديدة؛ الدور الرابع مذكور بإعلانات تعاقدات منقولة ولم يُثبت من موقع رسمي مباشر",
+      "building_code": "Ministry of Housing — Central Agency for Reconstruction",
+      "address_precision": "Building Confirmed",
+      "service_type": "مقر إداري لجهاز التعمير؛ ترتبط إعلانات تعاقدات محددة بإدارة بالطابق الرابع، دون إثبات خدمة جمهور عامة أو مدخل زوار",
+      "website": "https://www.mhuc.gov.eg/",
+      "source_url": "https://idsc.gov.eg/upload/NewsLetter/AttachmentA/8997/الخميس%204%20يوليو%C2%A02024-%20عدد%20رقم%20839%20-%20السنة%20الرابعة.html",
+      "source_category": "Official Authority",
+      "verification": "Source Confirmed",
+      "evidence_scope": "IDSC (Ministry Housing worksite visit, 2024) and South Sinai Governorate (16 May 2024) place the agency's own office at New Capital; tender republications (August 2026) place a procurement unit on Housing Ministry's fourth floor. Floor not elevated to officially verified. No general in-person reception or directions. Sources: https://southsinai.gov.eg/News/Details/4040 ; https://arabtender.com/tenders/الجهاز-المركزي-للتعمير-يطرح-ممارسة-عا/"
+    },
+    {
+      "id": "NC-261",
+      "slug": "qnb-egypt-operational-headquarters-financial-district",
+      "name_ar": "بنك QNB مصر — المقر الرئيسي التشغيلي بحي المال والأعمال",
+      "name_en": "QNB Egypt — Operating Head Office, Financial District",
+      "aliases": ["المقر الرئيسي لبنك QNB بالعاصمة", "QNB New Capital Head Office", "QNB Egypt Headquarters"],
+      "kind": "Bank",
+      "role": "Administrative HQ",
+      "zone": "Financial District",
+      "address": "حي المال والأعمال، العاصمة الإدارية الجديدة؛ رقم القطعة ومدخل الزوار غير موثقين؛ ليس الفرع المصرفي NC-36",
+      "building_code": "",
+      "address_precision": "District Only",
+      "service_type": "مقر الإدارة وقطاعات البنك بدأ تشغيله وفق إعلان QNB في أكتوبر 2026؛ ليس دليلًا على استقبال العملاء بالمقر",
+      "website": "https://qnb.com.eg/",
+      "source_url": "https://eg.linkedin.com/jobs/view/smes-fraud-risk-credit-assurance-senior-analyst-analyst-at-qnb-egypt-4479903963",
+      "source_category": "Official Business",
+      "verification": "Source Confirmed",
+      "evidence_scope": "QNB Egypt corporate announcement dated 12 Oct 2026 reports commencement of head-office operations; its own recent recruitment identifies work based in New Capital Head Office. Separate from QNB public branch NC-36 and constructor's building NC-98; never assert confirmed match with NC-98 or that head office accepts retail banking visits. Secondary transcript: https://www.bankygate.com/78051/QNB-Egypt-Opens-Its-New-Headquarters-in-the-New-Capitals-Financial-and-Business-District"
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "NC-59",
+      "source_url": "https://www.hdb-egy.com/uploads/ir/tabs/144BODReport-2025-Ar.pdf",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "HDB 2025 board report confirms a named New Capital branch as a building/certification asset; district, address, public opening, hours and entrance still unknown. Its official branches/ATM finder lists government-building ATMs and must not be confused with a located branch."
+    },
+    {
+      "id": "NC-60",
+      "source_url": "https://ae.linkedin.com/posts/ebank.egypt_عالمجديدأحناأوله-activity-7492911955880628224-X9ZD",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "EBank own 11 August 2026 post states it OPENED a New Capital branch, its 47th. Physical on-site operation is verified at city level; which district/plot and how visitors enter remain unverified. Do not force into Financial District."
+    },
+    {
+      "id": "NC-123",
+      "source_url": "https://ae.linkedin.com/posts/agriculturalbankofegypt_البنكالزراعيالمصري-البنكالزراعىالمصرى-راعيأرضمصر-activity-7334634778316476416-l6H8",
+      "source_category": "Official Business",
+      "old_verification": "Research",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "Agricultural Bank's May 2025 own post documents an 850m2 retail branch and fitting works within bank HQ in Financial District; document says opening is upcoming, not completed. Availability and public access remain Unknown."
+    },
+    {
+      "id": "NC-80",
+      "source_url": "https://edgeinnovationcenter.com/contact/",
+      "source_category": "Official Business",
+      "old_verification": "Source Confirmed",
+      "new_verification": "Source Confirmed",
+      "evidence_scope": "EDGE confirms New Capital C5 workspaces, meetings by booking/contact; set Public Access to By Appointment as cautious business visitor advice. It does not establish unannounced entry, opening hours for public or geocoded entrance."
+    }
+  ],
+  "exclusions": [
+    {"candidate": "EDGE Innovation Center new record", "reason": "Already NC-80, first-party verified at C5; updated instead of creating duplicate."},
+    {"candidate": "Raya Smart Buildings as tenant office", "reason": "NC-81 describes C5 management mandate, not proof of Raya's public visitor office; remains Research."},
+    {"candidate": "Supreme Council of Universities HQ", "reason": "Official SCU footer gives Cairo University in Giza, even where a New Capital ministry address appears on one notice; insufficient evidence of separate SCU capital premises."},
+    {"candidate": "Nuclear Power Plants Authority HQ", "reason": "Own contact lists Cairo/Abbassia; ministerial activities in New Capital do not prove an office there."},
+    {"candidate": "Urban Development Fund L1M customer service", "reason": "Already NC-245; quoted August 2026 public-opening articles still await direct fund proof of current reception; do not promote."},
+    {"candidate": "QNB Egypt building NC-98 as confirmed same as HQ", "reason": "Constructor-described asset is not demonstrated as the same exact address by the operation announcement; keep separate and no invented pin."}
+  ]
+}
