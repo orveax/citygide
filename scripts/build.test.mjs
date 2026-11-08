@@ -45,17 +45,17 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
 });
 
-test('D27 deep discovery preserves approvals and all earlier source-backed cohorts', () => {
+test('D28 tenant and service discovery preserves approvals and all earlier source-backed cohorts', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const approved = JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8'));
   const exploratory = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 238);
+  assert.equal(exploratory.places.length, 245);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 84);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 152);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 85);
+  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 158);
   const historical = exploratory.places.filter(p => Number(p.id.slice(3)) <= 179);
   assert.equal(historical.length, 179);
   const companies = historical.filter(p => p.kind === 'Company');
@@ -153,7 +153,7 @@ test('D27 deep discovery preserves approvals and all earlier source-backed cohor
   assert.equal(batch26.find(p => p.id === 'NC-207')?.building_code, 'CS06');
   assert.equal(batch26.find(p => p.id === 'NC-208')?.building_code, 'CS-26');
   assert.equal(batch26.find(p => p.id === 'NC-220')?.address_precision, 'Building Confirmed');
-  const batch27 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 224);
+  const batch27 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 224 && Number(p.id.slice(3)) <= 238);
   assert.deepEqual(batch27.map(p => p.id), Array.from({length: 15}, (_, i) => `NC-${224 + i}`));
   assert.equal(batch27.filter(p => p.verification === 'Source Confirmed').length, 8);
   assert.equal(batch27.filter(p => p.verification === 'Research').length, 7);
@@ -167,8 +167,24 @@ test('D27 deep discovery preserves approvals and all earlier source-backed cohor
   assert.equal(batch27.find(p => p.id === 'NC-224')?.building_code, '25-B3');
   assert.equal(batch27.find(p => p.id === 'NC-232')?.verification, 'Research', 'Laval district conflict remains unresolved');
   assert.equal(batch27.find(p => p.id === 'NC-238')?.verification, 'Research', 'Paragon 3 district conflict remains unresolved');
-  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 238);
-  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 238);
+  const batch28 = exploratory.places.filter(p => Number(p.id.slice(3)) >= 239);
+  assert.deepEqual(batch28.map(p => p.id), Array.from({length: 7}, (_, i) => `NC-${239 + i}`));
+  assert.equal(batch28.filter(p => p.verification === 'Source Confirmed').length, 6);
+  assert.equal(batch28.filter(p => p.verification === 'Research').length, 1);
+  assert.equal(batch28.filter(p => p.kind === 'Company').length, 2);
+  assert.equal(batch28.filter(p => p.kind === 'Authority').length, 5);
+  assert.equal(batch28.filter(p => p.role === 'Public Service Point').length, 4);
+  assert.ok(batch28.every(p => p.last_checked === '2026-11-08'));
+  assert.ok(batch28.every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
+  assert.ok(batch28.every(p => !p.visitor_hours && !p.directions_url && !p.verified_entrance));
+  assert.ok(batch28.every(p => p.source_url.startsWith('https://')));
+  assert.ok(batch28.every(p => ['Building Confirmed', 'Floor Confirmed'].includes(p.address_precision)));
+  assert.equal(batch28.find(p => p.id === 'NC-239')?.building_code, 'Audaz unit A2-23');
+  assert.equal(batch28.find(p => p.id === 'NC-240')?.building_code, 'B3-11 / B4-01 / B4-23');
+  assert.equal(batch28.find(p => p.id === 'NC-243')?.phone, '0220542140');
+  assert.equal(batch28.find(p => p.id === 'NC-245')?.verification, 'Research');
+  assert.equal(new Set(exploratory.places.map(p => p.slug)).size, 245);
+  assert.equal(new Set(exploratory.places.map(p => p.id)).size, 245);
   for (const id of ['NC-188', 'NC-189']) {
     assert.match(batch25.find(p => p.id === id)?.service_type ?? '', /تاريخي/);
   }
