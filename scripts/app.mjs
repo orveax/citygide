@@ -11,6 +11,7 @@ let currentPage = 1;
 
 const ZONES = { 'Government District': 'الحي الحكومي', 'Financial District': 'حي المال والأعمال', Other: 'المنطقة قيد التحقق' };
 const KINDS = { Government: 'وزارة', Authority: 'هيئة أو جهة', Bank: 'بنك', Company: 'شركة', Building: 'مبنى', District: 'حي' };
+const KIND_GLYPHS = { Government: '▥', Authority: '◈', Bank: '▤', Company: '▣', Building: '⌂', District: '⌖' };
 const ROLES = { 'Administrative HQ': 'مقر إداري', 'Public Service Point': 'نقطة خدمة للجمهور', Facility: 'مبنى أو منشأة', District: 'حي', Unknown: 'صفة الموقع قيد التحقق' };
 const PRECISIONS = {
   'District Only': 'المنطقة فقط — لا يوجد مدخل دقيق مؤكد',
@@ -69,28 +70,63 @@ function emptyState(places, filters) {
 }
 
 function placeCard(place) {
-  const card = element('article', 'place-card');
+  const kindClass = KINDS[place.kind] ? place.kind.toLowerCase() : 'other';
+  const card = element('article', 'place-card place-card--' + kindClass);
   const imageWrap = element('div', 'place-card__image');
-  const image = element('img'); image.src = IMAGES[place.kind] || IMAGES.Company;
-  image.alt = ''; image.loading = 'lazy'; imageWrap.append(image);
+  const glyph = element('span', 'place-card__glyph', KIND_GLYPHS[place.kind] || '⌖');
+  glyph.setAttribute('aria-hidden', 'true');
+  imageWrap.append(glyph);
   imageWrap.append(element('span', 'image-badge', labelKind(place.kind)));
-  imageWrap.append(element('span', 'image-disclosure', 'مشهد معماري توضيحي'));
   const stateClass = place.verification === 'Published' ? 'approved' : place.verification === 'Research' ? 'research' : 'source';
-  imageWrap.append(element('span', 'verification-tag verification-tag--' + stateClass, sourceStatusLabel(place)));
   const body = element('div', 'place-card__body');
   body.append(element('span', 'place-card__eyebrow', labelZone(place.zone) + ' / ' + labelRole(place.role)));
   const title = element('h3'); title.append(link(place.name_ar, detailHref + encodeURIComponent(place.slug)));
   const status = element('div', 'place-card__status');
   const visitClass = place.public_access === 'By Appointment' ? 'appointment' : place.public_access === 'Walk-in Confirmed' ? 'walkin' : 'unknown';
+  status.append(element('span', 'source-status source-status--' + stateClass, sourceStatusLabel(place)));
   status.append(element('span', 'visit-status visit-status--' + visitClass, visitStatusLabel(place)));
   const address = element('p', 'place-card__address', '⌖  ' + place.address);
   const meta = element('div', 'place-card__meta');
-  meta.append(element('span', '', labelZone(place.zone)));
+  meta.append(element('span', '', 'العنوان والمصدر'));
   meta.append(link(place.kind === 'Building' ? 'تفاصيل المبنى ←' : 'تفاصيل الجهة ←', detailHref + encodeURIComponent(place.slug)));
   body.append(title, status, address, meta);
   if (exploration && place.verification === 'Research') body.append(element('p', 'place-card__verification-note', 'سجل بحثي غير معتمد؛ لا تعتمد على العنوان للزيارة.'));
   card.append(imageWrap, body);
   return card;
+}
+
+function renderActiveFilters(places, filters) {
+  const holder = $('activeFilters');
+  if (!holder) return;
+  holder.replaceChildren();
+  const active = [
+    ['q', filters.q.trim() ? `بحث: ${filters.q.trim()}` : ''],
+    ['zone', filters.zone ? labelZone(filters.zone) : ''],
+    ['kind', filters.kind ? labelKind(filters.kind) : '']
+  ].filter(([, label]) => label);
+  holder.hidden = !active.length;
+  if (!active.length) return;
+  holder.append(element('span', 'active-filters__label', 'بحثك الحالي'));
+  for (const [field, label] of active) {
+    const button = element('button', 'active-filters__chip', label);
+    button.type = 'button';
+    button.setAttribute('aria-label', `إزالة فلتر ${label}`);
+    button.append(element('span', 'active-filters__remove', '×'));
+    button.addEventListener('click', () => {
+      $(field).value = '';
+      renderDirectory(places, { resetPage: true });
+    });
+    holder.append(button);
+  }
+  if (active.length > 1) {
+    const reset = element('button', 'active-filters__clear', 'مسح الكل');
+    reset.type = 'button';
+    reset.addEventListener('click', () => {
+      for (const field of ['q', 'zone', 'kind']) $(field).value = '';
+      renderDirectory(places, { resetPage: true });
+    });
+    holder.append(reset);
+  }
 }
 
 function syncChips() {
@@ -153,12 +189,13 @@ function renderDirectory(places, { resetPage = false } = {}) {
   const pageData = paginatePlaces(results, currentPage, PAGE_SIZE);
   currentPage = pageData.page;
   setText('count', String(results.length), '0');
-  setText('resultsDescription', home ? 'سجلًا في الدليل — نعرض 6 نماذج منها' : exploration ? 'نتيجة استكشافية — حالات المصدر والزيارة منفصلة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
+  setText('resultsDescription', home ? `سجلًا في الدليل — نعرض ${Math.min(results.length, 6)} نماذج منها` : exploration ? 'نتيجة استكشافية — حالات المصدر والزيارة منفصلة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
   const target = $('cards'); target.replaceChildren();
   target.classList.toggle('is-sparse', pageData.items.length === 1);
   if (!results.length) target.append(emptyState(places, filters));
   else (home ? results.slice(0, 6) : pageData.items).forEach(place => target.append(placeCard(place)));
   if (!home) renderPagination(pageData, places);
+  renderActiveFilters(places, filters);
   syncChips(); syncViews();
   const url = new URL(location.href);
   for (const field of ['q', 'kind', 'zone', 'sort']) {

@@ -22,6 +22,8 @@ Arabic-first City Guide for Egypt's New Administrative Capital. After the founde
 
 The visitor experience adapts discovery patterns from MadrasThemes' Finder City Guide homepage v1/v2, catalogue and place pages with original CSS and illustrative assets. Public routes include the homepage, a dedicated filtered directory, verified place details, About, Contact, Terms and Privacy. No unverified ratings, prices, user accounts or directions are added.
 
+**UX-02 (draft):** an information-first card treatment now represents category visually instead of repeating architectural illustration for each exploratory record; source and visitor-access badges sit in the content area, with removable active-filter chips in the dedicated directory. See [Sprint 2 scope and verification](docs/UX-02-sprint2.md). No record, map, editorial approval or launch gate changes are part of this draft.
+
 See [the D08 implementation plan](docs/D08-finder-city-guide-plan.md) for the visual-to-data mapping, completed components, and remaining review steps.
 
 ## UX-01 — Discovery experience refinements
