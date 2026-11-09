@@ -349,10 +349,18 @@ body { font-size: 14px; line-height: 1.9; }
 .detail-heading > .container { grid-template-columns: minmax(0, 1fr) minmax(300px, 35%); gap: 55px; }
 .detail-heading h1 { font-size: clamp(26px, 3.6vw, 45px); }
 .detail-heading__hint { margin-top: 18px; color: #81613e; font-size: 11px; background: #fff7ea; display: inline-flex; gap: 8px; padding: 10px 13px; border-radius: 11px; }
-.detail-hero-art { height: 250px; position: relative; border-radius: 22px; }
-.detail-hero-art img { object-fit: cover; }
-.detail-hero-art::after { content: ''; position: absolute; inset: 55% 0 0; background: linear-gradient(0deg, rgb(21 31 45 / 55%), transparent); pointer-events: none; }
-.detail-hero-art span { position: absolute; z-index: 1; bottom: 13px; inset-inline-end: 17px; color: #fff; font-size: 10px; }
+.detail-hero-art { height: 280px; position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 28px; border-radius: 22px; background: linear-gradient(130deg, var(--hero-surface, #edf2f7), #fafbfc); --hero-mark: #65768b; overflow: hidden; }
+.detail-hero-art[data-kind="government"] { --hero-mark: #b86451; --hero-surface: #fff0e8; }
+.detail-hero-art[data-kind="authority"] { --hero-mark: #397784; --hero-surface: #eaf5f5; }
+.detail-hero-art[data-kind="bank"] { --hero-mark: #366d78; --hero-surface: #e8f2f5; }
+.detail-hero-art[data-kind="company"] { --hero-mark: #936e4c; --hero-surface: #f7f0e6; }
+.detail-hero-art[data-kind="building"] { --hero-mark: #667a9a; --hero-surface: #ecf0f8; }
+.detail-hero-art[data-kind="district"] { --hero-mark: #7974a6; --hero-surface: #f0eef8; }
+.detail-hero-art::before { content: ''; z-index: -1; position: absolute; width: 250px; height: 250px; top: -130px; inset-inline-end: -58px; border: 1px solid color-mix(in srgb, var(--hero-mark) 24%, transparent); border-radius: 50%; box-shadow: 0 0 0 42px color-mix(in srgb, var(--hero-mark) 6%, transparent); }
+.detail-hero-art__glyph { color: var(--hero-mark); font: 700 105px/1 Manrope, Arial, sans-serif; opacity: .82; }
+.detail-hero-art__caption { display: grid; gap: 5px; color: var(--hero-mark); }
+.detail-hero-art__caption strong { font-size: 18px; }
+.detail-hero-art__caption span { color: #697685; font-size: 10px; line-height: 1.8; }
 .detail-tab-wrap { border-block: 1px solid var(--line); background: white; }
 .detail-tabs { display: flex; gap: 9px; padding-block: 12px; }
 .detail-tabs a { font-size: 11px; color: #5d6774; padding: 9px 17px; border-radius: 999px; background: #f7f8fa; }
@@ -368,6 +376,27 @@ body { font-size: 14px; line-height: 1.9; }
 .editorial-notice h2 { margin: 0; font-size: 15px; }
 .editorial-notice p { margin: 5px 0 9px; font-size: 11px; line-height: 2; color: #667385; }
 .editorial-notice a { color: var(--accent-deep); font-weight: 600; font-size: 11px; }
+
+/* UX-04: arrival decision is visible above the fold, with safe Maps mode labels. */
+.detail-visit-panel { margin-top: 22px; padding: 19px 20px; background: #fffaf6; border: 1px solid #f0dccc; border-radius: 17px; max-width: 770px; }
+.detail-visit-panel__heading { display: block; color: #724d38; font-size: 13px; margin-bottom: 12px; }
+.detail-visit-panel__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+.detail-visit-panel__facts p { margin: 0; padding: 11px 13px; min-width: 0; border: 1px solid #f1e8e1; background: white; border-radius: 11px; display: grid; gap: 6px; }
+.detail-visit-panel__facts p > span { font-size: 10px; color: #78838e; }
+.detail-visit-panel__facts strong { font-size: 11px; line-height: 1.75; color: #79593f; overflow-wrap: anywhere; }
+.detail-visit-panel__facts strong[data-mode="walkin"], .detail-visit-panel__facts strong[data-mode="directions"] { color: #2b7252; }
+.detail-visit-panel__facts strong[data-mode="search"], .detail-visit-panel__facts strong[data-mode="appointment"] { color: #94632e; }
+.detail-quick-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
+.detail-quick-actions a { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; min-height: 42px; border: 1px solid #e0b7a4; border-radius: 10px; font-size: 11px; font-weight: 700; line-height: 1.6; text-align: center; }
+.detail-quick-actions a:hover { border-color: var(--accent-deep); background: #fff1e9; }
+.detail-quick-actions a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.detail-quick-actions__primary { background: var(--accent); color: white; border-color: var(--accent) !important; }
+.detail-quick-actions__primary:hover { background: var(--accent-deep) !important; color: white; }
+.detail-quick-actions__secondary { background: white; color: var(--accent-deep); }
+.detail-visit-panel .detail-visit-panel__caution { margin: 12px 0 0; font-size: 10px; color: #87796e; line-height: 1.8; }
+.map-card__status { display: inline-flex; max-width: 100%; padding: 7px 10px; margin: 0 0 13px; border-radius: 8px; color: #8e653d; background: #fff0e2; font-size: 10px; font-weight: 700; line-height: 1.7; }
+.map-card__status[data-mode="directions"] { background: #e6f4eb; color: #286244; }
+.map-card__status[data-mode="unavailable"] { background: #f3f4f6; color: #667481; }
 
 /* About, contact and policies. */
 .story-hero { position: relative; overflow: hidden; min-height: 520px; background: var(--navy); color: white; }
@@ -655,6 +684,14 @@ body { font-size: 14px; line-height: 1.9; }
   .place-card__body, .place-grid.is-list .place-card__body, .place-grid.is-sparse .place-card__body { padding: 19px; }
   .place-card__status { gap: 6px; }
   .active-filters { gap: 6px; }
+  .detail-hero-art { height: 165px; padding: 18px 21px; }
+  .detail-hero-art__glyph { font-size: 65px; }
+  .detail-hero-art__caption strong { font-size: 14px; }
+  .detail-visit-panel { padding: 15px; }
+  .detail-quick-actions a { flex: 1 1 170px; }
+}
+@media (max-width: 390px) {
+  .detail-visit-panel__facts { grid-template-columns: 1fr; }
 }
 
 /* UX-03: live, contextual directory facets; these are counts, not approvals. */

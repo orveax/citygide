@@ -21,3 +21,33 @@ export function mapsDirectionsUrl(place) {
     return url.toString();
   } catch { return ''; }
 }
+
+// One navigation decision for both the profile hero and the Maps sidebar.
+// A source-backed building is not a verified visitor entrance. Exploratory
+// Research records do not receive even a search shortcut until reviewed.
+export function navigationDecision(place, { exploration = false } = {}) {
+  const directions = !exploration || place?.verification === 'Published' ? mapsDirectionsUrl(place) : '';
+  if (directions) return {
+    mode: 'directions', href: directions,
+    label: 'ابدأ الملاحة على Google Maps',
+    status: 'نقطة وصول مؤكدة',
+    notice: 'تم توثيق نقطة الوصول في السجل. Google Maps يحدد نقطة البداية على جهازك؛ تأكد من شروط الزيارة قبل التحرك.'
+  };
+  if (exploration && place?.verification === 'Research') return {
+    mode: 'unavailable', reason: 'research', href: '', label: '',
+    status: 'رابط الخرائط محجوب لحين مراجعة السجل',
+    notice: 'السجل ما زال قيد البحث؛ قد يكون عنوان المبنى مدونًا، لكن لم نعتمد استخدامه للتنقل أو البحث على الخرائط.'
+  };
+  const search = mapsSearchUrl(place);
+  if (search) return {
+    mode: 'search', href: search,
+    label: 'ابحث عن المقر على Google Maps',
+    status: 'بحث عن المقر فقط — ليس اتجاهات',
+    notice: 'الرابط يعرض بحثًا عن المبنى أو العنوان، وليس مسارًا لمدخل زوار مؤكد. راجع مكان الدخول مع الجهة.'
+  };
+  return {
+    mode: 'unavailable', reason: 'location', href: '', label: '',
+    status: 'لا توجد نقطة وصول موثقة',
+    notice: 'لن نعرض توجيهات أو رابط خرائط قبل وجود بيانات موقع كافية ومراجعتها.'
+  };
+}

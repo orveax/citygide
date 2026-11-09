@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mapsDirectionsUrl, mapsSearchUrl } from './maps.mjs';
+import { mapsDirectionsUrl, mapsSearchUrl, navigationDecision } from './maps.mjs';
 
 const base = {
   name_ar: 'وزارة الاتصالات',
@@ -41,4 +41,39 @@ test('rejects unverified or non-Google navigation URLs', () => {
   assert.equal(mapsDirectionsUrl({ ...bad, directions_url: 'https://www.google.com/maps/dir/?api=1' }), '');
   assert.equal(mapsDirectionsUrl({ ...bad, directions_url: 'https://www.google.com/maps/dir/?api=1&destination=' }), '');
   assert.equal(mapsDirectionsUrl({ ...bad, directions_url: 'https://www.google.com/maps/directions/?api=1&destination=Office' }), '');
+});
+
+test('profile navigation decision never promotes a building search into directions', () => {
+  const decision = navigationDecision({ ...base, verification: 'Source Confirmed' }, { exploration: true });
+  assert.equal(decision.mode, 'search');
+  assert.match(decision.href, /\/maps\/search\//);
+  assert.match(decision.status, /ليس اتجاهات/);
+  assert.doesNotMatch(decision.label, /الملاحة/);
+});
+
+test('unapproved Research records receive no Maps shortcut even with a building address', () => {
+  const decision = navigationDecision({ ...base, verification: 'Research' }, { exploration: true });
+  assert.equal(decision.mode, 'unavailable');
+  assert.equal(decision.reason, 'research');
+  assert.equal(decision.href, '');
+  assert.match(decision.notice, /عنوان المبنى/);
+});
+
+test('only a verified entrance on a Published profile can be navigated to', () => {
+  const candidate = {
+    ...base, verification: 'Published', address_precision: 'Pin Verified', verified_entrance: true,
+    directions_url: 'https://www.google.com/maps/dir/?api=1&origin=Stale&destination=30.001%2C31.001'
+  };
+  const approved = navigationDecision(candidate, { exploration: true });
+  assert.equal(approved.mode, 'directions');
+  assert.match(approved.label, /الملاحة/);
+  assert.equal(new URL(approved.href).searchParams.has('origin'), false);
+  assert.equal(navigationDecision({ ...candidate, verification: 'Source Confirmed' }, { exploration: true }).mode, 'search');
+  assert.equal(navigationDecision({ ...candidate, verified_entrance: false }, { exploration: true }).mode, 'search');
+});
+
+test('district-only profiles do not expose a Maps link or pretend to know an entrance', () => {
+  const decision = navigationDecision({ ...base, verification: 'Published', address_precision: 'District Only' });
+  assert.equal(decision.mode, 'unavailable');
+  assert.equal(decision.href, '');
 });
