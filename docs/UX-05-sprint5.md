@@ -30,10 +30,11 @@ Reduce the number of steps between searching for a government body, bank, compan
 
 - [x] Unit/build tests, including return-state serialization, cross-mode safety and zero-result recovery.
 - [x] `git diff --check`.
-- [ ] Preview deploy from a separate Sprint 5 branch.
-- [ ] Browser QA: query → details → return (query, facets, sort, view, page preserved).
-- [ ] Browser QA: zero-match relaxation, full reset, card image click.
-- [ ] Browser QA: 340–390px mobile, keyboard focus and result-jump anchors.
+- [x] Preview deploy from a separate Sprint 5 branch; GitHub Actions and Cloudflare Preview succeeded on `d109268e08409d19a280502dcd65b514af0b5cba`.
+- [x] Browser QA: `q=وزارة`, `kind=Government`, `zone=Government District`, page 2 and list view → ministry image → profile → return; all five parameters restored, and the result count remained 27.
+- [x] Browser QA: zero-match relaxation correctly recovered 28 records by removing only the query; full reset restored 265 records; card image click opened the correct detail page.
+- [x] Browser QA: the header «تصفح النتائج» action navigated to `#results`.
+- [ ] Browser QA: 340–390px visual layout and actual keyboard-focus interaction. Responsive CSS and focus-visible rules are present, but neither was verified in a small-width browser session; keep as final acceptance gate.
 - [ ] Founder sign-off before production merge.
 
 ## Release plan
