@@ -711,3 +711,34 @@ body { font-size: 14px; line-height: 1.9; }
   .district-shortcuts__button { padding: 9px 10px; gap: 7px; font-size: 10px; }
   .sidebar-categories .category-chip__count { margin-inline-start: 2px; }
 }
+
+/* UX-05: A search-to-detail journey must preserve discovery context. */
+.place-card__image-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 19px 23px;
+  text-decoration: none;
+}
+.place-card__image-link:focus-visible { outline: 3px solid var(--accent); outline-offset: -4px; border-radius: 12px; }
+.place-card .image-badge { z-index: 2; margin-inline-start: auto; pointer-events: none; }
+.place-card__image-link:hover .place-card__glyph { opacity: 1; }
+.catalog-results__links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.filter-results-jump, .mobile-refine-link { display: none; }
+.empty-state__recovery { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 9px; max-width: 600px; margin: 22px auto 16px; }
+.empty-state__recovery > strong { width: 100%; color: var(--ink); font-size: 12px; }
+.empty-state__recovery-button { padding: 10px 14px; min-height: 42px; border-radius: 12px; border: 1px solid #e7c1b0; background: #fff7f2; color: #89533d; font-size: 11px; font-weight: 700; }
+.empty-state__recovery-button:hover { background: #ffede3; border-color: #d99b80; }
+.empty-state__suggest-link { display: inline-block; margin-top: 20px; color: var(--accent-deep); font-size: 11px; font-weight: 700; text-underline-offset: 4px; }
+.empty-state__recovery-button:focus-visible, .empty-state__suggest-link:focus-visible, .filter-results-jump:focus-visible, .mobile-refine-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 760px) {
+  .catalog-results__links { justify-content: space-between; width: 100%; }
+  .filter-results-jump, .mobile-refine-link { display: inline-flex; align-items: center; gap: 5px; color: var(--accent-deep); font-size: 11px; font-weight: 700; text-underline-offset: 4px; }
+  .filter-results-jump { margin-top: 12px; justify-content: center; padding: 10px 12px; border: 1px solid #f0d1c3; background: #fff8f4; border-radius: 10px; }
+  .catalog-results { scroll-margin-top: 87px; }
+  .catalog-search { scroll-margin-top: 88px; }
+  .empty-state { padding: 36px 17px; }
+}

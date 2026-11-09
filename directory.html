@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="directory" data-catalog="exploration">
-  <a class="skip-link" href="#places">تخطَّ إلى النتائج</a>
+  <a class="skip-link" href="#results">تخطَّ إلى النتائج</a>
   <div class="announcement"><div class="container announcement__inner"><span><span class="status-dot"></span> دليل استكشافي — حالة التحقق موضحة لكل جهة</span><span>دليل مستقل للعاصمة الإدارية الجديدة</span></div></div>
   <header class="site-header"><div class="container header__inner">
     <a class="brand" href="index.html" aria-label="دليل العاصمة — الرئيسية"><span class="brand-mark" aria-hidden="true"><span></span></span><span class="brand-copy"><strong>دليل العاصمة</strong><small>CAPITAL CITY GUIDE</small></span></a>
     <nav class="desktop-nav" aria-label="التنقل الرئيسي"><a href="index.html">الرئيسية</a><a class="active" aria-current="page" href="directory.html">دليل الجهات</a><a href="index.html#districts">الأحياء</a><a href="about.html">عن الدليل</a><a href="contact.html">تواصل معنا</a></nav>
-    <a class="header-action" href="#places">تصفح النتائج <span aria-hidden="true">←</span></a>
+    <a class="header-action" href="#results">تصفح النتائج <span aria-hidden="true">←</span></a>
     <details class="mobile-nav"><summary aria-label="فتح قائمة التنقل"><span></span><span></span><span></span></summary><nav aria-label="التنقل للموبايل"><a href="index.html">الرئيسية</a><a href="directory.html" aria-current="page">دليل الجهات</a><a href="index.html#districts">الأحياء</a><a href="about.html">عن الدليل</a><a href="contact.html">تواصل معنا</a></nav></details>
   </div></header>
   <main id="places">
@@ -32,6 +32,7 @@
           <label for="kind">نوع الجهة</label><select id="kind"><option value="">كل الجهات</option><option value="Government">وزارات</option><option value="Authority">هيئات وجهات</option><option value="Bank">بنوك</option><option value="Company">شركات</option><option value="Building">مبانٍ</option><option value="District">أحياء</option></select>
           <button class="search-button" type="submit">عرض النتائج <span aria-hidden="true">⌕</span></button>
         </form>
+        <a class="filter-results-jump" href="#results">انتقل إلى <strong id="filterResultCount">…</strong> نتيجة <span aria-hidden="true">←</span></a>
         <div class="filter-divider"></div><p class="filter-group-label">تصنيفات سريعة</p>
         <div class="category-list sidebar-categories" id="categoryChips" aria-label="تصفية حسب نوع الجهة">
           <button type="button" class="category-chip is-active" data-kind="" aria-pressed="true"><span class="category-icon category-icon--all" aria-hidden="true">✦</span> كل الجهات</button>
@@ -43,8 +44,8 @@
         </div>
         <div class="filter-help"><span aria-hidden="true">✓</span><p>المصدر وتاريخ المراجعة موجودين في صفحة كل جهة. بنوضح المعلومات غير المؤكدة بدل ما نفترضها.</p></div>
       </aside>
-      <div class="catalog-results">
-        <div class="catalog-results__head"><div><span class="section-kicker">EXPLORE ALL LISTINGS</span><h2>الجهات والأماكن</h2></div><a class="text-link" href="about.html">كيف نتحقق؟ <span aria-hidden="true">←</span></a></div>
+      <div class="catalog-results" id="results">
+        <div class="catalog-results__head"><div><span class="section-kicker">EXPLORE ALL LISTINGS</span><h2>الجهات والأماكن</h2></div><div class="catalog-results__links"><a class="mobile-refine-link" href="#searchForm">تعديل البحث والفلاتر ↑</a><a class="text-link" href="about.html">كيف نتحقق؟ <span aria-hidden="true">←</span></a></div></div>
         <div class="district-shortcuts" id="districtShortcuts" role="group" aria-label="تصفح حسب المنطقة"></div>
         <div class="results-toolbar"><div class="results-summary"><strong id="count" aria-live="polite">—</strong><span id="resultsDescription">نتيجة مع حالة التحقق</span></div><div class="toolbar-actions"><label for="sort">ترتيب حسب</label><select id="sort"><option value="relevance">الأكثر صلة</option><option value="name">الاسم</option><option value="recent">آخر مراجعة</option></select><div class="view-toggle" role="group" aria-label="طريقة عرض النتائج"><button type="button" class="view-button is-active" data-view="grid" aria-label="عرض شبكي" aria-pressed="true">▦</button><button type="button" class="view-button" data-view="list" aria-label="عرض قائمة" aria-pressed="false">☰</button></div></div></div>
         <div id="activeFilters" class="active-filters" aria-label="الفلاتر النشطة" hidden></div>

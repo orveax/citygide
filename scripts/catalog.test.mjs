@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { facetCounts, filterPlaces, normalize, paginatePlaces, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
+import { directoryReturnUrl, facetCounts, filterPlaces, normalize, paginatePlaces, relaxationSuggestions, safeDirectoryReturnUrl, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 
 const places = [
   { slug: 'a', name_ar: 'وزارة الاتصالات', name_en: 'Communications Ministry', address: 'الحي الحكومي', aliases: ['MCIT'], building_code: '10B', service_type: '', zone: 'Government District', kind: 'Government', last_checked: '2026-11-02' },
@@ -67,4 +67,44 @@ test('source approval and visitor admission are distinct labels', () => {
   assert.equal(visitStatusLabel(sourced), 'دخول الزوار غير مؤكد');
   assert.equal(sourceStatusLabel({ ...sourced, verification: 'Published' }), 'معتمد للنشر');
   assert.equal(visitStatusLabel({ ...sourced, public_access: 'By Appointment' }), 'الزيارة بموعد مسبق');
+});
+
+test('a directory detail link retains the exact safe search, filters, view and result page', () => {
+  const back = directoryReturnUrl({
+    target: 'directory.html',
+    filters: { q: 'وزارة الاتصالات', zone: 'Government District', kind: 'Government', sort: 'recent', view: 'list' },
+    page: 3
+  });
+  assert.equal(safeDirectoryReturnUrl(back, { exploration: true }), back);
+  assert.match(back, /q=%D9%88%D8%B2%D8%A7%D8%B1%D8%A9/);
+  assert.match(back, /zone=Government\+District/);
+  assert.match(back, /kind=Government/);
+  assert.match(back, /sort=recent/);
+  assert.match(back, /view=list/);
+  assert.match(back, /page=3#results$/);
+  assert.equal(directoryReturnUrl({ target: 'index.html' }), 'index.html#places');
+});
+
+test('return links cannot redirect externally, inject arbitrary parameters or cross the editorial view', () => {
+  const exploratoryFallback = 'directory.html#results';
+  const approvedFallback = 'approved.html#results';
+  for (const unsafe of ['https://evil.invalid/', '//evil.invalid/', '../directory.html', 'javascript:alert(1)', 'directory.html@evil.invalid/', 'directory.html?return=https://evil.invalid']) {
+    const result = safeDirectoryReturnUrl(unsafe, { exploration: true });
+    assert.equal(result, exploratoryFallback);
+    assert.doesNotMatch(result, /evil|javascript|\.\./);
+  }
+  assert.equal(safeDirectoryReturnUrl('approved.html?q=test', { exploration: true }), exploratoryFallback);
+  assert.equal(safeDirectoryReturnUrl('directory.html?q=test', { exploration: false }), approvedFallback);
+  assert.equal(safeDirectoryReturnUrl('approved.html?kind=Bank&page=2', { exploration: false }), 'approved.html?kind=Bank&page=2#results');
+  assert.equal(safeDirectoryReturnUrl('directory.html?kind=bogus&view=evil&page=-5&sort=invalid', { exploration: true }), exploratoryFallback);
+});
+
+test('zero-result recovery suggests relaxing only filters that produce genuine matches', () => {
+  const filters = { kind: 'Bank', zone: 'Government District', q: '' };
+  assert.deepEqual(relaxationSuggestions(places, filters), [
+    { field: 'zone', label: 'المنطقة', count: 1 },
+    { field: 'kind', label: 'نوع الجهة', count: 1 }
+  ]);
+  assert.deepEqual(relaxationSuggestions(places, { q: 'غير موجود', zone: 'Government District', kind: 'Bank' }), []);
+  assert.deepEqual(relaxationSuggestions(places, {}), []);
 });
