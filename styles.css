@@ -782,3 +782,61 @@ body { font-size: 14px; line-height: 1.9; }
   .hero__visual { display: none; }
   .hero .search-panel { margin-top: 18px; }
 }
+
+
+/* BR-03.1 — Brand palette refinement: preserve signature coral, strengthen legibility.
+   Decorative/accent brand hue remains #ED6A4D; text-bearing controls use accessible coral.
+   Minimum intended contrast on white: action #C24A32 4.86:1; muted #667080 5.01:1.
+   Do not repurpose brand colors as evidence/verification statuses. */
+:root {
+  --coral-50: #fff7f3;
+  --coral-100: #fff0ea;
+  --coral-200: #fbd7c9;
+  --coral-300: #f7ae98;
+  --coral-400: #f18567;
+  --coral-500: #ed6a4d;
+  --coral-600: #d9573c;
+  --coral-700: #c24a32;
+  --coral-800: #a83e2b;
+  --coral-900: #822f23;
+  --ink-900: #242736;
+  --navy-900: #1e293b;
+  --neutral-50: #ffffff;
+  --neutral-100: #f8f9fc;
+  --neutral-200: #e9ebf0;
+  --text-muted-accessible: #667080;
+  --accent-action: #c24a32;
+  --accent-action-hover: #a83e2b;
+  --focus-ring: #c24a32;
+  --status-confirmed-fg: #235b44;
+  --status-confirmed-bg: #e7f5ed;
+  --status-review-fg: #765018;
+  --status-review-bg: #fff5df;
+  --status-unknown-fg: #4e6279;
+  --status-unknown-bg: #eaf2f8;
+  --muted: var(--text-muted-accessible);
+  --accent-deep: var(--accent-action);
+}
+:focus-visible { outline-color: var(--focus-ring); }
+.header-action,
+.search-button,
+.contact-actions a.primary,
+.detail-quick-actions__primary,
+.email-link,
+.pagination__button.is-active,
+.catalog-intro-jump {
+  background: var(--accent-action);
+  border-color: var(--accent-action);
+  color: #fff;
+}
+.header-action:hover,
+.search-button:hover,
+.contact-actions a.primary:hover,
+.detail-quick-actions__primary:hover,
+.email-link:hover,
+.pagination__button.is-active:hover,
+.catalog-intro-jump:hover {
+  background: var(--accent-action-hover);
+  border-color: var(--accent-action-hover);
+  color: #fff;
+}
