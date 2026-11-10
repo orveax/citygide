@@ -1,0 +1,245 @@
+{
+  "phase": "D39.6",
+  "title": "Field Capture Package & Conditional Approval",
+  "date": "2026-11-10",
+  "scope": "Four service-level field evidence packets and a conditional editorial/route approval framework",
+  "sourceOfTruth": "Notion",
+  "notionReport": "https://app.notion.com/p/414a7a233ee1818b9161e948a8288b74",
+  "notionQueue": "https://app.notion.com/p/b7b2cdbfaab241ae93d29714a1b502b6",
+  "predecessors": [
+    {
+      "phase": "D39.4",
+      "url": "https://app.notion.com/p/414a7a233ee18144a1bfe57041d26dff"
+    },
+    {
+      "phase": "D39.5",
+      "url": "https://app.notion.com/p/414a7a233ee1814289a4ca3898c94f33"
+    }
+  ],
+  "governance": {
+    "mode": "research_only",
+    "draftPr": 39,
+    "branch": "research/d39-directory-evidence-sweep-20261110",
+    "fieldVisitsCompleted": 0,
+    "smartphoneRoutesCompleted": 0,
+    "approvedEntrances": 0,
+    "visitorReadyUnits": 0,
+    "publicChanges": 0,
+    "masterChanged": false,
+    "liveDataChanged": false,
+    "publicMapLinksChanged": false,
+    "externalOutreachConducted": false,
+    "fieldStaffAssigned": false,
+    "automaticApproval": false
+  },
+  "approvalLevels": [
+    {
+      "id": "C0",
+      "label": "Research/HOLD",
+      "meaning": "Internal evidence only, no visitor-service or map claim"
+    },
+    {
+      "id": "C1",
+      "label": "Address-only editorial candidate",
+      "meaning": "Name/plot/address may be independently reviewed, no public service or entrance assertion; founder release separately required"
+    },
+    {
+      "id": "C2",
+      "label": "Public-service editorial candidate without door",
+      "meaning": "Recent service-specific schedule/open-to-public evidence reviewable; still no navigate-to-entrance, founder approval separately required"
+    },
+    {
+      "id": "C3",
+      "label": "Visitor entrance ready",
+      "meaning": "True public door/vehicle stop geolocated plus access, schedule, authorized field evidence and real smartphone/desktop route QA; independent QA and explicit founder approval required"
+    }
+  ],
+  "records": [
+    {
+      "recordId": "NC-46",
+      "entity": "Banque Misr",
+      "unit": "New Capital retail branch",
+      "plot": "A2-23",
+      "priority": "High",
+      "fieldTaskUrl": "https://app.notion.com/414a7a233ee181d5a851d816f793c080",
+      "reviewCeiling": "C1",
+      "releaseStatus": "HOLD",
+      "officialGeneralDirection": {
+        "lat": 30.014293670654297,
+        "lng": 31.735580444335938,
+        "entranceVerified": false
+      },
+      "blockingEvidence": [
+        "Customer versus VIP door identity",
+        "Public road/drop-off/accessible approach",
+        "Actual GPS at permitted visitor entrance",
+        "Branch operating days",
+        "Real handset route arrival"
+      ],
+      "note": "D39.5 desktop route resolved generic finance-district place and dotted final approach, not bank door"
+    },
+    {
+      "recordId": "NC-49",
+      "entity": "National Bank of Egypt",
+      "unit": "Retail bank branch",
+      "plot": "A1-26",
+      "priority": "High",
+      "fieldTaskUrl": "https://app.notion.com/414a7a233ee1817689ddef513c185441",
+      "reviewCeiling": "C1",
+      "releaseStatus": "HOLD",
+      "publishedOfficialHours": "08:30–15:00 (days not verified)",
+      "thirdPartyCandidate": {
+        "lat": 30.0153598,
+        "lng": 31.7328531,
+        "firstPartyVerified": false,
+        "entranceVerified": false
+      },
+      "blockingEvidence": [
+        "First-party pin/entrance",
+        "Retail customer door versus electronic banking",
+        "Days and accessible route",
+        "Drop-off and real phone QA"
+      ],
+      "note": "Google POI recognition in directions does not approve customer door"
+    },
+    {
+      "recordId": "NC-45",
+      "entity": "National Bank of Egypt",
+      "unit": "Business Development Centre / SME service",
+      "plot": "A1-26",
+      "priority": "Medium",
+      "fieldTaskUrl": "https://app.notion.com/414a7a233ee1816da854cc20b0137139",
+      "reviewCeiling": "C0",
+      "releaseStatus": "HOLD",
+      "publishedExtension": "11713",
+      "blockingEvidence": [
+        "Independent public reception and floor",
+        "Appointment or ID requirements",
+        "Separate customer entrance and GPS",
+        "Unit-specific days and hours",
+        "Real phone route"
+      ],
+      "note": "Do not inherit retail NC-49 pin or hours from shared plot"
+    },
+    {
+      "recordId": "NC-15",
+      "entity": "Egyptian Ministry of Foreign Affairs",
+      "unit": "Mobile attestation/ratification vehicle in front of Building C",
+      "plot": null,
+      "priority": "High",
+      "fieldTaskUrl": "https://app.notion.com/414a7a233ee1811980d1f3e5bc3b3e98",
+      "reviewCeiling": "C0",
+      "releaseStatus": "HOLD",
+      "blockingEvidence": [
+        "Current same-day service operation",
+        "Actual lawful vehicle stopping bay",
+        "Public arrival and access restrictions",
+        "Current unit-specific hours",
+        "Fresh evidence and real phone route"
+      ],
+      "note": "Historical official opening photos are not current vehicle-location evidence"
+    }
+  ],
+  "reusableFieldCaptureTemplate": {
+    "recordId": null,
+    "serviceUnit": null,
+    "collector": null,
+    "capturedAtEgyptLocal": null,
+    "visitorAllowed": "unknown",
+    "conditions": null,
+    "entranceName": null,
+    "building": null,
+    "floor": null,
+    "entranceCoordinate": {
+      "lat": null,
+      "lng": null,
+      "gpsAccuracyM": null,
+      "captureMethod": null,
+      "publicAccessPermitted": null
+    },
+    "approachRoad": null,
+    "publicDropoff": null,
+    "pedestrianFinalMeters": null,
+    "observedAccessibility": null,
+    "days": null,
+    "hours": null,
+    "appointmentOrIdRequired": null,
+    "sourceEvidence": [],
+    "photos": {
+      "permitted": false,
+      "rightsOrConsent": null,
+      "files": []
+    },
+    "desktopRoute": {
+      "tested": false,
+      "result": null
+    },
+    "smartphoneRoute": {
+      "tested": false,
+      "result": null
+    },
+    "lastMeterArrivalVerified": false,
+    "independentQa": {
+      "owner": null,
+      "status": "not_started",
+      "reviewedAt": null
+    },
+    "founderDecision": {
+      "by": "Mohamed Adel",
+      "status": "pending",
+      "approvedAt": null
+    },
+    "publication": {
+      "authorized": false,
+      "deployed": false
+    }
+  },
+  "precisionAndFreshnessPolicy": {
+    "gpsOutdoorTargetAccuracyMeters": 20,
+    "gpsDisagreementReviewThresholdMeters": 30,
+    "notes": "Proposed QA thresholds, not proof of any location",
+    "mobileServiceNeedsDayOfTravelOrSameWeekReconfirmation": true,
+    "ordinaryFixedBankReviewIntervalDays": 180,
+    "neverTransferHoursBetweenUnits": true
+  },
+  "fieldRestrictions": [
+    "Only authorized on-site verifier may collect permitted evidence",
+    "Do not photograph protected/secured sites, guards, restricted systems or identifiable visitors without permission",
+    "Never treat map POI or building centroid as visitor entrance",
+    "Unknown values stay null; preserve contradictory candidate data in research only"
+  ],
+  "responsibility": {
+    "fieldVerifier": "Unassigned",
+    "independentQa": "Unassigned",
+    "releaseAccountable": "Mohamed Adel",
+    "siteMaintainer": "Assigned only after explicit approval"
+  },
+  "gates": [
+    {
+      "id": "F1",
+      "required": "Lawful field proof, identity, timestamp and GPS accuracy"
+    },
+    {
+      "id": "F2",
+      "required": "Unit-specific public access and service days/hours"
+    },
+    {
+      "id": "F3",
+      "required": "First-party vs map-pin conflict resolved with evidence"
+    },
+    {
+      "id": "F4",
+      "required": "Desktop and real-phone end-to-end arrival, including pedestrian/accessibility final leg"
+    },
+    {
+      "id": "F5",
+      "required": "Independent QA signoff and exact Founder approval"
+    },
+    {
+      "id": "F6",
+      "required": "Release QA, approved fields and rollback plan"
+    }
+  ],
+  "releaseDecision": "HOLD_all_four",
+  "nextPhase": "D39.7 — Evidence Intake & Human Release Decisions"
+}
