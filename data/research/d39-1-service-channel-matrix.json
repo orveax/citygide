@@ -1,0 +1,226 @@
+{
+  "sprint": "D39.1",
+  "checkedOn": "2026-11-10",
+  "publicApproved": false,
+  "outreach": false,
+  "sourceOfTruth": "https://app.notion.com/p/414a7a233ee181f1812cdd7db27fdca5",
+  "policySources": [
+    {
+      "date": "2026-01-01",
+      "source": "https://mcit.gov.eg/en/Media_Center/Press_Room/Press_Releases/98927",
+      "meaning": "Nine commercial registry procedures announced exclusive to Digital Egypt"
+    },
+    {
+      "date": "2026-03-10",
+      "source": "https://www.itda.gov.eg/news-details2.html",
+      "meaning": "Post Egypt protocol advertises several commercial registry services"
+    },
+    {
+      "date": "2026-07",
+      "source": "https://sis.gov.eg/ar/المركز-الإعلامي/الأخبار/وزارة-التموين-تبدأ-تطبيق-منظومة-الوثائق-المؤمنة-لمحررات-السجل-التجاري/",
+      "meaning": "Reported four postal services; exact date and branch deployment must be rechecked"
+    }
+  ],
+  "classification": {
+    "digital_first": "Jan official exclusively digital; no later postal overlap found in reviewed sources; not a proof all future channels impossible",
+    "mixed_conflict": "Jan exclusive service apparently overlaps later postal service; requires exact service and branch-level validation",
+    "postal_announced_branch_unverified": "National protocol/rollout names service but particular branch capability not established",
+    "online_application_confirmed": "Electronic filing documented; completion/approval entirely online not claimed",
+    "physical_branch_documented": "Official legal document names office; entrance, hours, jurisdiction still need validation"
+  },
+  "registryServices": [
+    {
+      "id": "update_registration_data",
+      "nameAr": "تحديث بيانات السجل",
+      "channel": "digital_first",
+      "janDigital": true,
+      "marJulPostal": false,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "add_company_to_account",
+      "nameAr": "إضافة شركة إلى حساب شركاتي",
+      "channel": "digital_first",
+      "janDigital": true,
+      "marJulPostal": false,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "inquire_registration",
+      "nameAr": "الاستعلام عن السجل التجاري",
+      "channel": "mixed_conflict",
+      "janDigital": true,
+      "marJulPostal": true,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "verify_record",
+      "nameAr": "الاستدلال/التحقق من القيد",
+      "channel": "mixed_conflict",
+      "janDigital": true,
+      "marJulPostal": true,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "transfer_sole_proprietorship",
+      "nameAr": "نقل قيد منشأة فردية داخل محافظة",
+      "channel": "digital_first",
+      "janDigital": true,
+      "marJulPostal": false,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "official_extract",
+      "nameAr": "استخراج مستخرج رسمي",
+      "channel": "mixed_conflict",
+      "janDigital": true,
+      "marJulPostal": true,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "data_certificate",
+      "nameAr": "شهادة بيانات السجل",
+      "channel": "digital_first",
+      "janDigital": true,
+      "marJulPostal": false,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "mfa_legalization_extract",
+      "nameAr": "مستخرج للتصديق من الخارجية",
+      "channel": "digital_first",
+      "janDigital": true,
+      "marJulPostal": false,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "negative_certificate",
+      "nameAr": "شهادة سلبية",
+      "channel": "digital_first",
+      "janDigital": true,
+      "marJulPostal": false,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "renewal_fees_or_registration",
+      "nameAr": "تجديد القيد/سداد رسوم التجديد",
+      "channel": "postal_announced_branch_unverified",
+      "janDigital": false,
+      "marJulPostal": true,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    },
+    {
+      "id": "UCR_lookup",
+      "nameAr": "الاستدلال عن رقم التسجيل الموحد UCR",
+      "channel": "postal_announced_branch_unverified",
+      "janDigital": false,
+      "marJulPostal": true,
+      "branchConfirmed": false,
+      "checkDate": "2026-11-10",
+      "publishDefinitiveInstruction": false
+    }
+  ],
+  "otherServiceChannels": [
+    {
+      "entity": "Waste Management Regulatory Authority",
+      "services": [
+        "Nonhazardous-waste collection/transport license application",
+        "Hazardous-waste activity consent application",
+        "Waste import/export permit application"
+      ],
+      "channel": "online_application_confirmed",
+      "source": "https://wmra.gov.eg/",
+      "physicalOfficeServiceUnverified": true
+    },
+    {
+      "entity": "New Capital NI-1 Notary Office",
+      "services": [
+        "Some notarization procedures subject to competence"
+      ],
+      "channel": "physical_branch_documented",
+      "source": "https://alamiria.com/",
+      "entranceUnverified": true,
+      "visitorHoursUnverified": true
+    },
+    {
+      "entity": "Industrial Modernization Centre",
+      "services": [
+        "Submission of specified tender 49/2026 until 2026-11-01"
+      ],
+      "channel": "historical_time_limited_physical_submission",
+      "source": "https://www.imc-egypt.org/ar/public-tenders/item/1569-49-2026-b-813-cl-eg-1004.html",
+      "existingMaster": "NC-242",
+      "currentPublicServiceUnverified": true
+    }
+  ],
+  "bankEnrichments": [
+    {
+      "existingName": "Banque Misr — Administrative Capital Branch",
+      "plot": "23-A2",
+      "district": "Financial District",
+      "source": "https://www.banquemisr.com/Home/ABOUT%20US/Locations?sc_lang=en",
+      "entranceUnverified": true
+    },
+    {
+      "existingName": "National Bank of Egypt — Business Development Centre",
+      "plot": "A1-26",
+      "district": "Financial District",
+      "source": "https://www.nbe.com.eg/AssetsManager/18f114c6-262e-41f0-97de-ae4221075c3b.pdf",
+      "telephone": "02-25945000 ext 11713",
+      "entranceUnverified": true
+    }
+  ],
+  "tenantIntake": [
+    {
+      "name": "Regus Infinity Tower",
+      "zone": "CBD",
+      "source": "https://www.regus.com/en/eg/al-maadi/office-space",
+      "counterSource": "https://nearu.io/listings/regus-cairo-new-capital-infinity-tower-wdbmxt",
+      "evidence": "First-party marketed listing, secondary coming-soon claim",
+      "status": "Hold",
+      "notion": "https://app.notion.com/p/414a7a233ee181e89336d99b189e6b63",
+      "operatingUnverified": true,
+      "publicMapAllowed": false
+    }
+  ],
+  "duplicateAudit": {
+    "industrialModernizationCentre": "Existing Master NC-242. No new record."
+  },
+  "snapshot": {
+    "master": 267,
+    "stagingBefore": 110,
+    "stagingAfter": 111,
+    "stagingNew": 1,
+    "masterMutations": 0,
+    "publishedMutations": 0
+  },
+  "acceptanceGates": [
+    "Resolve exact service channel conflicts from current official source and branch scope",
+    "Physical branch needs proof of entrance and visitor hours",
+    "No navigating to registered-only locations",
+    "Marketing and MLS listings are not tenant occupancy evidence",
+    "Rights: no ITDA Gazette republication",
+    "No outreach",
+    "No public data or map mutation"
+  ]
+}
