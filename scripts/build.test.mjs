@@ -59,6 +59,8 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.match(cardRenderer, /currentDirectoryReturnUrl\(\)/, 'details must link back to the matching discovery state');
   assert.match(cardRenderer, /place-card__image-link/, 'the visual card affordance must open its detail');
   assert.doesNotMatch(cardRenderer, /image\.src|مشهد معماري توضيحي/, 'a generic conceptual image must not masquerade as each unique place');
+  const css = readFileSync(join(root, 'dist/styles.css'), 'utf8');
+  assert.match(css, /\.sidebar-categories \{ display: grid; grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); overflow: visible;/, 'mobile quick categories must not hide filters in an undisclosed horizontal rail');
   assert.match(readFileSync(join(root, 'dist/scripts/app.mjs'), 'utf8'), /facetCounts\(places, filters, 'zone'\)/, 'district shortcuts must derive counts from real filtered data');
   assert.match(readFileSync(join(root, 'dist/contact.html'), 'utf8'), /mailto:hello@orveax.com/);
   assert.match(readFileSync(join(root, 'dist/terms.html'), 'utf8'), /زيارة/);

@@ -738,6 +738,10 @@ body { font-size: 14px; line-height: 1.9; }
   .catalog-results__links { justify-content: space-between; width: 100%; }
   .filter-results-jump, .mobile-refine-link { display: inline-flex; align-items: center; gap: 5px; color: var(--accent-deep); font-size: 11px; font-weight: 700; text-underline-offset: 4px; }
   .filter-results-jump { margin-top: 12px; justify-content: center; padding: 10px 12px; border: 1px solid #f0d1c3; background: #fff8f4; border-radius: 10px; }
+  /* Every filter must be discoverable without an invisible horizontal swipe. */
+  .sidebar-categories { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; gap: 8px; }
+  .sidebar-categories .category-chip { flex: none; width: 100%; min-width: 0; justify-content: center; flex-wrap: wrap; gap: 5px; padding: 9px 6px; font-size: 10px; line-height: 1.4; }
+  .sidebar-categories .category-chip__count { margin-inline-start: 0; }
   .catalog-results { scroll-margin-top: 87px; }
   .catalog-search { scroll-margin-top: 88px; }
   .empty-state { padding: 36px 17px; }
