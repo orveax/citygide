@@ -109,8 +109,8 @@ function placeCard(place) {
   status.append(element('span', 'visit-status visit-status--' + visitClass, visitStatusLabel(place)));
   const address = element('p', 'place-card__address', '⌖  ' + place.address);
   const meta = element('div', 'place-card__meta');
-  meta.append(element('span', '', 'العنوان والمصدر'));
-  meta.append(link(place.kind === 'Building' ? 'العنوان وتفاصيل المبنى ←' : 'العنوان وشروط الزيارة ←', cardHref));
+  meta.append(element('span', '', `آخر مراجعة للمصدر: ${place.last_checked || 'غير محددة'}`));
+  meta.append(link(place.kind === 'Building' ? 'تفاصيل المبنى ←' : 'البيانات وشروط الزيارة ←', cardHref));
   body.append(title, status, address, meta);
   if (exploration && place.verification === 'Research') body.append(element('p', 'place-card__verification-note', 'سجل بحثي غير معتمد؛ لا تعتمد على العنوان للزيارة.'));
   card.append(imageWrap, body);
