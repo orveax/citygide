@@ -1,0 +1,151 @@
+{
+  "sprint": "D39.2",
+  "checkedOn": "2026-11-10",
+  "sourceOfTruth": "https://app.notion.com/p/414a7a233ee181eaac7adba1efb1cb1d",
+  "publicationAuthorized": false,
+  "outreach": false,
+  "masterMutation": 0,
+  "stagingMutation": 0,
+  "siteMutation": 0,
+  "reviewedRecords": 7,
+  "visitorReady": 0,
+  "visitorReadyDefinition": "Current service at this branch + operational evidence + confirmed visitor hours + precise door/pin + resolved conflicts.",
+  "criticalCorrection": {
+    "issue": "MFA June extended-hours misread",
+    "resolution": "Capital office appears under OTHER offices with ordinary Sunday–Thursday hours; 09–19 and Saturday 10–13 apply only to six named offices elsewhere.",
+    "source": "https://www.mfa.gov.eg/ar/Ministers/Details/MinistryNews/5659",
+    "numericalHoursForCapital": null
+  },
+  "branches": [
+    {
+      "code": "NC-15",
+      "name": "MFA New Capital Attestation Office",
+      "service": "Consular document attestation",
+      "serviceEvidence": "official_opening",
+      "address": "Opposite MFA Building C, Government District",
+      "addressPrecision": "building_landmark",
+      "hours": "Official working hours Sunday–Thursday; exact times not stated",
+      "entrance": false,
+      "precisePin": false,
+      "source": [
+        "https://www.mfa.gov.eg/ar/Ministers/Details/MinisterActivities/4496",
+        "https://www.mfa.gov.eg/ar/Ministers/Details/MinistryNews/5659"
+      ],
+      "confidence": "high_for_service_not_hours",
+      "publicRouting": "hold",
+      "note": "Extended hours announced for six OTHER offices, not this one. Mobile setup, location may change."
+    },
+    {
+      "code": "NC-46",
+      "name": "Banque Misr Administrative Capital Branch",
+      "service": "Bank branch",
+      "serviceEvidence": "official_branch_locator",
+      "address": "Plot 23-A2 Financial District / Banks District",
+      "addressPrecision": "plot",
+      "hours": "08:30–15:00 advertised, days not verified for branch",
+      "entrance": false,
+      "precisePin": false,
+      "source": [
+        "https://banquemisr.com/en/Home/ABOUT-US/Locations"
+      ],
+      "confidence": "high_for_branch_advertisement",
+      "publicRouting": "hold",
+      "note": "Bank official Get Direction dynamic; exact visitor pin not captured."
+    },
+    {
+      "code": "NC-49",
+      "name": "NBE Administrative Capital Branch",
+      "service": "Retail bank branch",
+      "serviceEvidence": "official_opening_and_branch_list",
+      "address": "Plot A1-26 Financial District",
+      "addressPrecision": "plot",
+      "hours": null,
+      "entrance": false,
+      "precisePin": false,
+      "source": [
+        "https://www.nbe.com.eg/AssetsManager/379a5a68-35cc-4234-af38-d1ddf823b12d.pdf",
+        "https://www.nbe.com.eg/AssetsManager/0691a4c8-df3e-444d-b79d-c9c60732be7c.pdf"
+      ],
+      "confidence": "high_historical_opening",
+      "publicRouting": "hold",
+      "note": "Different entity/service from SME development centre NC-45, even if same plot."
+    },
+    {
+      "code": "NC-45",
+      "name": "NBE New Capital Business Development Centre",
+      "service": "SME business development centre",
+      "serviceEvidence": "official_centre_list",
+      "address": "Plot A1-26 Financial District",
+      "addressPrecision": "plot",
+      "hours": null,
+      "entrance": false,
+      "precisePin": false,
+      "source": [
+        "https://www.nbe.com.eg/AssetsManager/18f114c6-262e-41f0-97de-ae4221075c3b.pdf"
+      ],
+      "confidence": "high_for_listed_centre",
+      "publicRouting": "hold",
+      "note": "Bank telephone 02-25945000 ext 11713, not proof of access to centre or current opening hours."
+    },
+    {
+      "code": "NC-108",
+      "name": "New Capital Notarization Office NI-1",
+      "service": "Notarization excluding matters assigned to specific jurisdiction",
+      "serviceEvidence": "ministerial_decree_1987_2024",
+      "address": "Shop 4A NI-1 Mall Government District",
+      "addressPrecision": "unit",
+      "hours": null,
+      "entrance": false,
+      "precisePin": false,
+      "source": [
+        "https://www.alamiria.com/Sec/TashTxt?id=bHPN1VKLrgg%3D"
+      ],
+      "confidence": "high_for_legal_establishment",
+      "publicRouting": "hold",
+      "note": "Decree establishes branch; 2026 operation and visitor hours need contemporary official confirmation."
+    },
+    {
+      "code": "NC-181",
+      "name": "Egypt Post Financial District Commercial Registry Services",
+      "service": "Some commercial registry services",
+      "serviceEvidence": "quoted_ITDA_chairman_in_press",
+      "address": "Financial District, precise office unknown",
+      "addressPrecision": "district",
+      "hours": null,
+      "entrance": false,
+      "precisePin": false,
+      "source": [
+        "https://www.ahram.org.eg/daily/NewsPrint/1021023.aspx",
+        "https://www.itda.gov.eg/news-details2.html"
+      ],
+      "confidence": "moderate_branch_existence_low_specific_services",
+      "publicRouting": "hold",
+      "note": "Secondary CodeMasr claims financial number 1178 and 08–15 Sun–Thu, but not official, do not publish; exact procedures remain conflicted D39.1."
+    },
+    {
+      "code": "NC-242",
+      "name": "Industrial Modernization Centre — Ministry of Industry",
+      "service": "Tender 49/2026 document reception",
+      "serviceEvidence": "official_tender_with_expiration",
+      "address": "Ministry of Industry first floor Government District",
+      "addressPrecision": "floor",
+      "hours": "Tender acceptance was time-limited through 2026-11-01",
+      "entrance": false,
+      "precisePin": false,
+      "source": [
+        "https://www.imc-egypt.org/ar/public-tenders/item/1569-49-2026-b-813-cl-eg-1004.html"
+      ],
+      "confidence": "historical_only",
+      "publicRouting": "hold",
+      "note": "Do not infer permanent walk-in service or current open tender."
+    }
+  ],
+  "remainingGates": [
+    "Service-specific post office branch list",
+    "MFA official numeric hours if published",
+    "Bank/NBE usable entrances or official map directions",
+    "NI-1 current official operating hours and visitor door",
+    "No inferred pins from plot/address",
+    "No on-site service claim from expired tender"
+  ]
+}

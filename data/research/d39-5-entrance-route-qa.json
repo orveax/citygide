@@ -1,0 +1,286 @@
+{
+  "phase": "D39.5",
+  "title": "Entrance Field Evidence & Route QA",
+  "capturedAt": "2026-11-10",
+  "region": "New Administrative Capital, Egypt",
+  "scope": "Desk route QA and historical official photos only; no physical site visit or gate approval",
+  "notionReport": "https://app.notion.com/p/414a7a233ee1814289a4ca3898c94f33",
+  "predecessorPhase": "D39.4",
+  "publishDecision": "HOLD",
+  "masterChanged": false,
+  "liveDataChanged": false,
+  "publicMapLinksChanged": false,
+  "outreachConducted": false,
+  "fieldVisitConducted": false,
+  "actualMobileNavigationTested": false,
+  "controlledRouteOrigin": {
+    "name": "The Central Bank of Egypt, New Administrative Capital",
+    "googleDisplayAddress": "2P7M+F44, Cairo Governorate Desert, Cairo Governorate, Egypt",
+    "isUserLocation": false,
+    "purpose": "Stable local route QA origin",
+    "sourceType": "Google Maps UI"
+  },
+  "metrics": {
+    "masterUnitsReviewed": 4,
+    "desktopDirectionDestinationsTested": 2,
+    "directionLinkTechnicallyUsable": 2,
+    "entranceCorrectnessApproved": 0,
+    "firstPartyMinistryPhotosReviewed": 3,
+    "geolocatedCustomerEntrances": 0,
+    "fieldVisits": 0,
+    "smartphoneNavigationTests": 0,
+    "visitorReady": 0
+  },
+  "records": [
+    {
+      "recordId": "NC-46",
+      "entity": "Banque Misr",
+      "unit": "New Capital retail bank branch",
+      "plot": "A2-23",
+      "routeQa": {
+        "inputType": "official_institution_coordinate",
+        "inputCoordinate": {
+          "lat": 30.014293670654297,
+          "lng": 31.735580444335938
+        },
+        "source": "https://banquemisr.com/en/Home/ABOUT-US/Locations",
+        "googleMapsCoordinateResolved": true,
+        "googleMapsRouteDisplayed": true,
+        "routeDestinationNameObserved": "banks and finance district",
+        "destinationPlusCodeObserved": "2P7P+GM8",
+        "routeSummaryAtTime": {
+          "distanceMeters": 300,
+          "timeMinutes": 1,
+          "roads": "unnamed roads",
+          "disclaimer": "Ephemeral UI observation for controlled origin, not recommended travel time"
+        },
+        "lastMeterObservation": "Vehicle route ended on road before pin; dotted final path segment in map UI",
+        "branchIdentityConfirmedAtRouteEnd": false,
+        "doorVerified": false,
+        "actualMobileTested": false,
+        "technicalResult": "PASS_map_renders_route",
+        "customerEntranceResult": "FAIL_no_branch_or_gate_identity"
+      },
+      "visualEvidence": [
+        {
+          "type": "design_consultant_project_description",
+          "url": "https://www.ecgsa.com/banque-misr-building-at-new-capital/",
+          "supports": [
+            "main_entrance_design",
+            "VIP_entrance_distinction",
+            "ground_floor_banking_hall"
+          ],
+          "doesNotSupport": [
+            "operational_gate_number",
+            "street_side_geolocation",
+            "current_customer_access"
+          ]
+        },
+        {
+          "type": "official_accessibility_listing",
+          "url": "https://www.banquemisr.com/ar-EG/Home/SMEs/Retail-Banking/Accounts-And-Deposits/Savings-Accounts/Details/The-branches-equipped-to-receive-distinguished-capabilities",
+          "supports": [
+            "accessibility_features_listed"
+          ],
+          "doesNotSupport": [
+            "actual_accessible_door_coordinates"
+          ]
+        }
+      ],
+      "serviceEntrance": {
+        "lat": null,
+        "lng": null,
+        "verified": false
+      },
+      "decision": "HOLD_last_meter_and_identity"
+    },
+    {
+      "recordId": "NC-49",
+      "entity": "National Bank of Egypt",
+      "unit": "New Capital retail bank branch",
+      "plot": "A1-26",
+      "routeQa": {
+        "inputType": "unverified_google_candidate",
+        "inputCoordinate": {
+          "lat": 30.0153598,
+          "lng": 31.7328531
+        },
+        "googleMapsCoordinateResolved": true,
+        "googleMapsRouteDisplayed": true,
+        "routeDestinationNameObserved": "البنك الاهلي المصري العاصمة الادارية الجديدة",
+        "destinationPlusCodeObserved": "2P7M+V2J",
+        "routeSummaryAtTime": {
+          "distanceMeters": 1600,
+          "timeMinutes": 3,
+          "roads": "unnamed roads",
+          "disclaimer": "Ephemeral UI observation; origin was nearby CBE; one-way routing possible but not independently assessed"
+        },
+        "lastMeterObservation": "Pin appears beyond last mapped road segment in map UI",
+        "branchIdentityConfirmedAtRouteEnd": "google_poi_name_match_only",
+        "firstPartyPinConfirmed": false,
+        "doorVerified": false,
+        "actualMobileTested": false,
+        "technicalResult": "PASS_map_renders_route",
+        "customerEntranceResult": "FAIL_no_first_party_gate_confirmation"
+      },
+      "visualEvidence": [
+        {
+          "type": "official_historical_branch_opening_publication",
+          "url": "https://www.nbe.com.eg/AssetsManager/0691a4c8-df3e-444d-b79d-c9c60732be7c.pdf",
+          "supports": [
+            "facade_and_steps_photo",
+            "retail_bank_services",
+            "accessibility_facilities_at_opening"
+          ],
+          "doesNotSupport": [
+            "current_gate_position",
+            "geolocated_entrance"
+          ]
+        }
+      ],
+      "serviceEntrance": {
+        "lat": null,
+        "lng": null,
+        "verified": false
+      },
+      "decision": "HOLD_third_party_candidate_only"
+    },
+    {
+      "recordId": "NC-45",
+      "entity": "National Bank of Egypt",
+      "unit": "Business Development Centre — New Capital",
+      "plot": "A1-26",
+      "firstPartySource": "https://www.nbe.com.eg/AssetsManager/18f114c6-262e-41f0-97de-ae4221075c3b.pdf",
+      "internalExtension": "11713",
+      "routeQa": {
+        "status": "NOT_TESTED",
+        "reason": "No independent reception/entrance point; do not reuse NC-49 retail route"
+      },
+      "serviceEntrance": {
+        "lat": null,
+        "lng": null,
+        "verified": false
+      },
+      "decision": "HOLD_separate_unit"
+    },
+    {
+      "recordId": "NC-15",
+      "entity": "Ministry of Foreign Affairs",
+      "unit": "New Capital mobile attestation office",
+      "landmark": "In front of Ministry Building C",
+      "officialNewsUrl": "https://www.mfa.gov.eg/ar/Ministers/Details/MinisterActivities/4496",
+      "operationalHoursNotice": "https://www.mfa.gov.eg/ar/Ministers/Details/MinistryNews/5659",
+      "officialDirectoryCrossCheck": {
+        "url": "https://www.mfa.gov.eg/ar/RatificationOffices/Details",
+        "capitalMobileEntryObserved": false,
+        "observationDate": "2026-11-10",
+        "interpretation": "Coverage/category gap, NOT evidence of closure"
+      },
+      "photoEvidence": [
+        {
+          "url": "https://assets.mfa.gov.eg//uploads/images/Image022331956562whatsapp-image-2026-03-03-at-4-04-37-pm-jpeg.jpeg?w=1400",
+          "classification": "official_inauguration_group_at_building_entrance",
+          "geolocated": false,
+          "dated": "2026-03-03",
+          "supports": [
+            "ceremony_context"
+          ],
+          "doesNotSupport": [
+            "vehicle_stopping_point"
+          ]
+        },
+        {
+          "url": "https://assets.mfa.gov.eg//uploads/images/Image0156220767452-jpeg.jpeg?w=1400",
+          "classification": "official_vehicle_exterior_with_government_buildings",
+          "geolocated": false,
+          "dated": "2026-03-03",
+          "supports": [
+            "mobile_unit_physical_appearance",
+            "outdoor_operating_context_at_opening"
+          ],
+          "doesNotSupport": [
+            "today_parking_location",
+            "precise_building_C_entrance"
+          ]
+        },
+        {
+          "url": "https://assets.mfa.gov.eg//uploads/images/Image0156184433623-jpeg.jpeg?w=1400",
+          "classification": "official_equipped_vehicle_interior",
+          "geolocated": false,
+          "dated": "2026-03-03",
+          "supports": [
+            "mobile_service_equipment"
+          ],
+          "doesNotSupport": [
+            "entry_route"
+          ]
+        }
+      ],
+      "routeQa": {
+        "status": "NOT_TESTED",
+        "reason": "Only ministry building landmark exists; no dedicated vehicle stop coordinate"
+      },
+      "serviceEntrance": {
+        "lat": null,
+        "lng": null,
+        "verified": false
+      },
+      "decision": "HOLD_mobile_stop"
+    }
+  ],
+  "futureGoogleMapsLinkSpecification": {
+    "urlPattern": "https://www.google.com/maps/dir/?api=1&destination=LAT%2CLNG&travelmode=driving",
+    "source": "https://developers.google.com/maps/documentation/urls/get-started",
+    "useOnlyAfterVerifiedDestination": true,
+    "placeIdPreferredWhenVerified": true,
+    "technicalFormatVerifiedByDocs": true,
+    "actualAppLinkTested": false
+  },
+  "fieldAcceptancePackage": {
+    "status": "PREPARED_NOT_EXECUTED",
+    "requiredFields": [
+      "recordId",
+      "unitId",
+      "collector",
+      "evidenceDate",
+      "reviewer",
+      "officialSourceUrl",
+      "photoSourceUrl",
+      "photoPermission",
+      "photoContext",
+      "gpsLat",
+      "gpsLng",
+      "gpsAccuracyM",
+      "entranceLabel",
+      "approachRoad",
+      "pedestrianGate",
+      "accessibleApproach",
+      "workingDaysEvidence",
+      "hoursEvidence",
+      "desktopRoutingResult",
+      "mobileRoutingResult",
+      "approvalStatus",
+      "reviewedAt"
+    ],
+    "steps": [
+      "Confirm current visitor-facing service",
+      "Document permitted public entrance/signage without sensitive government/security photography",
+      "Record geotag/accuracy/gate/fronting road and accessible access",
+      "Check service-specific days and hours",
+      "Independent reviewer resolves conflicting maps",
+      "Test desktop and physical smartphone end-of-route",
+      "Owner signs acceptance prior to public pin"
+    ],
+    "securityGuardrail": "No unauthorized restricted-area photography, no personal photos of visitors, no speculative coordinates"
+  },
+  "qaPolicy": [
+    "Route link opening is not door validation",
+    "Temporary route time/distance not production data",
+    "No copy of historical image assets; link original only",
+    "No promotion absent field-grade visitor gate evidence",
+    "Working days must not be inferred from hours or other branches",
+    "Separate mobile stop and NBE SME unit from building coordinates",
+    "Keep original report and PR draft as research-only"
+  ],
+  "nextPhase": "D39.6 — Field Capture Package & Conditional Approval"
+}

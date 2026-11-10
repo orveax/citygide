@@ -1,0 +1,214 @@
+{
+  "phase": "D39.7",
+  "title": "Evidence Intake & Human Release Decisions",
+  "date": "2026-11-10",
+  "scope": "Formal handoff, intake protocol and evidence-based protective HOLD; no onsite collection or human release",
+  "notionReport": "https://app.notion.com/p/414a7a233ee18130a2a3cf97cd48f9df",
+  "sourceOfTruth": {
+    "tracker": "https://app.notion.com/p/b7b2cdbfaab241ae93d29714a1b502b6",
+    "d396": "https://app.notion.com/p/414a7a233ee1818b9161e948a8288b74",
+    "d395": "https://app.notion.com/p/414a7a233ee1814289a4ca3898c94f33",
+    "d400": "https://app.notion.com/p/414a7a233ee181eba883d24fc39627f7",
+    "d401": "https://app.notion.com/p/414a7a233ee181cebf43e4d63463d1e3"
+  },
+  "auditSummary": {
+    "tasksChecked": 4,
+    "taskPagesWithNewFieldEvidence": 0,
+    "onsiteVisitsObserved": 0,
+    "entranceGpsWithAccuracy": 0,
+    "realPhoneArrivalChecks": 0,
+    "independentQaApprovals": 0,
+    "founderReleaseDecisions": 0,
+    "newVisitorReady": 0,
+    "newProductionChanges": 0,
+    "outreachConducted": false
+  },
+  "recordStates": [
+    {
+      "recordId": "NC-46",
+      "entity": "Banque Misr",
+      "unit": "retail A2-23",
+      "d396ReviewCeiling": "C1",
+      "priority": "High",
+      "taskUrl": "https://app.notion.com/p/414a7a233ee181d5a851d816f793c080",
+      "fieldTaskStatus": "To do",
+      "fieldOwner": null,
+      "independentReviewer": null,
+      "evidenceEvents": [],
+      "fieldEvidenceReceived": false,
+      "entranceGeolocated": false,
+      "realSmartphoneRouteTested": false,
+      "qaStatus": "NOT_REVIEWED",
+      "founderDecision": null,
+      "founderApprovalRecorded": false,
+      "releaseState": "HOLD_PENDING_EVIDENCE",
+      "appliedToProductionInD397": false
+    },
+    {
+      "recordId": "NC-49",
+      "entity": "National Bank of Egypt",
+      "unit": "retail A1-26",
+      "d396ReviewCeiling": "C1",
+      "priority": "High",
+      "taskUrl": "https://app.notion.com/p/414a7a233ee1817689ddef513c185441",
+      "fieldTaskStatus": "To do",
+      "fieldOwner": null,
+      "independentReviewer": null,
+      "evidenceEvents": [],
+      "fieldEvidenceReceived": false,
+      "entranceGeolocated": false,
+      "realSmartphoneRouteTested": false,
+      "qaStatus": "NOT_REVIEWED",
+      "founderDecision": null,
+      "founderApprovalRecorded": false,
+      "releaseState": "HOLD_PENDING_EVIDENCE",
+      "appliedToProductionInD397": false
+    },
+    {
+      "recordId": "NC-45",
+      "entity": "National Bank of Egypt",
+      "unit": "Business Development Centre A1-26",
+      "d396ReviewCeiling": "C0",
+      "priority": "Medium",
+      "taskUrl": "https://app.notion.com/p/414a7a233ee1816da854cc20b0137139",
+      "fieldTaskStatus": "To do",
+      "fieldOwner": null,
+      "independentReviewer": null,
+      "evidenceEvents": [],
+      "fieldEvidenceReceived": false,
+      "entranceGeolocated": false,
+      "realSmartphoneRouteTested": false,
+      "qaStatus": "NOT_REVIEWED",
+      "founderDecision": null,
+      "founderApprovalRecorded": false,
+      "releaseState": "HOLD_PENDING_EVIDENCE",
+      "appliedToProductionInD397": false
+    },
+    {
+      "recordId": "NC-15",
+      "entity": "Egypt Ministry of Foreign Affairs",
+      "unit": "mobile attestation in front of Building C",
+      "d396ReviewCeiling": "C0",
+      "priority": "High",
+      "taskUrl": "https://app.notion.com/p/414a7a233ee1811980d1f3e5bc3b3e98",
+      "fieldTaskStatus": "To do",
+      "fieldOwner": null,
+      "independentReviewer": null,
+      "evidenceEvents": [],
+      "fieldEvidenceReceived": false,
+      "entranceGeolocated": false,
+      "realSmartphoneRouteTested": false,
+      "qaStatus": "NOT_REVIEWED",
+      "founderDecision": null,
+      "founderApprovalRecorded": false,
+      "releaseState": "HOLD_PENDING_EVIDENCE",
+      "appliedToProductionInD397": false
+    }
+  ],
+  "evidenceEventTemplate": {
+    "evidenceId": null,
+    "recordId": null,
+    "serviceUnit": null,
+    "type": null,
+    "originalUrlOrFile": null,
+    "collectedBy": null,
+    "capturedAtAfricaCairo": null,
+    "ingestedAtAfricaCairo": null,
+    "firstPartyInstitutionalSource": null,
+    "permissionAndRights": null,
+    "privacyReview": null,
+    "publicEntrance": {
+      "lat": null,
+      "lng": null,
+      "gpsAccuracyM": null,
+      "captureMethod": null,
+      "permitted": null,
+      "accessType": null
+    },
+    "publicService": {
+      "activeNow": null,
+      "days": null,
+      "hours": null,
+      "appointmentOrIdRules": null,
+      "verifiedDate": null
+    },
+    "access": {
+      "publicApproachRoad": null,
+      "dropoff": null,
+      "pedestrianLastMeters": null,
+      "accessibility": null
+    },
+    "conflicts": [],
+    "desktopDirectionsQa": null,
+    "realPhoneDirectionsQa": null,
+    "independentQa": {
+      "reviewer": null,
+      "reviewedAt": null,
+      "verdict": "NOT_REVIEWED",
+      "comments": null
+    },
+    "founderRelease": {
+      "approver": "Mohamed Adel",
+      "decision": null,
+      "decidedAt": null,
+      "approvedFields": [],
+      "validUntil": null
+    },
+    "productionRelease": {
+      "authorized": false,
+      "commitSha": null,
+      "rollbackReference": null,
+      "postReleaseQa": null
+    }
+  },
+  "intakeStateOptions": [
+    "NO_EVIDENCE",
+    "RECEIVED",
+    "RETURN_FOR_EVIDENCE",
+    "TRIAGED",
+    "QA_READY",
+    "FOUNDER_DECISION_PENDING",
+    "AUTHORIZED_NOT_DEPLOYED",
+    "DEPLOYED",
+    "REVOKED"
+  ],
+  "qaVerdictOptions": [
+    "NOT_REVIEWED",
+    "PASS",
+    "FAIL",
+    "NEEDS_EVIDENCE"
+  ],
+  "humanDecisionOptions": [
+    "APPROVE_ADDRESS_ONLY",
+    "APPROVE_SERVICE_NO_ROUTE",
+    "APPROVE_ENTRANCE_ROUTE",
+    "DEFER",
+    "REJECT"
+  ],
+  "governanceGates": [
+    "F1 lawful dated provenance evidence",
+    "F2 exact service public access and time",
+    "F3 official versus maps pin conflict resolved",
+    "F4 desktop and actual smartphone last-metre route QA for entrance-route scope",
+    "F5 separate independent QA and Founder approval",
+    "F6 release field scope, preview QA, rollback and production authorization"
+  ],
+  "releaseControls": {
+    "automaticApproval": false,
+    "sourceEvidenceIsNotFounderApproval": true,
+    "addressOnlyMayBeConsideredWithoutVisitorRoute": true,
+    "doNotInheritServiceHoursOrPinsAcrossColocatedUnits": true,
+    "sensitiveSecurityPhotographyProhibited": true,
+    "changeOnlyReviewedFieldsAfterExplicitHumanRelease": true,
+    "d39PrMustRemainDraft": true,
+    "newPublicRouteLinkAuthorizedInPhase": false
+  },
+  "nextActions": [
+    "Assign a lawful field verifier and independent data/map QA reviewer",
+    "Capture real evidence in existing four task pages (append events, preserve conflicts)",
+    "Have independent QA record PASS/FAIL/NEEDS_EVIDENCE",
+    "Send individually scoped decisions to Founder; no inferred approval",
+    "After release approval, separate site change, staging QA, production and rollback"
+  ],
+  "currentDecision": "HOLD_PENDING_EVIDENCE_all_four"
+}

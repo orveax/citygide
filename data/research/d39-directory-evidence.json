@@ -1,0 +1,155 @@
+{
+  "sprint": "D39",
+  "batch": "01",
+  "checkedOn": "2026-11-10",
+  "zones": [
+    "Government District",
+    "Financial District"
+  ],
+  "publishApproved": false,
+  "outreach": false,
+  "sourceOfTruth": "https://app.notion.com/p/414a7a233ee18179ac19ec829718db32",
+  "snapshot": {
+    "master": 267,
+    "stagingBefore": 107,
+    "stagingAfter": 110,
+    "newCandidates": 3,
+    "masterMutation": 0
+  },
+  "candidates": [
+    {
+      "id": "D39-001",
+      "nameAr": "الهيئة القومية للبريد المصري — المبنى الإداري بالعاصمة",
+      "category": "Government",
+      "status": "Source Found",
+      "scope": "Operating Location",
+      "district": "Financial District (inferred, not independently confirmed)",
+      "address": "Administrative Capital, exact building entrance unresolved",
+      "source": "https://www.nosi.gov.eg/ar/News/Pages/2024-02-19.aspx",
+      "sourceTier": "Official Government",
+      "masterCheck": "Separate from existing financial-district post-office service branch",
+      "publicMapAllowed": false,
+      "notes": "Official government report confirms activity at Egypt Post building in 2024, not public visitor service."
+    },
+    {
+      "id": "D39-002",
+      "nameAr": "ارك زون للمقاولات والتوريدات ARCZONE — عنوان مسجل سيتادل",
+      "category": "Company",
+      "status": "Hold",
+      "scope": "Registered Address Only",
+      "district": "Government District (registry claim)",
+      "address": "Citadel Mall, New Capital; unit unknown",
+      "source": "https://itda.gov.eg/CRM/879/CRA53.pdf",
+      "sourceTier": "Official Registry",
+      "masterCheck": "No name match",
+      "publicMapAllowed": false,
+      "notes": "Registered 2024; construction and delivery information conflicts; registry republication prohibited."
+    },
+    {
+      "id": "D39-003",
+      "nameAr": "أوكان 2 — مشروع إداري بالحي المالي",
+      "category": "Building",
+      "status": "Hold",
+      "scope": "Building or Asset Only",
+      "district": "Financial District (secondary claim)",
+      "address": "Plot A1 claimed; Downtown/Financial District nomenclature conflicts",
+      "source": "https://realestate.eg/en/5063094-okan-2-mall-new-capital",
+      "sourceTier": "Secondary",
+      "masterCheck": "No name match",
+      "publicMapAllowed": false,
+      "notes": "Not located on developer's own current projects page at time of check."
+    }
+  ],
+  "existingEntityEnrichments": [
+    {
+      "nameAr": "جهاز تنظيم إدارة المخلفات",
+      "source": "https://wmra.gov.eg/ar/contact-us/",
+      "evidence": "Ministry of Environment, first floor; Sunday-Thursday 09:00–14:30 and services listed."
+    },
+    {
+      "nameAr": "جهاز تنمية التجارة الداخلية",
+      "source": "https://itda.gov.eg/contact.aspx",
+      "evidence": "Ministry of Supply, first floor; distinguishes operating office from older addresses."
+    },
+    {
+      "nameAr": "الهيئة القومية للأنفاق",
+      "source": "https://www.nat.gov.eg/ContactUsAr.aspx",
+      "evidence": "Transport Ministry New Capital is stated as correspondence address, not customer office."
+    },
+    {
+      "nameAr": "الهيئة المصرية العامة لحماية الشواطئ",
+      "source": "https://www.mwri.gov.eg/spa/?page_id=1831",
+      "evidence": "Ministry of Water Resources, fourth floor; two email variants must not be blindly published."
+    },
+    {
+      "nameAr": "الهيئة العامة للاعتماد والرقابة الصحية",
+      "source": "https://www.gahar.gov.eg/ar/contact",
+      "evidence": "Government District headquarters and general contact; entrance is unknown."
+    },
+    {
+      "nameAr": "الهيئة القومية للإنتاج الحربي",
+      "source": "https://www.momp.gov.eg/Ar/ContactUs.aspx",
+      "evidence": "Ministry building and hotline."
+    },
+    {
+      "nameAr": "الهيئة العامة للسلع التموينية",
+      "source": "https://mediadr.sis.gov.eg/bitstream/handle/123456789/91835/OG10_20250306_2222.pdf?isAllowed=y&sequence=2",
+      "evidence": "Third floor, Ministry of Supply; documentary address, not general visitor hours."
+    },
+    {
+      "nameAr": "مصلحة الضرائب المصرية",
+      "source": "https://portal.eta.gov.eg/ar/node/1127",
+      "evidence": "C1 line near Ministry of Finance, 16395."
+    },
+    {
+      "nameAr": "جهاز تنظيم النقل البري الداخلي والدولي",
+      "source": "https://egypt.tradeportal.org/Contacts?l=ar",
+      "evidence": "Second floor, Transport Ministry."
+    },
+    {
+      "nameAr": "الهيئة العامة للموانئ البرية والجافة",
+      "source": "https://egypt.tradeportal.org/Contacts/20?embed=true&includeSearch=true&l=ar",
+      "evidence": "Third floor, Transport Ministry."
+    },
+    {
+      "nameAr": "المركز القومي للترجمة",
+      "source": "https://gate.ahram.org.eg/News/4897637.aspx",
+      "evidence": "First-floor Ministry of Culture used in previous calls for submissions; service continuity unverified."
+    }
+  ],
+  "operationalPolicy": [
+    {
+      "rule": "online_only_registry_services",
+      "source": "https://www.itda.gov.eg/en/news-details1-1.html",
+      "interpretation": "Nine commercial registry service types became digital-only January 2026; no offline routing without case-type check."
+    },
+    {
+      "rule": "post_office_service_subset",
+      "source": "https://www.linkedin.com/posts/itdagovegy_%D8%AC%D9%87%D8%A7%D8%B2%D8%AA%D9%86%D9%85%D9%8A%D8%A9%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9%D8%A7%D9%84%D8%AF%D8%A7%D8%AE%D9%84%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A-activity-7474205153366245377-uNpI",
+      "interpretation": "Some registry services are available at the Financial District post-office branch; list needs verification."
+    },
+    {
+      "rule": "registry_rights",
+      "source": "https://itda.gov.eg/jurnal.aspx",
+      "interpretation": "Commercial Gazette may not be republished without written permission. Record limited facts and original source references internally only."
+    }
+  ],
+  "sourceDirectories": [
+    "https://cabinet.gov.eg/Hierarchy",
+    "https://www.cairochamber.org.eg/Government.aspx",
+    "https://egypt.tradeportal.org/Contacts?l=ar",
+    "https://itda.gov.eg/jurnal.aspx",
+    "https://www.itda.gov.eg/registry.aspx",
+    "https://www.fei.org.eg/",
+    "https://www.gafi.gov.eg/",
+    "https://www.egyptpost.org/"
+  ],
+  "gates": [
+    "No place publication based only on registry",
+    "No map pin from real estate marketing",
+    "No assumption of a government service because of headquarters co-location",
+    "No copying commercial gazette content",
+    "Confirm visitor entrance and actual service by official sources",
+    "Do not merge to main without evidence review"
+  ]
+}
