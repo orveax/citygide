@@ -840,3 +840,54 @@ body { font-size: 14px; line-height: 1.9; }
   border-color: var(--accent-action-hover);
   color: #fff;
 }
+
+
+/* BR-03.2.1 — Contrast remediation for text-bearing UI.
+   Decorative hero coral and category glyphs retain brand role; small text must meet WCAG AA.
+   Warm-surface accent copy uses coral-800 (#A83E2B), since coral-700 is marginal on tints. */
+:root {
+  --text-secondary: #5e6877;
+  --text-on-warm: #5e6877;
+  --accent-text: #a83e2b;
+}
+.place-card__eyebrow,
+.place-card__meta,
+.place-card__meta span,
+.place-card__address,
+.place-card__verification-note,
+.checked-date,
+.source-note,
+.pagination__summary,
+.pagination__ellipsis,
+.active-filters__label,
+.district-shortcuts__label,
+.detail-visit-panel__facts p > span,
+.detail-visit-panel .detail-visit-panel__caution,
+.contact-main-card .contact-hint,
+.legal-date,
+.breadcrumbs,
+.fact-list dt {
+  color: var(--text-secondary);
+}
+.section-kicker,
+.catalog-intro .section-kicker,
+.closing-panel .section-kicker,
+.place-card__meta > a {
+  color: var(--accent-text);
+}
+.view-button {
+  color: var(--text-secondary);
+}
+.view-button.is-active {
+  color: var(--accent-text);
+}
+.section-kicker,
+.place-card__meta > a {
+  text-underline-offset: 3px;
+}
+.district-card::before {
+  background: linear-gradient(to top, rgb(18 31 43 / 94%), rgb(18 31 43 / 18%) 76%);
+}
+.district-card__body small { color: #f7c9b5; }
+.district-card__body strong,
+.district-card__body > span { text-shadow: 0 1px 4px rgb(0 0 0 / 42%); }
