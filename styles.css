@@ -758,3 +758,27 @@ body { font-size: 14px; line-height: 1.9; }
   .catalog-search { scroll-margin-top: 88px; }
   .empty-state { padding: 36px 17px; }
 }
+
+/* CG-UX-07: show discovery controls earlier on small screens. */
+.catalog-intro-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.catalog-intro-jump { display: none; }
+@media (max-width: 760px) {
+  .page-intro--catalog { padding-bottom: 22px; }
+  .page-intro--catalog .breadcrumbs { padding-block: 16px 15px; }
+  .page-intro--catalog h1 { font-size: clamp(25px, 7vw, 31px); line-height: 1.32; margin: 7px 0; }
+  .page-intro--catalog p { font-size: 12px; line-height: 1.75; }
+  .page-intro--catalog .section-kicker { font-size: 9px; }
+  .catalog-intro-actions { margin-top: 15px; gap: 10px; }
+  .catalog-intro-jump { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 9px 15px; border-radius: 11px; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; }
+  .catalog-intro-jump:hover { background: var(--accent-deep); }
+  .catalog-intro-jump:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .catalog-intro-actions .explore-intro-link { font-size: 11px; }
+  .catalog-layout { gap: 21px; padding-top: 15px; }
+  .filter-sidebar { padding: 17px; }
+  .filter-sidebar__head { margin-bottom: 12px; }
+  .filter-sidebar__head h2 { font-size: 18px; }
+  .catalog-results__head { margin-bottom: 16px; }
+  .trust-guide { margin-bottom: 16px; }
+  .hero__visual { display: none; }
+  .hero .search-panel { margin-top: 18px; }
+}
