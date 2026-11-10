@@ -36,7 +36,7 @@ Reduce the number of steps between searching for a government body, bank, compan
 - [x] Browser QA: the header «تصفح النتائج» action navigated to `#results`.
 - [x] Keyboard QA in Chrome: Tab reached the skip link first, then navigated the primary links and focused the first card illustration as an accessible link with a solid focus outline.
 - [x] 340px and 390px mobile screenshots via Cloudflare Browser Rendering exposed a hidden horizontal quick-category rail. A live 340px screenshot with the proposed two-column grid CSS confirmed every quick filter fits without relying on an invisible swipe; the identical CSS is now committed to Sprint 5.
-- [ ] Final 340–390px post-fix Preview screenshot acceptance (Browser Rendering hit HTTP 429 rate limiting immediately after deployment).
+- [x] Final 340px and 390px post-fix Preview screenshot acceptance: Cloudflare Browser Rendering captured all six quick categories in a fully visible two-column/three-row layout from the final deployed branch (`b7b5b99f`), without horizontal clipping.
 - [ ] Founder sign-off before production merge.
 
 ## 2026-11-10 responsive follow-up
@@ -44,6 +44,8 @@ Reduce the number of steps between searching for a government body, bank, compan
 - Confirmed the directory and detail page both render as single-column mobile layouts at 340px with explicit visitor-access and Maps-search cautions; no unsupported directions were added.
 - Converted the six sidebar quick categories from a horizontally scrollable rail to a responsive two-column grid. The change affects only viewports up to 760px.
 - Verified on the published branch that GitHub Actions #83 passed and the Cloudflare Preview build at `f8660b47fb68913948929f375f5b109dd533a8ed` succeeded.
+
+- Re-checked the final `b7b5b99f.citygide.pages.dev` Preview using Browser Rendering at both 340px and 390px. Both screenshots show all six quick categories in the expected two-column layout. The earlier temporary HTTP 429 limit cleared; the final mobile screenshot gate is now accepted.
 
 ## Release plan
 
