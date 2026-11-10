@@ -1,0 +1,246 @@
+{
+  "phase": "D39.3",
+  "title": "Visitor Entrance & Maps Evidence",
+  "capturedAt": "2026-11-10",
+  "region": "New Administrative Capital, Egypt",
+  "scope": "Research-only; branch-level visitor route and map evidence; draft PR",
+  "notionReport": "https://app.notion.com/p/414a7a233ee18109ba3edac263dedca9",
+  "publishDecision": "HOLD",
+  "masterChanged": false,
+  "liveDataChanged": false,
+  "outreachConducted": false,
+  "metrics": {
+    "masterRecordsAudited": 4,
+    "officialInstitutionMapDestinations": 1,
+    "verifiedVisitorEntrances": 0,
+    "visitorReadyRecords": 0,
+    "googleMapsConflictOrFalsePositiveCases": 3
+  },
+  "records": [
+    {
+      "recordId": "NC-46",
+      "entity": "Banque Misr",
+      "unit": "Administrative Capital Branch",
+      "category": "bank_branch",
+      "reportedPlot": "A2-23",
+      "reportedDistrict": "Financial District / Banks District",
+      "reportedOperatingHours": "08:30–15:00",
+      "reportedWorkingDays": null,
+      "serviceStatus": "branch_listed_in_official_locator",
+      "evidence": [
+        {
+          "type": "official_branch_locator",
+          "url": "https://banquemisr.com/en/Home/ABOUT-US/Locations",
+          "supports": [
+            "branch_identity",
+            "plot_address",
+            "hours",
+            "get_direction_link"
+          ]
+        },
+        {
+          "type": "first_party_direction_link",
+          "url": "http://maps.google.com/maps?q=30.014293670654297,31.735580444335938",
+          "supports": [
+            "official_destination_coordinate"
+          ],
+          "doesNotSupport": [
+            "visitor_entrance",
+            "walking_gate"
+          ]
+        },
+        {
+          "type": "official_accessibility_branch_list",
+          "url": "https://www.banquemisr.com/ar-EG/SMEs/Retail-Banking/Accounts-And-Deposits/Savings-Accounts/Details/The-branches-equipped-to-receive-distinguished-capabilities",
+          "supports": [
+            "branch_on_accessibility_list"
+          ],
+          "doesNotSupport": [
+            "exact_accessible_entrance"
+          ]
+        },
+        {
+          "type": "secondary_architect_portfolio",
+          "url": "https://architopiahub.com/ar/projects/details/14/",
+          "supports": [
+            "reported_ground_floor_banking_hall",
+            "reported_separate_entrances"
+          ],
+          "doesNotSupport": [
+            "public_entrance_coordinates",
+            "operational_acceptance"
+          ]
+        }
+      ],
+      "officialMapDestination": {
+        "latitude": 30.014293670654297,
+        "longitude": 31.735580444335938,
+        "precision": "institution_provided_destination_only",
+        "evidenceStatus": "first_party_link_observed",
+        "isVerifiedEntrance": false
+      },
+      "visitorEntrance": {
+        "latitude": null,
+        "longitude": null,
+        "gate": null,
+        "verified": false
+      },
+      "conflictingThirdPartyCandidates": [
+        {
+          "titleObserved": "Banque Misr بنك مصر فرع العاصمة الإدارية",
+          "latitude": 30.0122164,
+          "longitude": 31.733323,
+          "distanceFromOfficialDestinationMeters": 317,
+          "source": "Google Maps UI search observed 2026-11-10",
+          "status": "unreconciled"
+        },
+        {
+          "titleObserved": "Banque Misr | بنك مصر",
+          "claimedPlot": "A2-23",
+          "latitude": 30.0119207,
+          "longitude": 31.6976674,
+          "distanceFromOfficialDestinationMeters": 3660,
+          "source": "Google Maps UI search observed 2026-11-10",
+          "status": "major_geospatial_conflict"
+        }
+      ],
+      "routingState": "hold_public_route",
+      "mapApproval": "not_approved_as_visitor_entrance",
+      "nextVerification": "Resolve first-party destination vs map listings; independently identify public door and access point."
+    },
+    {
+      "recordId": "NC-49",
+      "entity": "National Bank of Egypt",
+      "unit": "Administrative Capital retail branch",
+      "category": "bank_branch",
+      "reportedPlot": "A1-26",
+      "evidence": [
+        {
+          "type": "official_bank_document",
+          "url": "https://www.nbe.com.eg/AssetsManager/18f114c6-262e-41f0-97de-ae4221075c3b.pdf",
+          "supports": [
+            "A1-26_bank_services_reference"
+          ],
+          "doesNotSupport": [
+            "verified_branch_door"
+          ]
+        }
+      ],
+      "googleMapsCandidate": {
+        "titleObserved": "البنك الاهلي المصري العاصمة الادارية الجديدة",
+        "latitude": 30.0153598,
+        "longitude": 31.7328531,
+        "source": "Google Maps UI search observed 2026-11-10",
+        "isOfficiallyLinked": false,
+        "isVerifiedEntrance": false,
+        "status": "candidate_only"
+      },
+      "falsePositive": {
+        "titleObserved": "البنك الاهلى المصري فرع العاصمة - NBE Capital Branch",
+        "latitude": 30.038101,
+        "longitude": 31.2328845,
+        "observedAddress": "8 Ibrahim Naguib Street, Cairo",
+        "distanceFromCapitalCandidateMeters": 48199,
+        "status": "wrong_city_result_rejected"
+      },
+      "visitorEntrance": {
+        "latitude": null,
+        "longitude": null,
+        "gate": null,
+        "verified": false
+      },
+      "reportedOperatingHours": null,
+      "reportedWorkingDays": null,
+      "routingState": "hold_public_route",
+      "mapApproval": "not_approved",
+      "nextVerification": "Locate first-party branch map, then confirm customer entrance separately."
+    },
+    {
+      "recordId": "NC-45",
+      "entity": "National Bank of Egypt",
+      "unit": "Business Development Centre — New Capital",
+      "category": "business_service_centre",
+      "reportedPlot": "A1-26",
+      "evidence": [
+        {
+          "type": "official_bank_document",
+          "url": "https://www.nbe.com.eg/AssetsManager/18f114c6-262e-41f0-97de-ae4221075c3b.pdf",
+          "supports": [
+            "business_development_centre_in_capital",
+            "plot_reference"
+          ]
+        }
+      ],
+      "googleMapsCandidate": null,
+      "visitorEntrance": {
+        "latitude": null,
+        "longitude": null,
+        "gate": null,
+        "verified": false
+      },
+      "reportedOperatingHours": null,
+      "reportedWorkingDays": null,
+      "routingState": "hold_public_route",
+      "mapApproval": "not_approved",
+      "inheritOtherServiceMapPin": false,
+      "nextVerification": "Confirm independent access, floor and service reception; do not reuse NC-49 map pin by shared plot."
+    },
+    {
+      "recordId": "NC-15",
+      "entity": "Egypt Ministry of Foreign Affairs",
+      "unit": "New Capital mobile document legalisation office",
+      "category": "mobile_public_service",
+      "reportedLandmark": "In front of Ministry Building C",
+      "reportedDistrict": "Government District",
+      "evidence": [
+        {
+          "type": "official_opening_announcement",
+          "url": "https://www.mfa.gov.eg/ar/Ministers/Details/MinisterActivities/4496",
+          "supports": [
+            "mobile_service_active",
+            "outside_building_C"
+          ]
+        },
+        {
+          "type": "official_hours_notice",
+          "url": "https://www.mfa.gov.eg/ar/Ministers/Details/MinistryNews/5659",
+          "supports": [
+            "Sunday_to_Thursday_official_hours"
+          ],
+          "doesNotSupport": [
+            "09:00–19:00_its_for_six_other_offices",
+            "numeric_hours_for_new_capital"
+          ]
+        }
+      ],
+      "ministryLandmarkGoogleMapsCandidate": {
+        "latitude": 30.01598,
+        "longitude": 31.7512755,
+        "source": "Google Maps general ministry listing observed 2026-11-10",
+        "isMobileServicePin": false,
+        "isVerifiedEntrance": false
+      },
+      "visitorEntrance": {
+        "latitude": null,
+        "longitude": null,
+        "gate": null,
+        "verified": false
+      },
+      "reportedOperatingHours": null,
+      "reportedWorkingDays": "Sunday–Thursday",
+      "routingState": "hold_public_route",
+      "mapApproval": "landmark_only",
+      "nextVerification": "Identify actual vehicle stopping point in front of Building C; confirm latest schedule and entry approach."
+    }
+  ],
+  "qaRules": [
+    "Never promote search-result pins to verified visitor entrances.",
+    "Preserve service-unit identities even if they share an address or building.",
+    "Keep institution-provided destination, map candidate and confirmed visitor entrance in separate fields.",
+    "Reject coordinates from false-positive Cairo results when querying New Administrative Capital.",
+    "For mobile public services, a ministry building marker is not a service marker.",
+    "Do not borrow extended office hours from other branches.",
+    "Public Google Maps directions require independently approved service-specific route.",
+    "Keep Master, data/exploration.json, live public pins untouched until acceptance."
+  ]
+}
