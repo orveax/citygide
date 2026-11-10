@@ -51,6 +51,51 @@ const VISIT_LABELS = {
 export const sourceStatusLabel = place => SOURCE_LABELS[place?.verification] || 'حالة المصدر غير محددة';
 export const visitStatusLabel = place => VISIT_LABELS[place?.public_access] || VISIT_LABELS.Unknown;
 
+const DIRECTORY_ZONES = new Set(['Government District', 'Financial District', 'Other']);
+const DIRECTORY_KINDS = new Set(['Government', 'Authority', 'Bank', 'Company', 'Building', 'District']);
+const DIRECTORY_SORTS = new Set(['relevance', 'name', 'recent']);
+const DIRECTORY_VIEWS = new Set(['grid', 'list']);
+
+// Restore a user's discovery context without accepting arbitrary redirect URLs.
+// Query values are always serialized, never interpolated into HTML.
+export function directoryReturnUrl({ target = 'directory.html', filters = {}, page = 1 } = {}) {
+  const safeTarget = ['directory.html', 'approved.html', 'index.html'].includes(target) ? target : 'directory.html';
+  const params = new URLSearchParams();
+  const query = String(filters.q || '').trim().slice(0, 120);
+  if (query) params.set('q', query);
+  if (DIRECTORY_ZONES.has(filters.zone)) params.set('zone', filters.zone);
+  if (DIRECTORY_KINDS.has(filters.kind)) params.set('kind', filters.kind);
+  if (DIRECTORY_SORTS.has(filters.sort) && filters.sort !== 'relevance') params.set('sort', filters.sort);
+  if (DIRECTORY_VIEWS.has(filters.view) && filters.view !== 'grid') params.set('view', filters.view);
+  if (safeTarget !== 'index.html' && Number.isSafeInteger(page) && page > 1 && page <= 10000) params.set('page', String(page));
+  return safeTarget + (params.size ? '?' + params.toString() : '') + (safeTarget === 'index.html' ? '#places' : '#results');
+}
+
+export function safeDirectoryReturnUrl(raw, { exploration = false } = {}) {
+  const fallback = exploration ? 'directory.html' : 'approved.html';
+  if (typeof raw !== 'string' || raw.length > 500) return directoryReturnUrl({ target: fallback });
+  const match = /^(directory\.html|approved\.html|index\.html)(?=[?#]|$)/.exec(raw);
+  if (!match || (exploration ? match[1] === 'approved.html' : match[1] !== 'approved.html')) {
+    return directoryReturnUrl({ target: fallback });
+  }
+  const params = new URL(raw, 'https://cityguide.invalid/').searchParams;
+  const page = Number(params.get('page'));
+  return directoryReturnUrl({
+    target: match[1],
+    filters: Object.fromEntries(['q', 'zone', 'kind', 'sort', 'view'].map(field => [field, params.get(field) || ''])),
+    page
+  });
+}
+
+export function relaxationSuggestions(places, filters = {}) {
+  const descriptions = { q: 'كلمة البحث', zone: 'المنطقة', kind: 'نوع الجهة' };
+  return Object.entries(descriptions)
+    .filter(([field]) => String(filters[field] || '').trim())
+    .map(([field, label]) => ({ field, label, count: filterPlaces(places, { ...filters, [field]: '' }).length }))
+    .filter(suggestion => suggestion.count > 0)
+    .sort((a, b) => a.count - b.count);
+}
+
 const sourceWeight = { Published: 4, 'Contact Verified': 3, 'Source Confirmed': 2, Research: 0 };
 const kindWeight = { Government: 5, Bank: 4, Authority: 3, Company: 2, Building: 1, District: 0 };
 

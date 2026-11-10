@@ -1,4 +1,4 @@
-import { canonicalizePlaces, facetCounts, filterPlaces, paginatePlaces, resolveCanonicalPlace, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
+import { canonicalizePlaces, directoryReturnUrl, facetCounts, filterPlaces, paginatePlaces, relaxationSuggestions, resolveCanonicalPlace, safeDirectoryReturnUrl, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 import { navigationDecision } from './maps.mjs';
 
 const $ = id => document.getElementById(id);
@@ -55,26 +55,54 @@ function emptyState(places, filters) {
   holder.append(element('p', '', !places.length
     ? (preview ? 'دي معاينة داخلية لسجلات تحت المراجعة، وليست دليلاً منشورًا.' : 'بنراجع عناوين الجهات ومصادرها وشروط الزيارة قبل ما نعرضها. أول ما البيانات تتعتمد، هتلاقيها هنا.')
     : 'جرّب اسم مختلف، أو غيّر المنطقة ونوع الجهة علشان توسّع النتائج.'));
+  const alternatives = relaxationSuggestions(places, filters);
+  if (alternatives.length) {
+    const recovery = element('div', 'empty-state__recovery');
+    recovery.append(element('strong', '', 'طرق لتوسيع النتائج'));
+    for (const suggestion of alternatives) {
+      const button = element('button', 'empty-state__recovery-button', `بدون فلتر ${suggestion.label} · ${suggestion.count} نتيجة`);
+      button.type = 'button';
+      button.addEventListener('click', () => {
+        $(suggestion.field).value = '';
+        renderDirectory(places, { resetPage: true });
+      });
+      recovery.append(button);
+    }
+    holder.append(recovery);
+  }
   if (places.length && (filters.q || filters.kind || filters.zone)) {
     const reset = element('button', 'reset-filters', 'مسح كل الفلاتر');
     reset.type = 'button'; reset.addEventListener('click', () => { $('q').value = ''; $('kind').value = ''; $('zone').value = ''; renderDirectory(places, { resetPage: true }); });
     holder.append(reset);
   }
+  if (places.length) holder.append(link('الجهة مش موجودة؟ اقترح إضافتها بمصدر رسمي ←', 'contact.html', 'empty-state__suggest-link'));
   return holder;
+}
+
+function currentDirectoryReturnUrl() {
+  return directoryReturnUrl({
+    target: home ? 'index.html' : exploration ? 'directory.html' : 'approved.html',
+    filters: { q: $('q')?.value, zone: $('zone')?.value, kind: $('kind')?.value, sort: $('sort')?.value, view: document.body.dataset.view },
+    page: currentPage
+  });
 }
 
 function placeCard(place) {
   const kindClass = KINDS[place.kind] ? place.kind.toLowerCase() : 'other';
   const card = element('article', 'place-card place-card--' + kindClass);
+  const cardHref = detailHref + encodeURIComponent(place.slug) + '&return=' + encodeURIComponent(currentDirectoryReturnUrl());
   const imageWrap = element('div', 'place-card__image');
   const glyph = element('span', 'place-card__glyph', KIND_GLYPHS[place.kind] || '⌖');
   glyph.setAttribute('aria-hidden', 'true');
-  imageWrap.append(glyph);
+  const imageLink = link('', cardHref, 'place-card__image-link');
+  imageLink.setAttribute('aria-label', `افتح تفاصيل ${place.name_ar}`);
+  imageLink.append(glyph);
+  imageWrap.append(imageLink);
   imageWrap.append(element('span', 'image-badge', labelKind(place.kind)));
   const stateClass = place.verification === 'Published' ? 'approved' : place.verification === 'Research' ? 'research' : 'source';
   const body = element('div', 'place-card__body');
   body.append(element('span', 'place-card__eyebrow', labelZone(place.zone) + ' / ' + labelRole(place.role)));
-  const title = element('h3'); title.append(link(place.name_ar, detailHref + encodeURIComponent(place.slug)));
+  const title = element('h3'); title.append(link(place.name_ar, cardHref));
   const status = element('div', 'place-card__status');
   const visitClass = place.public_access === 'By Appointment' ? 'appointment' : place.public_access === 'Walk-in Confirmed' ? 'walkin' : 'unknown';
   status.append(element('span', 'source-status source-status--' + stateClass, sourceStatusLabel(place)));
@@ -82,7 +110,7 @@ function placeCard(place) {
   const address = element('p', 'place-card__address', '⌖  ' + place.address);
   const meta = element('div', 'place-card__meta');
   meta.append(element('span', '', 'العنوان والمصدر'));
-  meta.append(link(place.kind === 'Building' ? 'تفاصيل المبنى ←' : 'تفاصيل الجهة ←', detailHref + encodeURIComponent(place.slug)));
+  meta.append(link(place.kind === 'Building' ? 'العنوان وتفاصيل المبنى ←' : 'العنوان وشروط الزيارة ←', cardHref));
   body.append(title, status, address, meta);
   if (exploration && place.verification === 'Research') body.append(element('p', 'place-card__verification-note', 'سجل بحثي غير معتمد؛ لا تعتمد على العنوان للزيارة.'));
   card.append(imageWrap, body);
@@ -216,11 +244,12 @@ function renderPagination(pageData, places) {
 
 function renderDirectory(places, { resetPage = false } = {}) {
   if (resetPage) currentPage = 1;
-  const filters = { q: $('q').value, kind: $('kind').value, zone: $('zone').value, sort: $('sort').value };
+  const filters = { q: $('q').value, kind: $('kind').value, zone: $('zone').value, sort: $('sort').value, view: document.body.dataset.view || 'grid' };
   const results = filterPlaces(places, filters);
   const pageData = paginatePlaces(results, currentPage, PAGE_SIZE);
   currentPage = pageData.page;
   setText('count', String(results.length), '0');
+  setText('filterResultCount', String(results.length), '0');
   setText('resultsDescription', home ? `سجلًا في الدليل — نعرض ${Math.min(results.length, 6)} نماذج منها` : exploration ? 'نتيجة استكشافية — حالات المصدر والزيارة منفصلة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
   const target = $('cards'); target.replaceChildren();
   target.classList.toggle('is-sparse', pageData.items.length === 1);
@@ -231,32 +260,33 @@ function renderDirectory(places, { resetPage = false } = {}) {
   renderFacets(places, filters);
   syncChips(); syncViews();
   const url = new URL(location.href);
-  for (const field of ['q', 'kind', 'zone', 'sort']) {
+  for (const field of ['q', 'kind', 'zone', 'sort', 'view']) {
     if (filters[field] && !(field === 'sort' && filters.sort === 'relevance')) url.searchParams.set(field, filters[field]);
     else url.searchParams.delete(field);
   }
+  if (filters.view === 'grid') url.searchParams.delete('view');
   if (!home && currentPage > 1) url.searchParams.set('page', String(currentPage));
   else url.searchParams.delete('page');
   history.replaceState(null, '', url);
 }
 
 function setupDirectory(places) {
-  const fullDirectoryUrl = () => {
-    const params = new URLSearchParams();
-    for (const field of ['q', 'kind', 'zone', 'sort']) if ($(field).value && !(field === 'sort' && $(field).value === 'relevance')) params.set(field, $(field).value);
-    return 'directory.html' + (params.size ? '?' + params.toString() : '');
-  };
+  const fullDirectoryUrl = () => directoryReturnUrl({
+    target: 'directory.html',
+    filters: { q: $('q').value, kind: $('kind').value, zone: $('zone').value, sort: $('sort').value, view: document.body.dataset.view }
+  });
   const params = new URLSearchParams(location.search);
   for (const field of ['q', 'kind', 'zone', 'sort']) {
     const value = params.get(field);
     if (value && ($(field).tagName === 'INPUT' || [...$(field).options].some(o => o.value === value))) $(field).value = value;
   }
+  if (params.get('view') === 'list') document.body.dataset.view = 'list';
   if (!home) currentPage = Number(params.get('page')) || 1;
   $('searchForm').addEventListener('submit', event => { event.preventDefault(); if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth' }); });
   for (const field of ['q', 'kind', 'zone', 'sort']) $(field).addEventListener(field === 'q' ? 'input' : 'change', () => renderDirectory(places, { resetPage: true }));
   document.querySelectorAll('[data-kind]').forEach(button => button.addEventListener('click', () => { $('kind').value = button.dataset.kind; if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth' }); }));
   document.querySelectorAll('[data-zone-link]').forEach(a => a.addEventListener('click', event => { $('zone').value = a.dataset.zoneLink; $('kind').value = ''; $('q').value = ''; if (home) { event.preventDefault(); location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); }));
-  document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { document.body.dataset.view = button.dataset.view; syncViews(); }));
+  document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { document.body.dataset.view = button.dataset.view; renderDirectory(places); }));
   setText('exploreEntryCount', String(places.length), '0');
   setText('sampleDirectoryCount', String(places.length), '0');
   renderDirectory(places);
@@ -277,6 +307,13 @@ function setupDetail(places) {
     url.searchParams.set('slug', place.slug);
     history.replaceState(null, '', url);
   }
+  const requestedReturn = new URLSearchParams(location.search).get('return');
+  const returnHref = safeDirectoryReturnUrl(requestedReturn, { exploration });
+  document.querySelectorAll('.back-link, .breadcrumbs a[href="directory.html"], .site-header .header-action')
+    .forEach(anchor => { anchor.href = returnHref; });
+  const back = document.querySelector('.back-link');
+  if (back) back.textContent = returnHref.includes('?') || returnHref.startsWith('index.html')
+    ? '← رجوع إلى نتائج بحثك' : '← رجوع إلى الدليل';
   document.title = place.name_ar + ' | دليل العاصمة' + (exploration ? ' — نسخة استكشافية' : preview ? ' — معاينة داخلية' : '');
   setText('title', place.name_ar); setText('crumbName', place.name_ar); setText('crumbZone', labelZone(place.zone));
   const sourceBadge = document.querySelector('.verified-badge');
