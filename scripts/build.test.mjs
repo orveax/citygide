@@ -42,6 +42,7 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.match(catalogue, /class="catalog-results" id="results"/, 'the directory must expose a genuine results anchor');
   assert.match(catalogue, /href="#results">تخطَّ إلى النتائج/, 'skip link must bypass the intro and filters');
   assert.match(catalogue, /id="filterResultCount"/, 'mobile jump link must show a live result count');
+  assert.match(catalogue, /class="trust-guide"/, 'directory explains the difference between source evidence and visitor readiness');
   const home = readFileSync(join(root, 'dist/index.html'), 'utf8');
   assert.match(home, /data-home="true"/, 'homepage must expose expanded data too');
   assert.match(home, /id="exploreEntryCount"/, 'the homepage inventory count must be data-driven');
@@ -56,6 +57,7 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.ok(cardRenderer, 'visitor card renderer must be included');
   assert.match(cardRenderer, /source-status/, 'source trust state must be inside each card body');
   assert.match(cardRenderer, /visit-status/, 'visitor access state must remain independent');
+  assert.match(cardRenderer, /آخر مراجعة للمصدر/, 'a result card must show when its source was last checked');
   assert.match(cardRenderer, /currentDirectoryReturnUrl\(\)/, 'details must link back to the matching discovery state');
   assert.match(cardRenderer, /place-card__image-link/, 'the visual card affordance must open its detail');
   assert.doesNotMatch(cardRenderer, /image\.src|مشهد معماري توضيحي/, 'a generic conceptual image must not masquerade as each unique place');
