@@ -42,6 +42,7 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.match(catalogue, /class="catalog-results" id="results"/, 'the directory must expose a genuine results anchor');
   assert.match(catalogue, /href="#results">تخطَّ إلى النتائج/, 'skip link must bypass the intro and filters');
   assert.match(catalogue, /id="filterResultCount"/, 'mobile jump link must show a live result count');
+  assert.match(catalogue, /class="catalog-intro-jump" href="#searchForm"/, 'mobile directory intro must lead directly to search');
   assert.match(catalogue, /class="trust-guide"/, 'directory explains the difference between source evidence and visitor readiness');
   const home = readFileSync(join(root, 'dist/index.html'), 'utf8');
   assert.match(home, /data-home="true"/, 'homepage must expose expanded data too');
@@ -62,6 +63,7 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.match(cardRenderer, /place-card__image-link/, 'the visual card affordance must open its detail');
   assert.doesNotMatch(cardRenderer, /image\.src|مشهد معماري توضيحي/, 'a generic conceptual image must not masquerade as each unique place');
   const css = readFileSync(join(root, 'dist/styles.css'), 'utf8');
+  assert.match(css, /\.hero__visual \{ display: none; \}/, 'mobile home must prioritize search over decorative visuals');
   assert.match(css, /\.sidebar-categories \{ display: grid; grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); overflow: visible;/, 'mobile quick categories must not hide filters in an undisclosed horizontal rail');
   assert.match(readFileSync(join(root, 'dist/scripts/app.mjs'), 'utf8'), /facetCounts\(places, filters, 'zone'\)/, 'district shortcuts must derive counts from real filtered data');
   assert.match(readFileSync(join(root, 'dist/contact.html'), 'utf8'), /mailto:hello@orveax.com/);
