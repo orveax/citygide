@@ -891,3 +891,8 @@ body { font-size: 14px; line-height: 1.9; }
 .district-card__body small { color: #f7c9b5; }
 .district-card__body strong,
 .district-card__body > span { text-shadow: 0 1px 4px rgb(0 0 0 / 42%); }
+
+/* Dark editorial hero: retain light-on-dark contrast after global small-text rules. */
+.story-hero .section-kicker { color: #ffb69b; }
+.story-hero .breadcrumbs { color: #d7dbe1; }
+.story-hero .breadcrumbs a { color: #fff; }
