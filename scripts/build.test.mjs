@@ -532,3 +532,25 @@ test('D28 tenant follow-up adds official historic addresses but quarantines MU23
   assert.equal(counts.Published, 2);
   assert.equal(JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8')).places.length, 2);
 });
+
+
+test('CG-MUX-04 cards distinguish place identity, address precision, and two independent statuses', () => {
+  const app = readFileSync(join(root, 'scripts/app.mjs'), 'utf8');
+  const css = readFileSync(join(root, 'styles.css'), 'utf8');
+  const start = app.indexOf('function placeCard(place)');
+  const end = app.indexOf('function renderActiveFilters', start);
+  assert.ok(start >= 0 && end > start);
+  const card = app.slice(start, end);
+  for (const token of [
+    "place-card__location", "place-card__purpose", "place-card__address-box",
+    "place-card__precision", "place-card__field-label", "place-card__status",
+    "sourceStatusLabel(place)", "visitStatusLabel(place)",
+    "PRECISIONS[place.address_precision]", "place-card__action",
+    "place-card__verification-note", "currentDirectoryReturnUrl()"
+  ]) assert.ok(card.includes(token), 'Missing card UX requirement: ' + token);
+  assert.match(card, /if \(exploration && place\.verification === 'Research'\)/);
+  assert.doesNotMatch(card, /navigationDecision|directions_url|verified_entrance|<img|place\.visitor_hours/);
+  assert.match(css, /CG-MUX-04 — compact, information-first directory cards/);
+  assert.match(css, /\.place-card__meta > \.place-card__action:focus-visible/);
+  assert.match(css, /@media \(max-width: 760px\)[\s\S]*?\.place-card__meta > \.place-card__action \{ width: 100%; \}/);
+});
