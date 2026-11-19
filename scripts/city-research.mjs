@@ -1,6 +1,6 @@
 // Candidate research registry: deliberately separate from the approved and exploratory public catalogues.
 const STATES = new Set(['Source identified', 'Needs operator confirmation', 'Conflict hold', 'Field QA required', 'Research only']);
-const TYPES = new Set(['Government Service','Bank Branch','Telecom Branch','University','Commercial Facility','Property Asset','Other']);
+const TYPES = new Set(['Government Service','Bank Branch','ATM','Sales Office','Telecom Branch','University','Commercial Facility','Property Asset','Other']);
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 export function validateCityResearch(dataset) {
   const errors = [];
