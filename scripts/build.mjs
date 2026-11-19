@@ -58,7 +58,7 @@ exploreDetail = exploreDetail.replace('<body data-page="detail">', '<body data-c
 writeFileSync(join(dist, 'explore-place.html'), exploreDetail);
 cpSync(join(root, 'scripts/app.mjs'), join(dist, 'scripts/app.mjs'));
 cpSync(join(root, 'scripts/alamein.mjs'), join(dist, 'scripts/alamein.mjs'));
-for (const name of ['alamein-01.json','alamein-02.json']) cpSync(join(root, 'data', name), join(dist, 'data', name));
+for (const name of ['alamein-01.json','alamein-02.json','place-details.json']) cpSync(join(root, 'data', name), join(dist, 'data', name));
 cpSync(join(root, 'scripts/catalog.mjs'), join(dist, 'scripts/catalog.mjs'));
 cpSync(join(root, 'scripts/maps.mjs'), join(dist, 'scripts/maps.mjs'));
 for (const name of ['service-pathways.mjs','services-page.mjs','building-relations.mjs','buildings-page.mjs','city-districts.mjs','measurement.mjs']) cpSync(join(root, 'scripts', name), join(dist, 'scripts', name));
@@ -78,6 +78,14 @@ for (const filename of ['index.html','place.html','explore-place.html','director
 }
 
 const alameinRecords = ['alamein-01.json','alamein-02.json'].flatMap(name => JSON.parse(readFileSync(join(root,'data',name),'utf8')));
+const evidenceDetails = JSON.parse(readFileSync(join(root,'data/place-details.json'),'utf8'));
+if (evidenceDetails.schema_version !== '0.1' || !evidenceDetails.records || Array.isArray(evidenceDetails.records)) throw Error('Invalid place details schema');
+const allowedDetails = new Set(['entity_subtype','floor_suite','unit_code','neighborhood','po_box','postal_code','contact_attribution','operational_status','audit_state','visitor_release_gate','evidence_scope','hotline_hours','entity_code','tenant_evidence_class','next_review','map_evidence_class']);
+for(const [id, details] of Object.entries(evidenceDetails.records)){
+ if(!exploration.places.some(p=>p.id===id)) throw Error('Orphan research detail '+id);
+ if(Object.keys(details).some(key=>!allowedDetails.has(key))) throw Error('Unsafe research detail '+id);
+ if(Object.values(details).some(v=>typeof v!=='string'||v.length>5000)) throw Error('Invalid research detail '+id);
+}
 const detailCounts = buildDetailRoutes(dist, exploration, alameinRecords);
 console.log('Record-specific analytics routes:', detailCounts);
 const uxProblems = auditBuiltUx(dist);
