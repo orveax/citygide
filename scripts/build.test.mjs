@@ -554,3 +554,27 @@ test('CG-MUX-04 cards distinguish place identity, address precision, and two ind
   assert.match(css, /\.place-card__meta > \.place-card__action:focus-visible/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*?\.place-card__meta > \.place-card__action \{ width: 100%; \}/);
 });
+
+
+test('CG-MUX-05 visitor detail prioritizes service eligibility, access, address and next action', () => {
+  const html=readFileSync(join(root,'place.html'),'utf8');
+  const script=readFileSync(join(root,'scripts/app.mjs'),'utf8');
+  const css=readFileSync(join(root,'styles.css'),'utf8');
+  for (const id of ['serviceReadiness','visitorReadiness','addressReadiness','navigationReadiness',
+    'nextStep','serviceDecision','serviceChannel','entranceDecision','contactScope',
+    'visitorHours','officeHours','checked','mapNotice']) {
+    assert.match(html,new RegExp('id="'+id+'"'), 'missing independent visitor decision field: '+id);
+  }
+  assert.ok(html.indexOf('id="visit"')<html.indexOf('id="overview"'), 'service eligibility appears before location details');
+  assert.ok(html.indexOf('href="#visit"')<html.indexOf('href="#overview"'), 'service decision is first tab');
+  assert.match(script,/place\.service_availability === 'On-site Confirmed'/);
+  assert.match(script,/place\.service_availability === 'Other Location'/);
+  assert.match(script,/place\.verified_entrance && \['Entrance Confirmed','Pin Verified'\]/);
+  assert.match(script,/setText\('nextStep', nextAction\)/);
+  assert.match(script,/navigationDecision\(place, \{ exploration \}\)/);
+  assert.match(script,/قد يكون رقمًا عامًا/);
+  assert.match(css,/CG-MUX-05: first-screen visitor decision/);
+  assert.match(css,/\.detail-next-step/);
+  assert.match(css,/@media \(max-width: 600px\)/);
+  assert.doesNotMatch(html,/<div class="detail-hero-art"><img/);
+});
