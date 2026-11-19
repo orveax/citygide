@@ -51,3 +51,40 @@ export function navigationDecision(place, { exploration = false } = {}) {
     notice: 'لن نعرض توجيهات أو رابط خرائط قبل وجود بيانات موقع كافية ومراجعتها.'
   };
 }
+
+
+// CG-MUX-08: renderable arrival readiness is independent of a Maps link.
+// A searchable building address never becomes a verified visitor entrance.
+export function arrivalReadiness(place, { exploration = false } = {}) {
+  const navigation = navigationDecision(place, { exploration });
+  const precision = place?.address_precision || 'District Only';
+  const role = place?.role || 'Unknown';
+  const steps = [];
+  let location = 'المنطقة فقط — المبنى ومدخل الجمهور غير مثبتين';
+  if (precision === 'Building Confirmed') location = 'المبنى محدد — مدخل الجمهور غير مثبت';
+  if (precision === 'Floor Confirmed') location = 'المبنى والطابق مذكوران — مدخل الجمهور غير مثبت';
+  if (precision === 'Entrance Confirmed' || precision === 'Pin Verified') {
+    location = place?.verified_entrance
+      ? 'نقطة الوصول مسجلة كمؤكدة'
+      : 'توجد دقة موقع أعلى، لكن اعتماد مدخل الجمهور غير مكتمل';
+  }
+  if (place?.service_availability === 'Other Location') {
+    steps.push('تأكد أن الخدمة المطلوبة متاحة في هذا العنوان، لا في مقر مختلف');
+  } else {
+    steps.push('راجع اختصاص الجهة والخدمة المطلوبة قبل التحرك');
+  }
+  if (place?.public_access === 'By Appointment') steps.push('أكد موعدك ومتطلبات الدخول مع الجهة');
+  else if (place?.public_access === 'Walk-in Confirmed') steps.push('تأكد من مواعيد الاستقبال الفعلية والوثائق المطلوبة');
+  else steps.push('استعلم عن استقبال الجمهور ومدخل الزوار قبل الزيارة');
+  if (navigation.mode === 'directions') steps.push('استخدم الاتجاهات إلى نقطة الوصول الموثقة ثم راجع تعليمات الموقع');
+  else if (navigation.mode === 'search') steps.push('رابط Google Maps للبحث عن المبنى فقط؛ لا تعتمد عليه للوصول إلى شباك الخدمة');
+  else steps.push('لا توجد ملاحة معتمدة لهذا السجل؛ اعتمد على المصدر الرسمي والتواصل قبل السفر');
+  if (role === 'Administrative HQ') steps.push('هذا مقر إداري، وليس بالضرورة نقطة خدمة للجمهور');
+  return {
+    location,
+    mode: navigation.mode,
+    readyForNavigation: navigation.mode === 'directions',
+    verifiedEntrance: Boolean(place?.verified_entrance && ['Entrance Confirmed', 'Pin Verified'].includes(precision)),
+    steps
+  };
+}
