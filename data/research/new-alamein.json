@@ -24,9 +24,9 @@
         "owner": "رئاسة مجلس الوزراء",
         "published_on": "2026-07-15",
         "checked_on": "2026-11-19",
-        "claim": "2026 first-party report identifies a technology center on Boulevard and describes 58 electronic services; not proof of each in-person counter."
+        "claim": "15 Jul 2026 Cabinet report identifies New Alamein NUCA technological center on Boulevard Road, with 58 electronic services across permits, legalization, utilities, investor inquiries and complaints."
       },
-      "evidence_boundary": "No confirmed operating hours, eligibility, visitor gate or presently available on-site service.",
+      "evidence_boundary": "58 counts electronic services, NOT 58 distinct physical visitor counters or proof of up-to-date in-person eligibility; no full individual service list, hours or entrance verification.",
       "research_state": "Needs operator confirmation",
       "public_access": "Unknown",
       "visitor_hours": null,
@@ -188,13 +188,13 @@
       "parent_facility": "Downtown",
       "address_source_text": "داون تاون، مدينة العلمين الجديدة، محافظة مطروح",
       "source": {
-        "url": "https://cityedgedevelopments.com/project-type/retail-en/",
+        "url": "https://cityedgedevelopments.com/project/downtown-commercial/",
         "owner": "City Edge Developments",
         "published_on": null,
         "checked_on": "2026-11-19",
-        "claim": "Developer lists Downtown within New Alamein commercial/retail projects."
+        "claim": "Developer confirms Downtown Commercial in New Alamein, retail-unit entrances separate from residential-unit entrances, and underground parking."
       },
-      "evidence_boundary": "Asset != individual shop; store occupancy and access cannot be inferred.",
+      "evidence_boundary": "Project planned/advertised dedicated retail entrances are not a specific field-confirmed gate or visitor pin; no current tenant roster or individual shop operations evidenced.",
       "research_state": "Source identified",
       "public_access": "Unknown",
       "visitor_hours": null,
@@ -203,6 +203,54 @@
       "release_approved": false,
       "seasonality": "Unknown",
       "next_verification_action": "Map buildings then independently evidence actual active tenants."
+    },
+    {
+      "id": "ALM-009",
+      "name_ar": "بنك مصر — ماكينة ATM بمول O Mall العلمين الجديدة",
+      "entity_type": "ATM",
+      "zone": "O Mall / Masa complex",
+      "parent_facility": "O Mall",
+      "address_source_text": "أو مول، مدينة العلمين الجديدة، طريق الإسكندرية مطروح، محافظة مطروح",
+      "source": {
+        "url": "https://banquemisr.com/ar-EG/Home/Pages/Elsahel",
+        "owner": "Banque Misr",
+        "published_on": null,
+        "checked_on": "2026-11-19",
+        "claim": "Bank-owned North Coast ATM directory lists an O Mall ATM in New Alamein with withdrawals, deposits, currency exchange and bills."
+      },
+      "evidence_boundary": "ATM listing does not confirm present-day uptime, 24-hour access or verified entrance; distinct from ALM-002 Abraj Alalamin bank branch.",
+      "research_state": "Needs operator confirmation",
+      "public_access": "Unknown",
+      "visitor_hours": null,
+      "directions_url": null,
+      "verified_entrance": false,
+      "release_approved": false,
+      "seasonality": "Unknown; mall accessibility and seasonal operation not established",
+      "next_verification_action": "Confirm current machine uptime/access and separate ATM identity from bank branch before field gate QA."
+    },
+    {
+      "id": "ALM-010",
+      "name_ar": "سيتي إيدج — مركز مبيعات العلمين الجديدة",
+      "entity_type": "Sales Office",
+      "zone": "Mazarine / C15 road",
+      "parent_facility": "Mazarine Compound",
+      "address_source_text": "كمبوند مازارين، طريق C15، مدينة العلمين الجديدة، محافظة مطروح",
+      "source": {
+        "url": "https://cityedgedevelopments.com/ar/contact-us-ar/",
+        "owner": "City Edge Developments",
+        "published_on": null,
+        "checked_on": "2026-11-19",
+        "claim": "Developer's direct contact page lists New Alamein sales office at Mazarine Compound, C15 Road, with published weekday 10:00–20:00, Friday 13:00–20:00, Saturday 12:00–20:00 and central hotline 16044."
+      },
+      "evidence_boundary": "Operator-published hours are NOT independently checked visitor hours; entrance to Mazarine/appointment policy and whether the office operates today unverified.",
+      "research_state": "Needs operator confirmation",
+      "public_access": "Unknown",
+      "visitor_hours": null,
+      "directions_url": null,
+      "verified_entrance": false,
+      "release_approved": false,
+      "seasonality": "Operator-published hours: weekday 10:00–20:00; Friday 13:00–20:00; Saturday 12:00–20:00. Recheck directly.",
+      "next_verification_action": "Contact developer about current opening, booking, public access, gate and arrival GPS."
     }
   ]
 }
