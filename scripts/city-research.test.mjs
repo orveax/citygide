@@ -12,7 +12,7 @@ const read = path => JSON.parse(readFileSync(path, 'utf8'));
 test('New Alamein registry is valid and stays research only', () => {
   const d = read(datasetPath);
   assert.equal(d.city.id, 'new-alamein');
-  assert.equal(d.places.length, 8);
+  assert.equal(d.places.length, 10);
   assert.deepEqual(validateCityResearch(d), []);
   assert.ok(d.places.every(p => p.release_approved === false && p.directions_url === null));
 });
