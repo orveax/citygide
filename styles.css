@@ -966,3 +966,23 @@ body { font-size: 14px; line-height: 1.9; }
   .task-shortcuts { grid-template-columns: 1fr; }
   .task-shortcuts__intro { grid-column: 1; }
 }
+
+
+/* CG-MUX-02 — Native browser search completion, no fake locations or custom
+   keyboard-trapping suggestions. Hint is small but independently readable. */
+.search-suggestion-hint {
+  display: block;
+  font-size: 10px;
+  line-height: 1.75;
+  color: var(--text-secondary, #5e6877);
+  margin-top: 5px;
+  max-width: 100%;
+}
+.search-field--query .search-suggestion-hint {
+  font-size: 9px;
+  margin-top: 2px;
+}
+@media (max-width: 650px) {
+  .search-suggestion-hint { font-size: 10px; }
+  .search-field--query .search-suggestion-hint { font-size: 9px; }
+}
