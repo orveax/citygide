@@ -1,3 +1,4 @@
+import { emitMeasurement } from './measurement.mjs';
 import { canonicalizePlaces, filterPlaces, directoryReturnUrl } from './catalog.mjs';
 
 const target = document.getElementById('districtResults');
@@ -32,3 +33,6 @@ try {
  message.textContent='تعذر تحميل تغطية الأحياء حاليًا. يمكنك العودة إلى دليل الجهات.';
  target.append(message);
 }
+document.getElementById('districtResults')?.addEventListener('click', event => {
+  if (event.target.closest('a')) emitMeasurement('district_opened', {context:'districts'});
+});
