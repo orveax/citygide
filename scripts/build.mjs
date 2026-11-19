@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { validateDataset } from './validate.mjs';
 import { validatePublishedAgainstApprovals } from './notion-publisher.mjs';
 import { auditBuiltUx } from './ux-audit.mjs';
+import { buildDetailRoutes } from './static-detail-routes.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 // Execute pure business-rule, Maps, relationship and UX-contract regressions
@@ -76,6 +77,9 @@ for (const filename of ['index.html','place.html','explore-place.html','director
   if (!html.includes('static.cloudflareinsights.com/beacon.min.js')) writeFileSync(file, html.replace('</head>', analyticsSnippet + '</head>'));
 }
 
+const alameinRecords = ['alamein-01.json','alamein-02.json'].flatMap(name => JSON.parse(readFileSync(join(root,'data',name),'utf8')));
+const detailCounts = buildDetailRoutes(dist, exploration, alameinRecords);
+console.log('Record-specific analytics routes:', detailCounts);
 const uxProblems = auditBuiltUx(dist);
 if (uxProblems.length) {
   console.error('UX acceptance gate failed:\n'+uxProblems.join('\n'));
