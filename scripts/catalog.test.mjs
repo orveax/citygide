@@ -156,3 +156,19 @@ test('CG-MUX-03 the safe search URL preserves visitor-intent filter', () => {
   assert.equal(safeDirectoryReturnUrl(url,{exploration:true}),url);
   assert.equal(directoryReturnUrl({filters:{purpose:'unknown'}}),'directory.html#results');
 });
+
+
+test('CG-MUX-09 explicit city scope does not leak research-only New Alamein records', () => {
+  assert.equal(filterPlaces(places,{city:'new-capital'}).length,2);
+  assert.deepEqual(filterPlaces(places,{city:'new-alamein'}),[]);
+  assert.deepEqual(filterPlaces(places,{city:'unknown-city'}),[]);
+  assert.equal(filterPlaces(places,{city:'new-capital',zone:'Government District'}).length,1);
+});
+test('CG-MUX-09 safe deep links preserve city and district without unapproved city URLs',()=>{
+  const url=directoryReturnUrl({filters:{city:'new-capital',zone:'Financial District',kind:'Bank',q:'القاهرة'},page:2});
+  assert.match(url,/city=new-capital/);
+  assert.match(url,/zone=Financial\+District/);
+  assert.equal(safeDirectoryReturnUrl(url,{exploration:true}),url);
+  assert.equal(directoryReturnUrl({filters:{city:'new-alamein'}}),'directory.html#results');
+  assert.equal(safeDirectoryReturnUrl('directory.html?city=new-alamein&zone=Government+District',{exploration:true}),'directory.html?zone=Government+District#results');
+});
