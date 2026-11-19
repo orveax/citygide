@@ -896,3 +896,73 @@ body { font-size: 14px; line-height: 1.9; }
 .story-hero .section-kicker { color: #ffb69b; }
 .story-hero .breadcrumbs { color: #d7dbe1; }
 .story-hero .breadcrumbs a { color: #fff; }
+
+
+/* CG-MUX-01 — task-first discovery informed by Egyptian directory UX research.
+   Reuse validated directory URLs; never suggest visitor access or route readiness. */
+.task-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-top: 17px;
+}
+.task-shortcuts__intro {
+  color: var(--text-secondary, #5e6877);
+  font-size: 11px;
+  font-weight: 700;
+  margin-inline-end: 3px;
+}
+.task-shortcuts a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  max-width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #dce2e7;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+  text-align: center;
+  transition: background .18s, border-color .18s, color .18s;
+}
+.task-shortcuts a:hover {
+  border-color: #d7aa99;
+  background: var(--coral-50, #fff7f3);
+  color: var(--accent-text, #a83e2b);
+}
+.task-shortcuts a:focus-visible {
+  outline: 3px solid var(--focus-ring, #c24a32);
+  outline-offset: 3px;
+}
+.task-shortcuts__note {
+  color: var(--text-secondary, #5e6877);
+  font-size: 10px;
+  line-height: 1.8;
+  margin: 9px 0 0;
+}
+@media (max-width: 650px) {
+  .task-shortcuts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .task-shortcuts__intro { grid-column: 1 / -1; }
+  .task-shortcuts a {
+    border-radius: 12px;
+    padding: 10px 7px;
+    font-size: 10px;
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+  .task-shortcuts__note { font-size: 10px; margin: 10px 0 0; }
+}
+@media (max-width: 340px) {
+  .task-shortcuts { grid-template-columns: 1fr; }
+  .task-shortcuts__intro { grid-column: 1; }
+}
