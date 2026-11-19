@@ -1,3 +1,4 @@
+import { emitMeasurement } from './measurement.mjs';
 import { canonicalizePlaces, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 import { SERVICE_PATHWAYS, serviceEntries } from './service-pathways.mjs';
 const $ = id => document.getElementById(id);
@@ -45,3 +46,6 @@ try {
 }catch(error){
   $('serviceGroups').replaceChildren(create('p','services-error','تعذر تحميل دليل الخدمات. راجع دليل الجهات أو حاول لاحقًا.'));
 }
+document.getElementById('serviceGroups')?.addEventListener('click', event => {
+  if (event.target.closest('a')) emitMeasurement('service_opened', {context:'services'});
+});
