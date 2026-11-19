@@ -19,7 +19,7 @@ export function resultBucket(value) {
   if(n<=20)return '6-20';
   return '21+';
 }
-export function measurementPayload(type,{context='directory',resultCount,filterCount=0,action='none'}={}){
+export function measurementPayload(type,{context='directory',resultCount,filterCount,action='none'}={}){
   if(!allowedTypes.has(type))return null;
   const payload={schema:1,event:type,context:allowedContexts.has(context)?context:'directory'};
   if(Number.isSafeInteger(resultCount)&&resultCount>=0)payload.result_bucket=resultBucket(resultCount);
