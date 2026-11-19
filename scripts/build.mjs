@@ -48,7 +48,7 @@ writeFileSync(join(dist, 'explore-place.html'), exploreDetail);
 cpSync(join(root, 'scripts/app.mjs'), join(dist, 'scripts/app.mjs'));
 cpSync(join(root, 'scripts/catalog.mjs'), join(dist, 'scripts/catalog.mjs'));
 cpSync(join(root, 'scripts/maps.mjs'), join(dist, 'scripts/maps.mjs'));
-for (const name of ['service-pathways.mjs','services-page.mjs','building-relations.mjs','buildings-page.mjs','city-districts.mjs']) cpSync(join(root, 'scripts', name), join(dist, 'scripts', name));
+for (const name of ['service-pathways.mjs','services-page.mjs','building-relations.mjs','buildings-page.mjs','city-districts.mjs','measurement.mjs']) cpSync(join(root, 'scripts', name), join(dist, 'scripts', name));
 for (const name of ['city-skyline.svg', 'financial-architecture.svg', 'civic-architecture.svg', 'city-skyline.webp', 'financial-illustration.webp', 'civic-illustration.webp']) {
   cpSync(join(root, 'assets', name), join(dist, 'assets', name));
 }
