@@ -36,7 +36,7 @@ rmSync(dist, { recursive: true, force: true });
 mkdirSync(join(dist, 'data'), { recursive: true });
 mkdirSync(join(dist, 'scripts'), { recursive: true });
 mkdirSync(join(dist, 'assets'), { recursive: true });
-for (const name of ['place.html', 'directory.html', 'services.html', 'buildings.html', 'districts.html', 'about.html', 'contact.html', 'terms.html', 'privacy.html', 'styles.css', '404.html']) cpSync(join(root, name), join(dist, name));
+for (const name of ['place.html', 'alamein.html', 'directory.html', 'services.html', 'buildings.html', 'districts.html', 'about.html', 'contact.html', 'terms.html', 'privacy.html', 'styles.css', '404.html']) cpSync(join(root, name), join(dist, name));
 cpSync(join(root, 'index.html'), join(dist, 'index.html'));
 // Founder-authorized exploration is now the default visitor journey on both
 // home and directory. Formal publication approval remains a distinct dataset.
@@ -56,6 +56,8 @@ exploreDetail = exploreDetail.replace('<body data-page="detail">', '<body data-c
   .replace('✓ بيانات منشورة بعد مراجعة', '⚠ حالة التحقق تظهر عند تحميل السجل');
 writeFileSync(join(dist, 'explore-place.html'), exploreDetail);
 cpSync(join(root, 'scripts/app.mjs'), join(dist, 'scripts/app.mjs'));
+cpSync(join(root, 'scripts/alamein.mjs'), join(dist, 'scripts/alamein.mjs'));
+for (const name of ['alamein-01.json','alamein-02.json']) cpSync(join(root, 'data', name), join(dist, 'data', name));
 cpSync(join(root, 'scripts/catalog.mjs'), join(dist, 'scripts/catalog.mjs'));
 cpSync(join(root, 'scripts/maps.mjs'), join(dist, 'scripts/maps.mjs'));
 for (const name of ['service-pathways.mjs','services-page.mjs','building-relations.mjs','buildings-page.mjs','city-districts.mjs','measurement.mjs']) cpSync(join(root, 'scripts', name), join(dist, 'scripts', name));
