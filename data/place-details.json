@@ -109,6 +109,110 @@
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "المصدر الرسمي يحدد عنوان مراسلات الهيئة داخل مبنى وزارة النقل؛ لا يثبت أنه شباك خدمة مواطنين.",
       "entity_code": "NC-42"
+    },
+    "NC-NC-51": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "صفحة اتصل بنا الرسمية تسرد الإدارة المركزية للهيئة في الحي الحكومي مع هاتف 02-24173892 وبريد [info@eha.gov.eg](mailto:info@eha.gov.eg)؛ لا تحدد المبنى أو استقبال المواطنين.",
+      "entity_code": "NC-51"
+    },
+    "NC-NC-53": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "صفحة تواصل الهيئة الرسمية تسرد مقر الحي الحكومي، وبريد [gothi\\_gothi@gothi.gov.eg](mailto:gothi_gothi@gothi.gov.eg) وهاتفين 23648073/23648972 ومواعيد عمل إدارية الأحد–الخميس 8–15؛ لا تثبت استقبال الجمهور بالمقر.",
+      "entity_code": "NC-53"
+    },
+    "NC-NC-40": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "صفحة تواصل رسمية تثبت عنوانًا على مستوى الحي فقط؛ لا تحدد مبنى أو استقبال جمهور.",
+      "entity_code": "NC-40"
+    },
+    "NC-NC-62": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "إعلانات طرح وتعاقد حديثة على الموقع الرسمي للهيئة في أكتوبر ونوفمبر 2026 تحدد مقر الهيئة بالحي الحكومي، مبنى A5/A6، Cluster L2، وتذكر إتاحة مستندات من إدارة المخازن لمتقدمي المناقصات بتفويض؛ هذا لا يثبت خدمة للمؤمن عليهم أو دخول عمومي.",
+      "entity_code": "NC-62"
+    },
+    "NC-NC-161": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Not verified",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "خبر رسمي للهيئة 2024 يؤكد المقر الرئيسي بالحي الحكومي؛ رقم الدور من دليل ثانوي فقط.",
+      "entity_code": "NC-161"
+    },
+    "NC-NC-10": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Not Public - Internal",
+      "evidence_scope": "الموقع الرسمي يؤكد مقر رئاسة مجلس الوزراء بالعاصمة ووسيلة تواصل، والساعات المنشورة لقناة التواصل لا لزيارة الجمهور.",
+      "entity_code": "NC-10"
+    },
+    "NC-NC-18": {
+      "entity_subtype": "Corporate office",
+      "contact_attribution": "Institutional general",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "entity_code": "NC-18"
+    },
+    "NC-NC-242": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Hold - Operations",
+      "evidence_scope": "2026-11 official IMC tender FW-5 locates Ministry of Industry floor 1, New Capital, for <b>specific authorized tender submissions by 22 Nov 2026 at 12:00</b> and tender-documents handling Sunday–Thursday 09:00–13:00. These are tender-process windows, NOT general visitor hours. Previous October 2026 tender already ended. Any subsequent tender requires new source/date.",
+      "entity_code": "NC-242",
+      "next_review": "2026-11-23"
+    },
+    "NC-NC-61": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "وثيقة الجمارك الرسمية تثبت وجود مبنى بالعاصمة، وموقع الجمارك الرسمي يذكر 15460 [وinfo@customs.gov.eg](mailto:%D9%88info@customs.gov.eg). رقم 02-20531040 مرتبط ببيانات العاصمة؛ عنوان وساعات صفحة اتصل بنا الأخرى تشير لمقر قديم بالقاهرة ولا تنقل لمقر العاصمة.",
+      "entity_code": "NC-61"
+    },
+    "NC-NC-1": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Not verified",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "entity_code": "NC-1"
+    },
+    "NC-NC-7": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "دليل المصلحة الرسمي يحدد رئاسة المصلحة في خط C1 بجوار المالية ويورد 16395 والبريد؛ المقر الإداري لا يعني منفذًا لأي خدمة ضريبية.",
+      "entity_code": "NC-7"
+    },
+    "NC-NC-47": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "صفحة تواصل رسمية لهيئة المجتمعات العمرانية، عنوانها ضمن مبنى الوزارة؛ لا تثبت خدمة حضورية في هذا المدخل.",
+      "entity_code": "NC-47"
     }
   }
 }
