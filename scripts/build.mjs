@@ -1,4 +1,5 @@
 import { readFileSync, mkdirSync, cpSync, writeFileSync, rmSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateDataset } from './validate.mjs';
@@ -6,6 +7,14 @@ import { validatePublishedAgainstApprovals } from './notion-publisher.mjs';
 import { auditBuiltUx } from './ux-audit.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
+// Execute pure business-rule, Maps, relationship and UX-contract regressions
+// on every Cloudflare production build. Do not include build.test.mjs here:
+// that suite invokes build.mjs itself, which would recurse.
+execFileSync(process.execPath, ['--test', '--test-concurrency=1',
+  'scripts/catalog.test.mjs', 'scripts/maps.test.mjs',
+  'scripts/service-pathways.test.mjs', 'scripts/building-relations.test.mjs',
+  'scripts/measurement.test.mjs', 'scripts/ux-audit.test.mjs'
+], { cwd: root, stdio: 'inherit' });
 const dataset = JSON.parse(readFileSync(join(root, 'data/published.json'), 'utf8'));
 const exploration = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
 const approvalManifest = JSON.parse(readFileSync(join(root, 'data/publication-approvals.json'), 'utf8'));
