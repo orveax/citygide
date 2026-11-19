@@ -40,6 +40,17 @@ const link = (label, href, className = '') => {
   return a;
 };
 
+async function loadPlaceDetails() {
+  if (!exploration || !document.body.matches('[data-page="detail"]')) return {};
+  try {
+    const response = await fetch('data/place-details.json', {cache:'no-store'});
+    if (!response.ok) return {};
+    const payload = await response.json();
+    if (payload.schema_version !== '0.1' || !payload.records || Array.isArray(payload.records)) return {};
+    return payload.records;
+  } catch { return {}; }
+}
+
 async function loadPlaces() {
   const response = await fetch(exploration ? 'data/exploration.json' : 'data/places.json', { cache: 'no-store' });
   if (!response.ok) throw new Error('Could not load the catalog');
@@ -381,7 +392,7 @@ function setupDirectory(places) {
   renderDirectory(places);
 }
 
-function setupDetail(places) {
+function setupDetail(places, detailRecords = {}) {
   const slug = new URLSearchParams(location.search).get('slug') ||
     (/^\\/places\\/([a-z0-9-]+)\\.html$/.exec(location.pathname)?.[1] || '');
   const place = resolveCanonicalPlace(places, slug);
@@ -472,6 +483,27 @@ function setupDetail(places) {
       ['حالة الاعتماد المعلوماتي', sourceStatusLabel(place)],
       ['معرّف السجل', place.id]
     ];
+    const detail = detailRecords[place.id] || {};
+    const additional = [
+      ['التصنيف التفصيلي', detail.entity_subtype],
+      ['الدور / رقم المكتب', detail.floor_suite],
+      ['رمز الوحدة', detail.unit_code],
+      ['النطاق التفصيلي', detail.neighborhood],
+      ['صندوق البريد', detail.po_box],
+      ['الرمز البريدي', detail.postal_code],
+      ['مصدر رقم التواصل', detail.contact_attribution],
+      ['حالة التشغيل المسجلة (ليست تأكيدًا لحظيًا)', detail.operational_status],
+      ['ساعات الخط الساخن (ليست ساعات استقبال)', detail.hotline_hours],
+      ['حدود ما يثبته المصدر', detail.evidence_scope],
+      ['نوع دليل المستأجر', detail.tenant_evidence_class],
+      ['نوع دليل الخريطة (ليس بالضرورة مدخلًا)', detail.map_evidence_class],
+      ['تاريخ مراجعة البيانات المقبل', detail.next_review],
+      ['رمز الجهة', detail.entity_code]
+    ];
+    if (additional.some(([,v]) => typeof v === 'string' && v.trim())) {
+      values.push(['بيانات إضافية قيد المراجعة', 'الحقول التالية مبنية على الأدلة المتاحة ولا تؤكد التشغيل أو السماح بالدخول']);
+      values.push(...additional);
+    }
     for (const [label, value] of values) {
       if (typeof value !== 'string' || !value.trim()) continue;
       const row = element('div');
@@ -548,7 +580,7 @@ try {
     document.querySelector('main')?.prepend(note);
   }
   if ($('cards')) setupDirectory(exploration ? canonicalizePlaces(places) : places);
-  if ($('title')) setupDetail(places);
+  if ($('title')) setupDetail(places, await loadPlaceDetails());
 } catch (error) {
   console.error('Catalog unavailable:', error.message);
   if ($('cards')) {
