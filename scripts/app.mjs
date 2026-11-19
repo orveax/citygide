@@ -7,7 +7,7 @@ const $ = id => document.getElementById(id);
 const preview = document.body.dataset.preview === 'true';
 const exploration = document.body.dataset.catalog === 'exploration';
 const home = document.body.dataset.home === 'true';
-const detailHref = exploration ? 'explore-place.html?slug=' : 'place.html?slug=';
+const detailHref = exploration ? 'places/' : 'place.html?slug=';
 const PAGE_SIZE = 12;
 let currentPage = 1;
 
@@ -95,7 +95,9 @@ function placeCard(place) {
   // Decorative glyphs are not building photographs or verified entrance imagery.
   const kindClass = KINDS[place.kind] ? place.kind.toLowerCase() : 'other';
   const card = element('article', 'place-card place-card--' + kindClass);
-  const cardHref = detailHref + encodeURIComponent(place.slug) + '&return=' + encodeURIComponent(currentDirectoryReturnUrl());
+  const cardHref = exploration
+    ? detailHref + encodeURIComponent(place.slug) + '.html?return=' + encodeURIComponent(currentDirectoryReturnUrl())
+    : detailHref + encodeURIComponent(place.slug) + '&return=' + encodeURIComponent(currentDirectoryReturnUrl());
   const identity = element('div', 'place-card__image');
   const glyph = element('span', 'place-card__glyph', KIND_GLYPHS[place.kind] || '⌖');
   glyph.setAttribute('aria-hidden', 'true');
@@ -380,7 +382,8 @@ function setupDirectory(places) {
 }
 
 function setupDetail(places) {
-  const slug = new URLSearchParams(location.search).get('slug');
+  const slug = new URLSearchParams(location.search).get('slug') ||
+    (/^\\/places\\/([a-z0-9-]+)\\.html$/.exec(location.pathname)?.[1] || '');
   const place = resolveCanonicalPlace(places, slug);
   if (!place) {
     setText('title', 'الجهة غير موجودة في الدليل');
