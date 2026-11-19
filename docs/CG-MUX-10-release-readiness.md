@@ -46,3 +46,20 @@ Allowed enum-like payload keys: `schema`, `event`, `context`, `result_bucket`, `
 - **Publication and location evidence:** the catalogue remains exploratory; do not release unverified visitor entrances or New Alamein research as approved.
 
 **Decision:** Production Preview for stakeholder review is acceptable once the first two gates pass. Do **not** claim unrestricted launch-ready or WCAG certification before manual acceptance and publication sign-off.
+
+
+## Validation performed — 19 November 2026
+
+- Cloudflare Production run `74ba79a2-646c-49da-991d-1dea139e42cc` succeeded from `main` commit `1522e39bc65fa201118ca16dcb99c9bd3b63601a`.
+- **46/46 Node tests PASSED**, confirmed in Cloudflare build logs; six selected pure suites ran as a blocking build gate.
+- **12/12 public pages passed structural UX audit**, confirmed in Cloudflare build logs.
+- Browser Rendering screenshots of the live directory were actually inspected at **320px and 390px**. The top-of-page mobile layout and start of the search sidebar displayed without obvious horizontal clipping in those screenshots. This is **not** full-page, interaction, or device QA.
+- Cloudflare Browser Rendering returned HTTP 429 for the 1440px screenshot request. Desktop visual acceptance at 1440px and tablet at 768px therefore remain **NOT VERIFIED**.
+- Full `scripts/build.test.mjs` independent run, screen reader, keyboard-only paths, 200% zoom, automated color contrast, and interactive end-to-end workflows remain **NOT VERIFIED**.
+- Because `cityguide:measurement` has no reporting backend, real visitor funnel metrics remain **NOT COLLECTED**. Do not report conversion rates or search success statistics.
+
+**Release verdict:** **CONDITIONAL INTERNAL/STAKEHOLDER PREVIEW APPROVED**, **PUBLIC LAUNCH SIGN-OFF BLOCKED** pending the manual cross-viewport/keyboard/screen reader matrix, full build regression suite and editorial publication checks. Site remains `noindex,nofollow`.
+
+### START — CG-REL-01: Browser Acceptance & Public Launch Gate
+
+Continue from the verified automated baseline with the remaining manual visual, keyboard, RTL zoom, assistive technology and page-journey tests. Only publish public-release status if all blocking findings are resolved and the editorial/public-access evidence gate is separately approved.
