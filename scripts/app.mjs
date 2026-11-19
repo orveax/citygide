@@ -393,8 +393,10 @@ function setupDirectory(places) {
 }
 
 function setupDetail(places, detailRecords = {}) {
-  const slug = new URLSearchParams(location.search).get('slug') ||
-    (/^\\/places\\/([a-z0-9-]+)\\.html$/.exec(location.pathname)?.[1] || '');
+  const routeParts = location.pathname.split('/');
+  const pathSlug = routeParts.length === 3 && routeParts[1] === 'places' &&
+    routeParts[2].endsWith('.html') ? routeParts[2].slice(0, -5) : '';
+  const slug = new URLSearchParams(location.search).get('slug') || pathSlug;
   const place = resolveCanonicalPlace(places, slug);
   if (!place) {
     setText('title', 'الجهة غير موجودة في الدليل');
