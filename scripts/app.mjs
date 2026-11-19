@@ -1,6 +1,7 @@
 import { canonicalizePlaces, directoryReturnUrl, facetCounts, filterPlaces, paginatePlaces, placePurpose, relaxationSuggestions, resolveCanonicalPlace, safeDirectoryReturnUrl, searchSuggestions, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 import { arrivalReadiness, navigationDecision } from './maps.mjs';
 import { buildingForPlace, buildingGroup } from './building-relations.mjs';
+import { emitMeasurement } from './measurement.mjs';
 
 const $ = id => document.getElementById(id);
 const preview = document.body.dataset.preview === 'true';
@@ -283,6 +284,7 @@ function renderDirectory(places, { resetPage = false } = {}) {
   setText('activeCityLabel', 'العاصمة الإدارية الجديدة — سجلات هذه المدينة فقط');
   setText('resultsDescription', home ? `سجلًا في الدليل — نعرض ${Math.min(results.length, 6)} نماذج منها` : exploration ? 'نتيجة استكشافية — حالات المصدر والزيارة منفصلة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
   const target = $('cards'); target.replaceChildren();
+  target.setAttribute('aria-label', results.length ? 'نتائج دليل الجهات' : 'لا توجد نتائج مطابقة');
   target.classList.toggle('is-sparse', pageData.items.length === 1);
   if (!results.length) target.append(emptyState(places, filters));
   else (home ? results.slice(0, 6) : pageData.items).forEach(place => target.append(placeCard(place)));
@@ -347,11 +349,30 @@ function setupDirectory(places) {
   }
   if (params.get('view') === 'list') document.body.dataset.view = 'list';
   if (!home) currentPage = Number(params.get('page')) || 1;
-  $('searchForm').addEventListener('submit', event => { event.preventDefault(); if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth' }); });
-  for (const field of ['q', 'city', 'kind', 'zone', 'purpose', 'sort']) if ($(field)) $(field).addEventListener(field === 'q' ? 'input' : 'change', () => renderDirectory(places, { resetPage: true }));
+  $('searchForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const filters = {q:$('q').value,zone:$('zone').value,kind:$('kind').value,purpose:$('purpose')?.value || '',city:$('city')?.value || ''};
+    const count = filterPlaces(places, filters).length;
+    const context=home?'home':exploration?'directory':'approved';
+    emitMeasurement('search_submitted',{context,resultCount:count,filterCount:[filters.q,filters.zone,filters.kind,filters.purpose].filter(Boolean).length});
+    if (!count) emitMeasurement('no_results',{context,resultCount:0});
+    if (home) { location.assign(fullDirectoryUrl()); return; }
+    renderDirectory(places, { resetPage: true });
+    const region=document.querySelector('.catalog-results');
+    if(region) {region.setAttribute('tabindex','-1');region.focus({preventScroll:true});region.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+  for (const field of ['q', 'city', 'kind', 'zone', 'purpose', 'sort']) if ($(field)) $(field).addEventListener(field === 'q' ? 'input' : 'change', () => {
+    if(field !== 'q') emitMeasurement('filter_changed',{context:home?'home':exploration?'directory':'approved'});
+    renderDirectory(places, { resetPage: true });
+  });
   document.querySelectorAll('[data-kind]').forEach(button => button.addEventListener('click', () => { $('kind').value = button.dataset.kind; if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth' }); }));
   document.querySelectorAll('[data-zone-link]').forEach(a => a.addEventListener('click', event => { $('zone').value = a.dataset.zoneLink; $('kind').value = ''; $('q').value = ''; if (home) { event.preventDefault(); location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); }));
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { document.body.dataset.view = button.dataset.view; renderDirectory(places); }));
+  // Listen for user actions, not page impressions, search keystrokes or raw queries.
+  $('cards')?.addEventListener('click', event => {
+    if(event.target.closest('a[href*="place.html?slug="]'))
+      emitMeasurement('place_opened',{context:home?'home':exploration?'directory':'approved'});
+  });
   setupSearchSuggestions(places);
   setText('exploreEntryCount', String(places.length), '0');
   setText('sampleDirectoryCount', String(places.length), '0');
@@ -421,6 +442,10 @@ function setupDetail(places) {
   setText('visitorReadiness', visitStatusLabel(place));
   if ($('visitorReadiness')) $('visitorReadiness').dataset.mode = place.public_access === 'Walk-in Confirmed' ? 'walkin' : place.public_access === 'By Appointment' ? 'appointment' : 'unknown';
   const navigation = navigationDecision(place, { exploration });
+  document.querySelector('.maps-card')?.addEventListener('click', event => {
+    if(event.target.closest('a[href^="https://www.google.com/maps/"]'))
+      emitMeasurement('maps_action',{context:'place',action:navigation.mode});
+  });
   setText('navigationReadiness', navigation.status);
   if ($('navigationReadiness')) $('navigationReadiness').dataset.mode = navigation.mode;
   setText('mapStatus', navigation.status);
