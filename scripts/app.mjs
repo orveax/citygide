@@ -1,4 +1,4 @@
-import { canonicalizePlaces, directoryReturnUrl, facetCounts, filterPlaces, paginatePlaces, relaxationSuggestions, resolveCanonicalPlace, safeDirectoryReturnUrl, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
+import { canonicalizePlaces, directoryReturnUrl, facetCounts, filterPlaces, paginatePlaces, relaxationSuggestions, resolveCanonicalPlace, safeDirectoryReturnUrl, searchSuggestions, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 import { navigationDecision } from './maps.mjs';
 
 const $ = id => document.getElementById(id);
@@ -270,6 +270,39 @@ function renderDirectory(places, { resetPage = false } = {}) {
   history.replaceState(null, '', url);
 }
 
+function setupSearchSuggestions(places) {
+  const input = $('q');
+  if (!input) return;
+  // Native datalist ensures Arrow keys / Enter work without replacing keyboard
+  // behavior, focus management or adding a third-party autocomplete API.
+  const options = document.createElement('datalist');
+  options.id = 'placeSearchSuggestions';
+  input.setAttribute('list', options.id);
+  input.setAttribute('aria-describedby', 'searchSuggestionHint');
+  input.setAttribute('autocomplete', 'off');
+  const hint = element('span', 'search-suggestion-hint', 'اكتب حرفين لعرض أسماء من الدليل. الاقتراح لا يعني أن الزيارة مؤكدة.');
+  hint.id = 'searchSuggestionHint';
+  input.insertAdjacentElement('afterend', hint);
+  input.insertAdjacentElement('afterend', options);
+  const refresh = () => {
+    const candidates = searchSuggestions(places, {
+      q: input.value,
+      zone: $('zone')?.value || '',
+      kind: $('kind')?.value || ''
+    });
+    options.replaceChildren(...candidates.map(name => {
+      const option = document.createElement('option');
+      option.value = name;
+      return option;
+    }));
+  };
+  input.addEventListener('input', refresh);
+  input.addEventListener('focus', refresh);
+  $('zone')?.addEventListener('change', refresh);
+  $('kind')?.addEventListener('change', refresh);
+  refresh();
+}
+
 function setupDirectory(places) {
   const fullDirectoryUrl = () => directoryReturnUrl({
     target: 'directory.html',
@@ -287,6 +320,7 @@ function setupDirectory(places) {
   document.querySelectorAll('[data-kind]').forEach(button => button.addEventListener('click', () => { $('kind').value = button.dataset.kind; if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth' }); }));
   document.querySelectorAll('[data-zone-link]').forEach(a => a.addEventListener('click', event => { $('zone').value = a.dataset.zoneLink; $('kind').value = ''; $('q').value = ''; if (home) { event.preventDefault(); location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); }));
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { document.body.dataset.view = button.dataset.view; renderDirectory(places); }));
+  setupSearchSuggestions(places);
   setText('exploreEntryCount', String(places.length), '0');
   setText('sampleDirectoryCount', String(places.length), '0');
   renderDirectory(places);
