@@ -48,6 +48,14 @@
           <label class="search-field" for="kind"><span class="field-symbol" aria-hidden="true">▦</span><span class="field-content"><span class="field-label">نوع الجهة</span><select id="kind"><option value="">كل الجهات</option><option value="Government">وزارات</option><option value="Authority">هيئات وجهات</option><option value="Bank">بنوك</option><option value="Company">شركات</option><option value="Building">مبانٍ</option></select></span></label>
           <button type="submit" class="search-button"><span aria-hidden="true">⌕</span> ابحث الآن</button>
         </form>
+        <nav class="task-shortcuts" aria-label="بحث سريع حسب الخدمة أو نوع الجهة">
+          <span class="task-shortcuts__intro">بحث سريع:</span>
+          <a href="directory.html?q=%D8%AA%D9%88%D8%AB%D9%8A%D9%82#results">التوثيق</a>
+          <a href="directory.html?q=%D8%AA%D8%B5%D8%AF%D9%8A%D9%82%D8%A7%D8%AA#results">تصديقات الخارجية</a>
+          <a href="directory.html?q=%D8%A7%D9%84%D8%AA%D9%88%D9%82%D9%8A%D8%B9#results">التوقيع الإلكتروني</a>
+          <a href="directory.html?kind=Bank#results">الجهات والمواقع المصرفية</a>
+        </nav>
+        <p class="task-shortcuts__note">النتائج استكشافية؛ حالة المصدر وإمكانية الزيارة موضحتان في كل سجل.</p>
       </div>
     </section>
 
@@ -55,7 +63,7 @@
 
     <section class="categories-section" aria-labelledby="categories-heading">
       <div class="container">
-        <div class="section-kicker" id="categories-heading">ابدأ من نوع الجهة</div>
+        <div class="section-kicker" id="categories-heading">أو تصفح حسب نوع الجهة</div>
         <div class="category-list" id="categoryChips" aria-label="تصفية حسب نوع الجهة">
           <button type="button" class="category-chip is-active" data-kind="" aria-pressed="true"><span class="category-icon category-icon--all" aria-hidden="true">✦</span> كل الجهات</button>
           <button type="button" class="category-chip" data-kind="Government" aria-pressed="false"><span class="category-icon category-icon--gov" aria-hidden="true">▥</span> الوزارات</button>
