@@ -89,32 +89,52 @@ function currentDirectoryReturnUrl() {
 }
 
 function placeCard(place) {
+  // One place identity, two independent trust statements, one primary visitor CTA.
+  // Decorative glyphs are not building photographs or verified entrance imagery.
   const kindClass = KINDS[place.kind] ? place.kind.toLowerCase() : 'other';
   const card = element('article', 'place-card place-card--' + kindClass);
   const cardHref = detailHref + encodeURIComponent(place.slug) + '&return=' + encodeURIComponent(currentDirectoryReturnUrl());
-  const imageWrap = element('div', 'place-card__image');
+  const identity = element('div', 'place-card__image');
   const glyph = element('span', 'place-card__glyph', KIND_GLYPHS[place.kind] || '⌖');
   glyph.setAttribute('aria-hidden', 'true');
-  const imageLink = link('', cardHref, 'place-card__image-link');
-  imageLink.setAttribute('aria-label', `افتح تفاصيل ${place.name_ar}`);
-  imageLink.append(glyph);
-  imageWrap.append(imageLink);
-  imageWrap.append(element('span', 'image-badge', labelKind(place.kind)));
-  const stateClass = place.verification === 'Published' ? 'approved' : place.verification === 'Research' ? 'research' : 'source';
+  const identityLink = link('', cardHref, 'place-card__image-link');
+  identityLink.setAttribute('aria-label', `عرض تفاصيل ${place.name_ar}`);
+  identityLink.append(glyph);
+  identity.append(identityLink);
+  const identityLabel = element('span', 'image-badge', labelKind(place.kind));
+  identity.append(identityLabel);
+
   const body = element('div', 'place-card__body');
-  body.append(element('span', 'place-card__eyebrow', labelZone(place.zone) + ' / ' + labelRole(place.role)));
-  const title = element('h3'); title.append(link(place.name_ar, cardHref));
+  const location = element('div', 'place-card__location');
+  location.append(element('span', 'place-card__eyebrow', labelZone(place.zone)));
+  const purpose = placePurpose(place);
+  location.append(element('span', 'place-card__purpose', PURPOSE_LABELS[purpose] || labelRole(place.role)));
+
+  const title = element('h3');
+  title.append(link(place.name_ar, cardHref));
+  const address = element('div', 'place-card__address-box');
+  address.append(element('span', 'place-card__field-label', 'العنوان المسجّل'));
+  address.append(element('p', 'place-card__address', place.address || 'العنوان غير مؤكد'));
+  address.append(element('span', 'place-card__precision', PRECISIONS[place.address_precision] || 'دقة الموقع غير محددة'));
+
   const status = element('div', 'place-card__status');
-  const visitClass = place.public_access === 'By Appointment' ? 'appointment' : place.public_access === 'Walk-in Confirmed' ? 'walkin' : 'unknown';
+  status.setAttribute('aria-label', 'حالة البيانات واستقبال الزوار');
+  const stateClass = place.verification === 'Published' ? 'approved' : place.verification === 'Research' ? 'research' : 'source';
   status.append(element('span', 'source-status source-status--' + stateClass, sourceStatusLabel(place)));
+  const visitClass = place.public_access === 'By Appointment' ? 'appointment' : place.public_access === 'Walk-in Confirmed' ? 'walkin' : 'unknown';
   status.append(element('span', 'visit-status visit-status--' + visitClass, visitStatusLabel(place)));
-  const address = element('p', 'place-card__address', '⌖  ' + place.address);
-  const meta = element('div', 'place-card__meta');
-  meta.append(element('span', '', `آخر مراجعة للمصدر: ${place.last_checked || 'غير محددة'}`));
-  meta.append(link(place.kind === 'Building' ? 'تفاصيل المبنى ←' : 'البيانات وشروط الزيارة ←', cardHref));
-  body.append(title, status, address, meta);
-  if (exploration && place.verification === 'Research') body.append(element('p', 'place-card__verification-note', 'سجل بحثي غير معتمد؛ لا تعتمد على العنوان للزيارة.'));
-  card.append(imageWrap, body);
+
+  const footer = element('div', 'place-card__meta');
+  footer.append(element('span', 'place-card__checked', `مراجعة المصدر: ${place.last_checked || 'غير محددة'}`));
+  const action = link('عرض التفاصيل وشروط الزيارة ←', cardHref, 'place-card__action');
+  action.setAttribute('aria-label', `عرض تفاصيل ${place.name_ar} وشروط الزيارة`);
+  footer.append(action);
+
+  body.append(location, title, address, status);
+  if (exploration && place.verification === 'Research')
+    body.append(element('p', 'place-card__verification-note', 'سجل بحثي غير معتمد؛ لا تعتمد على العنوان للزيارة.'));
+  body.append(footer);
+  card.append(identity, body);
   return card;
 }
 
