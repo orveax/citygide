@@ -16,7 +16,7 @@ test('production build cannot publish D04 preview records or preview mode', () =
   assert.deepEqual(publicJson.places, published.places);
   assert.ok(publicJson.places.every(place => place.verification === 'Published'));
   assert.ok(!readFileSync(join(root, 'dist/index.html'), 'utf8').includes('data-preview="true"'));
-  assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
+  assert.deepEqual(readdirSync(join(root, 'dist/data')).sort(), ['alamein-01.json','alamein-02.json','exploration.json','place-details.json','places.json'].sort());
   assert.ok(!readdirSync(join(root, 'dist')).includes('prototype'));
   for (const asset of ['city-skyline.webp', 'civic-illustration.webp', 'financial-illustration.webp']) {
     assert.ok(readdirSync(join(root, 'dist/assets')).includes(asset), `${asset} is needed by the public homepage`);
