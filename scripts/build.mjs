@@ -67,6 +67,15 @@ for (const name of ['city-skyline.svg', 'financial-architecture.svg', 'civic-arc
 writeFileSync(join(dist, 'data/places.json'), JSON.stringify(dataset));
 writeFileSync(join(dist, 'data/exploration.json'), JSON.stringify(exploration));
 writeFileSync(join(dist, '_headers'), '/*\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
+// Cloudflare Web Analytics: page-level views without cookies or fabricated counters.
+// Applied to all generated HTML routes, including exploratory listings and Alamein.
+const analyticsSnippet = "<script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"token\":\"31d69c5f418f426fae8541a59565a619\"}'></script>";
+for (const filename of ['index.html','place.html','explore-place.html','directory.html','explore.html','approved.html','alamein.html','services.html','buildings.html','districts.html','about.html','contact.html','terms.html','privacy.html','404.html']) {
+  const file = join(dist, filename);
+  const html = readFileSync(file, 'utf8');
+  if (!html.includes('static.cloudflareinsights.com/beacon.min.js')) writeFileSync(file, html.replace('</head>', analyticsSnippet + '</head>'));
+}
+
 const uxProblems = auditBuiltUx(dist);
 if (uxProblems.length) {
   console.error('UX acceptance gate failed:\n'+uxProblems.join('\n'));
