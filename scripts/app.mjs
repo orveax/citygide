@@ -1,5 +1,6 @@
 import { canonicalizePlaces, directoryReturnUrl, facetCounts, filterPlaces, paginatePlaces, placePurpose, relaxationSuggestions, resolveCanonicalPlace, safeDirectoryReturnUrl, searchSuggestions, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 import { navigationDecision } from './maps.mjs';
+import { buildingForPlace, buildingGroup } from './building-relations.mjs';
 
 const $ = id => document.getElementById(id);
 const preview = document.body.dataset.preview === 'true';
@@ -415,10 +416,15 @@ function setupDetail(places) {
     : place.public_access === 'By Appointment'
       ? 'الزيارة بموعد مسبق للخدمة المحددة. تواصل مع الجهة لتأكيد موعدك ومدخل الزوار قبل التحرك.'
       : 'راجع شروط الزيارة وطريقة الوصول مع الجهة قبل التحرك.');
+  const curatedBuilding = place.kind === 'Building' ? buildingGroup(places, place.id) : buildingForPlace(places, place.id);
+  const buildingRelationshipUrl = curatedBuilding && 'buildings.html?id=' + encodeURIComponent(curatedBuilding.buildingId);
   const quickActions = $('quickActions');
   if (quickActions) {
     if (place.phone) quickActions.append(link('اتصل بالجهة قبل الزيارة', 'tel:' + place.phone.replace(/[^\d+]/g, ''), 'detail-quick-actions__primary'));
     else if (place.website) quickActions.append(link('راجع الموقع الرسمي للجهة', place.website, 'detail-quick-actions__primary'));
+    if (buildingRelationshipUrl) quickActions.append(link(
+      place.kind === 'Building' ? 'الجهات المرتبطة بعنوان المبنى' : 'بيانات المبنى المرتبط بعنوان الجهة',
+      buildingRelationshipUrl, 'detail-quick-actions__secondary'));
     if (navigation.href) quickActions.append(link(navigation.label, navigation.href, 'detail-quick-actions__secondary'));
     else quickActions.append(link('راجع تفاصيل العنوان', '#overview', 'detail-quick-actions__secondary'));
   }
