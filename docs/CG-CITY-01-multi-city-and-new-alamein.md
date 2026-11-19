@@ -2,9 +2,9 @@
 
 ## Decision and implementation status
 
-**Active city remains New Administrative Capital.** Its Notion Master has **350 records**, of which **22** were through detailed record-level desktop audit at the 19 Nov 2026 baseline and **328** still need that pass. Do not mistake the 350-row structural screen for 350 independent external checks. A recent repository snapshot contains **265 exploratory capital records** and **2 formally approved profiles**, which does not represent the full live Notion Master. These are different scopes, not grounds to overwrite live data.
+**Active city remains New Administrative Capital.** Its Notion Master has **350 records**, of which **30** have CG-DATA-05/06 detailed record-level desk-audit annotations at the 19 Nov 2026 baseline and **320** still need that pass. Do not mistake the 350-row structural screen for 350 independent external checks. A recent repository snapshot contains **265 exploratory capital records** and **2 formally approved profiles**, which does not represent the full live Notion Master. These are different scopes, not grounds to overwrite live data.
 
-The **second city is New Alamein**, enabled in the editorial **research layer only**. Eight source-bounded candidates (ALM-001 to ALM-008) have been created in the one new Notion [City Expansion Research database](https://app.notion.com/p/41da7a233ee181abbb6ddd850d1d9544). This JSON is a source-controlled review snapshot for QA; **Notion remains the editable source of truth**.
+The **second city is New Alamein**, enabled in the editorial **research layer only**. Ten source-bounded candidates (ALM-001 to ALM-010) have been created in the one new Notion [City Expansion Research database](https://app.notion.com/p/41da7a233ee181abbb6ddd850d1d9544). This JSON is a source-controlled review snapshot for QA; **Notion remains the editable source of truth**.
 
 ## Multi-city domain model
 
@@ -38,12 +38,12 @@ The **second city is New Alamein**, enabled in the editorial **research layer on
 | ALM-006 | الأكاديمية العربية للعلوم والتكنولوجيا — حرم العلمين — University | [AASTMT](https://www.aast.edu/en/campuses/Elalamein/) | Specific visitor entrance, accepted walk-in service and campus office hours unverified. |
 | ALM-007 | North Square Mall — نورث سكوير — Commercial Facility | [City Edge Developments](https://cityedgedevelopments.com/project/north-square-mall/) | Listing describes development, NOT verified tenant inventory, operating businesses or approved entrance. |
 | ALM-008 | Downtown Commercial — داون تاون التجاري — Property Asset | [City Edge Developments](https://cityedgedevelopments.com/project-type/retail-en/) | Asset != individual shop; store occupancy and access cannot be inferred. |
-
-All eight candidates have `visitor_hours=null`, `directions_url=null`, `verified_entrance=false`, and `release_approved=false`. A property development listing is not a verified shop list. University campus identity is not public access. Operator-published mall gate text is not field-verified directions.
+| ALM-009 | بنك مصر — ماكينة ATM بمول O Mall — ATM | [Banque Misr](https://banquemisr.com/ar-EG/Home/Pages/Elsahel) | No proven uptime, entry eligibility, 24-hour access or gate; separate from ALM-002 branch |\n| ALM-010 | سيتي إيدج — مركز مبيعات العلمين الجديدة — Sales Office | [City Edge](https://cityedgedevelopments.com/ar/contact-us-ar/) | Published hours and central contact, NOT guaranteed walk-in, current staffed hours or verified entrance |\n
+All ten candidates have `visitor_hours=null`, `directions_url=null`, `verified_entrance=false`, and `release_approved=false`. A property development listing is not a verified shop list. University campus identity is not public access. Operator-published mall gate text is not field-verified directions.
 
 ## Capital P0 continuation
 
-- 71 P0 candidate records in the 350-row baseline are *triage priority*, not source-verified walk-in services.
+- CG-DATA-06 (19 Nov): 8 previously unclassified Capital Master records (NC-15, NC-108, NC-111, NC-112, NC-120, NC-143, NC-144, NC-162) received record-level audit/gap classifications and source-bound trace notes. This adds to 22 CG-DATA-05 detailed records, bringing that tracked cohort to **30 / 350**, not 30 external/field verifications.\n- 71 P0 candidate records in the 350-row baseline are *triage priority*, not source-verified walk-in services.
 - Perform operator/official verification for **bank retail branches, ATMs, public counters** before spending on non-visitor investment/property records.
 - Protect human release boundaries; investigate the two earlier Published-status records lacking named visitor-release approvers.
 - Resolve known NC-35 / NC-202 identity and other parent-building conflicts without deletion or fabricated location.
