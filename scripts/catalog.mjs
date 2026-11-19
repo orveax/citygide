@@ -29,6 +29,10 @@ export function normalize(value = '') {
     .replace(/[إأآٱ]/g, 'ا')
     .replace(/ى/g, 'ي')
     .replace(/ة/g, 'ه')
+    .replace(/[٠-٩]/g, digit => String(digit.charCodeAt(0) - 0x0660))
+    .replace(/[۰-۹]/g, digit => String(digit.charCodeAt(0) - 0x06F0))
+    .replace(/[\u200C-\u200F\u061C\u202A-\u202E]/g, '')
+    .replace(/[،,؛;\u2013\u2014\u2010\u2011\-_\/\\]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -156,6 +160,38 @@ export function filterPlaces(places, filters = {}) {
     }
     return a.name_ar.localeCompare(b.name_ar, 'ar');
   });
+}
+
+// Native autocomplete: source-derived names only, no invented listings or place routes.
+// Applying the current zone/kind avoids proposing an item the selected filters hide.
+export function searchSuggestions(places, filters = {}, limit = 8) {
+  const query = normalize(filters.q || '');
+  if (query.length < 2) return [];
+  const scoped = filterPlaces(places, { ...filters, q: '', sort: 'relevance' });
+  const matches = scoped.filter(place => {
+    const name = normalize(place.name_ar);
+    const english = normalize(place.name_en);
+    const aliases = (place.aliases || []).map(normalize);
+    const service = normalize(place.service_type);
+    return [name, english, service, ...aliases].some(text => text.includes(query));
+  });
+  const ranked = matches.map(place => {
+    const names = [normalize(place.name_ar), normalize(place.name_en), ...(place.aliases || []).map(normalize)];
+    const score = names.some(text => text === query) ? 3
+      : names.some(text => text.startsWith(query)) ? 2
+      : names.some(text => text.includes(query)) ? 1 : 0;
+    return { place, score };
+  }).sort((a,b) => b.score - a.score || a.place.name_ar.localeCompare(b.place.name_ar,'ar'));
+  const seen = new Set();
+  const suggestions = [];
+  for (const { place } of ranked) {
+    const name = place.name_ar;
+    if (!name || seen.has(normalize(name))) continue;
+    seen.add(normalize(name));
+    suggestions.push(name);
+    if (suggestions.length >= Math.min(Math.max(1, limit), 12)) break;
+  }
+  return suggestions;
 }
 
 // Facets are calculated from the same catalogue as the results. The target
