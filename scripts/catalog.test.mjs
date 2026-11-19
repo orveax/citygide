@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { directoryReturnUrl, facetCounts, filterPlaces, normalize, paginatePlaces, relaxationSuggestions, safeDirectoryReturnUrl, searchSuggestions, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
+import { directoryReturnUrl, facetCounts, filterPlaces, normalize, paginatePlaces, placePurpose, relaxationSuggestions, safeDirectoryReturnUrl, searchSuggestions, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 
 const places = [
   { slug: 'a', name_ar: 'وزارة الاتصالات', name_en: 'Communications Ministry', address: 'الحي الحكومي', aliases: ['MCIT'], building_code: '10B', service_type: '', zone: 'Government District', kind: 'Government', last_checked: '2026-11-02' },
@@ -128,4 +128,31 @@ test('CG-MUX-02 suggestions cannot fabricate places or infer visitor permission'
   assert.ok(proposed.every(s => places.some(p => p.name_ar === s)));
   assert.ok(proposed.every(s => !s.includes('مفتوح') && !s.includes('مدخل')));
   assert.deepEqual(searchSuggestions([], { q: 'الوزارة' }), []);
+});
+
+test('CG-MUX-03 visitor intent never mislabels a bank HQ as a branch or mobile mixed unit as ATM', () => {
+  const bank = { ...places[1], role:'Administrative HQ', name_ar:'البنك المركزي — فرع الحي', kind:'Bank' };
+  const atm = { ...places[1], name_ar:'ماكينة ATM بنك مصر', role:'Public Service Point' };
+  const branch = { ...places[1], name_ar:'بنك مصر — فرع العاصمة', role:'Public Service Point' };
+  const mobile = { ...places[1], name_ar:'بنك ناصر — وحدة متنقلة أمام التضامن', role:'Public Service Point' };
+  assert.equal(placePurpose(bank),'bank-hq');
+  assert.equal(placePurpose(atm),'bank-atm');
+  assert.equal(placePurpose(branch),'bank-branch');
+  assert.equal(placePurpose(mobile),'');
+  assert.deepEqual(filterPlaces([bank,atm,branch,mobile],{purpose:'bank-atm'}),[atm]);
+});
+test('CG-MUX-03 public-counter and building are scoped by explicit role', () => {
+  const counter = { ...places[0],role:'Public Service Point',kind:'Authority' };
+  const hq = { ...places[0],role:'Administrative HQ' };
+  const building = { ...places[0],kind:'Building',role:'Facility' };
+  assert.equal(placePurpose(counter),'public-counter');
+  assert.equal(placePurpose(hq),'admin-hq');
+  assert.equal(placePurpose(building),'facility');
+  assert.deepEqual(facetCounts([counter,hq,building],{},'purpose'),{'':3,'public-counter':1,'admin-hq':1,facility:1});
+});
+test('CG-MUX-03 the safe search URL preserves visitor-intent filter', () => {
+  const url=directoryReturnUrl({filters:{purpose:'bank-atm',zone:'Government District'}});
+  assert.match(url, /purpose=bank-atm/);
+  assert.equal(safeDirectoryReturnUrl(url,{exploration:true}),url);
+  assert.equal(directoryReturnUrl({filters:{purpose:'unknown'}}),'directory.html#results');
 });
