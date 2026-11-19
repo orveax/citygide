@@ -5,7 +5,7 @@ import { join } from 'node:path';
 
 export const UX_PAGES = Object.freeze([
  'index.html','directory.html','services.html','buildings.html','districts.html',
- 'place.html','explore-place.html','approved.html','about.html','contact.html','terms.html','privacy.html'
+ 'place.html','explore-place.html','approved.html','alamein.html','about.html','contact.html','terms.html','privacy.html'
 ]);
 
 export function auditPage(html,file) {
