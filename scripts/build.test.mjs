@@ -578,3 +578,23 @@ test('CG-MUX-05 visitor detail prioritizes service eligibility, access, address 
   assert.match(css,/@media \(max-width: 600px\)/);
   assert.doesNotMatch(html,/<div class="detail-hero-art"><img/);
 });
+
+
+test('CG-MUX-09 city discovery is bundled and the second city is explicitly unavailable', () => {
+  execFileSync(process.execPath,[join(root,'scripts/build.mjs')]);
+  const city=readFileSync(join(root,'dist/districts.html'),'utf8');
+  const directory=readFileSync(join(root,'dist/directory.html'),'utf8');
+  const home=readFileSync(join(root,'dist/index.html'),'utf8');
+  const script=readFileSync(join(root,'dist/scripts/city-districts.mjs'),'utf8');
+  assert.match(city,/id="districtResults"/);
+  assert.match(city,/العلمين الجديدة/);
+  assert.match(city,/عرض الأماكن غير متاح بعد/);
+  assert.doesNotMatch(city,/href="[^"]*new-alamein/);
+  assert.match(directory,/id="city"/);
+  assert.match(directory,/<option value="new-alamein" disabled>/);
+  assert.match(directory,/id="activeCityLabel"/);
+  assert.match(home,/href="districts.html"/);
+  assert.match(script,/canonicalizePlaces\(data.places\)/);
+  assert.match(script,/directoryReturnUrl\(\{filters:\{city:'new-capital',zone:district.zone\}\}\)/);
+  assert.match(city,/noindex,nofollow/);
+});
