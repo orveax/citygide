@@ -6,8 +6,8 @@ const isHttps=s=>{try{return new URL(s).protocol==='https:'}catch{return false}}
 const catalog=await Promise.all(['data/alamein-01.json','data/alamein-02.json'].map(async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('Could not load Alamein data');return r.json()})).then(p=>p.flat()).catch(()=>[]);
 const places=catalog.filter(p=>p.id&&p.name&&isHttps(p.source_url));
 const routeParts=location.pathname.split('/');
-const candidateId=routeParts[2]?.replace(/\\.html$/,'') || '';
-const pathId=routeParts.length===3 && routeParts[1]==='alamein' && /^ALM-\\d{3}$/.test(candidateId) ? candidateId : '';
+const candidateId=routeParts[2]?.endsWith('.html') ? routeParts[2].slice(0,-5) : (routeParts[2] || '');
+const pathId=routeParts.length===3 && routeParts[1]==='alamein' && /^ALM-[0-9]{3}$/.test(candidateId) ? candidateId : '';
 const details=new URLSearchParams(location.search).get('id') || pathId;
 function renderDetail(place){$('alameinResults').hidden=true;$('alameinDetail').hidden=false;$('alameinSearch').parentElement.hidden=true;$('alameinTitle').textContent=place.name;document.title=place.name+' | دليل العلمين الجديدة';$('alameinNotice').textContent='سجل بحثي لا يعني ضمان تشغيل الموقع أو السماح بدخول الجمهور؛ لا توجد اتجاهات زيارة معتمدة.';for(const [label,key] of fields){if(!place[key])continue;const wrap=node('div');wrap.append(node('dt',label),node('dd',place[key]));$('alameinFields').append(wrap);}const link=node('a','عرض المصدر الأصلي');link.href=place.source_url;link.target='_blank';link.rel='noopener noreferrer';$('alameinSource').append(link);}
 if(details){const p=places.find(p=>p.id===details);if(p)renderDetail(p);else $('alameinCount').textContent='لم يتم العثور على السجل';}
