@@ -986,3 +986,7 @@ body { font-size: 14px; line-height: 1.9; }
   .search-suggestion-hint { font-size: 10px; }
   .search-field--query .search-suggestion-hint { font-size: 9px; }
 }
+
+/* CG-MUX-03: purpose selector reuses semantic form styling. */
+#purpose { min-height: 42px; }
+.catalog-search label[for="purpose"] { font-weight: 700; }
