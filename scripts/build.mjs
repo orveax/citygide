@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateDataset } from './validate.mjs';
 import { validatePublishedAgainstApprovals } from './notion-publisher.mjs';
+import { auditBuiltUx } from './ux-audit.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dataset = JSON.parse(readFileSync(join(root, 'data/published.json'), 'utf8'));
@@ -55,4 +56,10 @@ for (const name of ['city-skyline.svg', 'financial-architecture.svg', 'civic-arc
 writeFileSync(join(dist, 'data/places.json'), JSON.stringify(dataset));
 writeFileSync(join(dist, 'data/exploration.json'), JSON.stringify(exploration));
 writeFileSync(join(dist, '_headers'), '/*\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
+const uxProblems = auditBuiltUx(dist);
+if (uxProblems.length) {
+  console.error('UX acceptance gate failed:\n'+uxProblems.join('\n'));
+  process.exit(1);
+}
+console.log('UX structural acceptance gate passed for 12 public pages.');
 console.log(`Built default public exploratory directory: ${exploration.places.length} source records; approved-only view: ${dataset.places.length} founder-approved records; internal notes excluded.`);
