@@ -1309,3 +1309,42 @@ body { font-size: 14px; line-height: 1.9; }
 .city-discovery-error {padding:20px;border:1px solid #ead5c8;border-radius:10px;}
 @media(max-width:800px) {.city-discovery-grid {grid-template-columns:1fr;}.city-district-list {grid-template-columns:1fr 1fr;}}
 @media(max-width:560px) {.city-discovery-card,.city-district-card {padding:18px;}.city-district-list {grid-template-columns:1fr;}.city-district-link,.city-discovery-main-link {width:100%;}.city-explore-link {align-items:flex-start;flex-direction:column;}}
+
+
+/* CG-MUX-10: keyboard, contrast, zoom and narrow viewport guardrails. */
+:where(a,button,input,select,textarea,summary):focus-visible {
+  outline: 3px solid #b64023;
+  outline-offset: 3px;
+}
+:where(.mobile-nav summary,.mobile-nav a,.category-chip,.district-shortcuts__button,
+.pagination__button,.service-jump,.building-jump,.city-district-link,
+.city-discovery-main-link,.view-button) { min-height: 44px; }
+:where(.search-panel,.catalog-layout,.detail-layout,.place-grid,.service-entities,
+.building-associated,.city-district-list,.city-discovery-grid) { min-width: 0; }
+:where(.place-card,.service-entity,.building-associated__item,.city-district-card,
+.city-discovery-card) { overflow-wrap: anywhere; }
+.catalog-results:focus { outline: 3px solid #b64023; outline-offset: 5px; }
+#count[aria-live],#filterResultCount { font-variant-numeric: tabular-nums; }
+@media (max-width: 390px) {
+  .container { width: calc(100% - 28px); }
+  .service-entity__status,.building-associated__states,.place-card__status { gap: 6px; }
+  .place-card__body,.service-entity,.building-associated__item { padding: 15px; }
+  .search-panel,.catalog-search { min-width: 0; }
+  .city-district-card h3,.service-group__head h2 { overflow-wrap: anywhere; }
+}
+@media (max-width: 340px) {
+  .container { width: calc(100% - 20px); }
+  .detail-visit-panel,.city-discovery-card,.city-district-card { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+@media (forced-colors: active) {
+  :where(a,button,summary):focus-visible { outline-color: Highlight; }
+  .source-status,.visit-status,.city-discovery-unavailable { border: 1px solid CanvasText; }
+}
