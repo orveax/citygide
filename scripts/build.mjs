@@ -14,7 +14,8 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 execFileSync(process.execPath, ['--test', '--test-concurrency=1',
   'scripts/catalog.test.mjs', 'scripts/maps.test.mjs',
   'scripts/service-pathways.test.mjs', 'scripts/building-relations.test.mjs',
-  'scripts/measurement.test.mjs', 'scripts/ux-audit.test.mjs'
+  'scripts/measurement.test.mjs', 'scripts/ux-audit.test.mjs',
+  'scripts/static-detail-routes.test.mjs'
 ], { cwd: root, stdio: 'inherit' });
 const dataset = JSON.parse(readFileSync(join(root, 'data/published.json'), 'utf8'));
 const exploration = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
