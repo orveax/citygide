@@ -1276,3 +1276,36 @@ body { font-size: 14px; line-height: 1.9; }
 .arrival-contact-link:focus-visible,.map-card__status:focus-visible {outline:3px solid var(--focus-ring,#c24a32);outline-offset:3px;}
 #arrival,#contact {scroll-margin-top:98px;}
 @media(max-width:600px){.arrival-summary {grid-template-columns:1fr;gap:4px;padding:12px;}.arrival-summary strong {margin-bottom:7px;}.arrival-steps {gap:10px;}}
+
+
+/* CG-MUX-09: city-first discovery without exposing research-only cities. */
+.city-explore-link {display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap;margin:10px 0 0;font-size:11px;line-height:1.8;}
+.city-explore-link a {font-weight:700;color:var(--accent-text,#a83e2b);text-decoration:underline;text-underline-offset:3px;}
+.city-explore-link span {color:#566576;}
+.city-explore-link a:focus-visible,.city-discovery-section a:focus-visible {outline:3px solid var(--accent,#c24a32);outline-offset:3px;}
+.city-coverage-note {font-size:10px;line-height:1.8;margin:-4px 0 12px;color:#576676;}
+.city-coverage-label {border-inline-start:3px solid #c6d0dc;padding:7px 11px;background:#f6f8fa;border-radius:7px;color:#415469;font-size:11px;font-weight:700;margin:0 0 17px;}
+.city-discovery-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:46px;}
+.city-discovery-card {display:flex;flex-direction:column;align-items:flex-start;gap:11px;min-width:0;border:1px solid #dee6ed;border-radius:19px;padding:28px;background:#fff;box-shadow:0 7px 24px rgb(23 44 59 / 4%);}
+.city-discovery-card--active {background:linear-gradient(130deg,#fffaf6,#fff);border-color:#ead5c8;}
+.city-discovery-card--pending {background:#f8fafb;}
+.city-discovery-status {display:inline-flex;align-items:center;min-height:30px;padding:5px 11px;border:1px solid #dde4e9;border-radius:9px;background:#f5f7f9;color:#4d6070;font-size:10px;font-weight:700;}
+.city-discovery-card h2 {font-size:clamp(19px,2.5vw,28px);line-height:1.5;margin:0;}
+.city-discovery-card p {font-size:12px;line-height:2;color:#556574;flex:1;margin:0;}
+.city-discovery-main-link {display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:10px 15px;border-radius:10px;background:#fff4ef;border:1px solid #e9cabb;color:var(--accent-text,#a83e2b);font-size:11px;font-weight:700;}
+.city-discovery-unavailable {display:inline-flex;align-items:center;min-height:44px;border:1px solid #dce3e8;border-radius:10px;padding:9px 13px;color:#5e6975;background:#eff2f4;font-size:11px;font-weight:700;cursor:not-allowed;}
+.city-districts-head {margin-bottom:22px;}
+.city-districts-head h2 {font-size:clamp(21px,2.4vw,30px);margin:6px 0;line-height:1.5;}
+.city-districts-head p {font-size:12px;line-height:1.85;color:#566576;margin:0;}
+.city-district-list {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.city-district-card {display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-width:0;border:1px solid #e0e7ec;border-radius:16px;padding:22px;background:#fff;}
+.city-district-card h3 {font-size:19px;line-height:1.6;margin:0;}
+.city-district-card p {font-size:11px;line-height:2;color:#586777;flex:1;margin:0;}
+.city-district-count {font-size:11px;color:#425667;background:#f3f6f8;border-radius:8px;padding:7px 11px;}
+.city-district-link {display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #e3c2b2;border-radius:9px;background:#fff6f1;color:var(--accent-text,#a83e2b);font-size:11px;font-weight:700;padding:9px 13px;}
+.city-scope-note {margin-top:30px;padding:18px 21px;border-radius:13px;border:1px solid #e2e8ed;background:#f7f9fa;}
+.city-scope-note strong {font-size:13px;}
+.city-scope-note p {font-size:11px;line-height:1.9;color:#586777;margin:7px 0 0;}
+.city-discovery-error {padding:20px;border:1px solid #ead5c8;border-radius:10px;}
+@media(max-width:800px) {.city-discovery-grid {grid-template-columns:1fr;}.city-district-list {grid-template-columns:1fr 1fr;}}
+@media(max-width:560px) {.city-discovery-card,.city-district-card {padding:18px;}.city-district-list {grid-template-columns:1fr;}.city-district-link,.city-discovery-main-link {width:100%;}.city-explore-link {align-items:flex-start;flex-direction:column;}}
