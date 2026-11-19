@@ -458,6 +458,26 @@ function setupDetail(places) {
     : 'غير مؤكدة — لا تعتمد على مواعيد العمل الإداري');
   setText('officeHours', place.office_hours, 'غير منشورة بمصدر واضح');
   setText('checked', place.last_checked);
+  const extraFacts = $('extraFacts');
+  if (extraFacts) {
+    const values = [
+      ['الاسم بالإنجليزية', place.name_en],
+      ['أسماء أخرى', Array.isArray(place.aliases) ? place.aliases.join('، ') : ''],
+      ['الحي / المنطقة', labelZone(place.zone)],
+      ['رمز المبنى', place.building_code],
+      ['فئة المصدر', place.source_category],
+      ['حالة الاعتماد المعلوماتي', sourceStatusLabel(place)],
+      ['معرّف السجل', place.id]
+    ];
+    for (const [label, value] of values) {
+      if (typeof value !== 'string' || !value.trim()) continue;
+      const row = element('div');
+      row.append(element('dt', '', label), element('dd', '', value));
+      extraFacts.append(row);
+    }
+    if (!extraFacts.children.length) $('recordFacts')?.setAttribute('hidden', '');
+  }
+
   setText('accessNotice', exploration && place.verification === 'Research'
     ? 'هذا سجل بحثي أولي، ولم يتم اعتماد الموقع أو إمكانية الزيارة. لا تستخدم العنوان للتنقل.'
     : place.public_access === 'Unknown'
