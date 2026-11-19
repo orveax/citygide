@@ -1,0 +1,114 @@
+{
+  "schema_version": "0.1",
+  "checked_at": "2026-11-19",
+  "scope": "Evidence-scoped, informational only; no visitor access or directions approval.",
+  "records": {
+    "NC-NC-43": {
+      "entity_subtype": "Government office",
+      "floor_suite": "الدور الأول — وزارة التموين",
+      "contact_attribution": "Direct office",
+      "operational_status": "Unknown",
+      "audit_state": "Desk evidence reviewed",
+      "evidence_scope": "صفحة تواصل رسمية تسمي المقر الرئيسي وموقعه بالدور الأول، ولا تؤكد ساعات أو شروط الزيارة.",
+      "entity_code": "NC-43"
+    },
+    "NC-NC-50": {
+      "entity_subtype": "Government office",
+      "floor_suite": "الدوران الثاني والثالث — وزارة الإسكان",
+      "contact_attribution": "Direct office",
+      "operational_status": "Unknown",
+      "audit_state": "Desk evidence reviewed",
+      "evidence_scope": "صفحة الاتصال الرسمية للجهاز تحدد وجوده في الدورين الثاني والثالث بمبنى وزارة الإسكان وتذكر 02-20545720 والبريد [info@capw.gov.eg](mailto:info@capw.gov.eg)؛ لا تثبت مدخل الجمهور.",
+      "entity_code": "NC-50"
+    },
+    "NC-NC-52": {
+      "entity_subtype": "Government office",
+      "floor_suite": "الدور الثالث — وزارة النقل",
+      "contact_attribution": "Direct office",
+      "operational_status": "Unknown",
+      "audit_state": "Desk evidence reviewed",
+      "evidence_scope": "صفحة الاتصال الرسمية للهيئة تؤكد مقر الدور الثالث بوزارة النقل، الهاتف 02 2054 1838 والبريد [info@ldp.gov.eg](mailto:info@ldp.gov.eg). يختلف الرقم عن 02 2054 1840 المعروض سابقًا؛ لا يوجد تحقق هاتفي، ساعات الزوار غير معروفة.",
+      "entity_code": "NC-52"
+    },
+    "NC-NC-203": {
+      "entity_subtype": "Government office",
+      "floor_suite": "الدور الرابع — مبنى خدمات الموظفين",
+      "contact_attribution": "General operator",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "صفحة تواصل معنا على الموقع الرسمي لهيئة الدواء تسرد فرع العاصمة في مبنى خدمات الموظفين، الدور الرابع. لا تثبت توفر شباك جمهور.",
+      "entity_code": "NC-203",
+      "tenant_evidence_class": "Direct operator listing",
+      "map_evidence_class": "Operator location link"
+    },
+    "NC-NC-243": {
+      "entity_subtype": "Public counter",
+      "floor_suite": "الدور الثاني — وزارة النقل",
+      "unit_code": "الإدارة المركزية لخدمات نقل البضائع",
+      "contact_attribution": "Direct office",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "D29: البوابة الحكومية لتيسير التجارة، تحديث 7 مايو 2026، تذكر الإدارة المركزية لخدمات النقل البري للبضائع بالدور الثاني بمبنى وزارة النقل، هاتف 02 20542140، وساعات عمل الوحدة الأحد–الخميس 09:00–14:30. هذه ساعات وحدة محددة وليست مواعيد دخول لجميع إدارات الجهاز؛ المدخل، مسار الدخول، شرط الحجز وسعر الطلب بحسب الفئة غير معتمدين ميدانيًا. البريد العام المنشور في المصدر [ltra@lhps.gov.gov](mailto:ltra@lhps.gov.gov) غير صالح ولم يُنقل. [https://egypt.tradeportal.org/Contacts/18?l=ar](https://egypt.tradeportal.org/Contacts/18?l=ar)",
+      "entity_code": "NC-243"
+    },
+    "NC-NC-256": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Not verified",
+      "operational_status": "Unknown",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "Primary Gazette scan, Al-Waqa'i al-Misriya issue 193 dated 2025-08-31, Justice Minister decision 4703/2025 establishes House of Representatives notary branch at Parliament service complex. A newspaper incorrectly calls this Senate office; primary legal text says House of Representatives. Decree not proof of opening/entry.",
+      "entity_code": "NC-256"
+    },
+    "NC-NC-48": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "صفحة اتصل بنا الرسمية للجهاز تسرد الحي الوزاري تجمع 5أ مبنى 12، وأرقام التواصل وبريد الجهاز، وتفرق بين مكاتب المواطنين ووسائل الخدمة الأخرى دون تأكيد مدخل الزائر.",
+      "entity_code": "NC-48"
+    },
+    "NC-NC-14": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "WMRA first-party contact places regulator on floor 1 of the Environment Ministry, Government District; WMRA WIMS platform independently lists online nonhazardous/hazardous waste licensing, export/import permits and rice straw approvals. Do not route applicants to headquarters for a national portal service; public reception not proven.",
+      "entity_code": "NC-14"
+    },
+    "NC-NC-110": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "صفحة اتصل بنا الحالية تثبت عنوان الجهاز وأرقام خدمة المواطنين؛ مدخل المبنى وساعات الزيارة غير مثبتين.",
+      "entity_code": "NC-110"
+    },
+    "NC-NC-258": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "EEAA Environment Protection Fund first-party service page outlines environmental project financing applications submitted by form with attachments through mail/email (and source mentions office handover), while current direct fund contact identifies [epf@moenv.gov.eg](mailto:epf@moenv.gov.eg). This establishes a submission channel, NOT unrestricted public access or a verified visitor door.",
+      "entity_code": "NC-258"
+    },
+    "NC-NC-259": {
+      "entity_subtype": "Other",
+      "contact_attribution": "Direct office",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Not Public - Internal",
+      "evidence_scope": "EEAA first-party current contact lists 0220532502/3/4 and [emergency@moenv.gov.eg](mailto:emergency@moenv.gov.eg). The emergency operations room continuously receives crisis/pollution reports 24 hours per day; the 2024 notice retired former numbers as of 29 February 2024. This is phone/email support only, not 24h office public access.",
+      "hotline_hours": "24 hours/day (official environmental emergency operations room; NOT visitor/reception hours)",
+      "entity_code": "NC-259"
+    },
+    "NC-NC-42": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "المصدر الرسمي يحدد عنوان مراسلات الهيئة داخل مبنى وزارة النقل؛ لا يثبت أنه شباك خدمة مواطنين.",
+      "entity_code": "NC-42"
+    }
+  }
+}
