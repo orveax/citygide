@@ -55,6 +55,7 @@ const VISIT_LABELS = {
 export const sourceStatusLabel = place => SOURCE_LABELS[place?.verification] || 'حالة المصدر غير محددة';
 export const visitStatusLabel = place => VISIT_LABELS[place?.public_access] || VISIT_LABELS.Unknown;
 
+const DIRECTORY_CITIES = new Set(['new-capital']);
 const DIRECTORY_ZONES = new Set(['Government District', 'Financial District', 'Other']);
 const DIRECTORY_KINDS = new Set(['Government', 'Authority', 'Bank', 'Company', 'Building', 'District']);
 const DIRECTORY_PURPOSES = new Set(['bank-branch','bank-atm','bank-hq','public-counter','admin-hq','facility']);
@@ -68,6 +69,7 @@ export function directoryReturnUrl({ target = 'directory.html', filters = {}, pa
   const params = new URLSearchParams();
   const query = String(filters.q || '').trim().slice(0, 120);
   if (query) params.set('q', query);
+  if (DIRECTORY_CITIES.has(filters.city)) params.set('city', filters.city);
   if (DIRECTORY_ZONES.has(filters.zone)) params.set('zone', filters.zone);
   if (DIRECTORY_KINDS.has(filters.kind)) params.set('kind', filters.kind);
   if (DIRECTORY_PURPOSES.has(filters.purpose)) params.set('purpose', filters.purpose);
@@ -88,7 +90,7 @@ export function safeDirectoryReturnUrl(raw, { exploration = false } = {}) {
   const page = Number(params.get('page'));
   return directoryReturnUrl({
     target: match[1],
-    filters: Object.fromEntries(['q', 'zone', 'kind', 'purpose', 'sort', 'view'].map(field => [field, params.get(field) || ''])),
+    filters: Object.fromEntries(['q', 'city', 'zone', 'kind', 'purpose', 'sort', 'view'].map(field => [field, params.get(field) || ''])),
     page
   });
 }
@@ -155,6 +157,9 @@ export function paginatePlaces(places, requestedPage = 1, pageSize = 12) {
 }
 
 export function filterPlaces(places, filters = {}) {
+  // This dataset is explicitly scoped to the New Administrative Capital.
+  // A future city requires its own approved dataset; address text is not a city classifier.
+  if (filters.city && !DIRECTORY_CITIES.has(filters.city)) return [];
   const query = normalize(filters.q || '');
   const tokens = query.split(' ').filter(Boolean);
   const filtered = places.filter(place => {
