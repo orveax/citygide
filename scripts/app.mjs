@@ -1,5 +1,5 @@
 import { canonicalizePlaces, directoryReturnUrl, facetCounts, filterPlaces, paginatePlaces, placePurpose, relaxationSuggestions, resolveCanonicalPlace, safeDirectoryReturnUrl, searchSuggestions, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
-import { navigationDecision } from './maps.mjs';
+import { arrivalReadiness, navigationDecision } from './maps.mjs';
 import { buildingForPlace, buildingGroup } from './building-relations.mjs';
 
 const $ = id => document.getElementById(id);
@@ -451,7 +451,7 @@ function setupDetail(places) {
     if (navigation.href) quickActions.append(link(navigation.label, navigation.href, 'detail-quick-actions__secondary'));
     else quickActions.append(link('راجع تفاصيل العنوان', '#overview', 'detail-quick-actions__secondary'));
   }
-  const contact = $('contact');
+  const contact = $('contactActions');
   if (place.phone) contact.append(link('اتصل بالجهة (قد يكون رقمًا عامًا)', 'tel:' + place.phone.replace(/[^\d+]/g, ''), 'primary'));
   if (place.email) contact.append(link('البريد الإلكتروني', 'mailto:' + encodeURIComponent(place.email)));
   if (place.website) contact.append(link(place.kind === 'Building' ? 'صفحة المشروع لدى المصدر' : 'الموقع الرسمي', place.website));
@@ -465,6 +465,14 @@ function setupDetail(places) {
       : 'لا توجد نقطة وصول أو عنوان مبنى بدقة كافية لعرضه على الخريطة.'));
   }
   setText('mapNotice', navigation.notice);
+  const arrival = arrivalReadiness(place, { exploration });
+  setText('arrivalLocation', arrival.location);
+  setText('arrivalEntrance', arrival.verifiedEntrance
+    ? 'نقطة وصول مسجلة كمؤكدة — تحقق من شروط الدخول'
+    : 'لم يتم تأكيد مدخل الجمهور لهذا السجل');
+  if ($('arrivalSteps')) {
+    $('arrivalSteps').replaceChildren(...arrival.steps.map(step => element('li', '', step)));
+  }
   const nextAction = place.public_access === 'By Appointment'
     ? 'الخطوة التالية: أكد الموعد، والخدمة المطلوبة، ومدخل الزوار مع الجهة.'
     : place.public_access === 'Walk-in Confirmed'
