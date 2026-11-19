@@ -394,6 +394,29 @@ function setupDetail(places) {
   if (heroArt) heroArt.dataset.kind = KINDS[place.kind] ? place.kind.toLowerCase() : 'other';
   setText('detailHeroGlyph', KIND_GLYPHS[place.kind] || '⌖');
   setText('detailHeroKind', labelKind(place.kind));
+  const serviceOnSite = place.service_availability === 'On-site Confirmed';
+  const serviceElsewhere = place.service_availability === 'Other Location';
+  const serviceKnown = Boolean(place.service_type?.trim()) && !serviceElsewhere;
+  const serviceStatus = serviceElsewhere
+    ? 'الخدمة أو النشاط مرتبط بموقع آخر — لا تعتمد على هذا العنوان'
+    : serviceOnSite ? 'خدمة أو نقطة عمل مذكورة لهذا الموقع — التشغيل الحالي يحتاج تأكيدًا'
+    : serviceKnown ? 'معلومة خدمة مسجلة — وجودها حضوريًا غير مثبت'
+      : 'لا توجد خدمة استقبال جمهور محددة مثبتة';
+  setText('serviceReadiness', serviceStatus);
+  if ($('serviceReadiness')) $('serviceReadiness').dataset.mode = serviceOnSite ? 'caution' : 'unknown';
+  setText('serviceDecision', serviceStatus + '. المصدر لا يثبت وحده أن المكتب مفتوح أو أن الدخول مسموح.');
+  if ($('serviceDecision')) $('serviceDecision').dataset.mode = serviceElsewhere ? 'warning' : 'caution';
+  setText('serviceChannel', serviceElsewhere
+    ? 'الخدمة أو النشاط في موقع آخر؛ راجع المصدر'
+    : serviceOnSite ? 'موقع مرتبط بالخدمة في السجل؛ راجع التشغيل والاستقبال'
+      : 'غير محددة — استعلم عن القناة الرسمية (حضوري أو إلكتروني)');
+  setText('addressReadiness', PRECISIONS[place.address_precision] || 'درجة دقة العنوان غير محددة');
+  setText('entranceDecision', place.verified_entrance && ['Entrance Confirmed','Pin Verified'].includes(place.address_precision)
+    ? 'نقطة وصول مسجلة كمؤكدة؛ راجع شروط الدخول'
+    : 'مدخل الزوار لم يتم توثيقه بعد');
+  setText('contactScope', place.phone || place.email || place.website
+    ? 'وسائل التواصل مدرجة على مستوى سجل الجهة؛ تأكد أنها تخص المكتب أو الفرع والخدمة المطلوبة.'
+    : 'لم تُسجل قناة تواصل مؤكدة لهذا المكتب. راجع المصدر الرسمي للجهة.');
   setText('visitorReadiness', visitStatusLabel(place));
   if ($('visitorReadiness')) $('visitorReadiness').dataset.mode = place.public_access === 'Walk-in Confirmed' ? 'walkin' : place.public_access === 'By Appointment' ? 'appointment' : 'unknown';
   const navigation = navigationDecision(place, { exploration });
@@ -429,7 +452,7 @@ function setupDetail(places) {
     else quickActions.append(link('راجع تفاصيل العنوان', '#overview', 'detail-quick-actions__secondary'));
   }
   const contact = $('contact');
-  if (place.phone) contact.append(link('اتصل بالجهة', 'tel:' + place.phone.replace(/[^\d+]/g, ''), 'primary'));
+  if (place.phone) contact.append(link('اتصل بالجهة (قد يكون رقمًا عامًا)', 'tel:' + place.phone.replace(/[^\d+]/g, ''), 'primary'));
   if (place.email) contact.append(link('البريد الإلكتروني', 'mailto:' + encodeURIComponent(place.email)));
   if (place.website) contact.append(link(place.kind === 'Building' ? 'صفحة المشروع لدى المصدر' : 'الموقع الرسمي', place.website));
   if (!contact.children.length) contact.append(element('p', 'source-note', 'لا توجد وسيلة اتصال مؤكدة في السجل.'));
@@ -442,6 +465,14 @@ function setupDetail(places) {
       : 'لا توجد نقطة وصول أو عنوان مبنى بدقة كافية لعرضه على الخريطة.'));
   }
   setText('mapNotice', navigation.notice);
+  const nextAction = place.public_access === 'By Appointment'
+    ? 'الخطوة التالية: أكد الموعد، والخدمة المطلوبة، ومدخل الزوار مع الجهة.'
+    : place.public_access === 'Walk-in Confirmed'
+      ? 'الخطوة التالية: تأكد من مواعيد الخدمة والوثائق المطلوبة قبل التحرك.'
+      : serviceElsewhere
+        ? 'الخطوة التالية: تحقق من عنوان تقديم الخدمة الفعلي؛ هذا السجل ليس إثباتًا لنقطة خدمة هنا.'
+        : 'الخطوة التالية: استعلم عن الخدمة وساعات استقبال الجمهور ومدخل الزوار قبل التحرك.';
+  setText('nextStep', nextAction);
   $('source').append(link(exploration && place.verification !== 'Published' ? 'راجع مصدر البيانات' : 'افتح المصدر الرسمي', place.source_url));
   if (preview) sourceBadge.textContent = 'معاينة داخلية · ' + sourceStatusLabel(place);
 }
