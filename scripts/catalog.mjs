@@ -57,6 +57,7 @@ export const visitStatusLabel = place => VISIT_LABELS[place?.public_access] || V
 
 const DIRECTORY_ZONES = new Set(['Government District', 'Financial District', 'Other']);
 const DIRECTORY_KINDS = new Set(['Government', 'Authority', 'Bank', 'Company', 'Building', 'District']);
+const DIRECTORY_PURPOSES = new Set(['bank-branch','bank-atm','bank-hq','public-counter','admin-hq','facility']);
 const DIRECTORY_SORTS = new Set(['relevance', 'name', 'recent']);
 const DIRECTORY_VIEWS = new Set(['grid', 'list']);
 
@@ -69,6 +70,7 @@ export function directoryReturnUrl({ target = 'directory.html', filters = {}, pa
   if (query) params.set('q', query);
   if (DIRECTORY_ZONES.has(filters.zone)) params.set('zone', filters.zone);
   if (DIRECTORY_KINDS.has(filters.kind)) params.set('kind', filters.kind);
+  if (DIRECTORY_PURPOSES.has(filters.purpose)) params.set('purpose', filters.purpose);
   if (DIRECTORY_SORTS.has(filters.sort) && filters.sort !== 'relevance') params.set('sort', filters.sort);
   if (DIRECTORY_VIEWS.has(filters.view) && filters.view !== 'grid') params.set('view', filters.view);
   if (safeTarget !== 'index.html' && Number.isSafeInteger(page) && page > 1 && page <= 10000) params.set('page', String(page));
@@ -86,13 +88,13 @@ export function safeDirectoryReturnUrl(raw, { exploration = false } = {}) {
   const page = Number(params.get('page'));
   return directoryReturnUrl({
     target: match[1],
-    filters: Object.fromEntries(['q', 'zone', 'kind', 'sort', 'view'].map(field => [field, params.get(field) || ''])),
+    filters: Object.fromEntries(['q', 'zone', 'kind', 'purpose', 'sort', 'view'].map(field => [field, params.get(field) || ''])),
     page
   });
 }
 
 export function relaxationSuggestions(places, filters = {}) {
-  const descriptions = { q: 'كلمة البحث', zone: 'المنطقة', kind: 'نوع الجهة' };
+  const descriptions = { q: 'كلمة البحث', zone: 'المنطقة', kind: 'نوع الجهة', purpose: 'صفة المكان' };
   return Object.entries(descriptions)
     .filter(([field]) => String(filters[field] || '').trim())
     .map(([field, label]) => ({ field, label, count: filterPlaces(places, { ...filters, [field]: '' }).length }))
@@ -123,6 +125,21 @@ function relevanceScore(place, query) {
   return match + source + category + access;
 }
 
+// Filter by conservative place identity only; unknown roles remain unclassified.
+export function placePurpose(place) {
+  const name = normalize([place.name_ar, place.name_en].join(' '));
+  if (place.kind === 'Bank') {
+    if (place.role === 'Administrative HQ') return 'bank-hq';
+    if (/(^| )(atm|ماكينه|صراف الي|صراف)( |$)/.test(name)) return 'bank-atm';
+    if (/(^| )(فرع|branch)( |$)/.test(name)) return 'bank-branch';
+    return '';
+  }
+  if (place.role === 'Administrative HQ') return 'admin-hq';
+  if (place.role === 'Public Service Point' && ['Authority','Government'].includes(place.kind)) return 'public-counter';
+  if (place.role === 'Facility' || place.kind === 'Building') return 'facility';
+  return '';
+}
+
 export function paginatePlaces(places, requestedPage = 1, pageSize = 12) {
   const size = Number.isSafeInteger(pageSize) && pageSize > 0 ? pageSize : 12;
   const pages = Math.max(1, Math.ceil(places.length / size));
@@ -143,6 +160,7 @@ export function filterPlaces(places, filters = {}) {
   const filtered = places.filter(place => {
     if (filters.zone && place.zone !== filters.zone) return false;
     if (filters.kind && place.kind !== filters.kind) return false;
+    if (filters.purpose && placePurpose(place) !== filters.purpose) return false;
     const searchText = normalize([
       place.name_ar, place.name_en, place.address, place.building_code,
       place.service_type, ...(place.aliases || [])
@@ -198,9 +216,12 @@ export function searchSuggestions(places, filters = {}, limit = 8) {
 // field is intentionally ignored so users can see the available alternatives
 // without losing their active query or other filters.
 export function facetCounts(places, filters = {}, field) {
-  if (!['zone', 'kind'].includes(field)) throw new Error('Unsupported directory facet');
+  if (!['zone', 'kind', 'purpose'].includes(field)) throw new Error('Unsupported directory facet');
   const scoped = filterPlaces(places, { ...filters, [field]: '' });
   const counts = { '': scoped.length };
-  for (const place of scoped) counts[place[field]] = (counts[place[field]] || 0) + 1;
+  for (const place of scoped) {
+    const key = field === 'purpose' ? placePurpose(place) : place[field];
+    if (key) counts[key] = (counts[key] || 0) + 1;
+  }
   return counts;
 }
