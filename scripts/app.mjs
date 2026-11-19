@@ -394,8 +394,9 @@ function setupDirectory(places) {
 
 function setupDetail(places, detailRecords = {}) {
   const routeParts = location.pathname.split('/');
+  const routeName = routeParts[2]?.replace(/\\.html$/, '') || '';
   const pathSlug = routeParts.length === 3 && routeParts[1] === 'places' &&
-    routeParts[2].endsWith('.html') ? routeParts[2].slice(0, -5) : '';
+    /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(routeName) ? routeName : '';
   const slug = new URLSearchParams(location.search).get('slug') || pathSlug;
   const place = resolveCanonicalPlace(places, slug);
   if (!place) {
