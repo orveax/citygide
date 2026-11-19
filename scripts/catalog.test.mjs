@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { directoryReturnUrl, facetCounts, filterPlaces, normalize, paginatePlaces, relaxationSuggestions, safeDirectoryReturnUrl, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
+import { directoryReturnUrl, facetCounts, filterPlaces, normalize, paginatePlaces, relaxationSuggestions, safeDirectoryReturnUrl, searchSuggestions, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 
 const places = [
   { slug: 'a', name_ar: 'وزارة الاتصالات', name_en: 'Communications Ministry', address: 'الحي الحكومي', aliases: ['MCIT'], building_code: '10B', service_type: '', zone: 'Government District', kind: 'Government', last_checked: '2026-11-02' },
@@ -107,4 +107,25 @@ test('zero-result recovery suggests relaxing only filters that produce genuine m
   ]);
   assert.deepEqual(relaxationSuggestions(places, { q: 'غير موجود', zone: 'Government District', kind: 'Bank' }), []);
   assert.deepEqual(relaxationSuggestions(places, {}), []);
+});
+
+
+test('CG-MUX-02 finds mixed punctuation and Arabic/Persian digits without changing source identifiers', () => {
+  assert.equal(normalize('A3-٢٣ / برج، LC'), 'a3 23 برج lc');
+  assert.equal(normalize('فرع ۱۲'), 'فرع 12');
+  assert.equal(normalize('إدارة؛ المستثمرين'), 'اداره المستثمرين');
+});
+test('CG-MUX-02 offers only real entity names in the current scoped catalogue', () => {
+  const found = searchSuggestions(places, { q: 'MCIT' });
+  assert.deepEqual(found, ['وزارة الاتصالات']);
+  assert.deepEqual(searchSuggestions(places, { q: 'مصرفية' }), ['بنك القاهرة']);
+  assert.deepEqual(searchSuggestions(places, { q: 'ال', zone: 'Financial District' }), ['بنك القاهرة']);
+  assert.deepEqual(searchSuggestions(places, { q: 'MCIT', kind: 'Bank' }), []);
+  assert.deepEqual(searchSuggestions(places, { q: 'x' }), [], 'one character is not enough for suggestions');
+});
+test('CG-MUX-02 suggestions cannot fabricate places or infer visitor permission', () => {
+  const proposed = searchSuggestions(places, { q: 'وزارة' });
+  assert.ok(proposed.every(s => places.some(p => p.name_ar === s)));
+  assert.ok(proposed.every(s => !s.includes('مفتوح') && !s.includes('مدخل')));
+  assert.deepEqual(searchSuggestions([], { q: 'الوزارة' }), []);
 });
