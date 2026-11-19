@@ -1,3 +1,4 @@
+import { emitMeasurement } from './measurement.mjs';
 import { canonicalizePlaces, sourceStatusLabel, visitStatusLabel } from './catalog.mjs';
 import { curatedBuildings, BUILDING_STATUS_LABELS } from './building-relations.mjs';
 const $=id=>document.getElementById(id);
@@ -49,3 +50,7 @@ try {
     }
   }
 }catch(e){$('buildingGroups').replaceChildren(make('p','building-empty','تعذر تحميل معلومات المباني. جرّب دليل الجهات لاحقًا.'));}
+
+document.getElementById('buildingGroups')?.addEventListener('click', event => {
+  if (event.target.closest('a')) emitMeasurement('building_opened', {context:'buildings'});
+});
