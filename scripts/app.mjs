@@ -84,7 +84,7 @@ function emptyState(places, filters) {
 function currentDirectoryReturnUrl() {
   return directoryReturnUrl({
     target: home ? 'index.html' : exploration ? 'directory.html' : 'approved.html',
-    filters: { q: $('q')?.value, zone: $('zone')?.value, kind: $('kind')?.value, purpose: $('purpose')?.value, sort: $('sort')?.value, view: document.body.dataset.view },
+    filters: { q: $('q')?.value, city: $('city')?.value, zone: $('zone')?.value, kind: $('kind')?.value, purpose: $('purpose')?.value, sort: $('sort')?.value, view: document.body.dataset.view },
     page: currentPage
   });
 }
@@ -274,12 +274,13 @@ function renderPagination(pageData, places) {
 
 function renderDirectory(places, { resetPage = false } = {}) {
   if (resetPage) currentPage = 1;
-  const filters = { q: $('q').value, kind: $('kind').value, zone: $('zone').value, purpose: $('purpose')?.value || '', sort: $('sort').value, view: document.body.dataset.view || 'grid' };
+  const filters = { q: $('q').value, city: $('city')?.value || '', kind: $('kind').value, zone: $('zone').value, purpose: $('purpose')?.value || '', sort: $('sort').value, view: document.body.dataset.view || 'grid' };
   const results = filterPlaces(places, filters);
   const pageData = paginatePlaces(results, currentPage, PAGE_SIZE);
   currentPage = pageData.page;
   setText('count', String(results.length), '0');
   setText('filterResultCount', String(results.length), '0');
+  setText('activeCityLabel', 'العاصمة الإدارية الجديدة — سجلات هذه المدينة فقط');
   setText('resultsDescription', home ? `سجلًا في الدليل — نعرض ${Math.min(results.length, 6)} نماذج منها` : exploration ? 'نتيجة استكشافية — حالات المصدر والزيارة منفصلة' : preview ? 'نتيجة للمعاينة الداخلية، غير معتمدة للنشر' : 'مكان معتمد للنشر');
   const target = $('cards'); target.replaceChildren();
   target.classList.toggle('is-sparse', pageData.items.length === 1);
@@ -290,7 +291,7 @@ function renderDirectory(places, { resetPage = false } = {}) {
   renderFacets(places, filters);
   syncChips(); syncViews();
   const url = new URL(location.href);
-  for (const field of ['q', 'kind', 'zone', 'purpose', 'sort', 'view']) {
+  for (const field of ['q', 'city', 'kind', 'zone', 'purpose', 'sort', 'view']) {
     if (filters[field] && !(field === 'sort' && filters.sort === 'relevance')) url.searchParams.set(field, filters[field]);
     else url.searchParams.delete(field);
   }
@@ -336,10 +337,10 @@ function setupSearchSuggestions(places) {
 function setupDirectory(places) {
   const fullDirectoryUrl = () => directoryReturnUrl({
     target: 'directory.html',
-    filters: { q: $('q').value, kind: $('kind').value, zone: $('zone').value, purpose: $('purpose')?.value || '', sort: $('sort').value, view: document.body.dataset.view }
+    filters: { q: $('q').value, city: $('city')?.value || '', kind: $('kind').value, zone: $('zone').value, purpose: $('purpose')?.value || '', sort: $('sort').value, view: document.body.dataset.view }
   });
   const params = new URLSearchParams(location.search);
-  for (const field of ['q', 'kind', 'zone', 'purpose', 'sort']) {
+  for (const field of ['q', 'city', 'kind', 'zone', 'purpose', 'sort']) {
     const value = params.get(field);
     if (!$(field)) continue;
     if (value && ($(field).tagName === 'INPUT' || [...$(field).options].some(o => o.value === value))) $(field).value = value;
@@ -347,7 +348,7 @@ function setupDirectory(places) {
   if (params.get('view') === 'list') document.body.dataset.view = 'list';
   if (!home) currentPage = Number(params.get('page')) || 1;
   $('searchForm').addEventListener('submit', event => { event.preventDefault(); if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth' }); });
-  for (const field of ['q', 'kind', 'zone', 'purpose', 'sort']) if ($(field)) $(field).addEventListener(field === 'q' ? 'input' : 'change', () => renderDirectory(places, { resetPage: true }));
+  for (const field of ['q', 'city', 'kind', 'zone', 'purpose', 'sort']) if ($(field)) $(field).addEventListener(field === 'q' ? 'input' : 'change', () => renderDirectory(places, { resetPage: true }));
   document.querySelectorAll('[data-kind]').forEach(button => button.addEventListener('click', () => { $('kind').value = button.dataset.kind; if (home) { location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); document.querySelector('.catalog-results')?.scrollIntoView({ behavior: 'smooth' }); }));
   document.querySelectorAll('[data-zone-link]').forEach(a => a.addEventListener('click', event => { $('zone').value = a.dataset.zoneLink; $('kind').value = ''; $('q').value = ''; if (home) { event.preventDefault(); location.assign(fullDirectoryUrl()); return; } renderDirectory(places, { resetPage: true }); }));
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { document.body.dataset.view = button.dataset.view; renderDirectory(places); }));
