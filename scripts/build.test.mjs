@@ -73,7 +73,9 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.match(readFileSync(join(root, 'dist/contact.html'), 'utf8'), /mailto:hello@orveax.com/);
   assert.match(readFileSync(join(root, 'dist/terms.html'), 'utf8'), /زيارة/);
   assert.match(readFileSync(join(root, 'dist/privacy.html'), 'utf8'), /Google Fonts/);
-  assert.deepEqual(readdirSync(join(root, 'dist/data')), ['exploration.json', 'places.json']);
+  const assets = readdirSync(join(root, 'dist/data'));
+  assert.ok(['exploration.json', 'places.json', 'place-details.json', 'launch-readiness.json'].every(name => assets.includes(name)));
+  assert.ok(!assets.includes('preview.json'), 'preview data must never ship');
 });
 
 test('D36 directory verification preserves approvals and all earlier source-backed cohorts', () => {
@@ -118,7 +120,7 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(added.filter(p => p.verification === 'Source Confirmed').length, 7);
   assert.equal(added.filter(p => p.verification === 'Research').length, 0);
   assert.ok(added.every(p => p.public_access === 'Unknown' && !p.verified_entrance && !p.directions_url));
-  assert.ok(added.every(p => p.source_url.startsWith('https://') && ['2026-11-07', '2026-11-08'].includes(p.last_checked)));
+  assert.ok(added.every(p => p.source_url.startsWith('https://') && p.last_checked >= '2026-11-07'), 'source dates may advance with subsequent primary-source verification');
   assert.ok(added.every(p => !p.visitor_hours), 'an official address does not imply current walk-in hours');
   assert.equal(added.find(p => p.id === 'NC-108')?.building_code, 'NI-1');
   assert.equal(added.find(p => p.id === 'NC-114')?.service_availability, 'Unknown');
@@ -132,7 +134,7 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(batch22.filter(p => p.kind === 'Company').length, 2);
   assert.ok(batch22.every(p => p.service_availability === 'Unknown' && p.public_access === 'Unknown'));
   assert.ok(batch22.every(p => !p.verified_entrance && !p.directions_url && !p.visitor_hours));
-  assert.ok(batch22.every(p => p.source_url.startsWith('https://') && ['2026-11-07', '2026-11-08'].includes(p.last_checked)));
+  assert.ok(batch22.every(p => p.source_url.startsWith('https://') && p.last_checked >= '2026-11-07'));
   assert.ok(batch22.filter(p => p.verification === 'Research').every(p => p.source_category === 'Secondary News' || p.id === 'NC-117'));
   assert.equal(batch22.find(p => p.id === 'NC-121')?.source_category, 'Official Business');
   assert.equal(batch22.find(p => p.id === 'NC-123')?.verification, 'Source Confirmed', 'bank confirmed proposed branch; service is still not visitor-ready');
@@ -143,7 +145,7 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(batch23.filter(p => p.verification === 'Research').length, 9);
   assert.ok(batch23.every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
   assert.ok(batch23.every(p => !p.directions_url && !p.verified_entrance && !p.visitor_hours));
-  assert.ok(batch23.every(p => p.source_url.startsWith('https://') && ['2026-11-07', '2026-11-08'].includes(p.last_checked)));
+  assert.ok(batch23.every(p => p.source_url.startsWith('https://') && p.last_checked >= '2026-11-07'));
   assert.equal(batch23.find(p => p.id === 'NC-137')?.address_precision, 'Floor Confirmed', 'business-issued office and floor');
   assert.equal(batch23.find(p => p.id === 'NC-145')?.verification, 'Source Confirmed', 'NBK building project is sourced but not a live banking branch');
   assert.equal(batch23.find(p => p.id === 'NC-146')?.verification, 'Research', 'new EGX site is still a construction record');
@@ -154,7 +156,7 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.deepEqual(Object.fromEntries(['Authority', 'Bank', 'Building', 'Company'].map(kind => [kind, batch24.filter(p => p.kind === kind).length])), {Authority: 3, Bank: 1, Building: 15, Company: 1});
   assert.equal(batch24.filter(p => p.verification === 'Source Confirmed').length, 18);
   assert.equal(batch24.filter(p => p.verification === 'Research').length, 2);
-  assert.ok(batch24.every(p => p.last_checked === '2026-11-08' && p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
+  assert.ok(batch24.every(p => p.last_checked >= '2026-11-08' && p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
   assert.ok(batch24.every(p => !p.visitor_hours && !p.verified_entrance && !p.directions_url));
   assert.equal(batch24.find(p => p.id === 'NC-160')?.address_precision, 'Floor Confirmed');
   assert.equal(batch24.find(p => p.id === 'NC-162')?.role, 'Public Service Point');
@@ -165,7 +167,7 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.deepEqual(batch25.map(p => p.id), Array.from({length: 22}, (_, i) => `NC-${i + 180}`));
   assert.equal(batch25.filter(p => p.verification === 'Source Confirmed').length, 10);
   assert.equal(batch25.filter(p => p.verification === 'Research').length, 12);
-  assert.ok(batch25.every(p => p.source_url.startsWith('https://') && p.last_checked === '2026-11-08'));
+  assert.ok(batch25.every(p => p.source_url.startsWith('https://') && p.last_checked >= '2026-11-08'));
   assert.ok(batch25.every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
   assert.ok(batch25.every(p => !p.visitor_hours && !p.verified_entrance && !p.directions_url));
   assert.equal(batch25.filter(p => p.slug.includes('monorail-station')).length, 2);
@@ -177,7 +179,7 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(batch26.filter(p => p.verification === 'Source Confirmed').length, 13);
   assert.equal(batch26.filter(p => p.verification === 'Research').length, 9);
   assert.deepEqual(Object.fromEntries(['Authority', 'Bank', 'Building', 'Company'].map(kind => [kind, batch26.filter(p => p.kind === kind).length])), {Authority: 2, Bank: 9, Building: 6, Company: 5});
-  assert.ok(batch26.every(p => p.last_checked === '2026-11-08'));
+  assert.ok(batch26.every(p => p.last_checked >= '2026-11-08'));
   assert.ok(batch26.every(p => p.public_access === 'Unknown' && (p.id === 'NC-202' ? p.service_availability === 'On-site Confirmed' : p.service_availability === 'Unknown')));
   assert.ok(batch26.every(p => !p.visitor_hours && !p.directions_url && !p.verified_entrance));
   assert.ok(batch26.every(p => p.source_url.startsWith('https://')));
@@ -192,7 +194,7 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(batch27.filter(p => p.verification === 'Research').length, 7);
   assert.equal(batch27.filter(p => p.kind === 'Company').length, 2);
   assert.equal(batch27.filter(p => p.kind === 'Building').length, 13);
-  assert.ok(batch27.every(p => p.last_checked === '2026-11-08'));
+  assert.ok(batch27.every(p => p.last_checked >= '2026-11-08'));
   assert.ok(batch27.every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
   assert.ok(batch27.every(p => p.address_precision !== 'Pin Verified' && p.address_precision !== 'Entrance Confirmed'));
   assert.ok(batch27.every(p => !p.visitor_hours && !p.directions_url && !p.verified_entrance));
@@ -207,7 +209,7 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(batch28.filter(p => p.kind === 'Company').length, 2);
   assert.equal(batch28.filter(p => p.kind === 'Authority').length, 5);
   assert.equal(batch28.filter(p => p.role === 'Public Service Point').length, 4);
-  assert.ok(batch28.every(p => p.last_checked === '2026-11-08'));
+  assert.ok(batch28.every(p => p.last_checked >= '2026-11-08'));
   assert.ok(batch28.filter(p => p.id !== 'NC-241').every(p => p.public_access === 'Unknown' && p.service_availability === 'Unknown'));
   assert.ok(batch28.every(p => !p.visitor_hours && !p.directions_url && !p.verified_entrance));
   assert.ok(batch28.every(p => p.source_url.startsWith('https://')));
@@ -311,7 +313,7 @@ test('D31 official expansion adds four non-duplicate entities without fabricated
   assert.ok(batch.every(p => p.verification === 'Source Confirmed' && p.source_category === 'Official Authority'));
   assert.ok(batch.every(p => p.service_availability === 'Unknown' && p.public_access === 'Unknown'));
   assert.ok(batch.every(p => p.visitor_hours === '' && p.office_hours === '' && p.directions_url === '' && !p.verified_entrance));
-  assert.ok(batch.every(p => p.last_checked === '2026-11-08' && p.source_url.startsWith('https://')));
+  assert.ok(batch.every(p => p.last_checked >= '2026-11-08' && p.source_url.startsWith('https://')));
   assert.equal(batch.find(p => p.id === 'NC-246').zone, 'Government District');
   assert.match(batch.find(p => p.id === 'NC-247').address, /A2-18/);
   assert.match(batch.find(p => p.id === 'NC-248').address, /GR-03/);
@@ -334,7 +336,7 @@ test('D32 primary-source expansion and ministerial reconciliations have no inven
   assert.ok(batch.every(p => p.verification === 'Source Confirmed'));
   assert.ok(batch.every(p => p.service_availability === 'Unknown' && p.public_access === 'Unknown'));
   assert.ok(batch.every(p => !p.visitor_hours && !p.office_hours && !p.directions_url && !p.verified_entrance));
-  assert.ok(batch.every(p => p.source_url.startsWith('https://') && p.last_checked === '2026-11-08'));
+  assert.ok(batch.every(p => p.source_url.startsWith('https://') && p.last_checked >= '2026-11-08'));
   assert.match(batch.find(p => p.id === 'NC-251').address, /سلاسل/);
   assert.match(batch.find(p => p.id === 'NC-252').building_code, /B1-26/);
   assert.match(batch.find(p => p.id === 'NC-256').service_type, /4703/);
@@ -356,7 +358,7 @@ test('D33 confirms 20 narrow source claims and adds exactly one unique authority
     const place = places.find(p => p.id === id);
     assert.ok(place, `${id}: still present`);
     assert.equal(place.verification, 'Source Confirmed', `${id}: official-source fact reconciled`);
-    assert.equal(place.last_checked, '2026-11-08');
+    assert.ok(place.last_checked >= '2026-11-08', 'a newer source check must not regress');
     assert.equal(place.public_access, 'Unknown');
     assert.equal(place.visitor_hours, '');
     assert.equal(place.directions_url, '');
@@ -390,7 +392,7 @@ test('D34 primary-source reconciliation corrects boundaries and ministerial name
   for (const id of ['NC-56', 'NC-83', 'NC-88', 'NC-89', 'NC-90', 'NC-91']) {
     const p = byId(id);
     assert.equal(p.verification, 'Source Confirmed', `${id}: narrow official fact`);
-    assert.equal(p.last_checked, '2026-11-08');
+    assert.ok(p.last_checked >= '2026-11-08', 'a newer source check must not regress');
     assert.equal(p.public_access, 'Unknown');
     assert.equal(p.visitor_hours, '');
     assert.equal(p.directions_url, '');
