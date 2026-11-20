@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "checked_at": "2026-11-19",
+  "checked_at": "2026-11-20",
   "scope": "Evidence-scoped, informational only; no visitor access or directions approval.",
   "records": {
     "NC-43": {
@@ -213,6 +213,12 @@
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "صفحة تواصل رسمية لهيئة المجتمعات العمرانية، عنوانها ضمن مبنى الوزارة؛ لا تثبت خدمة حضورية في هذا المدخل.",
       "entity_code": "NC-47"
+    },
+    "NC-44": {
+      "po_box": "191 — الحي السكني R3 (للمراسلات الرسمية فقط، وليس مدخل المقر)",
+      "postal_code": "4829902 (تذييل منشور IDSC الرسمي؛ صندوق المراسلات)",
+      "audit_state": "Desk evidence reviewed",
+      "evidence_scope": "وثيقة رسمية منشورة من مركز المعلومات ودعم اتخاذ القرار تثبت بيانات الاتصال وعنوان الحي الحكومي، ولا تثبت مبنى ومدخل الزائر."
     }
   }
 }
