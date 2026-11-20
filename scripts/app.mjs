@@ -383,7 +383,7 @@ function setupDirectory(places) {
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { document.body.dataset.view = button.dataset.view; renderDirectory(places); }));
   // Listen for user actions, not page impressions, search keystrokes or raw queries.
   $('cards')?.addEventListener('click', event => {
-    if(event.target.closest('a[href*="place.html?slug="]'))
+    if(event.target.closest('a[href*="place.html?slug="], a[href^="places/"]'))
       emitMeasurement('place_opened',{context:home?'home':exploration?'directory':'approved'});
   });
   setupSearchSuggestions(places);
@@ -501,7 +501,10 @@ function setupDetail(places, detailRecords = {}) {
       ['نوع دليل المستأجر', detail.tenant_evidence_class],
       ['نوع دليل الخريطة (ليس بالضرورة مدخلًا)', detail.map_evidence_class],
       ['تاريخ مراجعة البيانات المقبل', detail.next_review],
-      ['رمز الجهة', detail.entity_code]
+      ['رمز الجهة', detail.entity_code],
+      ['ترخيص استخدام المصدر', detail.source_license],
+      ['طريقة التحقق من المصدر', detail.verification_method],
+      ['دليل الربط بالمبنى أو الوحدة (لا يثبت الدخول)', detail.relation_evidence]
     ];
     if (additional.some(([,v]) => typeof v === 'string' && v.trim())) {
       values.push(['بيانات إضافية قيد المراجعة', 'الحقول التالية مبنية على الأدلة المتاحة ولا تؤكد التشغيل أو السماح بالدخول']);
