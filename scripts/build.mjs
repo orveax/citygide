@@ -8,6 +8,8 @@ import { auditBuiltUx } from './ux-audit.mjs';
 import { buildDetailRoutes } from './static-detail-routes.mjs';
 import { auditPublication } from './publish-qa.mjs';
 import { launchReadiness } from './launch-readiness.mjs';
+import { assessSEO } from './seo-release.mjs';
+import { BUILDING_RELATIONSHIPS } from './building-relations.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 // Execute pure business-rule, Maps, relationship and UX-contract regressions
@@ -17,7 +19,7 @@ execFileSync(process.execPath, ['--test', '--test-concurrency=1',
   'scripts/catalog.test.mjs', 'scripts/maps.test.mjs',
   'scripts/service-pathways.test.mjs', 'scripts/building-relations.test.mjs',
   'scripts/measurement.test.mjs', 'scripts/ux-audit.test.mjs',
-  'scripts/static-detail-routes.test.mjs'
+  'scripts/static-detail-routes.test.mjs', 'scripts/seo-release.test.mjs'
 ], { cwd: root, stdio: 'inherit' });
 const dataset = JSON.parse(readFileSync(join(root, 'data/published.json'), 'utf8'));
 const exploration = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
@@ -95,7 +97,26 @@ if(launchReport.validation.missing_source_ids.length || launchReport.validation.
  process.exit(1);
 }
 writeFileSync(join(dist,'data','launch-readiness.json'),JSON.stringify(launchReport,null,2));
-writeFileSync(join(dist,'robots.txt'),'User-agent: *\\nDisallow: /\\n# CG-PUBLISH-03: indexing held pending editorial release approval\\n');
+const seoReport=assessSEO(exploration,evidenceDetails,alameinRecords);
+const relationshipAudit={
+ schema_version:'1.0',generated_at:'2026-11-20',notion_master_rows:350,
+ curated_building_groups:BUILDING_RELATIONSHIPS.length,
+ curated_place_links:BUILDING_RELATIONSHIPS.reduce((n,group)=>n+group.placeIds.length,0),
+ manual_evidence_only:true,notion_relational_full_sync:false,
+ notion_query_block:'Notion SQL allowance reached before all relation properties could be reconciled; do not claim full relations synchronization.',
+ source_boundaries:'Links assert that a published source mentions a place associated with a building, not that it is operating, accepting visitors or has an approved entrance.',
+ outstanding_review_ids:Object.entries(evidenceDetails.records).filter(([id,detail])=>detail.relation_evidence&&!BUILDING_RELATIONSHIPS.some(g=>g.buildingId===id||g.placeIds.includes(id))).map(([id])=>id)
+};
+writeFileSync(join(dist,'data','seo-review.json'),JSON.stringify(seoReport,null,2));
+writeFileSync(join(dist,'data','relationship-audit.json'),JSON.stringify(relationshipAudit,null,2));
+const sitemapPreview=['<?xml version="1.0" encoding="UTF-8"?>',
+ '<!-- CG-PUBLISH-04 PREVIEW ONLY: all pages retain noindex; do not submit this file to Search Console until a permanent domain and editorial approvals exist. -->',
+ '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+ ...seoReport.candidates.map(p=>'  <url><loc>https://citygide.pages.dev'+p.path+'</loc></url>'),
+ '</urlset>'].join('\\n')+'\\n';
+writeFileSync(join(dist,'sitemap-preview.xml'),sitemapPreview);
+console.log('CG-PUBLISH-04 SEO review candidates:',seoReport.candidates.length,'; Notion relation audit groups:',relationshipAudit.curated_building_groups,'; indexing is HOLD.');
+writeFileSync(join(dist,'robots.txt'),'User-agent: *\\nAllow: /\\n# Pre-launch: all HTML pages and response headers carry noindex; crawling must remain allowed so crawlers can see that directive.\\n');
 console.log('CG-PUBLISH-03 Notion sync and indexing hold verified:',launchReport.sync.matched_detail_rows,'of',launchReport.sync.notion_master_rows);
 const detailCounts = buildDetailRoutes(dist, exploration, alameinRecords);
 console.log('Record-specific analytics routes:', detailCounts);
