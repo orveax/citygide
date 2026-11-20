@@ -26,6 +26,8 @@ export function auditPublication(dist,capital,alamein){
     if(kind==='capital'&&!html.includes('data-catalog="exploration"'))errors.push('Wrong capital detail catalogue '+path);
     if(kind==='alamein'&&!html.includes('scripts/alamein.mjs'))errors.push('Wrong Alamein detail handler '+path);
   }
+  const alameinPage=readFileSync(join(dist,'alamein.html'),'utf8');
+  if(!alameinPage.includes('class="mobile-nav"')||!alameinPage.includes('aria-label="التنقل للموبايل"'))errors.push('Alamein mobile navigation missing');
   const privacy=readFileSync(join(dist,'privacy.html'),'utf8');
   if(!privacy.includes('Cloudflare Web Analytics'))errors.push('Outdated privacy: analytics not disclosed');
   for(const name of ['index.html','directory.html','alamein.html','explore-place.html']){
