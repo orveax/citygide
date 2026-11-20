@@ -27,14 +27,14 @@ try {
       const article=create('article','service-entity');
       const main=create('div','service-entity__main');
       main.append(create('span','service-entity__location',place.zone==='Government District'?'الحي الحكومي':place.zone==='Financial District'?'حي المال والأعمال':'المنطقة قيد المراجعة'));
-      const h=create('h3');h.append(anchor(place.name_ar,'explore-place.html?slug='+encodeURIComponent(place.slug)));main.append(h);
+      const h=create('h3');h.append(anchor(place.name_ar,'places/'+encodeURIComponent(place.slug)+'.html'));main.append(h);
       main.append(create('p','service-entity__scope',place.service_type||'نطاق الخدمة قيد التحديد بالمصدر'));
       const stamps=create('div','service-entity__status');
       stamps.append(create('span','source-status '+(place.verification==='Research'?'source-status--research':'source-status--source'),sourceStatusLabel(place)));
       stamps.append(create('span','visit-status visit-status--'+(place.public_access==='Walk-in Confirmed'?'walkin':place.public_access==='By Appointment'?'appointment':'unknown'),visitStatusLabel(place)));
       main.append(stamps);
       const actions=create('div','service-entity__actions');
-      actions.append(anchor('تفاصيل الجهة وشروط الزيارة ←','explore-place.html?slug='+encodeURIComponent(place.slug),'service-entity__action'));
+      actions.append(anchor('تفاصيل الجهة وشروط الزيارة ←','places/'+encodeURIComponent(place.slug)+'.html','service-entity__action'));
       if(place.source_url?.startsWith('https://')){const src=anchor('مصدر المعلومات',place.source_url,'service-entity__source');src.target='_blank';src.rel='noopener noreferrer';actions.append(src);}
       article.append(main,actions);list.append(article);
     }
