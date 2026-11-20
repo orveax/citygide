@@ -81,7 +81,7 @@ for (const filename of ['index.html','place.html','explore-place.html','director
 const alameinRecords = ['alamein-01.json','alamein-02.json'].flatMap(name => JSON.parse(readFileSync(join(root,'data',name),'utf8')));
 const evidenceDetails = JSON.parse(readFileSync(join(root,'data/place-details.json'),'utf8'));
 if (evidenceDetails.schema_version !== '0.1' || !evidenceDetails.records || Array.isArray(evidenceDetails.records)) throw Error('Invalid place details schema');
-const allowedDetails = new Set(['entity_subtype','floor_suite','unit_code','neighborhood','po_box','postal_code','contact_attribution','operational_status','audit_state','visitor_release_gate','evidence_scope','hotline_hours','entity_code','tenant_evidence_class','next_review','map_evidence_class']);
+const allowedDetails = new Set(['entity_subtype','floor_suite','unit_code','neighborhood','po_box','postal_code','contact_attribution','operational_status','audit_state','visitor_release_gate','evidence_scope','hotline_hours','entity_code','tenant_evidence_class','next_review','map_evidence_class','source_license','verification_method','relation_evidence']);
 for(const [id, details] of Object.entries(evidenceDetails.records)){
  if(!exploration.places.some(p=>p.id===id)) throw Error('Orphan research detail '+id);
  if(Object.keys(details).some(key=>!allowedDetails.has(key))) throw Error('Unsafe research detail '+id);
