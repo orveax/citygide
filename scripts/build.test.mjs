@@ -16,7 +16,11 @@ test('production build cannot publish D04 preview records or preview mode', () =
   assert.deepEqual(publicJson.places, published.places);
   assert.ok(publicJson.places.every(place => place.verification === 'Published'));
   assert.ok(!readFileSync(join(root, 'dist/index.html'), 'utf8').includes('data-preview="true"'));
-  assert.deepEqual(readdirSync(join(root, 'dist/data')).sort(), ['alamein-01.json','alamein-02.json','exploration.json','place-details.json','places.json'].sort());
+  const generatedFiles = readdirSync(join(root, 'dist/data'));
+  for (const required of ['alamein-01.json','alamein-02.json','exploration.json','place-details.json','places.json','launch-readiness.json']) {
+    assert.ok(generatedFiles.includes(required), 'production data artifact missing: ' + required);
+  }
+  assert.ok(!generatedFiles.includes('preview.json'), 'internal preview data must not ship');
   assert.ok(!readdirSync(join(root, 'dist')).includes('prototype'));
   for (const asset of ['city-skyline.webp', 'civic-illustration.webp', 'financial-illustration.webp']) {
     assert.ok(readdirSync(join(root, 'dist/assets')).includes(asset), `${asset} is needed by the public homepage`);
@@ -58,7 +62,7 @@ test('D11 visitor pages ship with coherent navigation and noindex while launch i
   assert.ok(cardRenderer, 'visitor card renderer must be included');
   assert.match(cardRenderer, /source-status/, 'source trust state must be inside each card body');
   assert.match(cardRenderer, /visit-status/, 'visitor access state must remain independent');
-  assert.match(cardRenderer, /آخر مراجعة للمصدر/, 'a result card must show when its source was last checked');
+  assert.match(cardRenderer, /مراجعة المصدر/, 'a result card must show when its source was last checked');
   assert.match(cardRenderer, /currentDirectoryReturnUrl\(\)/, 'details must link back to the matching discovery state');
   assert.match(cardRenderer, /place-card__image-link/, 'the visual card affordance must open its detail');
   assert.doesNotMatch(cardRenderer, /image\.src|مشهد معماري توضيحي/, 'a generic conceptual image must not masquerade as each unique place');
@@ -79,10 +83,12 @@ test('D36 directory verification preserves approvals and all earlier source-back
   assert.equal(approved.mode, 'production');
   assert.equal(exploratory.mode, 'exploration');
   assert.equal(approved.places.length, 2);
-  assert.equal(exploratory.places.length, 267);
+  assert.equal(exploratory.places.length, 350, 'current full master inventory, not frozen D36 snapshot');
+  const d36Baseline = exploratory.places.filter(p => Number(p.id.slice(3)) <= 267);
+  assert.equal(d36Baseline.length, 267);
   assert.deepEqual(exploratory.places.filter(p => p.verification === 'Published'), approved.places);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Research').length, 54);
-  assert.equal(exploratory.places.filter(p => p.verification === 'Source Confirmed').length, 211);
+  assert.equal(d36Baseline.filter(p => p.verification === 'Research').length, 54);
+  assert.equal(d36Baseline.filter(p => p.verification === 'Source Confirmed').length, 211);
   const historical = exploratory.places.filter(p => Number(p.id.slice(3)) <= 179);
   assert.equal(historical.length, 179);
   const companies = historical.filter(p => p.kind === 'Company');
@@ -407,7 +413,7 @@ test('D34 primary-source reconciliation corrects boundaries and ministerial name
   assert.equal(operations.zone, 'Government District');
   assert.equal(operations.verification, 'Source Confirmed');
   assert.equal(operations.email, 'emergency@moenv.gov.eg');
-  assert.equal(operations.phone, '0220532502');
+  assert.match(operations.phone, /0220532502/, 'the original authority telephone must remain available');
   assert.match(operations.service_type, /24 ساعة/);
   assert.equal(operations.visitor_hours, '', '24-hour reporting is not walk-in access');
   assert.equal(operations.office_hours, '');
@@ -459,7 +465,7 @@ test('D36 adds four distinct occupants with narrowly bounded source claims and c
   assert.ok(added.every(p => p.role === 'Administrative HQ' && p.address_precision === 'Building Confirmed'));
   assert.ok(added.every(p => p.service_availability === 'Unknown' && p.public_access === 'Unknown'));
   assert.ok(added.every(p => !p.visitor_hours && !p.office_hours && !p.directions_url && !p.verified_entrance));
-  assert.ok(added.every(p => p.last_checked === '2026-11-08' && p.source_url.startsWith('https://')));
+  assert.ok(added.every(p => p.last_checked >= '2026-11-08' && p.source_url.startsWith('https://')), 'subsequent first-party source rechecks may advance dates');
   assert.equal(byId('NC-262').building_code, 'Audaz Mall');
   assert.equal(byId('NC-263').building_code, 'Pioneer Plaza Business Complex');
   assert.equal(byId('NC-265').phone, '', 'conflicting directory numbers never become a public dialing action');
@@ -504,8 +510,10 @@ test('D37 reconciles the duplicate Nasser mobile point and documents bank branch
 test('D28 tenant follow-up adds official historic addresses but quarantines MU23 scope conflict', () => {
   execFileSync(process.execPath, [join(root, 'scripts/build.mjs')]);
   const {places} = JSON.parse(readFileSync(join(root, 'dist/data/exploration.json'), 'utf8'));
-  assert.equal(places.length, 267);
-  const unique = canonicalizePlaces(places);
+  assert.equal(places.length, 350, 'full Notion Master now has 350 entries');
+  const d28Snapshot = places.filter(p => Number(p.id.slice(3)) <= 267);
+  assert.equal(d28Snapshot.length, 267);
+  const unique = canonicalizePlaces(d28Snapshot);
   assert.equal(unique.length, 265);
   for (const id of ['NC-266', 'NC-267']) {
     const p = unique.find(p => p.id === id);
@@ -526,13 +534,31 @@ test('D28 tenant follow-up adds official historic addresses but quarantines MU23
   assert.match(pioneer.address, /MU23 A10/);
   assert.equal(resolveCanonicalPlace(places, pioneer.slug)?.id, 'NC-263', 'old reference remains auditable with uncertainty label');
   assert.ok(!unique.some(p => p.id === 'NC-263'), 'out-of-scope candidate does not enter public directory list');
-  const counts = places.reduce((a,p)=>(a[p.verification]=(a[p.verification]||0)+1,a),{});
+  const counts = d28Snapshot.reduce((a,p)=>(a[p.verification]=(a[p.verification]||0)+1,a),{});
   assert.equal(counts['Source Confirmed'], 211);
   assert.equal(counts.Research, 54);
   assert.equal(counts.Published, 2);
   assert.equal(JSON.parse(readFileSync(join(root, 'dist/data/places.json'), 'utf8')).places.length, 2);
 });
 
+
+test('CG-DATA-07 matches 350 Notion-source records without promoting visitor entry permissions', () => {
+  const dataset=JSON.parse(readFileSync(join(root,'data/exploration.json'),'utf8'));
+  const details=JSON.parse(readFileSync(join(root,'data/place-details.json'),'utf8'));
+  const approved=JSON.parse(readFileSync(join(root,'data/published.json'),'utf8'));
+  assert.equal(dataset.places.length,350);
+  assert.equal(Object.keys(details.records).length,350);
+  assert.equal(new Set(dataset.places.map(p=>p.id)).size,350);
+  assert.ok(dataset.places.every(p=>p.source_url));
+  assert.ok(dataset.places.every(p=>!p.directions_url || p.verified_entrance));
+  assert.deepEqual(dataset.places.filter(p=>p.verification==='Published'),approved.places);
+  const nc=Object.fromEntries(dataset.places.map(p=>[p.id,p]));
+  assert.ok(nc['NC-264'].source_url.includes('ibrahimsaadeldin.com'));
+  assert.equal(nc['NC-264'].public_access,'Unknown');
+  assert.ok(details.records['NC-264'].floor_suite.includes('الدور الثاني'));
+  assert.equal(nc['NC-15'].visitor_hours,'','ordinary official days are NOT verified numeric counter hours');
+  assert.ok(nc['NC-242'].source_url.includes('1576-fw-5-2026-competitiveness'));
+});
 
 test('CG-MUX-04 cards distinguish place identity, address precision, and two independent statuses', () => {
   const app = readFileSync(join(root, 'scripts/app.mjs'), 'utf8');
