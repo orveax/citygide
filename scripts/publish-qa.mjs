@@ -26,6 +26,11 @@ export function auditPublication(dist,capital,alamein){
     if(kind==='capital'&&!html.includes('data-catalog="exploration"'))errors.push('Wrong capital detail catalogue '+path);
     if(kind==='alamein'&&!html.includes('scripts/alamein.mjs'))errors.push('Wrong Alamein detail handler '+path);
   }
+  for(const scriptName of ['buildings-page.mjs','services-page.mjs']){
+    const source=readFileSync(join(dist,'scripts',scriptName),'utf8');
+    if(source.includes('explore-place.html?slug='))errors.push('Legacy duplicate detail URLs in '+scriptName);
+    if(!source.includes("'places/'"))errors.push('Missing stable detail routes in '+scriptName);
+  }
   const alameinPage=readFileSync(join(dist,'alamein.html'),'utf8');
   if(!alameinPage.includes('class="mobile-nav"')||!alameinPage.includes('aria-label="التنقل للموبايل"'))errors.push('Alamein mobile navigation missing');
   const privacy=readFileSync(join(dist,'privacy.html'),'utf8');
