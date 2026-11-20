@@ -2,6 +2,10 @@
 // This means "source mentions a location in this building", NOT verified
 // tenant occupancy, opening hours, walk-in accessibility or a public entrance.
 export const BUILDING_RELATIONSHIPS = Object.freeze([
+  {buildingId:'NC-129', placeIds:['NC-50'], status:'source-listed', context:'صفحة الجهاز الرسمية تحدد الدورين الثاني والثالث داخل مبنى وزارة الإسكان؛ لا تثبت مدخل الجمهور.'},
+  {buildingId:'NC-133', placeIds:['NC-52','NC-243'], status:'source-listed', context:'مصدر هيئة الموانئ البرية والجافة يحدد الدور الثالث؛ بوابة تيسير التجارة تحدد جهاز النقل البري بالدور الثاني. لكل جهة خدمة وساعات مستقلة ومدخل غير مؤكد.'},
+  {buildingId:'NC-134', placeIds:['NC-43'], status:'source-listed', context:'صفحة تواصل جهاز تنمية التجارة الداخلية تذكر الدور الأول داخل مبنى وزارة التموين؛ الاستقبال ومدخل الزوار غير معتمدين.'},
+  {buildingId:'NC-132', placeIds:['NC-14'], status:'source-listed', context:'معلومات الجهاز الرسمية تحدد الدور الأول بمبنى وزارة البيئة؛ الخدمات الإلكترونية لا تعني وجود شباك استقبال للجمهور.'},
   {buildingId:'NC-109', placeIds:['NC-108'], status:'source-listed', context:'قرار منشور يذكر فرع التوثيق بالمحل 4أ؛ استمرار التشغيل والدخول غير مؤكدين.'},
   {buildingId:'NC-131', placeIds:['NC-111','NC-112'], status:'source-listed', context:'صفحات رسمية لوزارة المالية تذكر إدارتين منفصلتين في برج LC، الدور السادس.'},
   {buildingId:'NC-95', placeIds:['NC-46'], status:'address-correlated', context:'الفرع والمبنى مرتبطان بالقطعة 23-A2/A2-23؛ الوصول إلى الفرع غير مؤكد.'},
