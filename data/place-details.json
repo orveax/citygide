@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "checked_at": "2026-11-20",
-  "scope": "Evidence-scoped, informational only; no visitor access or directions approval.",
+  "scope": "Evidence-scoped public metadata, no visitor access approval; does not expose personal reviewers, coordinates, private notes or unpublished directions.",
   "records": {
     "NC-43": {
       "entity_subtype": "Government office",
@@ -10,7 +10,8 @@
       "operational_status": "Unknown",
       "audit_state": "Desk evidence reviewed",
       "evidence_scope": "صفحة تواصل رسمية تسمي المقر الرئيسي وموقعه بالدور الأول، ولا تؤكد ساعات أو شروط الزيارة.",
-      "entity_code": "NC-43"
+      "entity_code": "NC-43",
+      "verification_method": "Web Source"
     },
     "NC-50": {
       "entity_subtype": "Government office",
@@ -18,8 +19,9 @@
       "contact_attribution": "Direct office",
       "operational_status": "Unknown",
       "audit_state": "Desk evidence reviewed",
-      "evidence_scope": "صفحة الاتصال الرسمية للجهاز تحدد وجوده في الدورين الثاني والثالث بمبنى وزارة الإسكان وتذكر 02-20545720 والبريد [info@capw.gov.eg](mailto:info@capw.gov.eg)؛ لا تثبت مدخل الجمهور.",
-      "entity_code": "NC-50"
+      "evidence_scope": "صفحة الاتصال الرسمية للجهاز تحدد وجوده في الدورين الثاني والثالث بمبنى وزارة الإسكان وتذكر 02-20545720 والبريد info@capw.gov.eg؛ لا تثبت مدخل الجمهور.",
+      "entity_code": "NC-50",
+      "verification_method": "Web Source"
     },
     "NC-52": {
       "entity_subtype": "Government office",
@@ -27,8 +29,9 @@
       "contact_attribution": "Direct office",
       "operational_status": "Unknown",
       "audit_state": "Desk evidence reviewed",
-      "evidence_scope": "صفحة الاتصال الرسمية للهيئة تؤكد مقر الدور الثالث بوزارة النقل، الهاتف 02 2054 1838 والبريد [info@ldp.gov.eg](mailto:info@ldp.gov.eg). يختلف الرقم عن 02 2054 1840 المعروض سابقًا؛ لا يوجد تحقق هاتفي، ساعات الزوار غير معروفة.",
-      "entity_code": "NC-52"
+      "evidence_scope": "صفحة الاتصال الرسمية للهيئة تؤكد مقر الدور الثالث بوزارة النقل، الهاتف 02 2054 1838 والبريد info@ldp.gov.eg. يختلف الرقم عن 02 2054 1840 المعروض سابقًا؛ لا يوجد تحقق هاتفي، ساعات الزوار غير معروفة.",
+      "entity_code": "NC-52",
+      "verification_method": "Web Source"
     },
     "NC-203": {
       "entity_subtype": "Government office",
@@ -39,7 +42,8 @@
       "evidence_scope": "صفحة تواصل معنا على الموقع الرسمي لهيئة الدواء تسرد فرع العاصمة في مبنى خدمات الموظفين، الدور الرابع. لا تثبت توفر شباك جمهور.",
       "entity_code": "NC-203",
       "tenant_evidence_class": "Direct operator listing",
-      "map_evidence_class": "Operator location link"
+      "map_evidence_class": "Operator location link",
+      "relation_evidence": "05.4: https://edaegypt.gov.eg/ar/عن-الهيئة/تواصل-معنا/ first-party site links office Govt District Employee Services Building floor 4 to maps.app.goo.gl/mg2vHNHzeapzFLgS7. Map locator source only; unverified actual public reception gate/entrance. Do NOT transfer to Directions URL or coordinates."
     },
     "NC-243": {
       "entity_subtype": "Public counter",
@@ -48,8 +52,9 @@
       "contact_attribution": "Direct office",
       "operational_status": "Unknown",
       "audit_state": "Operator confirmation needed",
-      "evidence_scope": "D29: البوابة الحكومية لتيسير التجارة، تحديث 7 مايو 2026، تذكر الإدارة المركزية لخدمات النقل البري للبضائع بالدور الثاني بمبنى وزارة النقل، هاتف 02 20542140، وساعات عمل الوحدة الأحد–الخميس 09:00–14:30. هذه ساعات وحدة محددة وليست مواعيد دخول لجميع إدارات الجهاز؛ المدخل، مسار الدخول، شرط الحجز وسعر الطلب بحسب الفئة غير معتمدين ميدانيًا. البريد العام المنشور في المصدر [ltra@lhps.gov.gov](mailto:ltra@lhps.gov.gov) غير صالح ولم يُنقل. [https://egypt.tradeportal.org/Contacts/18?l=ar](https://egypt.tradeportal.org/Contacts/18?l=ar)",
-      "entity_code": "NC-243"
+      "evidence_scope": "D29: البوابة الحكومية لتيسير التجارة، تحديث 7 مايو 2026، تذكر الإدارة المركزية لخدمات النقل البري للبضائع بالدور الثاني بمبنى وزارة النقل، هاتف 02 20542140، وساعات عمل الوحدة الأحد–الخميس 09:00–14:30. هذه ساعات وحدة محددة وليست مواعيد دخول لجميع إدارات الجهاز؛ المدخل، مسار الدخول، شرط الحجز وسعر الطلب بحسب الفئة غير معتمدين ميدانيًا. البريد العام المنشور في المصدر ltra@lhps.gov.gov غير صالح ولم يُنقل. https://egypt.tradeportal.org/Contacts/18?l=ar",
+      "entity_code": "NC-243",
+      "source_license": "Official or publicly accessible source; factual fields only."
     },
     "NC-256": {
       "entity_subtype": "Public counter",
@@ -57,7 +62,9 @@
       "operational_status": "Unknown",
       "audit_state": "Conflict hold",
       "evidence_scope": "Primary Gazette scan, Al-Waqa'i al-Misriya issue 193 dated 2025-08-31, Justice Minister decision 4703/2025 establishes House of Representatives notary branch at Parliament service complex. A newspaper incorrectly calls this Senate office; primary legal text says House of Representatives. Decree not proof of opening/entry.",
-      "entity_code": "NC-256"
+      "entity_code": "NC-256",
+      "source_license": "Source link with factual summary only",
+      "verification_method": "Web Source"
     },
     "NC-48": {
       "entity_subtype": "Government office",
@@ -66,7 +73,8 @@
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "صفحة اتصل بنا الرسمية للجهاز تسرد الحي الوزاري تجمع 5أ مبنى 12، وأرقام التواصل وبريد الجهاز، وتفرق بين مكاتب المواطنين ووسائل الخدمة الأخرى دون تأكيد مدخل الزائر.",
-      "entity_code": "NC-48"
+      "entity_code": "NC-48",
+      "verification_method": "Web Source"
     },
     "NC-14": {
       "entity_subtype": "Government office",
@@ -82,14 +90,15 @@
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "صفحة اتصل بنا الحالية تثبت عنوان الجهاز وأرقام خدمة المواطنين؛ مدخل المبنى وساعات الزيارة غير مثبتين.",
-      "entity_code": "NC-110"
+      "entity_code": "NC-110",
+      "verification_method": "Web Source"
     },
     "NC-258": {
       "entity_subtype": "Government office",
       "contact_attribution": "Institutional general",
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
-      "evidence_scope": "EEAA Environment Protection Fund first-party service page outlines environmental project financing applications submitted by form with attachments through mail/email (and source mentions office handover), while current direct fund contact identifies [epf@moenv.gov.eg](mailto:epf@moenv.gov.eg). This establishes a submission channel, NOT unrestricted public access or a verified visitor door.",
+      "evidence_scope": "EEAA Environment Protection Fund first-party service page outlines environmental project financing applications submitted by form with attachments through mail/email (and source mentions office handover), while current direct fund contact identifies epf@moenv.gov.eg. This establishes a submission channel, NOT unrestricted public access or a verified visitor door.",
       "entity_code": "NC-258"
     },
     "NC-259": {
@@ -97,7 +106,7 @@
       "contact_attribution": "Direct office",
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Not Public - Internal",
-      "evidence_scope": "EEAA first-party current contact lists 0220532502/3/4 and [emergency@moenv.gov.eg](mailto:emergency@moenv.gov.eg). The emergency operations room continuously receives crisis/pollution reports 24 hours per day; the 2024 notice retired former numbers as of 29 February 2024. This is phone/email support only, not 24h office public access.",
+      "evidence_scope": "EEAA first-party current contact lists 0220532502/3/4 and emergency@moenv.gov.eg. The emergency operations room continuously receives crisis/pollution reports 24 hours per day; the 2024 notice retired former numbers as of 29 February 2024. This is phone/email support only, not 24h office public access.",
       "hotline_hours": "24 hours/day (official environmental emergency operations room; NOT visitor/reception hours)",
       "entity_code": "NC-259"
     },
@@ -108,7 +117,8 @@
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "المصدر الرسمي يحدد عنوان مراسلات الهيئة داخل مبنى وزارة النقل؛ لا يثبت أنه شباك خدمة مواطنين.",
-      "entity_code": "NC-42"
+      "entity_code": "NC-42",
+      "verification_method": "Web Source"
     },
     "NC-51": {
       "entity_subtype": "Government office",
@@ -116,8 +126,9 @@
       "operational_status": "Unknown",
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
-      "evidence_scope": "صفحة اتصل بنا الرسمية تسرد الإدارة المركزية للهيئة في الحي الحكومي مع هاتف 02-24173892 وبريد [info@eha.gov.eg](mailto:info@eha.gov.eg)؛ لا تحدد المبنى أو استقبال المواطنين.",
-      "entity_code": "NC-51"
+      "evidence_scope": "صفحة اتصل بنا الرسمية تسرد الإدارة المركزية للهيئة في الحي الحكومي مع هاتف 02-24173892 وبريد info@eha.gov.eg؛ لا تحدد المبنى أو استقبال المواطنين.",
+      "entity_code": "NC-51",
+      "verification_method": "Web Source"
     },
     "NC-53": {
       "entity_subtype": "Government office",
@@ -125,8 +136,9 @@
       "operational_status": "Unknown",
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
-      "evidence_scope": "صفحة تواصل الهيئة الرسمية تسرد مقر الحي الحكومي، وبريد [gothi\\_gothi@gothi.gov.eg](mailto:gothi_gothi@gothi.gov.eg) وهاتفين 23648073/23648972 ومواعيد عمل إدارية الأحد–الخميس 8–15؛ لا تثبت استقبال الجمهور بالمقر.",
-      "entity_code": "NC-53"
+      "evidence_scope": "صفحة تواصل الهيئة الرسمية تسرد مقر الحي الحكومي، وبريد gothi_gothi@gothi.gov.eg وهاتفين 23648073/23648972 ومواعيد عمل إدارية الأحد–الخميس 8–15؛ لا تثبت استقبال الجمهور بالمقر.",
+      "entity_code": "NC-53",
+      "verification_method": "Web Source"
     },
     "NC-40": {
       "entity_subtype": "Government office",
@@ -135,7 +147,8 @@
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "صفحة تواصل رسمية تثبت عنوانًا على مستوى الحي فقط؛ لا تحدد مبنى أو استقبال جمهور.",
-      "entity_code": "NC-40"
+      "entity_code": "NC-40",
+      "verification_method": "Web Source"
     },
     "NC-62": {
       "entity_subtype": "Government office",
@@ -144,7 +157,8 @@
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "إعلانات طرح وتعاقد حديثة على الموقع الرسمي للهيئة في أكتوبر ونوفمبر 2026 تحدد مقر الهيئة بالحي الحكومي، مبنى A5/A6، Cluster L2، وتذكر إتاحة مستندات من إدارة المخازن لمتقدمي المناقصات بتفويض؛ هذا لا يثبت خدمة للمؤمن عليهم أو دخول عمومي.",
-      "entity_code": "NC-62"
+      "entity_code": "NC-62",
+      "verification_method": "Web Source"
     },
     "NC-161": {
       "entity_subtype": "Government office",
@@ -161,7 +175,8 @@
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Not Public - Internal",
       "evidence_scope": "الموقع الرسمي يؤكد مقر رئاسة مجلس الوزراء بالعاصمة ووسيلة تواصل، والساعات المنشورة لقناة التواصل لا لزيارة الجمهور.",
-      "entity_code": "NC-10"
+      "entity_code": "NC-10",
+      "verification_method": "Web Source"
     },
     "NC-18": {
       "entity_subtype": "Corporate office",
@@ -176,9 +191,10 @@
       "operational_status": "Unknown",
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Hold - Operations",
-      "evidence_scope": "2026-11 official IMC tender FW-5 locates Ministry of Industry floor 1, New Capital, for <b>specific authorized tender submissions by 22 Nov 2026 at 12:00</b> and tender-documents handling Sunday–Thursday 09:00–13:00. These are tender-process windows, NOT general visitor hours. Previous October 2026 tender already ended. Any subsequent tender requires new source/date.",
+      "evidence_scope": "2026-11 official IMC tender FW-5 locates Ministry of Industry floor 1, New Capital, for specific authorized tender submissions by 22 Nov 2026 at 12:00 and tender-documents handling Sunday–Thursday 09:00–13:00. These are tender-process windows, NOT general visitor hours. Previous October 2026 tender already ended. Any subsequent tender requires new source/date.",
       "entity_code": "NC-242",
-      "next_review": "2026-11-23"
+      "next_review": "2026-11-23",
+      "source_license": "Official or publicly accessible source; factual fields only."
     },
     "NC-61": {
       "entity_subtype": "Government office",
@@ -186,8 +202,9 @@
       "operational_status": "Unknown",
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
-      "evidence_scope": "وثيقة الجمارك الرسمية تثبت وجود مبنى بالعاصمة، وموقع الجمارك الرسمي يذكر 15460 [وinfo@customs.gov.eg](mailto:%D9%88info@customs.gov.eg). رقم 02-20531040 مرتبط ببيانات العاصمة؛ عنوان وساعات صفحة اتصل بنا الأخرى تشير لمقر قديم بالقاهرة ولا تنقل لمقر العاصمة.",
-      "entity_code": "NC-61"
+      "evidence_scope": "وثيقة الجمارك الرسمية تثبت وجود مبنى بالعاصمة، وموقع الجمارك الرسمي يذكر 15460 وinfo@customs.gov.eg. رقم 02-20531040 مرتبط ببيانات العاصمة؛ عنوان وساعات صفحة اتصل بنا الأخرى تشير لمقر قديم بالقاهرة ولا تنقل لمقر العاصمة.",
+      "entity_code": "NC-61",
+      "verification_method": "Web Source"
     },
     "NC-1": {
       "entity_subtype": "Government office",
@@ -203,7 +220,8 @@
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "دليل المصلحة الرسمي يحدد رئاسة المصلحة في خط C1 بجوار المالية ويورد 16395 والبريد؛ المقر الإداري لا يعني منفذًا لأي خدمة ضريبية.",
-      "entity_code": "NC-7"
+      "entity_code": "NC-7",
+      "verification_method": "Web Source"
     },
     "NC-47": {
       "entity_subtype": "Government office",
@@ -212,13 +230,2016 @@
       "audit_state": "Info-only reviewed",
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "صفحة تواصل رسمية لهيئة المجتمعات العمرانية، عنوانها ضمن مبنى الوزارة؛ لا تثبت خدمة حضورية في هذا المدخل.",
-      "entity_code": "NC-47"
+      "entity_code": "NC-47",
+      "verification_method": "Web Source"
     },
     "NC-44": {
       "po_box": "191 — الحي السكني R3 (للمراسلات الرسمية فقط، وليس مدخل المقر)",
       "postal_code": "4829902 (تذييل منشور IDSC الرسمي؛ صندوق المراسلات)",
       "audit_state": "Desk evidence reviewed",
-      "evidence_scope": "وثيقة رسمية منشورة من مركز المعلومات ودعم اتخاذ القرار تثبت بيانات الاتصال وعنوان الحي الحكومي، ولا تثبت مبنى ومدخل الزائر."
+      "evidence_scope": "وثيقة رسمية منشورة من المركز تثبت بيانات اتصال وعنوان الحي الحكومي، ولا تثبت مبنى ومدخل الزائر.",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "entity_code": "NC-44",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 IDSC official 2025 report footer: government district institutional address separate from PO Box 191 R3, postal code 4829902, general office telephone and info@idsc.gov.eg; not an entrance or walk-in counter."
+    },
+    "NC-19": {
+      "evidence_scope": "Official government ministry source confirms administrative headquarters in Government District only, not a walk-in service point.",
+      "entity_code": "NC-19"
+    },
+    "NC-13": {
+      "entity_code": "NC-13"
+    },
+    "NC-41": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة تواصل رسمية تحدد وجود الهيئة في مبنى الوزارة بالدور الرابع؛ لا تؤكد مدخل الزوار.",
+      "entity_code": "NC-41",
+      "verification_method": "Web Source"
+    },
+    "NC-63": {
+      "entity_subtype": "Bank HQ",
+      "contact_attribution": "General operator",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "Bank confirms New Capital headquarters building; independent contractor places its project in Financial District. No walk-in banking services or entrance corroborated.",
+      "entity_code": "NC-63",
+      "verification_method": "Web Source"
+    },
+    "NC-15": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Temporary",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Navigation",
+      "evidence_scope": "خبر افتتاح مارس 2026 يؤكد مكتب خدمة تصديقات المواطنين أمام مبنى C؛ وإعلان يونيو 2026 يذكر مكتب العاصمة ضمن المكاتب ذات المواعيد الرسمية الأحد–الخميس لا ساعات التمديد. دليل المكاتب الإلكتروني الحالي لا يعرض صفّ العاصمة؛ تناقض نقص فهرسة يستدعي اتصالًا مباشرًا قبل اعتماد ساعات رقمية.",
+      "entity_code": "NC-15",
+      "verification_method": "Web Source"
+    },
+    "NC-49": {
+      "entity_subtype": "Bank branch",
+      "contact_attribution": "General operator",
+      "operational_status": "Operating",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Navigation",
+      "evidence_scope": "NBE's own press PDF https://www.nbe.com.eg/AssetsManager/0691a4c8-df3e-444d-b79d-c9c60732be7c.pdf documents actual branch opening and provision of service in 2022; official bank/registry documentation identifies A1-26 Financial District. Launch copy loosely says Government District; precise financial-bank area address takes precedence. No current visitor hours, entrance, queue, or guaranteed walk-in verified.",
+      "entity_code": "NC-49",
+      "verification_method": "Web Source"
+    },
+    "NC-59": {
+      "entity_subtype": "Bank branch",
+      "contact_attribution": "General operator",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "HDB 2025 board report explicitly names New Capital branch in its green-building certification account. No official branch-locator exact branch address or operating/walk-in proof. No Financial District inference.",
+      "entity_code": "NC-59",
+      "verification_method": "Web Source"
+    },
+    "NC-20": {
+      "evidence_scope": "صفحة رسمية تذكر عنوان الوزارة في الحي الحكومي مبنى L1 كلاستر C3A؛ تأكيد استمرار الموقع من صفحة اتصال مستقرة أو بالهاتف مطلوب لأن رابط المصدر /offline.",
+      "entity_code": "NC-20",
+      "verification_method": "Web Source"
+    },
+    "NC-21": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "الموقع الرسمي لجهاز تنمية التجارة الداخلية، التابع للوزارة، يسرد المقر الرئيسي للجهاز في الدور الأول من مبنى وزارة التموين والتجارة الداخلية في الحي الحكومي. هذا يدعم وجود مبنى الوزارة؛ لا يثبت مدخلها أو استقبال الجمهور بها.",
+      "entity_code": "NC-21",
+      "verification_method": "Web Source"
+    },
+    "NC-54": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الرسمي لوزارة الثقافة يذكر مقرها في الحي الحكومي باسم مبنى الوزارة، دون رقم مبنى أو مدخل الجمهور. خدمات الثقافة الإلكترونية لا تعني تقديمها حضوريًا في المقر.",
+      "entity_code": "NC-54",
+      "verification_method": "Web Source"
+    },
+    "NC-22": {
+      "evidence_scope": "The Ministry's primary project notice states the Ministry address is the Government District, New Administrative Capital. No public desk or entrance.",
+      "entity_code": "NC-22",
+      "verification_method": "Web Source"
+    },
+    "NC-2": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة الوزارة الرسمية تثبت الحي الحكومي ورقم التواصل؛ لا تقدم كود مبنى أو مدخل جمهور أو ساعات استقبال زوار.",
+      "entity_code": "NC-2",
+      "verification_method": "Web Source"
+    },
+    "NC-3": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المصدر الرسمي يؤكد مقر الوزارة بالحي الحكومي ووسائل الاتصال ومواعيد العمل/الخط الساخن؛ لا يثبت باب استقبال الجمهور أو المبنى أو مواعيد الزيارة.",
+      "hotline_hours": "09:00–15:00 حسب صفحة التواصل؛ لا تعني مواعيد الزيارة.",
+      "entity_code": "NC-3",
+      "verification_method": "Web Source"
+    },
+    "NC-4": {
+      "operational_status": "Unknown",
+      "evidence_scope": "جهة رسمية تورد عنوان الوزارة بالحي الحكومي؛ لا يوجد رقم مبنى أو ساعات/بوابة استقبال جمهور مثبتة. لا ننسب رقم خدمات هيئة المجتمعات العمرانية إلى هاتف الوزارة.",
+      "entity_code": "NC-4",
+      "verification_method": "Web Source"
+    },
+    "NC-23": {
+      "evidence_scope": "Official ministry contact confirms Government District HQ, not visitor reception, entrances, or hours.",
+      "entity_code": "NC-23"
+    },
+    "NC-35": {
+      "entity_subtype": "Other",
+      "contact_attribution": "General operator",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "The bank's 1 Sep 2026 first-party statement describes one fixed mobile service unit with a staff member and ATM opposite Ministry of Social Solidarity. NC-35 is a legacy duplicate; no separate site or new branch. Legacy deep link must resolve to NC-202.",
+      "entity_code": "NC-35",
+      "verification_method": "Web Source"
+    },
+    "NC-5": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة العنوان الرسمية تؤكد الحي الحكومي/حي الوزارات فقط؛ لا تثبت رقم المبنى أو استقبال الجمهور.",
+      "entity_code": "NC-5",
+      "verification_method": "Web Source"
+    },
+    "NC-24": {
+      "evidence_scope": "Official government ministry source confirms administrative headquarters in Government District only, not a walk-in service point.",
+      "entity_code": "NC-24"
+    },
+    "NC-16": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة الوزارة تثبت عنوان الحي الحكومي والاتصال وساعات عمل المكتب 09:00–15:00؛ لا تثبت إجراءات دخول المواطن أو مواعيد خدمة الجمهور.",
+      "entity_code": "NC-16",
+      "verification_method": "Web Source"
+    },
+    "NC-25": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "الموقع الرسمي لوزارة التضامن الاجتماعي يسرد عنوانًا إضافيًا بالعاصمة الجديدة في الحي الحكومي، بجانب عنوان العجوزة؛ لا يحدد رقم المبنى أو مدخل خدمة الجمهور.",
+      "entity_code": "NC-25",
+      "verification_method": "Web Source"
+    },
+    "NC-26": {
+      "operational_status": "Unknown",
+      "evidence_scope": "خبر رسمي من الوزارة قبل نحو 3 أشهر يذكر مقر الوحدة المركزية لتيسير أعمال المستثمرين في وزارة العمل الدور الثالث بالحي الحكومي. هذا لا يؤكد أن كافة خدمات الجمهور متاحة أو كيفية الدخول.",
+      "entity_code": "NC-26",
+      "verification_method": "Web Source"
+    },
+    "NC-36": {
+      "entity_subtype": "Bank branch",
+      "contact_attribution": "General operator",
+      "operational_status": "Operating",
+      "audit_state": "Conflict hold",
+      "visitor_release_gate": "Hold - Navigation",
+      "evidence_scope": "The 26 Apr 2026 QNB opening press releases corroborate a second New Capital branch of ~1100m2. Arabic and English versions differ in district name. Separate first QNB branch listed at El-Masa Capital Plaza GB04 is NOT proof of second branch plot. No verified visitor entrance/hours.",
+      "hotline_hours": "خدمة عملاء البنك العامة 19700؛ غير مخصص لهذا الفرع وحده.",
+      "entity_code": "NC-36",
+      "verification_method": "Web Source"
+    },
+    "NC-27": {
+      "evidence_scope": "Official petroleum ministry 2025 model agreement records the Minister's legal domicile in the Government District; does not prove walk-in office, building or entry.",
+      "entity_code": "NC-27",
+      "verification_method": "Web Source"
+    },
+    "NC-28": {
+      "evidence_scope": "ITDA trademark transfer notice 2023-11-20 records Egyptian Nile Schools and Nile International Certificate Unit under Ministry of Education at ministry Government District address; older legal address only, not visitor access.",
+      "entity_code": "NC-28",
+      "verification_method": "Web Source"
+    },
+    "NC-6": {
+      "entity_subtype": "Building or asset",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "evidence_scope": "خبر البنك يثبت أنشطة رسمية بالعاصمة، لكن عنوان المنشأة المحدد ومدخلها غير مثبتين؛ ولا يجوز استنتاج وجود منفذ مصرفي للجمهور أو نفيه من الخبر وحده.",
+      "entity_code": "NC-6",
+      "verification_method": "Web Source"
+    },
+    "NC-29": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "Official MIFT contact page states the Ministry address as Ministers District, New Capital and provides info@mift.gov.eg with office hours Sun-Thu 09:00-17:00; office hours are not visitor hours.",
+      "entity_code": "NC-29",
+      "verification_method": "Web Source"
+    },
+    "NC-56": {
+      "operational_status": "Announced",
+      "evidence_scope": "Branch legally established in Financial District; exact building, opening and visitor access unverified.",
+      "entity_code": "NC-56",
+      "verification_method": "Web Source"
+    },
+    "NC-30": {
+      "evidence_scope": "Ministry office relocation; no visitor desk, opening hours, or entrance confirmation.",
+      "entity_code": "NC-30"
+    },
+    "NC-65": {
+      "operational_status": "Operating",
+      "evidence_scope": "صفحة ريجس الرسمية تُثبت المركز والعنوان والطابق وخدمات المكاتب، لكنها لا تثبت المدخل أو دبوس الملاحة.",
+      "entity_code": "NC-65"
+    },
+    "NC-31": {
+      "evidence_scope": "Industrial Modernization Centre (government authority) official 2026 tender names Ministry of Industry building in Government District and floor 1 for submissions, confirming the ministry building but not all ministry services.",
+      "entity_code": "NC-31",
+      "verification_method": "Web Source"
+    },
+    "NC-68": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-68"
+    },
+    "NC-64": {
+      "operational_status": "Operating",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "Official ORVEAX contact page confirms Inizio Tower, office 503 floor 5 and by-appointment visits. It does NOT verify visitor entrance or precise navigation pin.",
+      "entity_code": "NC-64",
+      "verification_method": "Web Source"
+    },
+    "NC-17": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Current authority name reconciled; no specific public visitor entrance added.",
+      "entity_code": "NC-17",
+      "verification_method": "Web Source"
+    },
+    "NC-58": {
+      "entity_subtype": "Building or asset",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-58",
+      "verification_method": "Web Source"
+    },
+    "NC-57": {
+      "floor_suite": "الدور الخامس — وزارة الثقافة",
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الحكومي التابع لمشروع «عاش هنا» للجهاز القومي للتنسيق الحضاري يورد عنوان الجهاز في الحي الحكومي، مبنى وزارة الثقافة، الدور الخامس. هذا إثبات مقر/عنوان إداري فقط، لا مواعيد أو مدخل للجمهور.",
+      "entity_code": "NC-57",
+      "verification_method": "Web Source"
+    },
+    "NC-70": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-70"
+    },
+    "NC-32": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "صفحة اتصل بنا الرسمية تحدد مقر الوزارة ومبنى 10B-L2M ورقم الاتصال. لا تثبت قبول الزيارة أو ساعات خدمات المواطنين.",
+      "entity_code": "NC-32",
+      "verification_method": "Web Source"
+    },
+    "NC-67": {
+      "operational_status": "Operating",
+      "evidence_scope": "دليل الفروع الرسمي لكارفور يدرج Sixty Walk 2 Mall وساعات المتجر؛ مطابقة الحي المالي من موقع مطور Sixty Walk Two الرسمي.",
+      "entity_code": "NC-67"
+    },
+    "NC-60": {
+      "entity_subtype": "Bank branch",
+      "contact_attribution": "General operator",
+      "operational_status": "Operating",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "Official bank post explicitly announces opening of 47th New Capital branch. City-level on-site branch verified; district, building, customer hours and entrance not verified.",
+      "entity_code": "NC-60",
+      "verification_method": "Web Source"
+    },
+    "NC-55": {
+      "entity_subtype": "Bank branch",
+      "contact_attribution": "General operator",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Scope",
+      "evidence_scope": "First-party Banque Misr accessibility-equipped branches directory lists a branch inside House of Representatives in New Capital. Evidence supports on-site banking branch at this institutional location; does not prove walk-in availability to public, route through security, hours or doorway.",
+      "entity_code": "NC-55",
+      "verification_method": "Web Source"
+    },
+    "NC-37": {
+      "entity_subtype": "Bank branch",
+      "contact_attribution": "Direct office",
+      "operational_status": "Operating",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "المقاول SIAC يؤكد افتتاح وتشغيل فرع بنك فيصل داخل مبنى المقر بالعاصمة في 30 يونيو 2025؛ مصدر البنك يذكر الفرع بالحي المالي. مدخل الزوار غير مؤكد.",
+      "entity_code": "NC-37",
+      "verification_method": "Web Source"
+    },
+    "NC-8": {
+      "entity_code": "NC-8"
+    },
+    "NC-33": {
+      "evidence_scope": "Official government ministry source confirms administrative headquarters in Government District only, not a walk-in service point.",
+      "entity_code": "NC-33"
+    },
+    "NC-34": {
+      "operational_status": "Unknown",
+      "evidence_scope": "مستند مناقصة رسمي عبر الشركة القابضة لكهرباء مصر يذكر الدور الرابع في مبنى الوزارة بالحي الحكومي؛ يدل على موقع مبنى الوزارة ولا يثبت استقبال الجمهور أو موقع كل إدارة.",
+      "entity_code": "NC-34",
+      "verification_method": "Web Source"
+    },
+    "NC-9": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الصفحة الرئيسية الرسمية للوزارة تنشر عنوان العاصمة الإدارية الجديدة، الحي الحكومي، والخط الساخن 19654 وبريد الاستفسارات. لا يثبت رقم مبنى أو بوابة زوار أو ساعات استقبال للجمهور.",
+      "entity_code": "NC-9",
+      "verification_method": "Web Source"
+    },
+    "NC-45": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "General operator",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Scope",
+      "evidence_scope": "قائمة رسمية لمراكز تطوير الأعمال بالبنك الأهلي تذكر هذا المركز والقطعة؛ لم يتم التحقق من المدخل وساعات تقديم الخدمة الحالية.",
+      "entity_code": "NC-45",
+      "verification_method": "Web Source"
+    },
+    "NC-11": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الهيئة العامة للموانئ البرية والجافة تسرد عنوانها الرسمي في الدور الثالث بمبنى وزارة النقل داخل الحي الحكومي، ما يؤكد وجود المبنى والعلاقة المكانية فقط؛ لا توثيق لمدخل أو مواعيد الجمهور.",
+      "entity_code": "NC-11",
+      "verification_method": "Web Source"
+    },
+    "NC-66": {
+      "operational_status": "Operating",
+      "evidence_scope": "مركز Regus مسجل رسميًا في Financial Hub؛ تأكيد موقع المبنى دون مدخل الزوار.",
+      "entity_code": "NC-66"
+    },
+    "NC-69": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-69"
+    },
+    "NC-39": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Current ministry identity and government district; visitor entrance unverified.",
+      "entity_code": "NC-39",
+      "verification_method": "Web Source"
+    },
+    "NC-46": {
+      "entity_subtype": "Bank branch",
+      "contact_attribution": "General operator",
+      "operational_status": "Operating",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Navigation",
+      "evidence_scope": "دليل فروع بنك مصر الرسمي يذكر فرع العاصمة بالقطعة 23-A2 ويحدد ساعات البنك 8:30–15:00؛ ECG يحدد المبنى بنفس القطعة. رقم مدخل الزوار ونقطة الوصول لم يُتحققا.",
+      "entity_code": "NC-46",
+      "verification_method": "Web Source"
+    },
+    "NC-12": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة المطور العقاري تؤكد مشروع INIZIO وطبيعته الإدارية/التجارية بمنطقة الأعمال؛ لا تثبت نسب الإشغال الفعلية أو أسماء المستأجرين أو استقبال الزوار.",
+      "entity_code": "NC-12",
+      "verification_method": "Web Source"
+    },
+    "NC-38": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة التواصل الرسمية تحدد مقر شركة العاصمة بالحي الحكومي، رقم المبنى، الهاتف، البريد، وساعات العمل؛ لا تحدد بوابة الدخول أو شروط زيارة الجمهور أو استمرار خدمة حضورية بعينها.",
+      "entity_code": "NC-38",
+      "verification_method": "Web Source"
+    },
+    "NC-93": {
+      "operational_status": "Announced",
+      "evidence_scope": "تقرير السوق يذكر Better Home مطورًا لكايرو بيزنس بلازا؛ المواعيد متعارضة بين الأدلة، ولا تأكيد مقر أو تشغيل.",
+      "entity_code": "NC-93"
+    },
+    "NC-72": {
+      "operational_status": "Announced",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-72"
+    },
+    "NC-91": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Rock Capital 1 asset, Government District Block 1; not verified as El Batal staffed HQ; visitor entrance unconfirmed.",
+      "entity_code": "NC-91"
+    },
+    "NC-81": {
+      "operational_status": "Announced",
+      "evidence_scope": "عقد إدارة وتشغيل للمبنى C5 في أبريل 2026؛ لا يثبت مقر شركة أو خدمة عملاء بالمبنى.",
+      "entity_code": "NC-81"
+    },
+    "NC-77": {
+      "operational_status": "Announced",
+      "evidence_scope": "الموقع الرسمي يذكر Office A4-31 وHead Office لكن يسبق ذلك صراحةً COMING SOON؛ لا يثبت نقل المقر أو الافتتاح.",
+      "entity_code": "NC-77"
+    },
+    "NC-96": {
+      "operational_status": "Operating",
+      "evidence_scope": "المقاول SIAC يؤكد إنشاء مبنى المقر وافتتاح الفرع وبدء تشغيله 30 يونيو 2025؛ لا يحدد مدخلًا للزوار.",
+      "entity_code": "NC-96",
+      "verification_method": "Web Source"
+    },
+    "NC-102": {
+      "operational_status": "Unknown",
+      "evidence_scope": "JADEER تؤكد مشروع OBEX الإداري في الحي المالي؛ موقعها يضع مقر الشركة في القاهرة الجديدة، وليس في المشروع.",
+      "entity_code": "NC-102",
+      "verification_method": "Web Source"
+    },
+    "NC-83": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Developer project in Financial District, not a staffed Gates HQ or visitor entrance.",
+      "entity_code": "NC-83"
+    },
+    "NC-92": {
+      "operational_status": "Announced",
+      "evidence_scope": "تغطية إطلاق مشروع أكتوبر 2026؛ لا تُثبت مكتبًا للشركة أو تشغيلًا بالمبنى.",
+      "entity_code": "NC-92"
+    },
+    "NC-86": {
+      "operational_status": "Announced",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-86"
+    },
+    "NC-98": {
+      "operational_status": "Unknown",
+      "evidence_scope": "SIAC يوثق مشروع مبنى QNB بالعاصمة؛ لا يلزم منه أن الفرع الثاني المسجل في الدليل يعمل داخل المبنى نفسه.",
+      "entity_code": "NC-98",
+      "verification_method": "Web Source"
+    },
+    "NC-95": {
+      "operational_status": "Operating",
+      "evidence_scope": "استشاري التصميم ECG يحدد قطعة 23A.2 ويذكر قاعة بنكية؛ موقع بنك مصر الرسمي يدرج فرع العاصمة بنفس القطعة. لا يوجد مدخل زوار مُعايَن.",
+      "entity_code": "NC-95",
+      "map_evidence_class": "Visitor entrance unverified",
+      "verification_method": "Web Source",
+      "relation_evidence": "05.4 Parent Bank Misr financial district plot A2-23; do not copy retail branch opening hours or a particular customer door to office building as a whole. Bank branch occupant already linked."
+    },
+    "NC-100": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Gates Developments تصف AUDAZ كمشروع إداري مكوّن من مبنيين في الحي المالي؛ لا يُثبت ذلك مقر Gates داخل المشروع.",
+      "entity_code": "NC-100",
+      "verification_method": "Web Source"
+    },
+    "NC-106": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المركز القومي لبحوث الإسكان والبناء يدرج مبنى مجلس الشيوخ؛ لا يوجد دليل على دخول الزوار أو نقطة وصول.",
+      "entity_code": "NC-106",
+      "verification_method": "Web Source"
+    },
+    "NC-88": {
+      "operational_status": "Announced",
+      "evidence_scope": "Asset evidence, no Rwabet staff office or visitor access confirmation.",
+      "entity_code": "NC-88"
+    },
+    "NC-75": {
+      "operational_status": "Operating",
+      "evidence_scope": "موقع الشركة الرسمي وصفحة LinkedIn المُدارة من الشركة يذكران كلاهما المقر الرئيسي في Audaz Mall B2-18. الشركة تقول إن فريقها يعمل، لكن ساعات زيارة المكتب ومدخله لم يتم التحقق منهما.",
+      "entity_code": "NC-75"
+    },
+    "NC-85": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-85"
+    },
+    "NC-97": {
+      "operational_status": "Unknown",
+      "evidence_scope": "SIAC يثبت مبنى فرع البنك الأهلي بالعاصمة وتفاصيل الإنشاء؛ مصدر المقاول لا يثبت تشغيل جميع أجزاء المبنى أو صلاحية الدخول.",
+      "entity_code": "NC-97",
+      "verification_method": "Web Source"
+    },
+    "NC-82": {
+      "operational_status": "Announced",
+      "evidence_scope": "صفحة الشركة تقول under fit-out؛ صفحة أخرى تصفه live. لا نثبت التشغيل أو مدخل الزيارة حتى حل التعارض.",
+      "entity_code": "NC-82"
+    },
+    "NC-90": {
+      "operational_status": "Announced",
+      "evidence_scope": "Construction project, not an operational Allianz public customer branch.",
+      "entity_code": "NC-90"
+    },
+    "NC-73": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-73"
+    },
+    "NC-105": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المركز القومي لبحوث الإسكان والبناء يدرج مبنى مجلس النواب ضمن مشروعات العاصمة؛ لا يحدد المدخل أو المواعيد.",
+      "entity_code": "NC-105",
+      "verification_method": "Web Source"
+    },
+    "NC-80": {
+      "operational_status": "Operating",
+      "evidence_scope": "Official EDGE C5 branch location and booking/contact instructions; book-first business visitor journey, no confirmed entrance, universal walk-in hours or precise pin.",
+      "entity_code": "NC-80"
+    },
+    "NC-103": {
+      "operational_status": "Unknown",
+      "evidence_scope": "استشاري المشروع MOD+Partners يثبت مبنى إداري من ثمانية مستويات وحالة In Progress، ولا يثبت تشغيله لاستقبال العملاء.",
+      "entity_code": "NC-103",
+      "verification_method": "Web Source"
+    },
+    "NC-101": {
+      "operational_status": "Unknown",
+      "evidence_scope": "New Plan Developments تؤكد مشروع ELEVEN بقطعة 11-B1؛ الموقع يحدد مكاتبها الرئيسية في مصر الجديدة وليس داخل ELEVEN.",
+      "entity_code": "NC-101",
+      "verification_method": "Web Source"
+    },
+    "NC-74": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة الاتصال الرسمية تصرّح بعنوان المقر الرئيسي ورقم المكتب B7-04، مع مكتب عمليات منفصل بالقاهرة الجديدة. لا يوجد إثبات مستقل لمدخل المبنى أو مواعيد الزيارة.",
+      "entity_code": "NC-74"
+    },
+    "NC-87": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-87"
+    },
+    "NC-76": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الرسمي ينشر مكتب القاهرة ضمن مكاتبه الإقليمية في حي المال والأعمال، ويحدد المقر الرئيسي العالمي بصنعاء. ليس لدينا إثبات للمبنى أو استقبال العملاء.",
+      "entity_code": "NC-76"
+    },
+    "NC-104": {
+      "operational_status": "Operating",
+      "evidence_scope": "المطور Pyramids Developments يعلن افتتاح Grand Square Mall سنة 2022 في الموقع الذي يخدم الحي الحكومي والمالي؛ لا توجد قائمة محدثة بالمحال أو مدخل معتمد.",
+      "entity_code": "NC-104",
+      "map_evidence_class": "Visitor entrance unverified",
+      "verification_method": "Web Source",
+      "relation_evidence": "05.4: Qalam first-party contact confirms Grand Square office 4 floor 4; Bernasos Grand Square appearance rests on secondary YellowPages and floor attribution is not first-party. Mall Developer source supports building existence but no approved entrance. Grand Square near Govt/Financial District boundary, retain zone conflict."
+    },
+    "NC-71": {
+      "operational_status": "Announced",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-71"
+    },
+    "NC-89": {
+      "operational_status": "Operating",
+      "evidence_scope": "Developer asset only, not a staffed HQ or confirmed visitor entrance.",
+      "entity_code": "NC-89"
+    },
+    "NC-78": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة LinkedIn الخاصة بالشركة تذكر A5-09 في أوداز، بينما صفحة الاتصال الرسمية الحالية تذكر مصر الجديدة فقط؛ نحتاج تأكيدًا من الشركة قبل اعتبار مكتب العاصمة فعليًا.",
+      "entity_code": "NC-78"
+    },
+    "NC-94": {
+      "operational_status": "Operating",
+      "evidence_scope": "EDGE يحدد مبنى C5 كمركز عمل مجهز مع استقبال في الموقع؛ إعلان راية يؤكد إدارة الأصل. لا يوجد تأكيد لبوابة دخول الزوار.",
+      "entity_code": "NC-94",
+      "verification_method": "Web Source"
+    },
+    "NC-79": {
+      "operational_status": "Unknown",
+      "evidence_scope": "موقع الشركة نفسه يصف أوداز بأنه مقرها الرئيسي، دون رقم وحدة أو مدخل.",
+      "entity_code": "NC-79"
+    },
+    "NC-99": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المركز القومي لبحوث الإسكان والبناء يورد مشروع المقر الإداري للبنك المركزي؛ انتقال الإدارة وتشغيل خدمات الجمهور غير مثبتين بالمصدر.",
+      "entity_code": "NC-99",
+      "verification_method": "Web Source"
+    },
+    "NC-84": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-84"
+    },
+    "NC-107": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المركز القومي لبحوث الإسكان والبناء يورد مشروع المقر الإداري لبنك القاهرة؛ لا يثبت انتقال الإدارة أو استقبال الجمهور.",
+      "entity_code": "NC-107",
+      "verification_method": "Web Source"
+    },
+    "NC-112": {
+      "entity_subtype": "Public counter",
+      "floor_suite": "الدور السادس (حسب موقع وزارة المالية)",
+      "unit_code": "برج LC — خدمة المواطنين",
+      "contact_attribution": "General operator",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Operations",
+      "evidence_scope": "صفحة خدمة المواطنين تثبت موقع برج LC والدور السادس، ولا تعطي مدخلًا دقيقًا ولا ساعات استقبال محددة للإدارة.",
+      "hotline_hours": "الخط الساخن 16408: الأحد–الخميس 09:00–15:00 وفق صفحة تواصل وزارة المالية (ليس ساعات شباك المواطنين).",
+      "entity_code": "NC-112",
+      "verification_method": "Web Source"
+    },
+    "NC-135": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة هيئة حماية الشواطئ الرسمية تحدد الدور الرابع من مبنى الوزارة.",
+      "entity_code": "NC-135",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Water Resources Ministry building and Shores Protection Authority floor 4. Physical/source relation only; no visitor access or Directions verified."
+    },
+    "NC-127": {
+      "entity_subtype": "Building or asset",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "تقرير صحفي 2023 يذكر البنك بين مشروعات الحي دون قطعة يمكن الاعتماد عليها.",
+      "entity_code": "NC-127",
+      "verification_method": "Web Source"
+    },
+    "NC-111": {
+      "entity_subtype": "Public counter",
+      "floor_suite": "الدور السادس (حسب موقع وزارة المالية)",
+      "unit_code": "برج LC — خدمات المستثمرين",
+      "contact_attribution": "Direct office",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Operations",
+      "evidence_scope": "D29: صفحة وزارة المالية تحدد خدمة المواطنين في برج LC الدور السادس، وتُظهر رقم 16408 وتذكر ساعات عمل الوزارة العامة الأحد–الخميس 08:00–15:00، والخط الساخن متاحًا للاستفسارات 24/7. لا يوجد في الصفحة نص يثبت أن هذه ساعات استقبال الجمهور في مكتب خدمة المواطنين بالطابق السادس؛ لذلك بقيت Public Hours فارغة وPublic Access Unknown. https://mof.gov.eg/ar/services/service-21",
+      "entity_code": "NC-111",
+      "verification_method": "Web Source"
+    },
+    "NC-122": {
+      "entity_subtype": "Bank HQ",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "evidence_scope": "خبر وزارة التضامن يونيو 2025 يثبت استخدام مقر البنك للاجتماعات؛ تشغيل الفرع المصرفي منفصل وغير مثبت.",
+      "entity_code": "NC-122",
+      "verification_method": "Web Source"
+    },
+    "NC-139": {
+      "operational_status": "Unknown",
+      "evidence_scope": "دليل أعمال ثانوي يسجل موقع فرع صيدليات حبيب بمول N1 ورقمًا؛ التشغيل والساعة الحالية غير مؤكدة.",
+      "entity_code": "NC-139",
+      "verification_method": "Web Source"
+    },
+    "NC-124": {
+      "entity_subtype": "Building or asset",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "جولة مصرفية 2023 تحدد قطعة A3-23؛ يلزم تأكيد الملكية الحالية والتشغيل من البنك.",
+      "entity_code": "NC-124",
+      "verification_method": "Web Source"
+    },
+    "NC-118": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الحكومي الحالي يذكر الحي الحكومي؛ نشرة 2023 توضح أن الانتقال جزئي، والمدخل والخدمات غير مثبتين.",
+      "entity_code": "NC-118",
+      "verification_method": "Web Source"
+    },
+    "NC-131": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة خدمة المستثمرين بوزارة المالية تذكر برج LC والدور السادس، ولا تثبت مواعيد الزيارة.",
+      "entity_code": "NC-131",
+      "verification_method": "Web Source",
+      "relation_evidence": "Existing Ministry of Finance + LC Tower floor 6 addresses and official MOF operator services 20/21 confirm organizational co-location for NC-111 & NC-112; ministry parent. No visitor gate approval."
+    },
+    "NC-108": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Not verified",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Operations",
+      "evidence_scope": "قرار 1987/2024 يثبت إنشاء الفرع وموقعه، وتغطية افتتاح 2024؛ التشغيل الحالي وساعات الزوار ومدخل المول يحتاجون تحققًا مباشرًا.",
+      "entity_code": "NC-108",
+      "verification_method": "Web Source"
+    },
+    "NC-119": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الرسمي لوزارة الإنتاج الحربي يحدد مقر الهيئة داخل مبنى الوزارة؛ لا توجد بيانات دخول للزائر.",
+      "entity_code": "NC-119",
+      "verification_method": "Web Source"
+    },
+    "NC-129": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الرسمي لصندوق بحوث التعمير يثبت موقعه بالدور الثاني داخل المبنى.",
+      "entity_code": "NC-129",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Housing ministry building; first-party CAPW contact floors 2/3, registered NUCA and GOPP urban planning offices and Central Reconstruction office; preserve exact per-tenant floor only if specifically evidenced. Building→occupant mapping is source/address-backed, not a human-approved visitor route."
+    },
+    "NC-113": {
+      "evidence_scope": "خطاب رسمي مؤرخ مارس 2025 يذكر العنوان؛ يجب تأكيد استمرار المقر في نوفمبر 2026؛ لا إثبات لمدخل الزوار.",
+      "entity_code": "NC-113",
+      "verification_method": "Web Source"
+    },
+    "NC-123": {
+      "entity_subtype": "Bank branch",
+      "contact_attribution": "General operator",
+      "operational_status": "Announced",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "Agricultural Bank's May 2025 original post says HQ building in Financial District includes an 850m2 proposed branch with 6 teller windows and 3 service desks. No later opening or walk-in hours claimed.",
+      "entity_code": "NC-123",
+      "verification_method": "Web Source"
+    },
+    "NC-120": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Not verified",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Operations",
+      "evidence_scope": "قائمة إيتيدا 2026 تسجل الفرع كموقع لتقديم خدمة التوقيع الإلكتروني؛ ساعات الفتح والمدخل لم يتحققا ميدانيًا.",
+      "entity_code": "NC-120",
+      "verification_method": "Web Source"
+    },
+    "NC-138": {
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "دليل أعمال طرف ثالث يدرج جراند سكوير؛ مصدر آخر يذكر الدور الأول. لم يؤكد الفرع من موقع برناسوس أو هاتف مباشر.",
+      "entity_code": "NC-138",
+      "tenant_evidence_class": "Secondary directory only",
+      "verification_method": "Web Source",
+      "relation_evidence": "05.4: Secondary YellowPages listing places Bernasos inside Grand Square; claimed floor 1 is secondary. Neither first-party Bernasos branch operation nor exact floor/visitor hours/entrance confirmed. Never use as official registry or operator confirmation."
+    },
+    "NC-132": {
+      "operational_status": "Unknown",
+      "evidence_scope": "موقع جهاز شؤون البيئة يذكر العنوان المشترك مع الوزارة؛ لا توجد إحداثيات مدخل موثقة.",
+      "entity_code": "NC-132",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Ministry of Local Development/Environment: operator EEAA contact and environmental service registers name same building. Phone/online channels do not grant public floor or entrance access. Building→occupant mapping is source/address-backed, not a human-approved visitor route."
+    },
+    "NC-128": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة هيئة التنشيط الرسمية تحدد موقعها في الدور الثاني بهذا المبنى؛ ليس تحديدًا لبوابة الدخول.",
+      "entity_code": "NC-128",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Tourism/Antiquities Ministry building + government tenants, maintain independent service-specific floor scope. Physical/source relation only; no visitor access or Directions verified."
+    },
+    "NC-126": {
+      "entity_subtype": "Building or asset",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "جولة ميدانية صحفية 2023 تذكر القطعة A3-26؛ يلزم التحقق الرسمي من التشغيل.",
+      "entity_code": "NC-126",
+      "verification_method": "Web Source"
+    },
+    "NC-121": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة فروع الشركة تعلن موقع مول N1 والساعات، لكنها لا تقدم مدخلًا معتمدًا؛ قد يتشارك نقطة الوصول مع فرع WE.",
+      "entity_code": "NC-121",
+      "verification_method": "Web Source"
+    },
+    "NC-115": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الرسمي يحدد مقر الجهة بالدور الثاني داخل مبنى الوزارة؛ لا يذكر مدخلًا أو مواعيد استقبال.",
+      "entity_code": "NC-115",
+      "verification_method": "Web Source"
+    },
+    "NC-125": {
+      "entity_subtype": "Building or asset",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "المصدر الصحفي 2023 يحدد القطعة A1-1؛ لا يثبت انتقال الموظفين أو وجود فرع عامل.",
+      "entity_code": "NC-125",
+      "verification_method": "Web Source"
+    },
+    "NC-140": {
+      "operational_status": "Unknown",
+      "evidence_scope": "قائمة خدمات مجتمعية تسجل «مكتبة العاصمة» في N1؛ لا توجد صفحة فرع رسمية ولا ساعات مؤكدة.",
+      "entity_code": "NC-140",
+      "verification_method": "Web Source"
+    },
+    "NC-136": {
+      "operational_status": "Unknown",
+      "evidence_scope": "كراسة رسمية للهيئة (أغسطس 2025) تحدد مقرها بالقاهرة بالحي الحكومي بجوار شركة العاصمة؛ لا تثبت فتحه للجمهور.",
+      "entity_code": "NC-136",
+      "verification_method": "Web Source"
+    },
+    "NC-137": {
+      "floor_suite": "الدور الرابع",
+      "unit_code": "مكتب رقم 4",
+      "contact_attribution": "Direct office",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "صفحة تواصل الشركة تسجل فرع العاصمة في جراند سكوير، مكتب 4 بالدور الرابع، ورقم التواصل؛ لم يؤكد المدخل والمواعيد.",
+      "entity_code": "NC-137",
+      "tenant_evidence_class": "Direct operator listing",
+      "map_evidence_class": "Operator location link",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.4: Qalam direct office 4/floor 4 Grand Square, dedicated capital mobile 01055999388; qalam.info/contact/ contains official operator map link https://maps.app.goo.gl/xqg2jKqfSA9kzQjd8. Operator website header shows Sun–Thu 08:00–17:00 as general company hours, not proven exact Capital branch visiting hours. Parent mall tagged Financial District, operator names Gov District: geographic zone discrepancy unresolved; no actual GPS entrance field QA."
+    },
+    "NC-114": {
+      "evidence_scope": "Official 2024 commercial-register address only; no proof of continued operations in 2026.",
+      "entity_code": "NC-114",
+      "verification_method": "Web Source"
+    },
+    "NC-117": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official 2023 Ministry newsletter documented staff move; current 2026 reception not confirmed.",
+      "entity_code": "NC-117",
+      "verification_method": "Web Source"
+    },
+    "NC-130": {
+      "operational_status": "Unknown",
+      "evidence_scope": "العنوان الرسمي يربط الهيئة القومية للإنتاج الحربي بمبنى الوزارة.",
+      "entity_code": "NC-130",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Military Production Ministry building + internal authority. Physical/source relation only; no visitor access or Directions verified."
+    },
+    "NC-133": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الهيئة التابعة لوزارة النقل تنشر عنوانها بالدور الثالث من مبنى الوزارة؛ لا يوجد مدخل متحقق.",
+      "entity_code": "NC-133",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Official LTRA TradePortal floor 2 and Land/Dry Ports operator source floor 3; separate entities in Ministry of Transport; ministry and National Tunnels Authority registered to same building. Floor/entrance not independently verified. Building→occupant mapping is source/address-backed, not a human-approved visitor route."
+    },
+    "NC-116": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة الهيئة الرسمية تثبت الدور الثاني داخل الوزارة؛ لا تثبت استقبال خدمات الجمهور.",
+      "entity_code": "NC-116",
+      "verification_method": "Web Source"
+    },
+    "NC-109": {
+      "evidence_scope": "قرار وزارة العدل يثبت اسم المول وموقع فرع التوثيق فيه، ولا يثبت مداخل المول أو بقية الأنشطة.",
+      "entity_code": "NC-109",
+      "verification_method": "Web Source"
+    },
+    "NC-134": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة اتصل بنا بجهاز تنمية التجارة الداخلية تذكر الدور الأول بهذا المبنى.",
+      "entity_code": "NC-134",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Ministry of Supply building: official ITDA first-floor published contact, GASC third-floor registry notes, Ministry identity; not a general visitor service entrance. Building→occupant mapping is source/address-backed, not a human-approved visitor route."
+    },
+    "NC-146": {
+      "operational_status": "Announced",
+      "evidence_scope": "تغطية إنشاءات 2026 تتحدث عن تقدم العمل، لا عن افتتاح وتشغيل؛ موقع الخدمة الفعلي للبورصة لا يزال بحاجة لمطابقة.",
+      "entity_code": "NC-146",
+      "verification_method": "Web Source"
+    },
+    "NC-155": {
+      "operational_status": "Unknown",
+      "evidence_scope": "مستند طرح صادر عن الهيئة يحدد عنوان مقرها A5/A6 بالمجمع L2؛ لا يتضمن مدخل الجمهور.",
+      "entity_code": "NC-155",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Universal Health Insurance Authority building A5/A6 L2. Entity relation is desk-evidenced; live visitor access not independently verified."
+    },
+    "NC-170": {
+      "evidence_scope": "المطور يذكر 3 مبانٍ ونسبة إنشاءات 100% ومرحلة تشطيبات؛ لم يثبت تسليم خدمات عامة.",
+      "entity_code": "NC-170"
+    },
+    "NC-169": {
+      "evidence_scope": "المطور يذكر Business Yard بقطعة CS18 أمام المحطة التبادلية؛ لا دخول جمهور معتمد.",
+      "entity_code": "NC-169"
+    },
+    "NC-173": {
+      "evidence_scope": "موقع الوزارة يذكر عنوان المبنى بالكود، مع خبر زيارة 2026 يؤكد انتظام العمل.",
+      "entity_code": "NC-173",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Higher Education ministry building L1 cluster C3A. Physical/source relation only; no visitor access or Directions verified."
+    },
+    "NC-156": {
+      "floor_suite": "الدور الأول — وزارة الثقافة",
+      "operational_status": "Unknown",
+      "evidence_scope": "إعلان مسابقات 2025 المنشور إعلاميًا يحدد الدور الأول بالوزارة لاستلام الأعمال؛ لا دليل استقبال دائم عام 2026.",
+      "entity_code": "NC-156",
+      "verification_method": "Web Source"
+    },
+    "NC-153": {
+      "operational_status": "Unknown",
+      "evidence_scope": "إعلان رسمي 2026 يثبت مبنى الوزارة والدور الأول كمقر إداري لإحدى المؤسسات التابعة؛ لا ساعات فتح عامة.",
+      "entity_code": "NC-153",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Social Solidarity ministry and time-limited Hajj appeals unit floor 1; being inside building does not mean appeals open year-round. Building→occupant mapping is source/address-backed, not a human-approved visitor route."
+    },
+    "NC-172": {
+      "evidence_scope": "موقع AMA الرسمي يؤكد الاسم والموقع التقريبي والمكونات؛ لا يثبت تاريخ افتتاح.",
+      "entity_code": "NC-172"
+    },
+    "NC-158": {
+      "operational_status": "Unknown",
+      "evidence_scope": "مركز المعلومات التابع لمجلس الوزراء ينشر زيارة رسمية أبريل 2026 ويصف تشغيل المركز؛ لا عنوان أو وصول عام.",
+      "entity_code": "NC-158",
+      "verification_method": "Web Source"
+    },
+    "NC-166": {
+      "evidence_scope": "صفحة المطور تؤكد المشروع والمنطقة ومكوناته؛ لا قائمة محلات عاملة أو مواعيد دخول.",
+      "entity_code": "NC-166"
+    },
+    "NC-164": {
+      "evidence_scope": "يلوبيدجز يدرج فرعًا داخل N1؛ لا صفحة مباشرة للفرع أو تأكيد زيارة.",
+      "entity_code": "NC-164"
+    },
+    "NC-163": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "Third-party source",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "خبر 2025 يدرج ماكينة البنك في N1؛ لم يوجد تأكيد محدّث من محدد الصرافات الرسمي.",
+      "entity_code": "NC-163"
+    },
+    "NC-147": {
+      "operational_status": "Announced",
+      "evidence_scope": "المطور يعلن اتفاق إدارة مع JLL لمبنى Rock Capital 1 بالحي الحكومي؛ لا قائمة شاغلين أو دخول جمهور.",
+      "entity_code": "NC-147",
+      "verification_method": "Web Source"
+    },
+    "NC-154": {
+      "operational_status": "Unknown",
+      "evidence_scope": "تقرير إعلامي ينقل عنوان صندوق التنمية الحضرية بالدورين الثاني والثالث؛ لا مستند خرائط أو بوابة معتمدة.",
+      "entity_code": "NC-154",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Cabinet subsidiary-authorities building and Urban Development Fund admin & customer centre; ground-floor customer-centre relocation appears in July 2026 secondary notice and is NOT independently 2026 operator confirmed. Relational identity has lower operational confidence. Building→occupant mapping is source/address-backed, not a human-approved visitor route."
+    },
+    "NC-150": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الرسمي الحالي لوزارة الثقافة يعلن عنوانها بالحي الحكومي؛ لا يحدد مدخل الزوار.",
+      "entity_code": "NC-150",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Ministry of Culture: ministry, National Translation Centre office floor 1, urban coordination agency floor 5, Cultural Palaces, Cultural Development Fund floor 4; all based on source-scoped existing address claims. Building→occupant mapping is source/address-backed, not a human-approved visitor route."
+    },
+    "NC-152": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الرسمي الحالي يذكر الحي الحكومي وعمل الوزارة من المقر؛ رقم المبنى والمدخل غير منشورين.",
+      "entity_code": "NC-152",
+      "verification_method": "Web Source"
+    },
+    "NC-165": {
+      "evidence_scope": "بيان المطور 5 نوفمبر 2026 يحدد الموقع واتفاق إدارة مع AFM؛ لا دليل على افتتاح مداخل الزوار.",
+      "entity_code": "NC-165"
+    },
+    "NC-160": {
+      "floor_suite": "الدور الثالث — وزارة التموين",
+      "evidence_scope": "الجريدة الرسمية في 6 مارس 2025، اتفاقية تتضمن عنوان الهيئة بالدور الثالث؛ لا أوقات استقبال.",
+      "entity_code": "NC-160"
+    },
+    "NC-179": {
+      "evidence_scope": "الموقع الرسمي لرئاسة مجلس الوزراء يعلن عنوان المقر؛ الحضور شخصي يحتاج إذنًا أو إجراء محددًا.",
+      "entity_code": "NC-179",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Cabinet central headquarters building; not public walk-in. Entity relation is desk-evidenced; live visitor access not independently verified."
+    },
+    "NC-162": {
+      "entity_subtype": "Public counter",
+      "floor_suite": "الدور الثالث — وزارة العمل",
+      "contact_attribution": "Not verified",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Operations",
+      "evidence_scope": "بيان وزارة العمل 15 يوليو 2026 يحدد الوحدة والغرض والدور والبريد. لم ينشر ساعات أو شروط دخول.",
+      "entity_code": "NC-162"
+    },
+    "NC-168": {
+      "evidence_scope": "المطور يصف Business Gate وموقعه النسبي ووحداته؛ لا تاريخ تشغيل مؤكد.",
+      "entity_code": "NC-168"
+    },
+    "NC-177": {
+      "evidence_scope": "بيان رسمي 2026 يثبت مقر الوزارة ووحدة المستثمرين في الدور الثالث؛ ليس مدخلًا عامًا مؤكدًا.",
+      "entity_code": "NC-177",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Ministry of Labour headquarters and investor facilitation floor 3 per official 2026 Labour statement. Direct visitor rules still unknown. Building→occupant mapping is source/address-backed, not a human-approved visitor route."
+    },
+    "NC-175": {
+      "evidence_scope": "صفحة الوزارة الرسمية تؤكد انتقال مقرها إلى مبنى الحي الحكومي منذ 2024؛ خدمات التصديق في فروع مستقلة.",
+      "entity_code": "NC-175",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Foreign Affairs Ministry HQ, distinct from mobile attestations outside building C. Entity relation is desk-evidenced; live visitor access not independently verified."
+    },
+    "NC-149": {
+      "operational_status": "Unknown",
+      "evidence_scope": "تسمية المبنى وموقعه النسبي واردان في كراسة رسمية للهيئة، ولا يوجد pin أو بوابة دخول.",
+      "entity_code": "NC-149",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Suez Canal Economic Zone administrative building. Entity relation is desk-evidenced; live visitor access not independently verified."
+    },
+    "NC-145": {
+      "entity_subtype": "Building or asset",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Announced",
+      "audit_state": "Info-only reviewed",
+      "evidence_scope": "Official developer, bank, contractor, or agreement confirms named project/building in Financial District; does not establish current company tenancy, banking service, operating hours, or entrance.",
+      "entity_code": "NC-145",
+      "verification_method": "Web Source"
+    },
+    "NC-142": {
+      "operational_status": "Unknown",
+      "evidence_scope": "قائمة خدمات مجتمعية تضع فواز للأسماك بجراند سكوير؛ لا تأكيد رسمي أو ساعات.",
+      "entity_code": "NC-142",
+      "verification_method": "Web Source"
+    },
+    "NC-167": {
+      "evidence_scope": "صفحة IC Group الرسمية تثبت مشروع The Office وموقعه النسبي فقط.",
+      "entity_code": "NC-167"
+    },
+    "NC-148": {
+      "operational_status": "Announced",
+      "evidence_scope": "وسيط عقاري يسجل قطعة B3-21 ومشروع قيد الإنشاء؛ يحتاج مصدر المطور ودليل التسليم، فلا يؤكد التشغيل.",
+      "entity_code": "NC-148",
+      "verification_method": "Web Source"
+    },
+    "NC-144": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "General operator",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Scope",
+      "evidence_scope": "محدد الصرافات الرسمي يدرج «مركز المعلومات ودعم اتخاذ القرار - مجلس الوزراء بالعاصمة الإدارية» كموقع منفصل عن رئاسة الوزراء؛ الدخول غير متحقق.",
+      "entity_code": "NC-144",
+      "verification_method": "Web Source"
+    },
+    "NC-174": {
+      "evidence_scope": "صفحة اتصل بنا للوزارة تسجل الحي الحكومي مقرًا.",
+      "entity_code": "NC-174",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Youth and Sports Ministry government building. Physical/source relation only; no visitor access or Directions verified."
+    },
+    "NC-157": {
+      "operational_status": "Unknown",
+      "evidence_scope": "عنوان الدور الثالث مؤكد في إعلان رسمي للجهاز 2025، ونقل مركز خدمة العملاء منقول صحفيًا في أغسطس 2026؛ التشغيل اليومي/المدخل غير مثبت.",
+      "entity_code": "NC-157",
+      "verification_method": "Web Source"
+    },
+    "NC-178": {
+      "evidence_scope": "صفحة العنوان الرسمية للوزارة تحدد الحي الحكومي دون رقم مبنى.",
+      "entity_code": "NC-178",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Parliamentary Affairs ministry government building. Entity relation is desk-evidenced; live visitor access not independently verified."
+    },
+    "NC-151": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة الوزارة الرسمية للاتصال تحدد الكود 10B-L2M ورقم الوزارة؛ لا يثبت دخولًا غير مقيد.",
+      "entity_code": "NC-151",
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Communications ministry building code 10B-L2M. Physical/source relation only; no visitor access or Directions verified."
+    },
+    "NC-159": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Not verified",
+      "operational_status": "Unknown",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "خبر رسمي نوفمبر 2026 يحدد مكتب المؤسسة بالدور الأول لتلقي التظلمات في فترة وإجراء محددين؛ لا تعميم للساعات.",
+      "entity_code": "NC-159",
+      "verification_method": "Web Source"
+    },
+    "NC-143": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "General operator",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Scope",
+      "evidence_scope": "محدد الفروع/الصراف الآلي الرسمي للبنك يدرج «رئاسة الوزراء بالعاصمة الإدارية الجديدة»؛ لا يثبت إمكانية وصول عامة.",
+      "entity_code": "NC-143",
+      "verification_method": "Web Source"
+    },
+    "NC-176": {
+      "evidence_scope": "نموذج اتفاقية رسمي لوزارة البترول يثبت المقر القانوني للوزير بالحي الحكومي؛ لا رقم مبنى.",
+      "entity_code": "NC-176",
+      "relation_evidence": "CG-DATA-05.3 19 Nov 2026: Petroleum ministry headquarters government building. Entity relation is desk-evidenced; live visitor access not independently verified."
+    },
+    "NC-141": {
+      "operational_status": "Unknown",
+      "evidence_scope": "قائمة محلية تذكر «كوداك فوتو هاوس» بجراند سكوير؛ لا سند رسمي مباشر للفرع.",
+      "entity_code": "NC-141",
+      "verification_method": "Web Source"
+    },
+    "NC-171": {
+      "evidence_scope": "المطور يذكر ثلاثة مواقع تطوير بالحي المالي، دون خرائط/أكواد كل قطعة أو تاريخ التشغيل.",
+      "entity_code": "NC-171"
+    },
+    "NC-182": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة هيئة قصور الثقافة الرسمية تربط أعمالها وعنوانها بمقر وزارة الثقافة بالعاصمة؛ الدور غير مثبت من المصدر.",
+      "entity_code": "NC-182"
+    },
+    "NC-204": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الرسمي للجائزة يذكر عنوان الوزارة في الحي الحكومي والبريد egea@mped.gov.eg؛ لا دليل على مكتب مستقل أو استقبال زوار.",
+      "entity_code": "NC-204"
+    },
+    "NC-190": {
+      "operational_status": "Unknown",
+      "evidence_scope": "دليل أعمال يحدد جراند سكوير؛ بعض الأدلة الأخرى تعرض بيانات متباينة لذا لا تثبت ساعات الزيارة.",
+      "entity_code": "NC-190"
+    },
+    "NC-207": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المدخل 1485 في الجريدة الرسمية، 25 مارس 2025، يربط Proptech AI بوحدة 505؛ العنوان السابق في النص لا يخص Ready Translation (المدخل 1486).",
+      "entity_code": "NC-207"
+    },
+    "NC-187": {
+      "operational_status": "Unknown",
+      "evidence_scope": "قائمة الفروع الرسمية تعلن محل 1 بالدور الثاني؛ ساعات العمل والدخول غير مؤكدة.",
+      "entity_code": "NC-187"
+    },
+    "NC-188": {
+      "operational_status": "Unknown",
+      "evidence_scope": "جريدة سجل تجاري من جهاز تنمية التجارة الداخلية بتاريخ 19 أكتوبر 2022؛ لا تثبت بقاء الشركة بالموقع اليوم.",
+      "entity_code": "NC-188"
+    },
+    "NC-180": {
+      "operational_status": "Unknown",
+      "evidence_scope": "إعلان تشغيل رسمي للمطور 27 نوفمبر 2025؛ موقع المبنى في الفاصل بين الحيين، وليس مدخلًا موثقًا.",
+      "entity_code": "NC-180"
+    },
+    "NC-192": {
+      "operational_status": "Unknown",
+      "evidence_scope": "مقال صحفي بتاريخ سبتمبر 2023، وليس دليل إشغال حالي؛ يلزم تأكيد ميداني.",
+      "entity_code": "NC-192"
+    },
+    "NC-210": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع التعريفي للمشروع والمواد العقارية تؤكد هوية المشروع بالحي المالي والقطعة 22B.2؛ لا إعلان فتح للجمهور.",
+      "entity_code": "NC-210"
+    },
+    "NC-183": {
+      "floor_suite": "الدور الرابع — وزارة الثقافة",
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة اتصل بنا الرسمية للصندوق تحدد الدور الرابع والمبنى؛ لا بوابة زوار أو موعد مثبت.",
+      "entity_code": "NC-183"
+    },
+    "NC-198": {
+      "operational_status": "Unknown",
+      "evidence_scope": "دليل مطاعم محلي فقط؛ لا نؤكد التشغيل الحالي أو المدخل.",
+      "entity_code": "NC-198"
+    },
+    "NC-196": {
+      "operational_status": "Unknown",
+      "evidence_scope": "دليل منيو إيجيبت ودليل محلي يذكران مول N1؛ التشغيل ورقم الوحدة يحتاجان تأكيدًا مباشرًا.",
+      "entity_code": "NC-196"
+    },
+    "NC-200": {
+      "operational_status": "Unknown",
+      "evidence_scope": "تضارب في الموقع بين دليلين؛ مصدر البحث فقط دون تخمين دبوس.",
+      "entity_code": "NC-200"
+    },
+    "NC-194": {
+      "operational_status": "Unknown",
+      "evidence_scope": "اسم تجاري وارد بمقال قديم؛ لا ندمجه تلقائيًا مع فرغلي N1 ولا نفترض وحدة/فرع حديثًا.",
+      "entity_code": "NC-194"
+    },
+    "NC-205": {
+      "operational_status": "Unknown",
+      "audit_state": "Conflict hold",
+      "evidence_scope": "المدخل 961 في الجريدة الرسمية للأسماء التجارية بتاريخ 14 أكتوبر 2024 يخص دينوليمتد تحديدًا، لا يثبت التشغيل اليوم.",
+      "entity_code": "NC-205",
+      "tenant_evidence_class": "Official registry only",
+      "relation_evidence": "CG-DATA-05.4: ITDA 2024 gazette officially registers Dinolimited branch at Financial District Bank Zone plot 24 B1; the same gazette separately mentions Pioneer Plaza Business Complex but calls its zone MU12 or MU10, conflicting with current Brand Lift / A&G MU23 A10. Distinct registered branches or historical filing errors; do not merge or automatically link to Pioneer Plaza without direct operator + plot confirmation."
+    },
+    "NC-197": {
+      "operational_status": "Unknown",
+      "evidence_scope": "دليل محلي واحد يدرج الاسم بمول N1؛ الاسم التجاري غير فريد ولا توجد مطابقة مباشرة بالمتجر.",
+      "entity_code": "NC-197"
+    },
+    "NC-181": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Conflict hold",
+      "visitor_release_gate": "Hold - Operations",
+      "evidence_scope": "نقل صحفي مباشر لتصريح رئيس جهاز تنمية التجارة الداخلية 21 يونيو 2026؛ لا رقم مبنى ولا ساعات استقبال منشورة.",
+      "entity_code": "NC-181"
+    },
+    "NC-191": {
+      "operational_status": "Unknown",
+      "evidence_scope": "دليل مطاعم محدّث 10 أبريل 2026 يذكر العنوان والهاتف؛ ليس تأكيدًا من إدارة المطعم.",
+      "entity_code": "NC-191"
+    },
+    "NC-193": {
+      "operational_status": "Unknown",
+      "evidence_scope": "مقال عام 2023 يذكر النشاط؛ لا بيانات حالية معتمدة للزيارة.",
+      "entity_code": "NC-193"
+    },
+    "NC-189": {
+      "operational_status": "Unknown",
+      "evidence_scope": "إعلان سجل تجاري 20 نوفمبر 2023؛ إثبات عنوان قانوني في حينه فقط وليس إشغالًا حاليًا.",
+      "entity_code": "NC-189"
+    },
+    "NC-185": {
+      "operational_status": "Unknown",
+      "evidence_scope": "هيئة الأنفاق والبيانات الحكومية تحدد محطة الحي الحكومي ضمن خط المونوريل؛ لا اعتماد لمداخل المحطة.",
+      "entity_code": "NC-185"
+    },
+    "NC-201": {
+      "operational_status": "Unknown",
+      "evidence_scope": "دليل محلي يذكر المطعم والموقع، لكن بيانات التواصل متباينة؛ يحتاج تأكيدًا مباشرًا.",
+      "entity_code": "NC-201"
+    },
+    "NC-206": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المدخل 1721 بتاريخ 30 يناير 2025 يقر عنوان دوسر في أوداز؛ رقم الوحدة لا يثبت الدور، ولا يوفر بيانات تشغيل أو استلام عملاء حاليًا.",
+      "entity_code": "NC-206"
+    },
+    "NC-208": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المدخل 41 بتاريخ 4 أغسطس 2025 ينتهي بعنوان الوحدة 305؛ هذا العنوان لا يخص شركة شريف للمؤتمرات ذات المدخل 42.",
+      "entity_code": "NC-208"
+    },
+    "NC-199": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الدليل المحلي يذكر الفرع، بينما نتائج أخرى تخص محافظات مختلفة؛ لا ندمج الفروع.",
+      "entity_code": "NC-199"
+    },
+    "NC-186": {
+      "operational_status": "Unknown",
+      "evidence_scope": "هيئة الأنفاق تؤكد المحطة ضمن خط المونوريل؛ لا بوابة زوار ولا دبوس خرائط موثق.",
+      "entity_code": "NC-186"
+    },
+    "NC-202": {
+      "entity_subtype": "Other",
+      "contact_attribution": "General operator",
+      "operational_status": "Announced",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "Bank's 1 Sep 2026 statement confirms on-site staff member, ATM, inquiries and school-fee financing requests at fixed mobile unit outside Social Solidarity Ministry. Current-day presence, opening hours, public access and exact entrance/pin have NOT been verified.",
+      "entity_code": "NC-202"
+    },
+    "NC-209": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المدخل 888 بتاريخ 13 نوفمبر 2025 يتضمن العنوان بعد اسم الشركة، لا يثبت نشاط استقبال عملاء.",
+      "entity_code": "NC-209"
+    },
+    "NC-184": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "General operator",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Scope",
+      "evidence_scope": "قائمة QNB الرسمية للـATM، رقم الجهاز 1177؛ لا نعتبره متاحًا للعامة خارج قيود دخول الوزارة.",
+      "entity_code": "NC-184"
+    },
+    "NC-195": {
+      "operational_status": "Unknown",
+      "evidence_scope": "تغطية صحفية تاريخية، لا تأكيد من إدارة المتجر؛ الاسم يحتاج فحص تهجئة قانونية.",
+      "entity_code": "NC-195"
+    },
+    "NC-262": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Company-owned LinkedIn profile lists its primary location as Financial District, Audaz Mall, New Capital. No floor, exact unit, staffed reception, business license, visitor entrance or office hours verified. Developer Gates' official Audaz brochure confirms Financial District boundary.",
+      "entity_code": "NC-262"
+    },
+    "NC-264": {
+      "operational_status": "Unknown",
+      "evidence_scope": "D38: the firm's own contact page (checked 2026-11-09) states Audaz Mall, Financial District, unit A2-30, +201101202331 / +201210171111 and info@ibrahimsaadeldin.com. This confirms the company's current published office-address claim and direct contact, not physical occupancy inspection, public walk-in access, reception hours, independently verified navigation pin or entrance.",
+      "entity_code": "NC-264"
+    },
+    "NC-219": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "القائمة غير الرسمية تذكر Banque Misr عند IDSC؛ ليست نفس ماكينة HDB المدرجة NC-144، لكن وجودها الفعلي غير مؤكد.",
+      "entity_code": "NC-219"
+    },
+    "NC-231": {
+      "operational_status": "Unknown",
+      "evidence_scope": "بروشور صروح يقول central location in Government District and Financial District دون تحديد رقعة حدودية. نحتفظ به كبند بحث ولا نعطي نقطة وصول.",
+      "entity_code": "NC-231"
+    },
+    "NC-253": {
+      "operational_status": "Unknown",
+      "evidence_scope": "ITDA October 2024 bulletin entry 972, registry 244530, lists Mohamed Rashid Contracting and Supplies at Citadel Mall Government District, opposite main garden. No floor or entry.",
+      "entity_code": "NC-253",
+      "source_license": "Official bulletin — facts only; no republication of source PDF",
+      "verification_method": "Web Source"
+    },
+    "NC-261": {
+      "entity_subtype": "Bank HQ",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Operating",
+      "audit_state": "Info-only reviewed",
+      "evidence_scope": "QNB states it opened its Financial District head office in October 2026; directly authored QNB job postings locate working staff in New Capital Head Office. Parcel and visitor access not verified.",
+      "entity_code": "NC-261"
+    },
+    "NC-216": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "قائمة غير رسمية محدّثة أبريل 2026، لا تأكيد من بنك مصر. احتمالات تقييد الدخول للمبنى قائمة.",
+      "entity_code": "NC-216"
+    },
+    "NC-225": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة التواصل الرسمية تسمي Three Square Tower كمكتب للشركة في العاصمة؛ لا تؤكد ساعة تشغيل المكتب أو إتاحة المشتريات من موقعه.",
+      "entity_code": "NC-225"
+    },
+    "NC-265": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Dalil140 says Sixty Business Park Mall unit L7 and phone 01098848708; 140online independently lists the same mall but different phone 0111878188. Do not publish disputed telephone or claim a validated location visit; primary official page missing.",
+      "entity_code": "NC-265"
+    },
+    "NC-218": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "تسمية المبنى وكوده من الدليل غير الرسمي؛ يجب مطابقة قائمة أجهزة البنك وإذن الزوار.",
+      "entity_code": "NC-218"
+    },
+    "NC-246": {
+      "evidence_scope": "جريدة السجل التجاري الرسمية، تعديل عنوان/افتتاح فرع برقم 1168 بتاريخ 2025-02-18؛ يثبت عنوانًا مسجلاً فقط، لا التشغيل الفعلي أو مدخل الزوار.",
+      "entity_code": "NC-246",
+      "verification_method": "Web Source"
+    },
+    "NC-240": {
+      "operational_status": "Unknown",
+      "evidence_scope": "قيد الشركة 661 من تعديلات 2025-02-11 يحدد وحدتي B4-01 وB4-23 في مبنى أوزار على B3-11، منطقة البنوك. القيد 660 المجاور يخص فرع الأقصر ولا ينسب إلى العاصمة. التوثيق للعنوان المسجل آنذاك لا إشغال 2026.",
+      "entity_code": "NC-240",
+      "source_license": "Factual metadata only — official bulletin prohibits republication."
+    },
+    "NC-213": {
+      "operational_status": "Unknown",
+      "evidence_scope": "شريك المشروع Schneider Electric يذكر Paragon 2 ضمن المباني محل التعاقد؛ الموقع بالحي المالي مدعوم بمصادر المطور وإعلاناته، ولا دليل فتح للجمهور.",
+      "entity_code": "NC-213"
+    },
+    "NC-224": {
+      "operational_status": "Unknown",
+      "evidence_scope": "تورد صفحة Contact الرسمية عنوان مكتب القاهرة في مبنى Three Square 25-B3 ورقمَي اتصال. النشاط موصوف في صفحة About؛ لم نتحقق من وجود الموظفين أو إجراءات الزيارة.",
+      "entity_code": "NC-224"
+    },
+    "NC-230": {
+      "operational_status": "Unknown",
+      "evidence_scope": "تغطية إطلاق المشروع تنقل إعلان المطور عن اسم CENTOO وموقعه في الحي المالي ومساحته؛ التوثيق للإعلان لا لحالة تسليم المبنى.",
+      "entity_code": "NC-230"
+    },
+    "NC-245": {
+      "entity_subtype": "Public counter",
+      "floor_suite": "الدور الأرضي — مبنى L1M (نقل المركز حسب تقرير صحفي، لا تأكيد تشغيل مباشر)",
+      "unit_code": "L1M — Zone 11",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "نشر إعلامي عن إعلان الصندوق نقل مركز خدمة العملاء من 2026-08-05 إلى الدور الأرضي في L1M؛ السجل NC-157 للمقر الإداري منفصل ويذكر دورًا آخر. شواهد مايو 2026 كانت تشير إلى مركز بمدينة نصر، لذا يظل استمرار التشغيل الحالي بحاجة إلى بيان رسمي/اتصال، لا توجيه مباشر.",
+      "entity_code": "NC-245",
+      "source_license": "Official or publicly accessible source; factual fields only."
+    },
+    "NC-255": {
+      "operational_status": "Announced",
+      "evidence_scope": "Madkour Developments official project page places MDK Business Complex in Financial District, three buildings A/B/C, full operation listed for 2027. Project location confirmed only; not operating as a public service.",
+      "entity_code": "NC-255",
+      "source_license": "Source link with factual summary only",
+      "verification_method": "Web Source"
+    },
+    "NC-266": {
+      "operational_status": "Unknown",
+      "evidence_scope": "ITDA official commercial registry gazette, Gamasa Investment October 2024, address-amendment item 26, dated 2024-10-16: registered unit A-411 on floor four of Cairo Business Plaza, banks zone Financial District. Historical legal registration only; no current staffed office, visitor service, public entrance, hours or map pin.",
+      "entity_code": "NC-266"
+    },
+    "NC-244": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Not verified",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "بوابة محافظة القاهرة الرسمية تنقل دعوة الوزارة للمستثمرين ذوي المشكلات العاجلة للتوجه لوحدة خدمة ودعم المستثمرين بمقر وزارة الصناعة بالحي الحكومي. تقرير حكومي 2025 يثبت استمرار معالجة شكاوى صناعية عبر الوحدة/التطبيق. لا تفاصيل عن الدور أو ساعة الزيارة.",
+      "entity_code": "NC-244",
+      "source_license": "Official or publicly accessible source; factual fields only."
+    },
+    "NC-237": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة البروج مصر الرسمية تعلن Sixty Walk Two في الحي المالي. مغاير عن Sixty Walk One (NC-166)؛ لا نفترض تشغيل محلاتها أو إمكانية زيارة وحداتها.",
+      "entity_code": "NC-237"
+    },
+    "NC-229": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة المطور تؤكد المشروع، وتصنيف الموقع بالحي المالي جاء من مصادر عقارية وسيطة. لا نرفع الموقع إلى Source Confirmed دون إثبات مباشر لقطعة الأرض.",
+      "entity_code": "NC-229"
+    },
+    "NC-254": {
+      "operational_status": "Unknown",
+      "evidence_scope": "ITDA October 2023 commercial register amendment entry 89 identifies the holding company, Cairo register 354642, at Transport Ministry first floor. Historical administrative address only.",
+      "entity_code": "NC-254",
+      "source_license": "Official bulletin — facts only; no republication of source PDF",
+      "verification_method": "Web Source"
+    },
+    "NC-252": {
+      "operational_status": "Unknown",
+      "evidence_scope": "ITDA April 2025 gazette entry 469, registration 259992, links Kadous Engineering Solutions to floor 3 unit RO-C1-3-48 on plot B1-26. Verified registration, not entrance.",
+      "entity_code": "NC-252",
+      "source_license": "Official bulletin — facts only; no republication of source PDF",
+      "verification_method": "Web Source"
+    },
+    "NC-220": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "المصدر يعرض Ministry of Justice 1 وإدراجًا آخر؛ سُجل كيان واحد مؤقتًا إلى حين مطابقة أرقام الأجهزة.",
+      "entity_code": "NC-220"
+    },
+    "NC-226": {
+      "operational_status": "Unknown",
+      "evidence_scope": "بروشور المطور الرسمي يثبت اسم SOLAS وطبيعته المكتبية، وتصريح المطور المنشور في 2020 يضعه بالحي المالي. لا يفيد ذلك جاهزية استقبال الزوار الآن.",
+      "entity_code": "NC-226"
+    },
+    "NC-251": {
+      "operational_status": "Unknown",
+      "evidence_scope": "ITDA July 2025 gazette entry 1036, registry 267027, gives third-floor unit 14 at Salasel Mall. Not the same as Sola Mall; preserve separate spelling. Current operation unknown.",
+      "entity_code": "NC-251",
+      "source_license": "Official bulletin — facts only; no republication of source PDF",
+      "verification_method": "Web Source"
+    },
+    "NC-260": {
+      "operational_status": "Operating",
+      "evidence_scope": "2024 governorate report confirms agency HQ meeting in New Capital. 2024 state IDSC documents agency offices at Government District Ministry Housing; 2026 tender reprints suggest floor four. No service hours, public entrance or pin.",
+      "entity_code": "NC-260"
+    },
+    "NC-211": {
+      "operational_status": "Unknown",
+      "evidence_scope": "صفحة المطور الرسمية تصف المشروع في الحي المالي؛ لا تفاصيل مؤكدة عن بوابة أو تشغيل فعلي.",
+      "entity_code": "NC-211"
+    },
+    "NC-263": {
+      "operational_status": "Unknown",
+      "evidence_scope": "D28 follow-up conflict: Harris Estates website calls Pioneer Plaza branch Financial District; independent coworking/Regus venue listings identify Pioneer Plaza as MU23 A10, corroborated by first-party tenant BrandLift (office 148). These disagree on district. The property may be outside the launch Government/Financial zones. Do not classify as Financial District, show as in-scope visitor location, or issue directions until building/operator confirmation. No Harris-specific unit or present-day staffing proven.",
+      "entity_code": "NC-263"
+    },
+    "NC-239": {
+      "operational_status": "Unknown",
+      "evidence_scope": "جريدة جهاز تنمية التجارة الداخلية، قيد تعديل عنوان/افتتاح فرع مؤرخ 2025-06-01، يحدد وحدة A2-23 في مول أوداز. الرقم رقم وحدة داخل مول أوداز، وليس قطعة البنك A2-23 الخاصة ببنك مصر. إثبات قانوني تاريخي فقط؛ النشاط الحالي والمدخل غير مثبتين.",
+      "entity_code": "NC-239",
+      "source_license": "Factual metadata only — official bulletin prohibits republication."
+    },
+    "NC-247": {
+      "evidence_scope": "جريدة السجل التجاري الرسمية، قيد رقم 260 لشركة محسن محمد زينة إم زيد للتطوير العقاري بتاريخ 2025-08-06؛ عنوان الوحدة A2-18 مذكور بعد وصف الشركة وقبل القيد التالي، وليس عنوان الشركة التالية.",
+      "entity_code": "NC-247",
+      "verification_method": "Web Source"
+    },
+    "NC-232": {
+      "operational_status": "Unknown",
+      "evidence_scope": "موقع المطور يضع Laval بالحي المالي، لكن سجلًا عقاريًا محدثًا يضعه Downtown. لا يعد ذلك موقعًا صالحًا للتوجيه حتى تحسم الخريطة/قطعة الأرض.",
+      "entity_code": "NC-232"
+    },
+    "NC-241": {
+      "entity_subtype": "Public counter",
+      "floor_suite": "الدور الخامس — وزارة الصناعة",
+      "unit_code": "المكتب 5140 (تعليمات الكويز الرسمية)",
+      "contact_attribution": "Direct office",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "D29: شهادة التجديد تستلزم المراسلة مع info@qizegypt.gov.eg ثم تأكيد المستندات والحجز للاستلام من مدخل الزائرين، الدور الخامس، مكتب 5140. D30: تصحيح حقل البريد ليتوافق مع خدمة استلام الشهادات؛ review@qizegypt.gov.eg يخص مسار المراجعة الربع سنوية. لا يوجد رد مباشر أو نقطة ملاحة مثبتة. مصدر رسمي: https://www.qizegypt.gov.eg/Content/Site/Library/14451206104053198Certificates-Renewal%28qizegypt.gov.eg%29.pdf",
+      "entity_code": "NC-241",
+      "source_license": "Official or publicly accessible source; factual fields only."
+    },
+    "NC-222": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "إدراج April 2026 لا يكفي لموافقة أمنية أو للتوجيه إلى مدخل محدد.",
+      "entity_code": "NC-222"
+    },
+    "NC-233": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المطور يؤكد وجود مشروع Cairo Business Plaza New Capital، والحي المالي محدد فقط لدى وسطاء ومواقع تصنيف؛ لا مدخل محدد موثق من المطور.",
+      "entity_code": "NC-233"
+    },
+    "NC-227": {
+      "operational_status": "Unknown",
+      "evidence_scope": "الموقع الرسمي لشركة Investwell يثبت مشروع Avalon New Capital كمبنيين مكاتب في الحي المالي؛ تجنب الالتباس مع Avalon New Cairo في التجمع الخامس.",
+      "entity_code": "NC-227"
+    },
+    "NC-236": {
+      "operational_status": "Unknown",
+      "evidence_scope": "موقع SIAC الرسمي يعرف المشروع، وتصريح للمطور في يوليو 2025 يذكر تسليم 70% من وحداته وموقعه بالحي المالي؛ لا يعني تشغيل كل الوحدات أو إتاحة الجمهور.",
+      "entity_code": "NC-236"
+    },
+    "NC-257": {
+      "entity_subtype": "Government office",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Info-only reviewed",
+      "visitor_release_gate": "Info Only - No Directions",
+      "evidence_scope": "Official Egyptian Export Portal contact page labels 'Headquarters of Egyptian Export Development Authority' at Ministry of Investment and Foreign Trade, Government District, and gives edasys@mift.gov.eg. Confirms organizational contact address but not walk-in eligibility.",
+      "entity_code": "NC-257",
+      "verification_method": "Web Source"
+    },
+    "NC-249": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Direct office",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "صفحة اتصل بنا الرسمية لجهاز شؤون البيئة تؤكد مركز خدمة المستثمرين بمقر الوزارة بالعاصمة الجديدة والأرقام. نقطة خدمة متميزة وظيفيًا عن NC-110 مقر الجهاز؛ لا إثبات لمدخل مستقل أو ساعات الزوار.",
+      "entity_code": "NC-249",
+      "verification_method": "Web Source"
+    },
+    "NC-217": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "إدراج في قائمة طرف ثالث بتاريخ أبريل 2026، لا تدقيق موقع أو إثبات إتاحة 24 ساعة.",
+      "entity_code": "NC-217"
+    },
+    "NC-223": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "سجل محتمل بمرجع طرف ثالث فقط؛ لا يُعد منشورًا صالحًا للتوجيه أو مصدرًا مباشرًا من بنك مصر.",
+      "entity_code": "NC-223"
+    },
+    "NC-235": {
+      "operational_status": "Unknown",
+      "evidence_scope": "سجل عقاري يربط Central Capital بمطور Amer Group وموقع Financial District ويصفه قيد الإنشاء؛ نحتاج إثبات المطور لمطابقة الاسم والموقع.",
+      "entity_code": "NC-235"
+    },
+    "NC-250": {
+      "operational_status": "Unknown",
+      "evidence_scope": "ITDA July 2025 gazette entry 686, registration 266590, names Smart Plan Contracting and unit 14 at Sola Mall, Banks District. No proof of present occupancy.",
+      "entity_code": "NC-250",
+      "source_license": "Official bulletin — facts only; no republication of source PDF",
+      "verification_method": "Web Source"
+    },
+    "NC-238": {
+      "operational_status": "Unknown",
+      "evidence_scope": "تعارض بين تصنيفات عقارية حديثة: Financial District مقابل Governmental District. الإدراج للبحث فقط، وليس لخرائط الوصول.",
+      "entity_code": "NC-238"
+    },
+    "NC-212": {
+      "operational_status": "Unknown",
+      "evidence_scope": "إعلان Schneider Electric يؤكد امتلاك Paragon 1 وتسليمه في الحي المالي؛ لا يعني أن كل المكاتب مشغولة أو مفتوحة للزوار.",
+      "entity_code": "NC-212"
+    },
+    "NC-228": {
+      "operational_status": "Unknown",
+      "evidence_scope": "المطور يذكر المشروع بوضوح، وبيان شراكة JLL أغسطس 2025 يحدد موقعه بالحي المالي. لا نعتبر شراكة الإدارة تصريحًا ببدء استقبال زوار.",
+      "entity_code": "NC-228"
+    },
+    "NC-267": {
+      "operational_status": "Unknown",
+      "evidence_scope": "ITDA official Cairo commercial registration bulletin December 2024, item 494 Santorini Agricultural Development (NOT adjacent item 495 Mohamed Saad Al-Naggar pharmacy). Item 494 ends with Cairo New Capital Financial District SIAC Building sixth floor office 608. Registration 2024-12-04; only historical legal address, no 2026 operation/visitor evidence.",
+      "entity_code": "NC-267"
+    },
+    "NC-234": {
+      "operational_status": "Unknown",
+      "evidence_scope": "البيانات من إعلان وسيط عقاري مؤرخ يونيو 2026؛ لم نجد مصدرًا رسميًا مباشرًا من مطور Vision يمكن تأكيد العنوان معه.",
+      "entity_code": "NC-234"
+    },
+    "NC-214": {
+      "operational_status": "Unknown",
+      "evidence_scope": "وصف المشروع في الموقع الرسمي لـ Global Urban Developments؛ لا يجوز تحويل مخطط وحدات إلى خدمات مشغلة.",
+      "entity_code": "NC-214"
+    },
+    "NC-248": {
+      "evidence_scope": "جريدة السجل التجاري الرسمية، قيد تعديل عنوان/افتتاح فرع رقم 933 بتاريخ 2024-12-12، يحدد المحل GR-03. لا يوجد فحص إشغال أو ساعات تشغيل.",
+      "entity_code": "NC-248",
+      "verification_method": "Web Source"
+    },
+    "NC-215": {
+      "operational_status": "Unknown",
+      "evidence_scope": "مصدر وسيط عقاري فقط، مع احتمال الالتباس بين الحيين. لا صورة مدخل أو مصدر مطور مؤكد.",
+      "entity_code": "NC-215"
+    },
+    "NC-221": {
+      "entity_subtype": "ATM",
+      "contact_attribution": "Third-party source",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "evidence_scope": "موقع نسبي في قائمة ATM مستقلة؛ يجب إثبات أن الجهاز متاح للزوار قبل نشر توجيه ملاحي.",
+      "entity_code": "NC-221"
+    },
+    "NC-274": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Plan-designated residential district; exact extent, occupation and entrances not verified.",
+      "entity_code": "NC-274",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-270": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Plan-designated residential district; exact extent, occupation and entrances not verified.",
+      "entity_code": "NC-270",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-278": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Housing ministry documents a 170-feddan CBD towers project; do not merge with financial district without geospatial evidence.",
+      "entity_code": "NC-278",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-276": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Plan-designated residential district; exact extent, occupation and entrances not verified.",
+      "entity_code": "NC-276",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-277": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Financial/business urban district from master planning and current organization listings; boundaries relative to CBD unresolved.",
+      "entity_code": "NC-277",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-269": {
+      "operational_status": "Unknown",
+      "evidence_scope": "MFA confirms diplomatic district and relocation arrangements; not confirmation of any specific embassy currently serving the public.",
+      "entity_code": "NC-269",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-271": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official national-plan residential district; not confirmation of specific visitor-facing facilities.",
+      "entity_code": "NC-271",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-272": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Plan-designated residential district; exact extent, occupation and entrances not verified.",
+      "entity_code": "NC-272",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-279": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Central green corridor named in official national project; access points and opening hours unverified.",
+      "entity_code": "NC-279",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-273": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official housing ministry describes R5 development; no door-level or service evidence.",
+      "entity_code": "NC-273",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-268": {
+      "operational_status": "Unknown",
+      "evidence_scope": "District exists in official housing ministry plan; residential construction/allocation noted. Does not verify an entrance, public service or specific site.",
+      "entity_code": "NC-268",
+      "source_license": "Official facts summarized; source link only, no map image redistribution."
+    },
+    "NC-275": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Plan-designated residential district; exact extent, occupation and entrances not verified.",
+      "entity_code": "NC-275",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-280": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Presidency enumerates cultural complex components and operating arrangements; specific venue public access not verified.",
+      "entity_code": "NC-280",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-301": {
+      "operational_status": "Unknown",
+      "evidence_scope": "MFA September 2026 delegation visited school site in diplomatic district; enrollment and operating status not confirmed.",
+      "entity_code": "NC-301",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-303": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Government May 2026 reports 48 apartment buildings and villas in the diplomatic quarter; building completion and occupancy require verification.",
+      "entity_code": "NC-303",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-287": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Master-plan CP4 park allocation; operations and entrances unknown.",
+      "entity_code": "NC-287",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-309": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official station-name list; station-to-mosque walking gate not validated.",
+      "entity_code": "NC-309",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-293": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Master-plan X03 central-hub label only.",
+      "entity_code": "NC-293",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-297": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Planning allocation X09; no exhibit calendar or public access verified.",
+      "entity_code": "NC-297",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-286": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Master-plan CP3 park allocation; not evidence of public opening.",
+      "entity_code": "NC-286",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-290": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Historic plan P2 investment-zone code; no parcel or tenant validation.",
+      "entity_code": "NC-290",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-320": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Presidency mentions EUI in Knowledge City initiative; current campus entry, university admissions address unverified.",
+      "entity_code": "NC-320",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-281": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official presidency describes Knowledge City project, not every building or visitor access.",
+      "entity_code": "NC-281",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-314": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Presidency identifies museum and its theme. Museum admission and hours unverified.",
+      "entity_code": "NC-314",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-292": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Old land-use scheme X02; not verified as operational urban service.",
+      "entity_code": "NC-292",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-302": {
+      "operational_status": "Unknown",
+      "evidence_scope": "MFA delegation tour included Afreximbank premises; not proof of branch cash/services/visitor access.",
+      "entity_code": "NC-302",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-310": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official station list; LRT interchange discussed by authority. Confirm exits/interchange on site.",
+      "entity_code": "NC-310",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-285": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Master-plan CP2 park allocation only; visitor amenities not confirmed.",
+      "entity_code": "NC-285",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-298": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Planning allocation X10; not a confirmed public information office.",
+      "entity_code": "NC-298",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-317": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Presidency 2022 details main auditorium (~2200 seats); does not establish public calendar/hours.",
+      "entity_code": "NC-317",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-306": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Government plan includes 25-feddan sports club; operational status unverified.",
+      "entity_code": "NC-306",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-312": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official list includes City of Justice terminus in new capital; exact wayfinding unverified.",
+      "entity_code": "NC-312",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-295": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Planning allocation for medical district B; no hospital services verified.",
+      "entity_code": "NC-295",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-300": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Egyptian MFA confirms UN complex initiative/site; ~31 organization capacity cited; does not prove active service addresses.",
+      "entity_code": "NC-300",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-321": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official project proposed ITI component; do not conflate with actual ITI services elsewhere.",
+      "entity_code": "NC-321",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-291": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Historic plan P3 investment-zone code; no parcel or tenant validation.",
+      "entity_code": "NC-291",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-283": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Historic master-plan land-use X01 only. Not proof of an operating campus or same as Knowledge City.",
+      "entity_code": "NC-283",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-289": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Historic plan P1 investment-zone code; no parcel or tenant validation.",
+      "entity_code": "NC-289",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-319": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Presidency identifies drama/performance theatre (~630 seats); independent entrance unknown.",
+      "entity_code": "NC-319",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-299": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Master-plan land-use label CO; not proof court relocated or accepts visitors.",
+      "entity_code": "NC-299",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-296": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Planning allocation X07; no event venue public hours verified.",
+      "entity_code": "NC-296",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-304": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Government report refers to a planned hotel; brand, opening and public booking not confirmed.",
+      "entity_code": "NC-304",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-282": {
+      "operational_status": "Unknown",
+      "evidence_scope": "National project lists Sports City; exact facilities and operating access need separate checks.",
+      "entity_code": "NC-282",
+      "source_license": "Official factual reference; source link only, no copied master-plan artwork."
+    },
+    "NC-288": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Master-plan CP5 allocation only; no confirmed venue/service.",
+      "entity_code": "NC-288",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-305": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Government report describes 70-classroom school project; may overlap Wycombe Abbey school, identity unresolved: do not merge or publish.",
+      "entity_code": "NC-305",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-294": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Planning allocation for medical district A; no hospital services verified.",
+      "entity_code": "NC-294",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-307": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Cairo Governorate lists station on opened East Nile Monorail. Exact platform entrance and live schedules not validated.",
+      "entity_code": "NC-307",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-308": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Named station in official government list, no field entrance QA.",
+      "entity_code": "NC-308",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-315": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Presidency identifies art museum; identity, exhibits and current access require confirmation.",
+      "entity_code": "NC-315",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-323": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official project names innovation building; tenant and current operating status unverified.",
+      "entity_code": "NC-323",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-311": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official station-name list; visitor entrance and mosque link unverified.",
+      "entity_code": "NC-311",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-322": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Official project proposed NTI component; no evidence of visitor services at specific building.",
+      "entity_code": "NC-322",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-284": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Master-plan CP1 park allocation only; current construction/access unknown.",
+      "entity_code": "NC-284",
+      "source_license": "Source facts only; link attribution, no copied graphics."
+    },
+    "NC-313": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Presidency identifies planned/equipped Capital Library and heritage collections. Opening hours and library access unknown.",
+      "entity_code": "NC-313",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-316": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Presidency identifies currency museum in cultural complex; public operating status unknown.",
+      "entity_code": "NC-316",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-318": {
+      "operational_status": "Unknown",
+      "evidence_scope": "Presidency identifies music venue (~1200 seats); may be within Opera complex, relation to verify.",
+      "entity_code": "NC-318",
+      "source_license": "Official facts summarized; source link only."
+    },
+    "NC-346": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Navigation",
+      "verification_method": "Web Source"
+    },
+    "NC-336": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Operations",
+      "verification_method": "Web Source"
+    },
+    "NC-334": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Scope",
+      "verification_method": "Web Source"
+    },
+    "NC-328": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-339": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-337": {
+      "entity_subtype": "Bank branch",
+      "contact_attribution": "General operator",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Navigation",
+      "evidence_scope": "QNB official branch network identifies St Regis / Masa Capital Plaza Mall branch, unit GB04 in New Capital, separate from 26 Apr 2026 second QNB branch in Financial District. Customer admission to mall/hotel premises, current hours and exact entrance not independently checked.",
+      "verification_method": "Web Source"
+    },
+    "NC-349": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-335": {
+      "entity_subtype": "Public counter",
+      "contact_attribution": "Institutional general",
+      "operational_status": "Unknown",
+      "audit_state": "Operator confirmation needed",
+      "visitor_release_gate": "Hold - Operations",
+      "verification_method": "Web Source"
+    },
+    "NC-330": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Navigation",
+      "verification_method": "Web Source"
+    },
+    "NC-341": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-347": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Navigation",
+      "verification_method": "Web Source"
+    },
+    "NC-325": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Scope",
+      "map_evidence_class": "Visitor entrance unverified",
+      "verification_method": "Web Source",
+      "relation_evidence": "05.4 Regus first-party Pioneer Plaza centre, BrandLift office 148/floor 1 and A&G office 401/floor 4 and archived ITDA registry candidates are separate evidence classes. Some Regus pages taxonomically say New Cairo, other operator pages say New Capital MU23 A10; correct geolocation remains unverified."
+    },
+    "NC-344": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Scope",
+      "verification_method": "Web Source"
+    },
+    "NC-333": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Scope",
+      "verification_method": "Web Source"
+    },
+    "NC-326": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Navigation",
+      "verification_method": "Web Source"
+    },
+    "NC-327": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Scope",
+      "verification_method": "Web Source"
+    },
+    "NC-345": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-343": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-329": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Navigation",
+      "verification_method": "Web Source"
+    },
+    "NC-350": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-324": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-331": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Navigation",
+      "verification_method": "Web Source"
+    },
+    "NC-340": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-332": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Navigation",
+      "verification_method": "Web Source"
+    },
+    "NC-348": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Hold - Navigation",
+      "verification_method": "Web Source"
+    },
+    "NC-342": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
+    },
+    "NC-338": {
+      "operational_status": "Unknown",
+      "visitor_release_gate": "Info Only - No Directions",
+      "verification_method": "Web Source"
     }
   }
 }
