@@ -6,6 +6,7 @@ import { validateDataset } from './validate.mjs';
 import { validatePublishedAgainstApprovals } from './notion-publisher.mjs';
 import { auditBuiltUx } from './ux-audit.mjs';
 import { buildDetailRoutes } from './static-detail-routes.mjs';
+import { auditPublication } from './publish-qa.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 // Execute pure business-rule, Maps, relationship and UX-contract regressions
@@ -89,6 +90,9 @@ for(const [id, details] of Object.entries(evidenceDetails.records)){
 }
 const detailCounts = buildDetailRoutes(dist, exploration, alameinRecords);
 console.log('Record-specific analytics routes:', detailCounts);
+const publicationAudit = auditPublication(dist,exploration,alameinRecords);
+if(publicationAudit.errors.length){console.error('CG-PUBLISH-02 acceptance gate failed:\\n'+publicationAudit.errors.join('\\n'));process.exit(1);}
+console.log('CG-PUBLISH-02 route and privacy gate passed:',publicationAudit.capital,'capital details,',publicationAudit.alamein,'Alamein details.');
 const uxProblems = auditBuiltUx(dist);
 if (uxProblems.length) {
   console.error('UX acceptance gate failed:\n'+uxProblems.join('\n'));
