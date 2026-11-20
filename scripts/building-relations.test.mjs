@@ -11,10 +11,10 @@ const places=canonicalizePlaces(raw.places);
 test('CG-MUX-07 curated relationships map only documented buildings and real places',()=>{
   assert.equal(raw.mode,'exploration');
   assert.equal(approved.mode,'production');
-  assert.equal(BUILDING_RELATIONSHIPS.length,8);
+  assert.equal(BUILDING_RELATIONSHIPS.length,12);
   const groups=curatedBuildings(places);
   assert.equal(groups.length,BUILDING_RELATIONSHIPS.length);
-  assert.equal(groups.reduce((sum,g)=>sum+g.linked.length,0),9);
+  assert.equal(groups.reduce((sum,g)=>sum+g.linked.length,0),14);
   for (const g of groups) {
     assert.equal(g.building.kind,'Building');
     assert.ok(g.building.source_url);
@@ -34,6 +34,10 @@ test('CG-MUX-07 does not equate NI-1 and N1 or assert occupancy from general bui
   assert.equal(buildingForPlace(places,'NC-120'),undefined);
   assert.equal(buildingGroup(places,'NC-12').linked[0].id,'NC-64');
   assert.equal(buildingGroup(places,'NC-105').status,'restricted-access');
+  assert.deepEqual(buildingGroup(places,'NC-129').linked.map(p=>p.id),['NC-50']);
+  assert.deepEqual(buildingGroup(places,'NC-133').linked.map(p=>p.id),['NC-52','NC-243']);
+  assert.deepEqual(buildingGroup(places,'NC-134').linked.map(p=>p.id),['NC-43']);
+  assert.deepEqual(buildingGroup(places,'NC-132').linked.map(p=>p.id),['NC-14']);
 });
 test('CG-MUX-07 never mutates the source catalogue or upgrades visitor admission',()=>{
   const before=JSON.stringify(places);
