@@ -45,8 +45,8 @@ test('CG-PUBLISH-05 permits only explicitly approved, eligible record under perm
   assert.match(readFileSync(join(dir,'places/nc-43-explore.html'),'utf8'),/rel="canonical"/);
   assert.match(readFileSync(join(dir,'places/nc-44-explore.html'),'utf8'),/noindex,nofollow/);
   const headers=readFileSync(join(dir,'_headers'),'utf8');
-  assert.ok(headers.startsWith('/*\\n  X-Content-Type-Options: nosniff\\n'));
-  assert.ok(headers.includes('/data/*\\n  X-Robots-Tag: noindex'));
+  assert.ok(headers.startsWith(['/*','  X-Content-Type-Options: nosniff',''].join(String.fromCharCode(10))));
+  assert.ok(headers.includes(['/data/*','  X-Robots-Tag: noindex'].join(String.fromCharCode(10))));
  }finally{rmSync(dir,{recursive:true,force:true})}
 });
 test('CG-PUBLISH-05 does not accept indexing approval for a held record',()=>{
