@@ -22,7 +22,7 @@ try {
       if(!id)$('buildingJump').append(link(group.building.name_ar+' ('+group.linked.length+')','#building-'+group.buildingId,'building-jump'));
       const section=make('section','building-group');
       section.id='building-'+group.buildingId;
-      const title=make('h2');title.append(link(group.building.name_ar,'explore-place.html?slug='+encodeURIComponent(group.building.slug)));
+      const title=make('h2');title.append(link(group.building.name_ar,'places/'+encodeURIComponent(group.building.slug)+'.html'));
       const intro=make('div','building-group__intro');
       intro.append(title,make('p','building-group__address',group.building.address));
       intro.append(make('span','building-group__precision','دقة العنوان: '+(group.building.address_precision==='Building Confirmed'?'المبنى محدد والمدخل غير مؤكد':group.building.address_precision==='Floor Confirmed'?'الطابق مسجل، لكن المدخل غير مؤكد':'المنطقة معروفة، المدخل غير مثبت')));
@@ -35,14 +35,14 @@ try {
         const item=make('article','building-associated__item');
         const head=make('div','building-associated__head');
         head.append(make('span','building-associated__kind',place.kind==='Bank'?'جهة مصرفية':place.kind==='Authority'?'هيئة أو جهة':place.kind==='Company'?'شركة أو منفذ':'جهة'));
-        const h=make('h3');h.append(link(place.name_ar,'explore-place.html?slug='+encodeURIComponent(place.slug)));head.append(h);
+        const h=make('h3');h.append(link(place.name_ar,'places/'+encodeURIComponent(place.slug)+'.html'));head.append(h);
         head.append(make('p','building-associated__address',place.address));
         const states=make('div','building-associated__states');
         states.append(make('span','source-status '+(place.verification==='Research'?'source-status--research':'source-status--source'),sourceStatusLabel(place)));
         states.append(make('span','visit-status visit-status--'+(place.public_access==='Walk-in Confirmed'?'walkin':place.public_access==='By Appointment'?'appointment':'unknown'),visitStatusLabel(place)));
         head.append(states);
         const actions=make('div','building-associated__actions');
-        actions.append(link('البيانات وشروط الزيارة ←','explore-place.html?slug='+encodeURIComponent(place.slug),'building-associated__action'));
+        actions.append(link('البيانات وشروط الزيارة ←','places/'+encodeURIComponent(place.slug)+'.html','building-associated__action'));
         if(place.source_url?.startsWith('https://')){const src=link('مصدر عنوان الجهة',place.source_url,'building-source');src.target='_blank';src.rel='noopener noreferrer';actions.append(src);}
         item.append(head,actions);list.append(item);
       }
