@@ -10,6 +10,7 @@ import { auditPublication } from './publish-qa.mjs';
 import { launchReadiness } from './launch-readiness.mjs';
 import { assessSEO } from './seo-release.mjs';
 import { BUILDING_RELATIONSHIPS } from './building-relations.mjs';
+import { createSearchPlan, applySearchPlan } from './search-launch.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 // Execute pure business-rule, Maps, relationship and UX-contract regressions
@@ -19,7 +20,8 @@ execFileSync(process.execPath, ['--test', '--test-concurrency=1',
   'scripts/catalog.test.mjs', 'scripts/maps.test.mjs',
   'scripts/service-pathways.test.mjs', 'scripts/building-relations.test.mjs',
   'scripts/measurement.test.mjs', 'scripts/ux-audit.test.mjs',
-  'scripts/static-detail-routes.test.mjs', 'scripts/seo-release.test.mjs'
+  'scripts/static-detail-routes.test.mjs', 'scripts/seo-release.test.mjs',
+  'scripts/search-launch.test.mjs'
 ], { cwd: root, stdio: 'inherit' });
 const dataset = JSON.parse(readFileSync(join(root, 'data/published.json'), 'utf8'));
 const exploration = JSON.parse(readFileSync(join(root, 'data/exploration.json'), 'utf8'));
@@ -120,6 +122,11 @@ writeFileSync(join(dist,'robots.txt'),['User-agent: *','Allow: /','# Pre-launch:
 console.log('CG-PUBLISH-03 Notion sync and indexing hold verified:',launchReport.sync.matched_detail_rows,'of',launchReport.sync.notion_master_rows);
 const detailCounts = buildDetailRoutes(dist, exploration, alameinRecords);
 console.log('Record-specific analytics routes:', detailCounts);
+const searchConfig=JSON.parse(readFileSync(join(root,'data/search-launch-config.json'),'utf8'));
+const searchPlan=createSearchPlan(searchConfig,seoReport);
+const searchReport=applySearchPlan(dist,searchPlan);
+console.log('CG-PUBLISH-05 canonical/indexing gate:',searchReport.status, 'approved:',searchReport.approved_count);
+
 const publicationAudit = auditPublication(dist,exploration,alameinRecords);
 if(publicationAudit.errors.length){console.error('CG-PUBLISH-02 acceptance gate failed:\\n'+publicationAudit.errors.join('\\n'));process.exit(1);}
 console.log('CG-PUBLISH-02 route and privacy gate passed:',publicationAudit.capital,'capital details,',publicationAudit.alamein,'Alamein details.');
