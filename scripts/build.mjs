@@ -7,6 +7,7 @@ import { validatePublishedAgainstApprovals } from './notion-publisher.mjs';
 import { auditBuiltUx } from './ux-audit.mjs';
 import { buildDetailRoutes } from './static-detail-routes.mjs';
 import { auditPublication } from './publish-qa.mjs';
+import { launchReadiness } from './launch-readiness.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 // Execute pure business-rule, Maps, relationship and UX-contract regressions
@@ -88,6 +89,14 @@ for(const [id, details] of Object.entries(evidenceDetails.records)){
  if(Object.keys(details).some(key=>!allowedDetails.has(key))) throw Error('Unsafe research detail '+id);
  if(Object.values(details).some(v=>typeof v!=='string'||v.length>5000)) throw Error('Invalid research detail '+id);
 }
+const launchReport=launchReadiness(exploration,evidenceDetails,alameinRecords);
+if(launchReport.validation.missing_source_ids.length || launchReport.validation.unsafe_direction_ids.length || launchReport.validation.orphan_detail_ids.length || launchReport.sync.missing_detail_rows.length) {
+ console.error('CG-PUBLISH-03 data integrity gate failed',launchReport.validation,launchReport.sync.missing_detail_rows);
+ process.exit(1);
+}
+writeFileSync(join(dist,'data','launch-readiness.json'),JSON.stringify(launchReport,null,2));
+writeFileSync(join(dist,'robots.txt'),'User-agent: *\\nDisallow: /\\n# CG-PUBLISH-03: indexing held pending editorial release approval\\n');
+console.log('CG-PUBLISH-03 Notion sync and indexing hold verified:',launchReport.sync.matched_detail_rows,'of',launchReport.sync.notion_master_rows);
 const detailCounts = buildDetailRoutes(dist, exploration, alameinRecords);
 console.log('Record-specific analytics routes:', detailCounts);
 const publicationAudit = auditPublication(dist,exploration,alameinRecords);
