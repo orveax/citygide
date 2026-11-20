@@ -113,10 +113,10 @@ const sitemapPreview=['<?xml version="1.0" encoding="UTF-8"?>',
  '<!-- CG-PUBLISH-04 PREVIEW ONLY: all pages retain noindex; do not submit this file to Search Console until a permanent domain and editorial approvals exist. -->',
  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
  ...seoReport.candidates.map(p=>'  <url><loc>https://citygide.pages.dev'+p.path+'</loc></url>'),
- '</urlset>'].join('\\n')+'\\n';
+ '</urlset>'].join(String.fromCharCode(10))+String.fromCharCode(10);
 writeFileSync(join(dist,'sitemap-preview.xml'),sitemapPreview);
 console.log('CG-PUBLISH-04 SEO review candidates:',seoReport.candidates.length,'; Notion relation audit groups:',relationshipAudit.curated_building_groups,'; indexing is HOLD.');
-writeFileSync(join(dist,'robots.txt'),'User-agent: *\\nAllow: /\\n# Pre-launch: all HTML pages and response headers carry noindex; crawling must remain allowed so crawlers can see that directive.\\n');
+writeFileSync(join(dist,'robots.txt'),['User-agent: *','Allow: /','# Pre-launch: HTML meta and X-Robots-Tag noindex remain active. Crawlers must read them.',''].join(String.fromCharCode(10)));
 console.log('CG-PUBLISH-03 Notion sync and indexing hold verified:',launchReport.sync.matched_detail_rows,'of',launchReport.sync.notion_master_rows);
 const detailCounts = buildDetailRoutes(dist, exploration, alameinRecords);
 console.log('Record-specific analytics routes:', detailCounts);
