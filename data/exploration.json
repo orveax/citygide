@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "mode": "exploration",
-  "checked_at": "2026-11-19",
+  "checked_at": "2026-11-20",
   "notice": "Exploratory directory based on source-scoped research (350 canonical records). Inclusion is not visitor-entry approval or operational verification. Only individually approved Published records are formally released. Unverified directions, visitor hours and entrances are withheld.",
   "places": [
     {
@@ -11,7 +11,7 @@
       "name_en": "",
       "aliases": [],
       "kind": "Authority",
-      "role": "Unknown",
+      "role": "Administrative HQ",
       "zone": "Government District",
       "address": "بجوار مبنى وزارة المالية، الحي الحكومي، العاصمة الإدارية الجديدة",
       "building_code": "",
@@ -413,7 +413,7 @@
       "website": "https://wmra.gov.eg/",
       "source_url": "https://wmra.gov.eg/ar/contact-us/",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-07",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -434,7 +434,7 @@
       "address": "أمام مبنى C التابع لوزارة الخارجية بالعاصمة الإدارية",
       "building_code": "C (أمام المبنى)",
       "address_precision": "Building Confirmed",
-      "service_type": "تصديقات المحررات والمعاملات القنصلية",
+      "service_type": "مكتب تصديقات متنقل أمام مبنى C بوزارة الخارجية؛ افتتاح 3 مارس 2026؛ المصدر الرسمي يقول يقدم الخدمة لموظفي العاصمة وسكانها، خلال مواعيد العمل الرسمية دون ساعات رقمية.",
       "service_availability": "On-site Confirmed",
       "public_access": "Unknown",
       "visitor_hours": "",
@@ -444,7 +444,7 @@
       "website": "",
       "source_url": "https://www.mfa.gov.eg/ar/Ministers/Details/MinistryNews/5659",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-06",
+      "last_checked": "2026-11-20",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -519,7 +519,7 @@
       "name_en": "",
       "aliases": [],
       "kind": "Authority",
-      "role": "Unknown",
+      "role": "Administrative HQ",
       "zone": "Government District",
       "address": "الحي الحكومي، العاصمة الإدارية الجديدة",
       "building_code": "",
@@ -1016,7 +1016,7 @@
       "kind": "Bank",
       "role": "Public Service Point",
       "zone": "Financial District",
-      "address": "العنوان غير منشور — قيد التحقق",
+      "address": "القطعة A1-11 وفق التقرير السنوي للبنك (وتظهر بصيغة 1A-11 في دليل الفروع المجهزة بمنحدرات)، منطقة البنوك، الحي المالي، العاصمة الإدارية الجديدة، مصر. مدخل العملاء ورابط الملاحة غير مُتحقق منهما.",
       "building_code": "",
       "address_precision": "District Only",
       "service_type": "خدمات مصرفية للأفراد والشركات وحلول رقمية، وفق بيان افتتاح الفرع 26 أبريل 2026",
@@ -1029,7 +1029,7 @@
       "website": "https://qnb.com.eg",
       "source_url": "https://qnb.com.eg/sites/qnb/qnbegypt/ar/arcapital.html",
       "source_category": "Official Business",
-      "last_checked": "2026-11-06",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1051,7 +1051,7 @@
       "public_access": "Unknown",
       "visitor_hours": "",
       "office_hours": "",
-      "phone": "02-20563229",
+      "phone": "02-20563229 / 02-20563225",
       "email": "newcapital@faisalbank.com.eg",
       "website": "https://www.faisalbank.com.eg",
       "source_url": "https://www.faisalbank.com.eg/-/media/Files/Reports/annual_report2025_ar.ashx",
@@ -1118,7 +1118,7 @@
       "website": "",
       "source_url": "https://cabinet.gov.eg/News/Details/86414",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-08",
+      "last_checked": "2026-11-20",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1145,7 +1145,7 @@
       "website": "https://www.gahar.gov.eg/ar/contact",
       "source_url": "https://www.gahar.gov.eg/ar/contact",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-07",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1199,7 +1199,7 @@
       "website": "",
       "source_url": "https://www.nat.gov.eg/ContactUsAr.aspx",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-06",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1248,8 +1248,8 @@
       "public_access": "Unknown",
       "visitor_hours": "",
       "office_hours": "",
-      "phone": "",
-      "email": "",
+      "phone": "(+202) 20546600-1-2-3-4",
+      "email": "info@idsc.gov.eg",
       "website": "",
       "source_url": "https://idsc.gov.eg/upload/DocumentLibraryIssues/AttachmentA/10218/6.pdf",
       "source_category": "Official Authority",
@@ -1307,7 +1307,7 @@
       "website": "https://banquemisr.com/Home/ABOUT%20US/Locations?GovernateId=&sc_lang=ar-EG",
       "source_url": "https://banquemisr.com/ar-EG/Home/SMEs/Retail-Banking/Accounts-And-Deposits/Savings-Accounts/Details/The-branches-equipped-to-receive-distinguished-capabilities",
       "source_category": "Official Business",
-      "last_checked": "2026-11-07",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1361,7 +1361,7 @@
       "website": "https://caoa.gov.eg/",
       "source_url": "https://caoa.gov.eg/WebForms/contactUs.aspx",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-06",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1383,7 +1383,7 @@
       "public_access": "Unknown",
       "visitor_hours": "",
       "office_hours": "",
-      "phone": "",
+      "phone": "19623",
       "email": "",
       "website": "https://www.nbe.com.eg/",
       "source_url": "https://www.nbe.com.eg/AssetsManager/379a5a68-35cc-4234-af38-d1ddf823b12d.pdf",
@@ -1438,11 +1438,11 @@
       "visitor_hours": "",
       "office_hours": "",
       "phone": "",
-      "email": "",
+      "email": "info@eha.gov.eg",
       "website": "",
       "source_url": "https://eha.gov.eg/ar/contact-us/",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-06",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1469,7 +1469,7 @@
       "website": "https://ldp.gov.eg/",
       "source_url": "https://ldp.gov.eg/اتصل-بنا/",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-06",
+      "last_checked": "2026-11-08",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1492,11 +1492,11 @@
       "visitor_hours": "",
       "office_hours": "",
       "phone": "",
-      "email": "",
+      "email": "gothi_gothi@gothi.gov.eg",
       "website": "",
       "source_url": "https://gothi.gov.eg/?page_id=1003",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-06",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1545,12 +1545,12 @@
       "public_access": "Unknown",
       "visitor_hours": "",
       "office_hours": "",
-      "phone": "",
+      "phone": "19888",
       "email": "",
       "website": "",
       "source_url": "https://www.banquemisr.com/ar-EG/SMEs/Retail-Banking/Accounts-And-Deposits/Savings-Accounts/Details/The-branches-equipped-to-receive-distinguished-capabilities",
       "source_category": "Official Business",
-      "last_checked": "2026-11-08",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -1712,7 +1712,7 @@
       "website": "https://customs.gov.eg/",
       "source_url": "https://customs.gov.eg/Upload/ECAAdminace/ECAAdminace527022542.pdf",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-06",
+      "last_checked": "2026-11-08",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -2270,7 +2270,8 @@
       "name_en": "Market Zone — Audaz Mall HQ",
       "aliases": [
         "Market Zone",
-        "ماركت زون"
+        "ماركت زون",
+        "Market Zone — Audaz Mall HQ"
       ],
       "kind": "Company",
       "role": "Administrative HQ",
@@ -2300,7 +2301,8 @@
       "name_en": "EDGE Innovation Center — New Capital",
       "aliases": [
         "EDGE Innovation Center",
-        "إيدج للابتكار"
+        "إيدج للابتكار",
+        "EDGE Innovation Center — New Capital"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2330,7 +2332,8 @@
       "name_en": "Raya Smart Buildings — C5 Management Assignment",
       "aliases": [
         "Raya Smart Buildings",
-        "راية للمباني الذكية"
+        "راية للمباني الذكية",
+        "Raya Smart Buildings — C5 Management Assignment"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2360,7 +2363,8 @@
       "name_en": "SCAS Spaces — NAC Site Under Verification",
       "aliases": [
         "SCAS Spaces",
-        "سكاس سبيسز"
+        "سكاس سبيسز",
+        "SCAS Spaces — NAC Site Under Verification"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2390,7 +2394,8 @@
       "name_en": "Gates Developments — Audaz Project",
       "aliases": [
         "Gates Developments",
-        "جيتس للتطوير"
+        "جيتس للتطوير",
+        "Gates Developments — Audaz Project"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2420,7 +2425,8 @@
       "name_en": "New Plan Developments — ELEVEN Project",
       "aliases": [
         "New Plan Developments",
-        "نيو بلان للتطوير"
+        "نيو بلان للتطوير",
+        "New Plan Developments — ELEVEN Project"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2450,7 +2456,8 @@
       "name_en": "Dominar Developments — Business Gate Project",
       "aliases": [
         "Dominar Developments",
-        "دومينار للتطوير"
+        "دومينار للتطوير",
+        "Dominar Developments — Business Gate Project"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2480,7 +2487,8 @@
       "name_en": "A.M.A Developments — Quantum Mall",
       "aliases": [
         "A.M.A Developments",
-        "إيه إم إيه للتطوير"
+        "إيه إم إيه للتطوير",
+        "A.M.A Developments — Quantum Mall"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2510,7 +2518,8 @@
       "name_en": "JADEER Group — OBEX Project",
       "aliases": [
         "JADEER Group",
-        "جدير جروب"
+        "جدير جروب",
+        "JADEER Group — OBEX Project"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2540,7 +2549,8 @@
       "name_en": "Rwabet Developments — SELA Business Hub",
       "aliases": [
         "Rwabet Developments",
-        "روابط للتطوير"
+        "روابط للتطوير",
+        "Rwabet Developments — SELA Business Hub"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2570,7 +2580,8 @@
       "name_en": "Pyramids Developments — Grand Square Mall",
       "aliases": [
         "Pyramids Developments",
-        "بيراميدز للتطوير"
+        "بيراميدز للتطوير",
+        "Pyramids Developments — Grand Square Mall"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2600,7 +2611,8 @@
       "name_en": "Allianz Egypt — Planned Financial District HQ",
       "aliases": [
         "Allianz Egypt",
-        "أليانز مصر"
+        "أليانز مصر",
+        "Allianz Egypt — Planned Financial District HQ"
       ],
       "kind": "Company",
       "role": "Administrative HQ",
@@ -2630,7 +2642,8 @@
       "name_en": "El Batal Developments — Rock Capital 1",
       "aliases": [
         "El Batal Developments",
-        "البطل للتطوير"
+        "البطل للتطوير",
+        "El Batal Developments — Rock Capital 1"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2660,7 +2673,8 @@
       "name_en": "T Developments — T19 Business Complex",
       "aliases": [
         "T Developments",
-        "تي للتطوير"
+        "تي للتطوير",
+        "T Developments — T19 Business Complex"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -2690,7 +2704,8 @@
       "name_en": "Better Home — Cairo Business Plaza Project",
       "aliases": [
         "Better Home",
-        "بيتر هوم"
+        "بيتر هوم",
+        "Better Home — Cairo Business Plaza Project"
       ],
       "kind": "Company",
       "role": "Facility",
@@ -3027,7 +3042,7 @@
       "website": "https://pyramidsdevelopments.com/new/new.php?id=1",
       "source_url": "https://pyramidsdevelopments.com/new/new.php?id=1",
       "source_category": "Official Business",
-      "last_checked": "2026-11-07",
+      "last_checked": "2026-11-20",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -3205,7 +3220,7 @@
       "website": "https://eeaa.gov.eg/",
       "source_url": "https://eeaa.gov.eg/ContactUs/Index",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-07",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -3946,7 +3961,7 @@
       "website": "https://qalam.info/",
       "source_url": "https://qalam.info/contact/",
       "source_category": "Official Business",
-      "last_checked": "2026-11-07",
+      "last_checked": "2026-11-20",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -3973,7 +3988,7 @@
       "website": "",
       "source_url": "https://yellowpages.com.eg/ar/profile/%D9%85%D9%83%D8%AA%D8%A8%D8%A7%D8%AA-%D8%A8%D8%B1%D9%86%D8%A7%D8%B3%D9%88%D8%B3/134544",
       "source_category": "Secondary News",
-      "last_checked": "2026-11-07",
+      "last_checked": "2026-11-20",
       "verification": "Research",
       "directions_url": "",
       "verified_entrance": false
@@ -5210,7 +5225,7 @@
       "public_access": "Unknown",
       "visitor_hours": "",
       "office_hours": "",
-      "phone": "",
+      "phone": "19700",
       "email": "",
       "website": "https://qnb.com/",
       "source_url": "https://qnb.com/sites/qnb/qnbegypt/document/ar/arQNBATMS",
@@ -5723,12 +5738,12 @@
       "public_access": "Unknown",
       "visitor_hours": "",
       "office_hours": "",
-      "phone": "",
-      "email": "",
+      "phone": "15301",
+      "email": "Info@edaegypt.gov.eg",
       "website": "https://edaegypt.gov.eg/",
       "source_url": "https://edaegypt.gov.eg/ar/عن-الهيئة/تواصل-معنا/",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-08",
+      "last_checked": "2026-11-20",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -6754,7 +6769,7 @@
       "website": "https://www.qizegypt.gov.eg",
       "source_url": "https://www.qizegypt.gov.eg/Content/Site/Library/14451206104053198Certificates-Renewal%28qizegypt.gov.eg%29.pdf",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-08",
+      "last_checked": "2026-11-20",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -6779,9 +6794,9 @@
       "phone": "",
       "email": "",
       "website": "https://www.imc-egypt.org/",
-      "source_url": "https://www.imc-egypt.org/ar/public-tenders/item/1569-49-2026-b-813-cl-eg-1004.html",
+      "source_url": "https://www.imc-egypt.org/ar/public-tenders/item/1576-fw-5-2026-competitiveness.html",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-08",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -7217,7 +7232,7 @@
       "website": "https://www.eeaa.gov.eg/",
       "source_url": "https://www.eeaa.gov.eg/ContactUs/3/index",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-08",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -7242,12 +7257,12 @@
       "public_access": "Unknown",
       "visitor_hours": "",
       "office_hours": "",
-      "phone": "0220532502",
+      "phone": "0220532502 / 0220532503 / 0220532504",
       "email": "emergency@moenv.gov.eg",
       "website": "https://www.eeaa.gov.eg/",
       "source_url": "https://www.eeaa.gov.eg/ContactUs/2/index",
       "source_category": "Official Authority",
-      "last_checked": "2026-11-08",
+      "last_checked": "2026-11-19",
       "verification": "Source Confirmed",
       "directions_url": "",
       "verified_entrance": false
@@ -7260,7 +7275,8 @@
       "aliases": [
         "الجهاز المركزي للتعمير",
         "Central Agency for Reconstruction",
-        "Central Reconstruction Authority"
+        "Central Reconstruction Authority",
+        "الجهاز المركزي للتعمير; Central Agency for Reconstruction; Central Reconstruction Authority"
       ],
       "kind": "Authority",
       "role": "Administrative HQ",
@@ -7291,7 +7307,8 @@
       "aliases": [
         "المقر الرئيسي لبنك QNB بالعاصمة",
         "QNB New Capital Head Office",
-        "QNB Egypt Headquarters"
+        "QNB Egypt Headquarters",
+        "المقر الرئيسي لبنك QNB بالعاصمة; QNB New Capital Head Office; QNB Egypt Headquarters"
       ],
       "kind": "Bank",
       "role": "Administrative HQ",
@@ -7389,20 +7406,20 @@
       "kind": "Company",
       "role": "Administrative HQ",
       "zone": "Financial District",
-      "address": "مول أوداز، A2-30 حسب الدليل المهني، حي المال والأعمال، العاصمة الإدارية الجديدة؛ تعيين الوحدة يحتاج تأكيدًا مباشرًا",
-      "building_code": "Audaz Mall (A2-30 unverified unit)",
+      "address": "مول أوداز، الوحدة A2-30، حي المال والأعمال، العاصمة الإدارية الجديدة — عنوان معلن على الموقع الرسمي للمؤسسة؛ الاستقبال ومدخل الزوار غير مثبتين",
+      "building_code": "Audaz Mall — unit A2-30 (company-stated)",
       "address_precision": "Building Confirmed",
-      "service_type": "استشارات قانونية وتأسيس شركات وتحكيم؛ عنوان فرع منشور في دليل طرف ثالث",
+      "service_type": "استشارات قانونية وتأسيس شركات وصياغة عقود وتحكيم؛ العنوان ووسائل التواصل منشورة على موقع المؤسسة",
       "service_availability": "Unknown",
       "public_access": "Unknown",
       "visitor_hours": "",
       "office_hours": "",
       "phone": "+201101202331",
-      "email": "",
-      "website": "",
-      "source_url": "https://misrconnect.com/news/egypt-news/saad-el-din-law-firm-and-arbitration-in-the-new-administrative-capital-comprehensive-legal-services-for-businesses",
-      "source_category": "Secondary News",
-      "last_checked": "2026-11-08",
+      "email": "info@ibrahimsaadeldin.com",
+      "website": "https://ibrahimsaadeldin.com/",
+      "source_url": "https://ibrahimsaadeldin.com/تواصل-معنا/",
+      "source_category": "Official Business",
+      "last_checked": "2026-11-20",
       "verification": "Research",
       "directions_url": "",
       "verified_entrance": false
@@ -7497,7 +7514,9 @@
       "slug": "nc-268-explore",
       "name_ar": "الحي السكني الثالث R3",
       "name_en": "Residential District R3",
-      "aliases": [],
+      "aliases": [
+        "R3; الحي الثالث; كابيتال ريزيدنس; Capital Residence"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "R3",
@@ -7524,7 +7543,9 @@
       "slug": "nc-269-explore",
       "name_ar": "الحي الدبلوماسي (حي السفارات)",
       "name_en": "Diplomatic District (Embassies Quarter)",
-      "aliases": [],
+      "aliases": [
+        "حي السفارات; Embassy District; Diplomatic Quarter; EMB"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Diplomatic District",
@@ -7551,7 +7572,9 @@
       "slug": "nc-270-explore",
       "name_ar": "الحي السكني الأول R1",
       "name_en": "Residential District R1",
-      "aliases": [],
+      "aliases": [
+        "R1; الحي الأول"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "R1",
@@ -7578,7 +7601,9 @@
       "slug": "nc-271-explore",
       "name_ar": "الحي السكني الثاني R2",
       "name_en": "Residential District R2",
-      "aliases": [],
+      "aliases": [
+        "R2; الحي الثاني"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "R2",
@@ -7605,7 +7630,9 @@
       "slug": "nc-272-explore",
       "name_ar": "الحي السكني الرابع R4",
       "name_en": "Residential District R4",
-      "aliases": [],
+      "aliases": [
+        "R4; الحي الرابع"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "R4",
@@ -7632,7 +7659,9 @@
       "slug": "nc-273-explore",
       "name_ar": "الحي السكني الخامس R5",
       "name_en": "Residential District R5",
-      "aliases": [],
+      "aliases": [
+        "R5; الحي الخامس; جاردن سيتي الجديدة; New Garden City"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "R5",
@@ -7659,7 +7688,9 @@
       "slug": "nc-274-explore",
       "name_ar": "الحي السكني السادس R6",
       "name_en": "Residential District R6",
-      "aliases": [],
+      "aliases": [
+        "R6; الحي السادس"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "R6",
@@ -7686,7 +7717,9 @@
       "slug": "nc-275-explore",
       "name_ar": "الحي السكني السابع R7",
       "name_en": "Residential District R7",
-      "aliases": [],
+      "aliases": [
+        "R7; الحي السابع"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "R7",
@@ -7713,7 +7746,9 @@
       "slug": "nc-276-explore",
       "name_ar": "الحي السكني الثامن R8",
       "name_en": "Residential District R8",
-      "aliases": [],
+      "aliases": [
+        "R8; الحي الثامن"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "R8",
@@ -7740,7 +7775,9 @@
       "slug": "nc-277-explore",
       "name_ar": "حي المال والأعمال",
       "name_en": "Financial and Business District",
-      "aliases": [],
+      "aliases": [
+        "Financial District; الحي المالي; حي البنوك"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Financial District",
@@ -7767,7 +7804,9 @@
       "slug": "nc-278-explore",
       "name_ar": "منطقة الأعمال المركزية CBD",
       "name_en": "Central Business District (CBD)",
-      "aliases": [],
+      "aliases": [
+        "CBD; Central Business District; الأبراج المركزية; البرج الأيقوني"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "CBD",
@@ -7794,7 +7833,9 @@
       "slug": "nc-279-explore",
       "name_ar": "النهر الأخضر — محور الحدائق المركزية",
       "name_en": "Green River / Central Park Corridor",
-      "aliases": [],
+      "aliases": [
+        "Green River; النهر الأخضر; Central Park"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Green River / Central Parks",
@@ -7821,7 +7862,9 @@
       "slug": "nc-280-explore",
       "name_ar": "مدينة الفنون والثقافة",
       "name_en": "City of Arts and Culture",
-      "aliases": [],
+      "aliases": [
+        "الفنون والثقافة; Opera District; دار الأوبرا الجديدة"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Arts & Culture City",
@@ -7848,7 +7891,9 @@
       "slug": "nc-281-explore",
       "name_ar": "مدينة المعرفة",
       "name_en": "Knowledge City",
-      "aliases": [],
+      "aliases": [
+        "Knowledge City; مدينة المعرفة والابتكار"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Knowledge City",
@@ -7875,7 +7920,9 @@
       "slug": "nc-282-explore",
       "name_ar": "المدينة الرياضية",
       "name_en": "Sports City",
-      "aliases": [],
+      "aliases": [
+        "Sports City; المدينة الأولمبية"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Sports City",
@@ -7902,7 +7949,9 @@
       "slug": "nc-283-explore",
       "name_ar": "المدينة الأكاديمية X01 — منطقة مخططة",
       "name_en": "Academic City Planning Zone X01",
-      "aliases": [],
+      "aliases": [
+        "X01; Academic City; المدينة الأكاديمية"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Academic City X01",
@@ -7929,7 +7978,9 @@
       "slug": "nc-284-explore",
       "name_ar": "حديقة التاريخ والبوابات CP1 — نطاق مخطط",
       "name_en": "History & Gateway Park Zone CP1",
-      "aliases": [],
+      "aliases": [
+        "CP1; History and Gateway Park"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Green River / Central Parks",
@@ -7956,7 +8007,9 @@
       "slug": "nc-285-explore",
       "name_ar": "حديقة الصحة والاستدامة CP2 — نطاق مخطط",
       "name_en": "Health & Sustainability Park Zone CP2",
-      "aliases": [],
+      "aliases": [
+        "CP2; Health and Sustainability Park"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Green River / Central Parks",
@@ -7983,7 +8036,9 @@
       "slug": "nc-286-explore",
       "name_ar": "الحديقة المدنية CP3 — نطاق مخطط",
       "name_en": "Civic Park Zone CP3",
-      "aliases": [],
+      "aliases": [
+        "CP3; Civic Park"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Green River / Central Parks",
@@ -8010,7 +8065,9 @@
       "slug": "nc-287-explore",
       "name_ar": "الحديقة الدولية CP4 — نطاق مخطط",
       "name_en": "International Park Zone CP4",
-      "aliases": [],
+      "aliases": [
+        "CP4; International Park"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Green River / Central Parks",
@@ -8037,7 +8094,9 @@
       "slug": "nc-288-explore",
       "name_ar": "حديقة العلوم والابتكار والتكنولوجيا CP5 — نطاق مخطط",
       "name_en": "Science, Innovation & Technology Park Zone CP5",
-      "aliases": [],
+      "aliases": [
+        "CP5; Science Innovation Technology Park"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Green River / Central Parks",
@@ -8064,7 +8123,9 @@
       "slug": "nc-289-explore",
       "name_ar": "النطاق الاستثماري P1 — منطقة مخططة",
       "name_en": "Investment Planning Zone P1",
-      "aliases": [],
+      "aliases": [
+        "P1; Investment Zone 1"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned P Sectors",
@@ -8091,7 +8152,9 @@
       "slug": "nc-290-explore",
       "name_ar": "النطاق الاستثماري P2 — منطقة مخططة",
       "name_en": "Investment Planning Zone P2",
-      "aliases": [],
+      "aliases": [
+        "P2; Investment Zone 2"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned P Sectors",
@@ -8118,7 +8181,9 @@
       "slug": "nc-291-explore",
       "name_ar": "النطاق الاستثماري P3 — منطقة مخططة",
       "name_en": "Investment Planning Zone P3",
-      "aliases": [],
+      "aliases": [
+        "P3; Investment Zone 3"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned P Sectors",
@@ -8145,7 +8210,9 @@
       "slug": "nc-292-explore",
       "name_ar": "منطقة المدينة الذكية X02 — تخطيط",
       "name_en": "Smart City Planning Zone X02",
-      "aliases": [],
+      "aliases": [
+        "X02; Smart City"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned X Sectors",
@@ -8172,7 +8239,9 @@
       "slug": "nc-293-explore",
       "name_ar": "المركز الحضري X03 — نطاق مخطط",
       "name_en": "Central Hub Planning Zone X03",
-      "aliases": [],
+      "aliases": [
+        "X03; Central Hub"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned X Sectors",
@@ -8199,7 +8268,9 @@
       "slug": "nc-294-explore",
       "name_ar": "منطقة المدينة الطبية A — X04",
       "name_en": "Medical City A Planning Zone X04",
-      "aliases": [],
+      "aliases": [
+        "X04; Medical City A"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned X Sectors",
@@ -8226,7 +8297,9 @@
       "slug": "nc-295-explore",
       "name_ar": "منطقة المدينة الطبية B — X05",
       "name_en": "Medical City B Planning Zone X05",
-      "aliases": [],
+      "aliases": [
+        "X05; Medical City B"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned X Sectors",
@@ -8253,7 +8326,9 @@
       "slug": "nc-296-explore",
       "name_ar": "منطقة المؤتمرات X07 — تخطيط",
       "name_en": "Conference Zone X07",
-      "aliases": [],
+      "aliases": [
+        "X07; Convention Centre"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned X Sectors",
@@ -8280,7 +8355,9 @@
       "slug": "nc-297-explore",
       "name_ar": "منطقة المعارض X09 — تخطيط",
       "name_en": "Expo Zone X09",
-      "aliases": [],
+      "aliases": [
+        "X09; Exhibition Area; Expo"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned X Sectors",
@@ -8307,7 +8384,9 @@
       "slug": "nc-298-explore",
       "name_ar": "منطقة مركز المعلومات X10 — تخطيط",
       "name_en": "Information Center Planning Zone X10",
-      "aliases": [],
+      "aliases": [
+        "X10; Information Centre"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned X Sectors",
@@ -8334,7 +8413,9 @@
       "slug": "nc-299-explore",
       "name_ar": "منطقة المحكمة الدستورية CO — تخطيط",
       "name_en": "Constitutional Court Planning Zone CO",
-      "aliases": [],
+      "aliases": [
+        "CO; Constitutional Court Plot"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Planned X Sectors",
@@ -8361,7 +8442,9 @@
       "slug": "nc-300-explore",
       "name_ar": "مجمّع المنظمات الأممية — الحي الدبلوماسي",
       "name_en": "United Nations Organizations Compound, Diplomatic District",
-      "aliases": [],
+      "aliases": [
+        "UN Compound; مجمع المنظمات الدولية; مقر الأمم المتحدة"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Diplomatic District",
@@ -8388,7 +8471,9 @@
       "slug": "nc-301-explore",
       "name_ar": "مدرسة وايكوم آبي — موقع الحي الدبلوماسي",
       "name_en": "Wycombe Abbey School Site, Diplomatic District",
-      "aliases": [],
+      "aliases": [
+        "Wycombe Abbey; وايكوم آبي; مدرسة دولية"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Diplomatic District",
@@ -8415,7 +8500,9 @@
       "slug": "nc-302-explore",
       "name_ar": "مقر البنك الأفريقي للتصدير والاستيراد — موقع العاصمة",
       "name_en": "Afreximbank Capital Premises, Diplomatic District Tour",
-      "aliases": [],
+      "aliases": [
+        "Afreximbank; African Export-Import Bank; البنك الأفريقي للتصدير والاستيراد"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Other",
@@ -8442,7 +8529,9 @@
       "slug": "nc-303-explore",
       "name_ar": "التجمعات السكنية بالحي الدبلوماسي — نطاق",
       "name_en": "Diplomatic District Residential Precinct",
-      "aliases": [],
+      "aliases": [
+        "سكن الحي الدبلوماسي; Diplomatic Residences"
+      ],
       "kind": "District",
       "role": "District",
       "zone": "Diplomatic District",
@@ -8469,7 +8558,9 @@
       "slug": "nc-304-explore",
       "name_ar": "مشروع الفندق بالحي الدبلوماسي — نطاق",
       "name_en": "Diplomatic District Hotel Development",
-      "aliases": [],
+      "aliases": [
+        "Diplomatic Hotel; فندق الحي الدبلوماسي"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Diplomatic District",
@@ -8496,7 +8587,9 @@
       "slug": "nc-305-explore",
       "name_ar": "مشروع المدرسة الدولية بالحي الدبلوماسي — نطاق",
       "name_en": "Diplomatic District International School Development",
-      "aliases": [],
+      "aliases": [
+        "International School Diplomatic District; مدرسة الحي الدبلوماسي"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Diplomatic District",
@@ -8523,7 +8616,9 @@
       "slug": "nc-306-explore",
       "name_ar": "مشروع النادي الرياضي بالحي الدبلوماسي — نطاق",
       "name_en": "Diplomatic District Sports Club Development",
-      "aliases": [],
+      "aliases": [
+        "Diplomatic Sports Club; النادي الدبلوماسي"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Diplomatic District",
@@ -8550,7 +8645,9 @@
       "slug": "nc-307-explore",
       "name_ar": "محطة مونوريل الحي السكني الأول R1",
       "name_en": "R1 Residential District Monorail Station",
-      "aliases": [],
+      "aliases": [
+        "R1 Station; محطة مونوريل R1"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Other",
@@ -8577,7 +8674,9 @@
       "slug": "nc-308-explore",
       "name_ar": "محطة مونوريل الحي السكني الثاني R2",
       "name_en": "R2 Residential District Monorail Station",
-      "aliases": [],
+      "aliases": [
+        "R2 Station; محطة مونوريل R2"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Other",
@@ -8604,7 +8703,9 @@
       "slug": "nc-309-explore",
       "name_ar": "محطة مونوريل مسجد الفتاح العليم",
       "name_en": "Al Fattah Al Aleem Mosque Monorail Station",
-      "aliases": [],
+      "aliases": [
+        "Al Fattah Al Aleem; الفتاح العليم"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Other",
@@ -8631,7 +8732,9 @@
       "slug": "nc-310-explore",
       "name_ar": "محطة مونوريل مدينة الفنون والثقافة",
       "name_en": "City of Arts and Culture Monorail Station",
-      "aliases": [],
+      "aliases": [
+        "Arts and Culture Station; الفنون والثقافة مونوريل"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Other",
@@ -8658,7 +8761,9 @@
       "slug": "nc-311-explore",
       "name_ar": "محطة مونوريل مسجد مصر",
       "name_en": "Masjid Misr Monorail Station",
-      "aliases": [],
+      "aliases": [
+        "Masjid Misr; مسجد مصر محطة"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Other",
@@ -8685,7 +8790,9 @@
       "slug": "nc-312-explore",
       "name_ar": "محطة مونوريل مدينة العدالة",
       "name_en": "City of Justice Monorail Station",
-      "aliases": [],
+      "aliases": [
+        "Justice City Station; مدينة العدالة"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Other",
@@ -8712,7 +8819,9 @@
       "slug": "nc-313-explore",
       "name_ar": "مكتبة العاصمة — مدينة الفنون والثقافة",
       "name_en": "Capital Library, Arts and Culture City",
-      "aliases": [],
+      "aliases": [
+        "Capital Library; مكتبة العاصمة"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Arts & Culture City",
@@ -8739,7 +8848,9 @@
       "slug": "nc-314-explore",
       "name_ar": "متحف عواصم مصر — مدينة الفنون والثقافة",
       "name_en": "Egyptian Capitals Museum, Arts and Culture City",
-      "aliases": [],
+      "aliases": [
+        "Museum of Egyptian Capitals; متحف عواصم مصر"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Arts & Culture City",
@@ -8766,7 +8877,9 @@
       "slug": "nc-315-explore",
       "name_ar": "متحف الفنون — مدينة الفنون والثقافة",
       "name_en": "Arts Museum, Arts and Culture City",
-      "aliases": [],
+      "aliases": [
+        "Art Museum; متحف الفنون"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Arts & Culture City",
@@ -8793,7 +8906,9 @@
       "slug": "nc-316-explore",
       "name_ar": "متحف العملات — مدينة الفنون والثقافة",
       "name_en": "Currency Museum, Arts and Culture City",
-      "aliases": [],
+      "aliases": [
+        "Coins Museum; Currency Museum; متحف العملات"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Arts & Culture City",
@@ -8820,7 +8935,9 @@
       "slug": "nc-317-explore",
       "name_ar": "دار الأوبرا الجديدة — العاصمة الإدارية",
       "name_en": "New Capital Opera House",
-      "aliases": [],
+      "aliases": [
+        "New Opera; دار أوبرا العاصمة"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Arts & Culture City",
@@ -8847,7 +8964,9 @@
       "slug": "nc-318-explore",
       "name_ar": "مسرح الموسيقى — مدينة الفنون والثقافة",
       "name_en": "Music Theatre, Arts and Culture City",
-      "aliases": [],
+      "aliases": [
+        "Music Hall; مسرح الموسيقى"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Arts & Culture City",
@@ -8874,7 +8993,9 @@
       "slug": "nc-319-explore",
       "name_ar": "مسرح الدراما — مدينة الفنون والثقافة",
       "name_en": "Drama Theatre, Arts and Culture City",
-      "aliases": [],
+      "aliases": [
+        "Drama Theatre; مسرح الدراما"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Arts & Culture City",
@@ -8901,7 +9022,9 @@
       "slug": "nc-320-explore",
       "name_ar": "جامعة مصر للمعلوماتية — مدينة المعرفة",
       "name_en": "Egypt University of Informatics (EUI)",
-      "aliases": [],
+      "aliases": [
+        "EUI; جامعة مصر المعلوماتية"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Knowledge City",
@@ -8928,7 +9051,9 @@
       "slug": "nc-321-explore",
       "name_ar": "معهد تكنولوجيا المعلومات — مدينة المعرفة (مشروع)",
       "name_en": "Information Technology Institute, Knowledge City Project",
-      "aliases": [],
+      "aliases": [
+        "ITI; معهد تكنولوجيا المعلومات"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Knowledge City",
@@ -8955,7 +9080,9 @@
       "slug": "nc-322-explore",
       "name_ar": "المعهد القومي للاتصالات — مدينة المعرفة (مشروع)",
       "name_en": "National Telecommunications Institute, Knowledge City Project",
-      "aliases": [],
+      "aliases": [
+        "NTI; المعهد القومي للاتصالات"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Knowledge City",
@@ -8982,7 +9109,9 @@
       "slug": "nc-323-explore",
       "name_ar": "مبنى الابتكار — مدينة المعرفة (مشروع)",
       "name_en": "Innovation Building, Knowledge City Project",
-      "aliases": [],
+      "aliases": [
+        "Innovation Building; مبنى الابتكار"
+      ],
       "kind": "Building",
       "role": "Facility",
       "zone": "Knowledge City",

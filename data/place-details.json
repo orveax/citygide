@@ -274,7 +274,8 @@
       "visitor_release_gate": "Hold - Navigation",
       "evidence_scope": "خبر افتتاح مارس 2026 يؤكد مكتب خدمة تصديقات المواطنين أمام مبنى C؛ وإعلان يونيو 2026 يذكر مكتب العاصمة ضمن المكاتب ذات المواعيد الرسمية الأحد–الخميس لا ساعات التمديد. دليل المكاتب الإلكتروني الحالي لا يعرض صفّ العاصمة؛ تناقض نقص فهرسة يستدعي اتصالًا مباشرًا قبل اعتماد ساعات رقمية.",
       "entity_code": "NC-15",
-      "verification_method": "Web Source"
+      "verification_method": "Web Source",
+      "next_review": "2026-11-09"
     },
     "NC-49": {
       "entity_subtype": "Bank branch",
@@ -393,7 +394,8 @@
       "evidence_scope": "The 26 Apr 2026 QNB opening press releases corroborate a second New Capital branch of ~1100m2. Arabic and English versions differ in district name. Separate first QNB branch listed at El-Masa Capital Plaza GB04 is NOT proof of second branch plot. No verified visitor entrance/hours.",
       "hotline_hours": "خدمة عملاء البنك العامة 19700؛ غير مخصص لهذا الفرع وحده.",
       "entity_code": "NC-36",
-      "verification_method": "Web Source"
+      "verification_method": "Web Source",
+      "next_review": "2026-11-08"
     },
     "NC-27": {
       "evidence_scope": "Official petroleum ministry 2025 model agreement records the Minister's legal domicile in the Government District; does not prove walk-in office, building or entry.",
@@ -453,7 +455,8 @@
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "Official ORVEAX contact page confirms Inizio Tower, office 503 floor 5 and by-appointment visits. It does NOT verify visitor entrance or precise navigation pin.",
       "entity_code": "NC-64",
-      "verification_method": "Web Source"
+      "verification_method": "Web Source",
+      "next_review": "2026-12-06"
     },
     "NC-17": {
       "operational_status": "Unknown",
@@ -487,7 +490,8 @@
       "visitor_release_gate": "Info Only - No Directions",
       "evidence_scope": "صفحة اتصل بنا الرسمية تحدد مقر الوزارة ومبنى 10B-L2M ورقم الاتصال. لا تثبت قبول الزيارة أو ساعات خدمات المواطنين.",
       "entity_code": "NC-32",
-      "verification_method": "Web Source"
+      "verification_method": "Web Source",
+      "next_review": "2026-12-06"
     },
     "NC-67": {
       "operational_status": "Operating",
@@ -571,7 +575,8 @@
       "operational_status": "Unknown",
       "evidence_scope": "Current ministry identity and government district; visitor entrance unverified.",
       "entity_code": "NC-39",
-      "verification_method": "Web Source"
+      "verification_method": "Web Source",
+      "relation_evidence": "CG-DATA-05.5 | 20 Nov 2026: Main MFA headquarters and mobile attestations counter at Building C are separate customer touchpoints."
     },
     "NC-46": {
       "entity_subtype": "Bank branch",
@@ -1440,8 +1445,9 @@
     },
     "NC-264": {
       "operational_status": "Unknown",
-      "evidence_scope": "D38: the firm's own contact page (checked 2026-11-09) states Audaz Mall, Financial District, unit A2-30, +201101202331 / +201210171111 and info@ibrahimsaadeldin.com. This confirms the company's current published office-address claim and direct contact, not physical occupancy inspection, public walk-in access, reception hours, independently verified navigation pin or entrance.",
-      "entity_code": "NC-264"
+      "evidence_scope": "20 Nov 2026: The firm's first-party contact page lists Audaz Mall, A2-30, second floor, Financial District, New Capital; telephone 01101202331 / 01210171111 and info@ibrahimsaadeldin.com. Claims are company-published address/contact/floor only; current staffed occupancy, visitor eligibility, reception hours and entrance pin remain unverified.",
+      "entity_code": "NC-264",
+      "floor_suite": "الدور الثاني — الوحدة A2-30 (مذكور على موقع المؤسسة، دون تحقق ميداني)"
     },
     "NC-219": {
       "entity_subtype": "ATM",
